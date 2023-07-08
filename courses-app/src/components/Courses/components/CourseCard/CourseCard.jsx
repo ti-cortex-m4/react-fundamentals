@@ -3,7 +3,7 @@ import { getCourseDuration } from '../../../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import styles from './styles.module.css';
 
-export const CourseCard = course => {
+export const CourseCard = ({course, authorsIdToName}) => {
 
   const {
     title,
@@ -12,6 +12,10 @@ export const CourseCard = course => {
     duration,
     authors
   } = course;
+
+  const formattedAuthors = authors
+    .map(authorId => authorsIdToName.get(authorId))
+    .join(', ');
 
 	return (
 		<div className={styles.cardContainer}>
@@ -22,7 +26,7 @@ export const CourseCard = course => {
 			<div className={styles.cardDetails}>
 				<p>
 					<b>Authors: </b>
-					authors list
+					<span>{formattedAuthors}</span>
 				</p>
 				<p>
 					<b>Duration: </b>

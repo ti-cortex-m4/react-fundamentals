@@ -1,12 +1,15 @@
 import React from 'react';
 import { useState } from "react";
-import { mockCourses } from '../../mocks';
+import { mockAuthors, mockCourses } from '../../mocks';
 import { CourseCard } from "./components/CourseCard";
 import styles from './styles.module.css';
 
 export const Courses = () => {
 
+    const [authors, setAuthors] = useState(mockAuthors);
     const [courses, setCourses] = useState(mockCourses);
+
+    const authorsIdToName = new Map(authors.map(author => [author.id, author.name]));
 
 	return (
 		<>
@@ -16,7 +19,8 @@ export const Courses = () => {
 
 		    {courses.map((course) => (
                <CourseCard
-                  {...course}
+                  course={course}
+                  authorsIdToName={authorsIdToName}
                />
             ))}
 		</>
