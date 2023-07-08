@@ -28,11 +28,9 @@ export const CourseCard = ({course, authorsIdToName}) => {
   };
 
   const handleUpdateButtonClick = () => {
-//     history.push(APP_URL_PATHS.courseUpdate + id, course);
   };
 
   const handleDeleteButtonClick = () => {
-//     dispatch(deleteCourseFromStore(id));
   };
 
 	return (

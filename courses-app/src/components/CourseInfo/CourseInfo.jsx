@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { getCourseDuration } from '../../helpers/getCourseDuration';
+import { formatCreationDate } from '../../helpers/formatCreationDate';
 import styles from './styles.module.css';
 
 export const CourseInfo = () => {
@@ -20,11 +21,11 @@ export const CourseInfo = () => {
 					</p>
 					<p>
 						<b>Duration: </b>
-						duration
+						{getCourseDuration(duration)}
 					</p>
 					<p>
 						<b>Created: </b>
-						creation date
+						{formatCreationDate(creationDate)}
 					</p>
 					<div>
 						<b>Authors</b>
