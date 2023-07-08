@@ -1,4 +1,5 @@
 import React from 'react';
+import { getCourseDuration } from '../../../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import styles from './styles.module.css';
 
@@ -24,8 +25,8 @@ export const CourseCard = course => {
 					authors list
 				</p>
 				<p>
-					<b>Duration:</b>
-					<span>duration</span>
+					<b>Duration: </b>
+					<span>{getCourseDuration(duration)}</span>
 				</p>
 				<p>
 					<b>Created: </b>
