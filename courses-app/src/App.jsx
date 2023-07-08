@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Header/>
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Routes>
         <Route
           path={root}
