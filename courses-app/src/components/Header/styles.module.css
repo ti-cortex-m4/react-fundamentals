@@ -5,11 +5,3 @@
   margin: 0 auto;
 }
 
-.userContainer {
-  display: flex;
-  align-items: center;
-}
-
-.userName {
-  margin-right: 50px;
-}

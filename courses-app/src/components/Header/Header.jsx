@@ -1,4 +1,6 @@
 import React from 'react';
+import { Logo } from "./components/Logo";
+import { LoggedUser } from "./components/LoggedUser";
 import styles from './styles.module.css';
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -8,7 +10,7 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 			<Logo/>
 
             {
-              isLoggedIn && <AuthBlock
+              isLoggedIn && <LoggedUser
                 authButtonName='Logout'
                 setIsLoggedIn={setIsLoggedIn}
               />

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import Button from '../../Button';
-import { manageLocalStorage } from '../../../common/utils/manageLocalStorage';
-import { APP_REQUEST_PATHS, AUTH_TOKEN_NAME } from '../../../common/constants';
-import { fetchData } from '../../../common/utils/fetchData';
-import styles from './styles/AuthBlock.module.css';
+// import PropTypes from 'prop-types';
+import { Button } from '../../../Button';
+import { manageLocalStorage } from '../../../../common/utils/manageLocalStorage';
+import { APP_REQUEST_PATHS, AUTH_TOKEN_NAME } from '../../../../common/constants';
+import { fetchData } from '../../../../common/utils/fetchData';
+import styles from './styles.module.css';
 
-const AuthBlock = ({ authButtonName, setIsLoggedIn }) => {
+export const LoggedUser = ({ authButtonName, setIsLoggedIn }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -32,22 +32,22 @@ const AuthBlock = ({ authButtonName, setIsLoggedIn }) => {
   };
 
   return (
-    <div className={styles.authBlockWrapper}>
+    <div className={styles.userContainer}>
       <div className={styles.userName}>
         {userData.name}
       </div>
       <Button
         onClick={handleLogoutButtonClick}
       >
-        {authButtonName}
+        Logout
       </Button>
     </div>
   );
 };
 
-AuthBlock.propTypes = {
-  authButtonName: PropTypes.string,
-  setIsLoggedIn: PropTypes.func,
-};
-
-export default AuthBlock;
+// AuthBlock.propTypes = {
+//   authButtonName: PropTypes.string,
+//   setIsLoggedIn: PropTypes.func,
+// };
+//
+// export default AuthBlock;
