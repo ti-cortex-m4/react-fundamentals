@@ -1,9 +1,12 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from "./components/Header";
+import { Login } from "./components/Login";
+import { Registration } from "./components/Registration";
 import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
-import { APP_URL_PATHS } from './common/constants';
+import { manageLocalStorage } from "./common/utils/manageLocalStorage";
+import { AUTH_TOKEN_NAME, APP_URL_PATHS } from "./common/constants";
 
 function App() {
 
@@ -16,6 +19,15 @@ function App() {
     courseInfoId,
   } = APP_URL_PATHS;
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const [token] = manageLocalStorage(AUTH_TOKEN_NAME);
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <div className='app'>
       <Header/>
@@ -25,8 +37,16 @@ function App() {
           element={<Navigate to={courses} />}
         />
         <Route
+          path={login}
+          element={ <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> }
+        />
+        <Route
+          path={registration}
+          element={ <Registration /> }
+        />
+        <Route
           path={courses}
-          element={ <Courses /> }
+          element={ isLoggedIn ? <Courses /> : <Navigate to={login} /> }
         />
         <Route
           path={courseInfoId}

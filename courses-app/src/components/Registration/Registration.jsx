@@ -1,26 +1,87 @@
-import React from 'react';
+// import React from 'react';
 
-import styles from './styles.module.css';
+import { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+// import MainWrapper from '../MainWrapper';
+import { Input } from '../Input';
+import { Button } from '../Button';
+import {
+  HTTP_METHODS,
+  APP_REQUEST_PATHS,
+  APP_URL_PATHS
+} from '../../common/constants';
+import { fetchData } from '../../common/utils/fetchData';
+ import styles from './styles.module.css';
 
 export const Registration = () => {
 	
-	// write your code here
+  const formInitialState = {
+    name: '',
+    email: '',
+    password: '',
+  };
+  const [formData, setFormData] = useState(formInitialState);
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    const fetchConfig = {
+      url: APP_REQUEST_PATHS.registration,
+      method: HTTP_METHODS.post,
+      body: formData,
+    };
+    const { successful, error } = await fetchData(fetchConfig);
+
+    if ( !error && successful ) {
+      setFormData(formInitialState);
+      setIsRegistered(true);
+    }
+  };
+
+  const handleFormChange = event => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  if (isRegistered) {
+    return <Navigate to={APP_URL_PATHS.login} />
+  }
 
 	return (
 		<div className={styles.container}>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleFormSubmit}>
 				<h1>Registration</h1>
-				// reurse Input component for email field
-
-				// reurse Input component for name field
-
-				// reurse Input component for password field
-
-				// reurse Button component for 'Login' button
+              <Input
+                labelText='Name'
+                placeholderText='Enter name'
+                name='name'
+                value={formData.name}
+                onChange={handleFormChange}
+              />
+              <Input
+                labelText='Email'
+                placeholderText='Enter email'
+                name='email'
+                value={formData.email}
+                onChange={handleFormChange}
+//                 type='email'
+              />
+              <Input
+                labelText='Password'
+                placeholderText='Enter password'
+                name='password'
+                value={formData.password}
+                onChange={handleFormChange}
+              />
+              <Button
+                type='submit'
+                buttonText='Registration'
+              />
 			</form>
 			<p>
 				If you have an account you can&nbsp;
-				<a>log in</a>
+				<Link to='/login'>login</Link>
 			</p>
 		</div>
 	);

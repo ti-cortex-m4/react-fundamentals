@@ -7,7 +7,7 @@ export const HTTP_METHODS = {
 
 export const AUTH_TOKEN_NAME = 'authToken';
 
-export const SERVER_URL_BASE = 'http://localhost:3000';
+export const SERVER_URL_BASE = 'http://localhost:4000';
 
 export const APP_REQUEST_PATHS = {
   registration: '/register',
