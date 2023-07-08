@@ -1,18 +1,24 @@
 import React from 'react';
-
+import { useState } from "react";
+import { mockCourses } from '../../mocks';
+import { CourseCard } from "./components/CourseCard";
 import styles from './styles.module.css';
 
 export const Courses = () => {
 
-	// write your code here
+    const [courses, setCourses] = useState(mockCourses);
 
 	return (
 		<>
 			<div className={styles.panel}>
 				// reuse Button component for 'Add course' button
 			</div>
-			
-			// use '.map' to render all courses. Use CourseCard component
+
+		    {courses.map((course) => (
+               <CourseCard
+                  {...course}
+               />
+            ))}
 		</>
 	);
 };

@@ -1,14 +1,21 @@
 import React from 'react';
+import styles from './styles.module.css';
 
-export const CourseCard = () => {
+export const CourseCard = course => {
 
-		// write your code here
+  const {
+    title,
+    description,
+    creationDate,
+    duration,
+    authors
+  } = course;
 
 	return (
 		<div className={styles.cardContainer}>
 			<div className={styles.cardText}>
-				<h2>Title</h2>
-				<p>Description</p>
+				<h2>{title}</h2>
+				<p>{description}</p>
 			</div>
 			<div className={styles.cardDetails}>
 				<p>
