@@ -19,6 +19,7 @@ export const Courses = () => {
 
 		    {courses.map((course) => (
                <CourseCard
+                key={course.id}
                   course={course}
                   authorsIdToName={authorsIdToName}
                />
