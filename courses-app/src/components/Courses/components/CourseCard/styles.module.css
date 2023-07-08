@@ -1,0 +1,31 @@
+.cardContainer {
+  display: flex;
+  padding: 8px 16px;
+  border: 1px solid black;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cardText {
+  width: 70%;
+}
+
+.cardDetails {
+  width: 30%;
+}
+
+.cardDetails > p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}

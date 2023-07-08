@@ -1,0 +1,36 @@
+form > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+}
+
+.infoWrapper {
+  display: flex;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.infoWrapper > div {
+  width: calc(50% - 12px);
+  align-items: center;
+}
+
+.infoWrapper {
+  display: flex;
+}
+
+.authorsContainer > strong {
+  display: block;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.notification {
+  text-align: center;
+}
+

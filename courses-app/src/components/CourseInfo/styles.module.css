@@ -1,0 +1,17 @@
+.courseInfo {
+  display: flex;
+  gap: 50px;
+}
+
+.authorsList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.description {
+  max-width: 60%;
+}
+
+p {
+  padding-bottom: 0;
+}

@@ -1,0 +1,12 @@
+.container {
+  max-width: 170px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button {
+  margin-top: 20px;
+  width: 100%;
+}
