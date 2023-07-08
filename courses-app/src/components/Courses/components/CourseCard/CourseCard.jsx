@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import styles from './styles.module.css';
 
 export const CourseCard = course => {
@@ -28,7 +29,7 @@ export const CourseCard = course => {
 				</p>
 				<p>
 					<b>Created: </b>
-					<span>date</span>
+					<span>{formatCreationDate(creationDate)}</span>
 				</p>
 				<div>
 					
