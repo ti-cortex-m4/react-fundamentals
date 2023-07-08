@@ -73,6 +73,7 @@ export const Registration = () => {
                 name='password'
                 value={formData.password}
                 onChange={handleFormChange}
+                //                 type='password'
               />
               <Button
                 type='submit'
