@@ -8,18 +8,11 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 	return (
 		<div className={styles.headerContainer}>
 			<Logo/>
-
             {
               isLoggedIn && <User
                 setIsLoggedIn={setIsLoggedIn}
               />
             }
-{/* 			<div className={styles.userContainer}> */}
-{/* 				<p className={styles.userName}>Boris</p> */}
-{/* 				 */}
-{/* 				// reuse Button component for 'Login / Logout' button */}
-
-{/* 			</div> */}
 		</div>
 	);
 };

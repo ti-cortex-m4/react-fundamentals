@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
 import { Button } from '../../../Button';
 import { manageLocalStorage } from '../../../../common/utils/manageLocalStorage';
 import {
@@ -28,15 +27,11 @@ export const User = ({ setIsLoggedIn }) => {
     getUserData();
   }, []);
 
-  const handleLogoutButtonClick = () => {
+  const onLogoutButtonClick = () => {
     const [, dropValue] = manageLocalStorage(AUTH_TOKEN_NAME);
     dropValue();
     setIsLoggedIn(false);
   };
-
-//   if (!isLoggedIn) {
-//     return <Navigate to={APP_URL_PATHS.root} />
-//   }
 
   return (
     <div className={styles.userContainer}>
@@ -45,15 +40,8 @@ export const User = ({ setIsLoggedIn }) => {
       </div>
       <Button
         buttonText='Logout'
-        onClick={handleLogoutButtonClick}
+        onClick={onLogoutButtonClick}
       />
     </div>
   );
 };
-
-// AuthBlock.propTypes = {
-//   authButtonName: PropTypes.string,
-//   setIsLoggedIn: PropTypes.func,
-// };
-//
-// export default AuthBlock;
