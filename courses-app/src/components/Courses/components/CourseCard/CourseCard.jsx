@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../../../components/Button/Button';
 import { getCourseDuration } from '../../../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
+import { APP_URL_PATHS } from '../../../../common/constants';
 import styles from './styles.module.css';
 
 export const CourseCard = ({course, authorsIdToName}) => {
 
   const {
+	id,
     title,
     description,
     creationDate,
@@ -13,9 +17,23 @@ export const CourseCard = ({course, authorsIdToName}) => {
     authors
   } = course;
 
+  const navigate = useNavigate();
+
   const formattedAuthors = authors
     .map(authorId => authorsIdToName.get(authorId))
     .join(', ');
+
+  const handleShowButtonClick = () => {
+	navigate(APP_URL_PATHS.courseInfo + id);
+  };
+
+  const handleUpdateButtonClick = () => {
+//     history.push(APP_URL_PATHS.courseUpdate + id, course);
+  };
+
+  const handleDeleteButtonClick = () => {
+//     dispatch(deleteCourseFromStore(id));
+  };
 
 	return (
 		<div className={styles.cardContainer}>
@@ -38,9 +56,18 @@ export const CourseCard = ({course, authorsIdToName}) => {
 				</p>
 				<div>
 					
-					// reuse Button component for 'Show course' button
-					// reuse Button component for 'Delete course' button
-					// reuse Button component for 'Edit course' button
+                  <Button
+                    buttonText='Show course'
+                    handleClick={handleShowButtonClick}
+                  />
+                  <Button
+                    buttonText='Edit course'
+                    handleClick={handleUpdateButtonClick}
+                  />
+                  <Button
+                    buttonText='Delete course'
+                    handleClick={handleDeleteButtonClick}
+                  />
 
 				</div>
 			</div>

@@ -12,7 +12,7 @@ export const CourseInfo = () => {
 
 			<h1>Course title</h1>
 			<div className={styles.courseInfo}>
-				<p className={styles.description}>{description}</p>
+				{/* <p className={styles.description}>{description}</p> */}
 				<div>
 					<p>
 						<b>ID: </b>
@@ -28,9 +28,9 @@ export const CourseInfo = () => {
 					</p>
 					<div>
 						<b>Authors</b>
-						<ul className={styles.authorsList}>
+						{/* <ul className={styles.authorsList}>
 							//use '.map' to render authors list with 'li' tag
-						</ul>
+						</ul> */}
 					</div>
 				</div>
 			</div>
