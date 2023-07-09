@@ -12,9 +12,6 @@ import {
 import styles from './styles.module.css';
 
 export const CourseForm = () => {
-
-  const navigate = useNavigate();
-
   const formInitialState = {
     title: '',
     description: '',
@@ -23,9 +20,10 @@ export const CourseForm = () => {
   };
 
   const [formData, setFormData] = useState(formInitialState);
-
   const [authors, setAuthors] = useState([]);
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getAllAuthors = async () => {
