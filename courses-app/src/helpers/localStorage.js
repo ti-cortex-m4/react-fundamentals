@@ -7,12 +7,9 @@ export const getUserFromLocalStorage = () => {
   return [authToken, userName];
 }
 
-export const setAuthTokenToLocalStorage = (authToken) => {
-  return localStorage.setItem(AUTH_TOKEN, authToken);
-}
-
-export const setUserNameToLocalStorage = (userName) => {
-  return localStorage.setItem(USER_NAME, userName);
+export const setUserToLocalStorage = (authToken, userName) => {
+  localStorage.setItem(AUTH_TOKEN, authToken);
+  localStorage.setItem(USER_NAME, userName);
 }
 
 export const removeUserFromLocalStorage = () => {

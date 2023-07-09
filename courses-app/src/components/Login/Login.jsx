@@ -10,7 +10,7 @@ import {
   APP_URL_PATHS
 } from '../../common/constants';
 import { fetchData } from '../../common/utils/fetchData';
-import { setAuthTokenToLocalStorage } from '../../helpers/localStorage';
+import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
 export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -33,11 +33,11 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
     if ( !error && successful ) {
       console.log("login " + result);
+      console.log("user " + user?.name);
 
       const authToken = result.split(' ')[1];
-      setAuthTokenToLocalStorage(authToken);
-
-      console.log("user " + user?.name);
+      const userName = user?.name;
+      setUserToLocalStorage(authToken, userName);
 
       setFormData(formInitialState);
       setIsLoggedIn(true);
