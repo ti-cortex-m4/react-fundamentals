@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
+import AddAuthor from "./components/AddAuthor/AddAuthor";
 import Authors from "./components/Authors/Authors";
 import { fetchData } from '../../common/utils/fetchData';
 import {
@@ -112,6 +113,9 @@ export const CourseForm = () => {
 
 			<div className={styles.infoWrapper}>
 				<div>
+                    <AddAuthor
+                      setIsAuthorAdded={setIsAuthorAdded}
+                    />
 					<div className={styles.newAuthorContainer}>
 						// reuse Input component for new author field
 

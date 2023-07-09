@@ -1,58 +1,55 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Input from '../../../Input';
-import Button from '../../../Button';
+import { Input } from '../../../Input/Input';
+import { Button } from '../../../Button/Button';
 import { fetchData } from '../../../../common/utils/fetchData';
-import { APP_REQUEST_PATHS, HTTP_METHODS } from '../../../../common/constants';
-import styles from './styles/AddAuthor.module.css';
+import {
+  APP_REQUEST_PATHS,
+  HTTP_METHODS
+} from '../../../../common/constants';
+import styles from './styles.module.css';
 
-const AddAuthor = ({ setIsAuthorAdded }) => {
-  const [inputValue, setInputValue] = useState('');
+export const AddAuthor = ({ setIsAuthorAdded }) => {
+  const [authorName, setAuthorName] = useState('');
 
-  const handleCreateAuthor = async () => {
-    if (inputValue) {
+  const onCreateAuthorClick = async () => {
+    if (authorName) {
       const { successful, error } = await fetchData({
         method: HTTP_METHODS.post,
         url: APP_REQUEST_PATHS.authorAdd,
-        body: { name: inputValue },
+        body: { name: authorName },
       });
 
       if (!error && successful) {
         setIsAuthorAdded(true);
-        setInputValue('');
+        setAuthorName('');
       }
     }
   };
 
-  const handleInputChange = event => {
-    setInputValue(event.target.value);
+  const onAuthorNameChange = event => {
+    setAuthorName(event.target.value);
   };
 
   return (
-    <div className={styles.addAuthorWrapper}>
-      <h3 className={styles.addAuthorTitle}>Add author</h3>
-        <label>
-          Author name
-          <Input
-            placeholder='Enter author name...'
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-        </label>
-      <div className={styles.buttonWrapper}>
+    <div className={styles.newAuthorContainer}>
+      <strong>Add author</strong>
+      <div>
+        <Input
+          labelText='Author name'
+          placeholderText='Enter author name...'
+          name='authorName'
+          value={authorName}
+          onChange={onAuthorNameChange}
+        />
         <Button
-          onClick={handleCreateAuthor}
-        >
-          Create author
-        </Button>
+          type='button'
+          buttonText='Create author'
+          onClick={onCreateAuthorClick}
+        />
       </div>
-
     </div>
   );
-};
-
-AddAuthor.propTypes = {
-  setIsAuthorAdded: PropTypes.func,
 };
 
 export default AddAuthor;

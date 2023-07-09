@@ -1,0 +1,5 @@
+.newAuthorContainer > strong {
+  display: block;
+  text-align: center;
+  padding-top: 24px;
+}
