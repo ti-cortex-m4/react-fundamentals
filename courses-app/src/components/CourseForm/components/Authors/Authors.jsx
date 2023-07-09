@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import {Button} from '../../../Button/Button';
 import { classNames } from '../../../../common/utils/helpers';
-// import styles from './styles/AuthorsList.module.css';
+// import styles from './styles/Authors.module.css';
 
-export const AuthorsList = ({
+export const Authors = ({
   title,
   authors,
   buttonTitle,
   onButtonClick,
 }) => {
 //   const authorListClasses = {
-//     [styles.authorsList]: true,
-//     [styles.authorsListInvalid]: !authors.length,
+//     [styles.Authors]: true,
+//     [styles.AuthorsInvalid]: !authors.length,
 //   };
 
   return (
@@ -35,11 +35,11 @@ export const AuthorsList = ({
   );
 };
 
-// AuthorsList.propTypes = {
+// Authors.propTypes = {
 //   title: PropTypes.string,
 //   authors: PropTypes.array,
 //   buttonTitle: PropTypes.string,
 //   onButtonClick: PropTypes.func,
 // };
 //
-// export default AuthorsList;
+// export default Authors;

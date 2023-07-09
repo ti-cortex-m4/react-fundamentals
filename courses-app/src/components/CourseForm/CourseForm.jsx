@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
-import { AuthorsList } from "./components/AuthorsList/AuthorsList";
+import { Authors } from "./components/Authors/Authors";
 import { fetchData } from '../../common/utils/fetchData';
 import {
   APP_REQUEST_PATHS,
@@ -130,7 +130,7 @@ export const CourseForm = () => {
 
 					// use 'map' to display all available autors. Reuse 'AuthorItem' component for each author
 
-                    <AuthorsList
+                    <Authors
                       title='Authors'
                       authors={authors}
                       buttonTitle='Add author'
@@ -141,7 +141,7 @@ export const CourseForm = () => {
 
 					// use 'map' to display course's autors. Reuse 'AuthorItem' component for each author
 
-                    <AuthorsList
+                    <Authors
                       title='Course authors'
                       authors={formData.authors}
                       buttonTitle='Delete author'
