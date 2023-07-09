@@ -4,7 +4,9 @@ import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import AddAuthor from "./components/AddAuthor/AddAuthor";
 import Authors from "./components/Authors/Authors";
+import { getCourseDuration } from '../../helpers/time';
 import { fetchData } from '../../common/utils/fetchData';
+import { useValidation } from "./useValidation";
 import {
   APP_REQUEST_PATHS,
   APP_URL_PATHS,
@@ -21,8 +23,10 @@ export const CourseForm = () => {
   };
 
   const [formData, setFormData] = useState(formInitialState);
-  const [authors, setAuthors] = useState([]);
+  const [validationData, validateForm] = useValidation();
+  const [duration, setDuration] = useState('');
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
+  const [authors, setAuthors] = useState([]);
 
   const navigate = useNavigate();
 
@@ -46,6 +50,24 @@ export const CourseForm = () => {
     setFormData({...formData, [name]: value });
 //     validateForm(event.target);
   };
+
+  const onDurationChange = event => {
+    let value = event.target.value;
+
+    if (value.startsWith('0')) {
+      value = value.slice(1);
+    } else if (value.startsWith('-')) {
+      value = 0;
+    }
+
+    setDuration(value);
+//     handleDurationAdding(Number(value));
+    let duration = Number(value);
+     setFormData({...formData, duration});
+//         validateForm({ name: 'duration', value: duration });
+  };
+
+  const formattedDuration = getCourseDuration(Number(duration));
 
   const onAddAuthorButtonClick = authorId => {
     const authorToBeAdded = authors.find(({ id }) => id === authorId);
@@ -85,22 +107,12 @@ export const CourseForm = () => {
               <Input
                 labelText='Title'
                 placeholderText='Enter title'
+                type='text'
                 name='title'
                 value={formData.title}
-                //                   isValid={validationData.title}
+                isValid={validationData.title}
                 onChange={onFormChange}
-//                 type='email'
               />
-
-              <Button
-//                 size='large'
-                type='submit'
-                buttonText='Create course'
-//                 isValid={validationData.submitButton}
-//                 disabled={!validationData.submitButton}
-              />
-			</div>
-
 			<label>
 				Description
               <textarea
@@ -111,20 +123,34 @@ export const CourseForm = () => {
               />
 			</label>
 
+            <div>
+                  <Input
+                    labelText='Duration'
+                    placeholder='Enter duration (in minutes)...'
+                    type='number'
+                    name='duration'
+                    value={duration}
+                    isValid={validationData.duration}
+                    onChange={onDurationChange}
+                  />
+                <p className={styles.durationText}>
+                Duration: <span className={styles.durationTime}>{formattedDuration}</span> hours
+                </p>
+            </div>
+
+              <Button
+                type='submit'
+                buttonText='Create course'
+                isValid={validationData.submitButton}
+                disabled={!validationData.submitButton}
+              />
+			</div>
+
 			<div className={styles.infoWrapper}>
 				<div>
                     <AddAuthor
                       setIsAuthorAdded={setIsAuthorAdded}
                     />
-					<div className={styles.newAuthorContainer}>
-						// reuse Input component for new author field
-
-						// reuse Button component for 'Create new author' button
-					</div>
-
-					// reuse Input component for duration field
-
-					<p>Duration: </p>
 				</div>
 
 				<div className={styles.authorsContainer}>
