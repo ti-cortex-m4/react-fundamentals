@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
-import { AuthorsList } from "./components/AuthorsList";
+import { AuthorsList } from "./components/AuthorsList/AuthorsList";
 import { fetchData } from '../../common/utils/fetchData';
 import {
   APP_REQUEST_PATHS,
