@@ -23,7 +23,7 @@ export const APP_URL_PATHS = {
   registration: '/registration',
   login: '/login',
   courses: '/courses',
-  courseCreate: '/courses/add',
+  createCourse: '/courses/add',
   courseInfoId: '/courses/:courseId',
   courseInfo: '/courses/',
 };

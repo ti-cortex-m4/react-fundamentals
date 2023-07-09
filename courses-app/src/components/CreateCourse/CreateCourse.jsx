@@ -1,10 +1,10 @@
 import React from 'react';
-
 import styles from './styles.module.css';
 
-export const CourseForm = () => {
+export const CreateCourse = () => {
 
-	//write your code here
+    const handleSubmit = () => {
+    };
 	
 	return (
 		<form onSubmit={handleSubmit}>

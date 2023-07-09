@@ -5,6 +5,7 @@ import { Login } from "./components/Login";
 import { Registration } from "./components/Registration";
 import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
+import { CreateCourse } from "./components/CreateCourse";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { APP_URL_PATHS } from "./common/constants";
 
@@ -15,7 +16,7 @@ function App() {
     registration,
     login,
     courses,
-    courseCreate,
+    createCourse,
     courseInfoId,
   } = APP_URL_PATHS;
 
@@ -51,6 +52,10 @@ function App() {
         <Route
           path={courseInfoId}
           element={ <CourseInfo /> }
+        />
+        <Route
+          path={createCourse}
+          element={ isLoggedIn ? <CreateCourse /> : <Navigate to={login} /> }
         />
       </Routes>
     </div>
