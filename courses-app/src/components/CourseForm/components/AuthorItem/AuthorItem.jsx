@@ -1,11 +1,18 @@
 import React from 'react';
-
+import { Button } from '../../../Button/Button';
 import styles from './styles.module.css';
 
-export const AuthorItem = () => (
+export const AuthorItem = ({
+ authorName,
+ buttonText,
+ onButtonClick,
+}) => (
 	<div className={styles.authorItem}>
-		<span>Boris Smith</span>
-		
-		// reuse Button component for 'Add author' button
+		<span>{authorName}</span>
+        <Button
+          type='button'
+          buttonText={buttonText}
+          onClick={() => onButtonClick(id)}
+        />
 	</div>
 );

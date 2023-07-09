@@ -1,10 +1,9 @@
-import PropTypes from 'prop-types';
-import {Button} from '../../../Button/Button';
+// import PropTypes from 'prop-types';
+import { Button } from '../../../Button/Button';
 import { classNames } from '../../../../common/utils/helpers';
 // import styles from './styles/Authors.module.css';
 
 export const Authors = ({
-  title,
   authors,
   buttonText,
   onButtonClick,
@@ -16,7 +15,6 @@ export const Authors = ({
 
   return (
     <div>
-      <h3>{title}</h3>
       <ul>
         {
           authors.map(({ name, id }) => (

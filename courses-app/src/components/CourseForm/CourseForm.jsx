@@ -127,18 +127,14 @@ export const CourseForm = () => {
 
 				<div className={styles.authorsContainer}>
 					<strong>Authors</strong>
-
                     <Authors
-                      title='Authors'
                       authors={authors}
                       buttonText='Add author'
                       onButtonClick={onAddAuthorButtonClick}
                     />
 
 					<strong>Course authors</strong>
-
                     <Authors
-                      title='Course authors'
                       authors={formData.authors}
                       buttonText='Delete author'
                       onButtonClick={onDeleteAuthorButtonClick}
