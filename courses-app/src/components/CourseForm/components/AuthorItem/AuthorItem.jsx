@@ -3,12 +3,13 @@ import { Button } from '../../../Button/Button';
 import styles from './styles.module.css';
 
 export const AuthorItem = ({
- authorName,
+ id,
+ name,
  buttonText,
  onButtonClick,
 }) => (
-	<div className={styles.authorItem}>
-		<span>{authorName}</span>
+	<div key={id} className={styles.authorItem}>
+		<span>{name}</span>
         <Button
           type='button'
           buttonText={buttonText}

@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import { Button } from '../../../Button/Button';
+import { AuthorItem } from "../AuthorItem/AuthorItem";
 import { classNames } from '../../../../common/utils/helpers';
 // import styles from './styles/Authors.module.css';
 
@@ -18,14 +19,20 @@ export const Authors = ({
       <ul>
         {
           authors.map(({ name, id }) => (
-          <li key={id}>
-            <h4>{name}</h4>
-            <Button
-              type='button'
+            <AuthorItem
+              id={id}
+              name={name}
               buttonText={buttonText}
-              onClick={() => onButtonClick(id)}
+              onButtonClick={() => onButtonClick(id)}
             />
-          </li>
+//           <li key={id}>
+//             <h4>{name}</h4>
+//             <Button
+//               type='button'
+//               buttonText={buttonText}
+//               onClick={() => onButtonClick(id)}
+//             />
+//           </li>
           ))
         }
       </ul>
