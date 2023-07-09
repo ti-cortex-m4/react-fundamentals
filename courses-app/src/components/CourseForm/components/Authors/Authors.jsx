@@ -6,7 +6,7 @@ import { classNames } from '../../../../common/utils/helpers';
 export const Authors = ({
   title,
   authors,
-  buttonTitle,
+  buttonText,
   onButtonClick,
 }) => {
 //   const authorListClasses = {
@@ -23,10 +23,10 @@ export const Authors = ({
           <li key={id}>
             <h4>{name}</h4>
             <Button
+              type='button'
+              buttonText={buttonText}
               onClick={() => onButtonClick(id)}
-            >
-              {buttonTitle}
-            </Button>
+            />
           </li>
           ))
         }
@@ -38,8 +38,8 @@ export const Authors = ({
 // Authors.propTypes = {
 //   title: PropTypes.string,
 //   authors: PropTypes.array,
-//   buttonTitle: PropTypes.string,
+//   buttonText: PropTypes.string,
 //   onButtonClick: PropTypes.func,
 // };
 //
-// export default Authors;
+export default Authors;
