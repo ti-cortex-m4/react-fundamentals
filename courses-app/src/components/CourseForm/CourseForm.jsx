@@ -147,13 +147,11 @@ export const CourseForm = () => {
       </div>
 
       <div className={styles.infoWrapper}>
-        <div>
+        <div className={styles.authorsContainer}>
           <AddAuthor
             setIsAuthorAdded={setIsAuthorAdded}
           />
-        </div>
 
-        <div className={styles.authorsContainer}>
           <strong>Authors</strong>
           <Authors
             authors={authors}
