@@ -29,13 +29,15 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       method: HTTP_METHODS.post,
       body: formData,
     };
-    const { successful, result, error } = await fetchData(fetchConfig);
+    const { successful, result, user, error } = await fetchData(fetchConfig);
 
     if ( !error && successful ) {
       console.log("login " + result);
 
       const authToken = result.split(' ')[1];
       setAuthTokenToLocalStorage(authToken);
+
+      console.log("user " + user?.name);
 
       setFormData(formInitialState);
       setIsLoggedIn(true);

@@ -32,5 +32,7 @@ export const fetchData = async config => {
     error = true;
   }
 
+  console.log("response " + JSON.stringify(response));
+
   return { ...(response || {}), error };
 };
