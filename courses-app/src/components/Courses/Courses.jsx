@@ -16,7 +16,7 @@ export const Courses = () => {
 
     const authorsIdToName = new Map(authors.map(author => [author.id, author.name]));
 
-    const handleAddNewCourseButtonClick = () => {
+    const handleCreateCourseButtonClick = () => {
       navigate(APP_URL_PATHS.createCourse);
     };
 
@@ -25,7 +25,7 @@ export const Courses = () => {
 			<div className={styles.panel}>
                 <Button
                   buttonText='Add new course'
-                  onClick={handleAddNewCourseButtonClick}
+                  onClick={handleCreateCourseButtonClick}
                 />
 			</div>
 

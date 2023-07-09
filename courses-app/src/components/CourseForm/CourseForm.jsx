@@ -1,22 +1,79 @@
-import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/Button/Button';
+import { Input } from '../../components/Input/Input';
+import { fetchData } from '../../common/utils/fetchData';
+import {
+  APP_REQUEST_PATHS,
+  APP_URL_PATHS,
+  HTTP_METHODS,
+} from '../../common/constants';
 import styles from './styles.module.css';
 
 export const CourseForm = () => {
 
-    const handleSubmit = () => {
+  const navigate = useNavigate();
+
+  const formInitialState = {
+    title: '',
+    description: '',
+    duration: '',
+    authors: [],
+  };
+  const [formData, setFormData] = useState(formInitialState);
+
+  const handleFormChange = event => {
+    const { name, value } = event.target;
+    setFormData({...formData, [name]: value });
+//     validateForm(event.target);
+  };
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+    const authors = formData.authors.map(({ id }) => id);
+
+    const fetchConfig = {
+      url: APP_REQUEST_PATHS.courseAdd,
+      method: HTTP_METHODS.post,
+      body: { ...formData, authors },
     };
+    const { successful, error } = await fetchData(fetchConfig);
+
+    if ( !error && successful ) {
+      navigate(APP_URL_PATHS.courses);
+    }
+  };
 	
 	return (
-		<form onSubmit={handleSubmit}>
+		<form onSubmit={handleFormSubmit}>
 			<div>
-				// reuse Input component for title field
+              <Input
+                labelText='Title'
+                placeholderText='Enter title'
+                name='title'
+                value={formData.title}
+                //                   isValid={validationData.title}
+                onChange={handleFormChange}
+//                 type='email'
+              />
 
-				// reuse Button component for 'Save course' button
+              <Button
+//                 size='large'
+                type='submit'
+                buttonText='Create course'
+//                 isValid={validationData.submitButton}
+//                 disabled={!validationData.submitButton}
+              />
 			</div>
 
 			<label>
 				Description
-				<textarea/>
+              <textarea
+                placeholder="Enter description"
+                name='description'
+                value={formData.description}
+                onChange={handleFormChange}
+              />
 			</label>
 
 			<div className={styles.infoWrapper}>

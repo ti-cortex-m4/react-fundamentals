@@ -5,7 +5,7 @@ import { Login } from "./components/Login";
 import { Registration } from "./components/Registration";
 import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
-import { CreateCourse } from "./components/CreateCourse";
+import { CourseForm } from "./components/CourseForm";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { APP_URL_PATHS } from "./common/constants";
 
@@ -55,7 +55,7 @@ function App() {
         />
         <Route
           path={createCourse}
-          element={ isLoggedIn ? <CreateCourse /> : <Navigate to={login} /> }
+          element={ isLoggedIn ? <CourseForm /> : <Navigate to={login} /> }
         />
       </Routes>
     </div>
