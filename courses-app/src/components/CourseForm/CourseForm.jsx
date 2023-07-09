@@ -47,8 +47,8 @@ export const CourseForm = () => {
 
   const onFormChange = event => {
     const { name, value } = event.target;
-    setFormData({...formData, [name]: value });
-//     validateForm(event.target);
+    setFormData({ ...formData, [name]: value });
+    validateForm(event.target);
   };
 
   const onDurationChange = event => {
@@ -61,10 +61,10 @@ export const CourseForm = () => {
     }
 
     setDuration(value);
-//     handleDurationAdding(Number(value));
+    //     handleDurationAdding(Number(value));
     let duration = Number(value);
-     setFormData({...formData, duration});
-//         validateForm({ name: 'duration', value: duration });
+    setFormData({ ...formData, duration });
+    validateForm({ name: 'duration', value: duration });
   };
 
   const formattedDuration = getCourseDuration(Number(duration));
@@ -72,17 +72,17 @@ export const CourseForm = () => {
   const onAddAuthorButtonClick = authorId => {
     const authorToBeAdded = authors.find(({ id }) => id === authorId);
     const filteredAuthors = authors.filter(({ id }) => id !== authorId);
-    setFormData({...formData, authors: [...formData.authors, authorToBeAdded]});
+    setFormData({ ...formData, authors: [...formData.authors, authorToBeAdded] });
     setAuthors(filteredAuthors);
-    //validateForm({ name: 'authors', value: true });
+    validateForm({ name: 'authors', value: true });
   };
 
   const onDeleteAuthorButtonClick = authorId => {
     const authorToBeAdded = formData.authors.find(({ id }) => id === authorId);
     const filteredAuthors = formData.authors.filter(({ id }) => id !== authorId);
-    //validateForm({ name: 'authors', value: formData.authors.length > 1 });
+    validateForm({ name: 'authors', value: formData.authors.length > 1 });
     setAuthors([...authors, authorToBeAdded]);
-    setFormData({...formData, authors: filteredAuthors});
+    setFormData({ ...formData, authors: filteredAuthors });
   };
 
   const handleFormSubmit = async event => {
@@ -96,79 +96,79 @@ export const CourseForm = () => {
     };
     const { successful, error } = await fetchData(fetchConfig);
 
-    if ( !error && successful ) {
+    if (!error && successful) {
       navigate(APP_URL_PATHS.courses);
     }
   };
-	
-	return (
-		<form onSubmit={handleFormSubmit}>
-			<div>
-              <Input
-                labelText='Title'
-                placeholderText='Enter title'
-                type='text'
-                name='title'
-                value={formData.title}
-                isValid={validationData.title}
-                onChange={onFormChange}
-              />
-			<label>
-				Description
-              <textarea
-                placeholder="Enter description"
-                name='description'
-                value={formData.description}
-                onChange={onFormChange}
-              />
-			</label>
 
-            <div>
-                  <Input
-                    labelText='Duration'
-                    placeholder='Enter duration (in minutes)...'
-                    type='number'
-                    name='duration'
-                    value={duration}
-                    isValid={validationData.duration}
-                    onChange={onDurationChange}
-                  />
-                <p className={styles.durationText}>
-                Duration: <span className={styles.durationTime}>{formattedDuration}</span> hours
-                </p>
-            </div>
+  return (
+    <form onSubmit={handleFormSubmit}>
+      <div>
+        <Input
+          labelText='Title'
+          placeholderText='Enter title'
+          type='text'
+          name='title'
+          value={formData.title}
+          isValid={validationData.title}
+          onChange={onFormChange}
+        />
+        <label>
+          Description
+          <textarea
+            placeholder="Enter description"
+            name='description'
+            value={formData.description}
+            onChange={onFormChange}
+          />
+        </label>
 
-              <Button
-                type='submit'
-                buttonText='Create course'
-                isValid={validationData.submitButton}
-                disabled={!validationData.submitButton}
-              />
-			</div>
+        <div>
+          <Input
+            labelText='Duration'
+            placeholder='Enter duration (in minutes)...'
+            type='number'
+            name='duration'
+            value={duration}
+            isValid={validationData.duration}
+            onChange={onDurationChange}
+          />
+          <p className={styles.durationText}>
+            Duration: <span className={styles.durationTime}>{formattedDuration}</span> hours
+          </p>
+        </div>
 
-			<div className={styles.infoWrapper}>
-				<div>
-                    <AddAuthor
-                      setIsAuthorAdded={setIsAuthorAdded}
-                    />
-				</div>
+        <Button
+          type='submit'
+          buttonText='Create course'
+          isValid={validationData.submitButton}
+          disabled={!validationData.submitButton}
+        />
+      </div>
 
-				<div className={styles.authorsContainer}>
-					<strong>Authors</strong>
-                    <Authors
-                      authors={authors}
-                      buttonText='Add author'
-                      onButtonClick={onAddAuthorButtonClick}
-                    />
+      <div className={styles.infoWrapper}>
+        <div>
+          <AddAuthor
+            setIsAuthorAdded={setIsAuthorAdded}
+          />
+        </div>
 
-					<strong>Course authors</strong>
-                    <Authors
-                      authors={formData.authors}
-                      buttonText='Delete author'
-                      onButtonClick={onDeleteAuthorButtonClick}
-                    />
-				</div>
-			</div>
-		</form>
-	);
+        <div className={styles.authorsContainer}>
+          <strong>Authors</strong>
+          <Authors
+            authors={authors}
+            buttonText='Add author'
+            onButtonClick={onAddAuthorButtonClick}
+          />
+
+          <strong>Course authors</strong>
+          <Authors
+            authors={formData.authors}
+            buttonText='Delete author'
+            onButtonClick={onDeleteAuthorButtonClick}
+          />
+        </div>
+      </div>
+    </form>
+  );
 };
