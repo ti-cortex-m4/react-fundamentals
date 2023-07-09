@@ -2,7 +2,7 @@
 import { Button } from '../../../Button/Button';
 import { AuthorItem } from "../AuthorItem/AuthorItem";
 import { classNames } from '../../../../common/utils/helpers';
-// import styles from './styles/Authors.module.css';
+import styles from './styles.module.css';
 
 export const Authors = ({
   authors,
@@ -16,8 +16,9 @@ export const Authors = ({
 
   return (
     <div>
-      <ul>
+{/*       <ul> */}
         {
+          (authors.length > 0) &&
           authors.map(({ name, id }) => (
             <AuthorItem
               id={id}
@@ -25,6 +26,9 @@ export const Authors = ({
               buttonText={buttonText}
               onButtonClick={() => onButtonClick(id)}
             />
+//           } else {
+//           <p className={styles.notification}>List is empty</p>
+//           }
 //           <li key={id}>
 //             <h4>{name}</h4>
 //             <Button
@@ -35,7 +39,11 @@ export const Authors = ({
 //           </li>
           ))
         }
-      </ul>
+        {
+          (authors.length == 0) &&
+          <p className={styles.notification}>author list is empty</p>
+        }
+{/*       <ul> */}
     </div>
   );
 };

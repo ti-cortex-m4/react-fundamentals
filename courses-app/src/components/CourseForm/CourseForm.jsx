@@ -139,8 +139,6 @@ export const CourseForm = () => {
                       buttonText='Delete author'
                       onButtonClick={onDeleteAuthorButtonClick}
                     />
-
-					<p className={styles.notification}>List is empty</p> // display this paragraph if there are no authors in the course
 				</div>
 			</div>
 		</form>
