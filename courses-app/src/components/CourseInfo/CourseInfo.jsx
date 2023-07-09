@@ -1,6 +1,5 @@
 import React from 'react';
-import { getCourseDuration } from '../../helpers/getCourseDuration';
-import { formatCreationDate } from '../../helpers/formatCreationDate';
+import { getCourseDuration, formatCreationDate } from '../../helpers/time';
 import styles from './styles.module.css';
 
 export const CourseInfo = () => {
