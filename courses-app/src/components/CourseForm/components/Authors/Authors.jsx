@@ -4,7 +4,7 @@ import { AuthorItem } from "../AuthorItem/AuthorItem";
 import { classNames } from '../../../../common/utils/helpers';
 import styles from './styles.module.css';
 
-export const Authors = ({
+const Authors = ({
   authors,
   buttonText,
   onButtonClick,
