@@ -1,6 +1,5 @@
-import { manageLocalStorage } from './manageLocalStorage';
+import { getAuthTokenFromLocalStorage } from '../../helpers/localStorage';
 import {
-  AUTH_TOKEN_NAME,
   HTTP_METHODS,
   SERVER_URL_BASE,
 } from "../constants";
@@ -15,7 +14,8 @@ export const fetchData = async config => {
     body
   } = config;
 
-  const [token] = manageLocalStorage(AUTH_TOKEN_NAME);
+//  const [token] = getAuthTokenFromLocalStorage();
+  const token = getAuthTokenFromLocalStorage();
   const requestHeaders = new Headers({
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json;charset=utf-8'

@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '../../../Button';
-import { manageLocalStorage } from '../../../../common/utils/manageLocalStorage';
+import { removeAuthTokenFromLocalStorage, removeUserNameFromLocalStorage } from '../../../../helpers/localStorage';
 import {
-    APP_REQUEST_PATHS,
-    AUTH_TOKEN_NAME
+    APP_REQUEST_PATHS
 } from '../../../../common/constants';
 import { fetchData } from '../../../../common/utils/fetchData';
 import styles from './styles.module.css';
@@ -28,8 +27,9 @@ export const Logout = ({ setIsLoggedIn }) => {
   }, []);
 
   const onLogoutButtonClick = () => {
-    const [, dropValue] = manageLocalStorage(AUTH_TOKEN_NAME);
-    dropValue();
+//     const [, dropValue] = manageLocalStorage(AUTH_TOKEN_NAME);
+    removeAuthTokenFromLocalStorage();
+    removeUserNameFromLocalStorage();
     setIsLoggedIn(false);
   };
 

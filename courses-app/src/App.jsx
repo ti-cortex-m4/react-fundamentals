@@ -5,8 +5,8 @@ import { Login } from "./components/Login";
 import { Registration } from "./components/Registration";
 import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
-import { manageLocalStorage } from "./common/utils/manageLocalStorage";
-import { AUTH_TOKEN_NAME, APP_URL_PATHS } from "./common/constants";
+import { getAuthTokenFromLocalStorage } from "./helpers/localStorage";
+import { APP_URL_PATHS } from "./common/constants";
 
 function App() {
 
@@ -22,7 +22,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const [token] = manageLocalStorage(AUTH_TOKEN_NAME);
+//     const [token] = getAuthTokenFromLocalStorage();
+    const token = getAuthTokenFromLocalStorage();
     if (token) {
       setIsLoggedIn(true);
     }

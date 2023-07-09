@@ -6,15 +6,11 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import {
   APP_REQUEST_PATHS,
-  AUTH_TOKEN_NAME,
   HTTP_METHODS,
   APP_URL_PATHS
 } from '../../common/constants';
 import { fetchData } from '../../common/utils/fetchData';
-import { manageLocalStorage } from '../../common/utils/manageLocalStorage';
-// import styles from './styles/Login.module.css';
-
-// import React from 'react';
+import { setAuthTokenToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
 export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -36,8 +32,10 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     const { successful, result, error } = await fetchData(fetchConfig);
 
     if ( !error && successful ) {
+      console.log("login " + result);
+
       const authToken = result.split(' ')[1];
-      manageLocalStorage(AUTH_TOKEN_NAME, authToken);
+      setAuthTokenToLocalStorage(authToken);
 
       setFormData(formInitialState);
       setIsLoggedIn(true);
