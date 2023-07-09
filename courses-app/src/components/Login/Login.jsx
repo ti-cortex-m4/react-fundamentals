@@ -26,7 +26,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
 
     const fetchConfig = {
       url: APP_REQUEST_PATHS.login,
-      method: HTTP_METHODS.post,
+      method: 'POST',
       body: formData,
     };
     const { successful, result, user, error } = await fetchData(fetchConfig);

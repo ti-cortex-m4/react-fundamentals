@@ -69,7 +69,7 @@ export const CourseForm = () => {
 
     const fetchConfig = {
       url: APP_REQUEST_PATHS.courseAdd,
-      method: HTTP_METHODS.post,
+      method: 'POST',
       body: { ...formData, authors },
     };
     const { successful, error } = await fetchData(fetchConfig);

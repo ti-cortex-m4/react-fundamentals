@@ -10,25 +10,25 @@ import {
 import styles from './styles.module.css';
 
 export const AddAuthor = ({ setIsAuthorAdded }) => {
-  const [authorName, setAuthorName] = useState('');
+  const [author, setAuthor] = useState('');
 
   const onCreateAuthorClick = async () => {
-    if (authorName) {
+    if (author) {
       const { successful, error } = await fetchData({
-        method: HTTP_METHODS.post,
+        method: 'POST',
         url: APP_REQUEST_PATHS.authorAdd,
-        body: { name: authorName },
+        body: { name: author },
       });
 
       if (!error && successful) {
         setIsAuthorAdded(true);
-        setAuthorName('');
+        setAuthor('');
       }
     }
   };
 
-  const onAuthorNameChange = event => {
-    setAuthorName(event.target.value);
+  const onAuthorChange = event => {
+    setAuthor(event.target.value);
   };
 
   return (
@@ -38,9 +38,9 @@ export const AddAuthor = ({ setIsAuthorAdded }) => {
         <Input
           labelText='Author name'
           placeholderText='Enter author name...'
-          name='authorName'
-          value={authorName}
-          onChange={onAuthorNameChange}
+          name='author'
+          value={author}
+          onChange={onAuthorChange}
         />
         <Button
           type='button'

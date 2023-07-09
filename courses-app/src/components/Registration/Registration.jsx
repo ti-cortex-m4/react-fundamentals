@@ -28,7 +28,7 @@ export const Registration = () => {
 
     const fetchConfig = {
       url: APP_REQUEST_PATHS.registration,
-      method: HTTP_METHODS.post,
+      method: 'POST',
       body: formData,
     };
     const { successful, error } = await fetchData(fetchConfig);

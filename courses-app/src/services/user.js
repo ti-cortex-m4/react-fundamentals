@@ -21,7 +21,7 @@ import { APP_REQUEST_PATHS, HTTP_METHODS } from '../common/constants';
 //export const loginUser = async (dispatch, loginData) => {
 //  const fetchConfig = {
 //    url: APP_REQUEST_PATHS.login,
-//    method: HTTP_METHODS.post,
+//    method: 'POST',
 //    body: loginData,
 //  };
 //  const { successful, result, error } = await fetchData(fetchConfig);
