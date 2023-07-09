@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '../../../Button';
-import { removeAuthTokenFromLocalStorage, removeUserNameFromLocalStorage } from '../../../../helpers/localStorage';
+import { removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import {
     APP_REQUEST_PATHS
 } from '../../../../common/constants';
@@ -27,9 +27,7 @@ export const Logout = ({ setIsLoggedIn }) => {
   }, []);
 
   const onLogoutButtonClick = () => {
-//     const [, dropValue] = manageLocalStorage(AUTH_TOKEN_NAME);
-    removeAuthTokenFromLocalStorage();
-    removeUserNameFromLocalStorage();
+    removeUserFromLocalStorage();
     setIsLoggedIn(false);
   };
 

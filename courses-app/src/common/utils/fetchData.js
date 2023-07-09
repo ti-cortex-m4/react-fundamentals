@@ -1,4 +1,4 @@
-import { getAuthTokenFromLocalStorage } from '../../helpers/localStorage';
+import { getUserFromLocalStorage } from '../../helpers/localStorage';
 import {
   HTTP_METHODS,
   SERVER_URL_BASE,
@@ -14,10 +14,9 @@ export const fetchData = async config => {
     body
   } = config;
 
-//  const [token] = getAuthTokenFromLocalStorage();
-  const token = getAuthTokenFromLocalStorage();
+  const [authToken, userName] = getUserFromLocalStorage();
   const requestHeaders = new Headers({
-    'Authorization': `Bearer ${token}`,
+    'Authorization': `Bearer ${authToken}`,
     'Content-Type': 'application/json;charset=utf-8'
   });
 

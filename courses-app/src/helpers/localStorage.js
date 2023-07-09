@@ -1,12 +1,10 @@
 const AUTH_TOKEN = 'authToken';
 const USER_NAME = 'userName';
 
-export const getAuthTokenFromLocalStorage = () => {
-  return localStorage.getItem(AUTH_TOKEN);
-}
-
-export const getUserNameFromLocalStorage = () => {
-  return localStorage.getItem(USER_NAME);
+export const getUserFromLocalStorage = () => {
+  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const userName = localStorage.getItem(USER_NAME);
+  return [authToken, userName];
 }
 
 export const setAuthTokenToLocalStorage = (authToken) => {
@@ -17,10 +15,7 @@ export const setUserNameToLocalStorage = (userName) => {
   return localStorage.setItem(USER_NAME, userName);
 }
 
-export const removeAuthTokenFromLocalStorage = () => {
+export const removeUserFromLocalStorage = () => {
   localStorage.removeItem(AUTH_TOKEN);
-}
-
-export const removeUserNameFromLocalStorage = () => {
   localStorage.removeItem(USER_NAME);
 }
