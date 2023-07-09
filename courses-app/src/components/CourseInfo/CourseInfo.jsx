@@ -21,11 +21,11 @@ export const CourseInfo = () => {
 					</p>
 					<p>
 						<b>Duration: </b>
-						{getCourseDuration(duration)}
+{/* 						{getCourseDuration(duration)} */}
 					</p>
 					<p>
 						<b>Created: </b>
-						{formatCreationDate(creationDate)}
+{/* 						{formatCreationDate(creationDate)} */}
 					</p>
 					<div>
 						<b>Authors</b>

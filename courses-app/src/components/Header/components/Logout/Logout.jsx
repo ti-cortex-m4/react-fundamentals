@@ -8,7 +8,7 @@ import {
 import { fetchData } from '../../../../common/utils/fetchData';
 import styles from './styles.module.css';
 
-export const User = ({ setIsLoggedIn }) => {
+export const Logout = ({ setIsLoggedIn }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {

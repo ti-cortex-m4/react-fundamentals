@@ -1,6 +1,6 @@
 import React from 'react';
 import { Logo } from "./components/Logo";
-import { User } from "./components/User";
+import { Logout } from "./components/Logout";
 import styles from './styles.module.css';
 
 export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -9,7 +9,7 @@ export const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 		<div className={styles.headerContainer}>
 			<Logo/>
             {
-              isLoggedIn && <User
+              isLoggedIn && <Logout
                 setIsLoggedIn={setIsLoggedIn}
               />
             }
