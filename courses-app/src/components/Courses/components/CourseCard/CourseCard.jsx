@@ -30,20 +30,24 @@ export const CourseCard = ({course, authorsIdToName}) => {
   };
 
   const handleDeleteButtonClick = (id) => {
-  console.log('deleteCourse'+id);
-//     const deleteCourse = async (id) => {
-//       console.log('deleteCourse'+id);
-//       const { successful, error } = await fetchData({
-//         method: 'DELETE',
-//         url: '/courses/'+id,
-//       });
-//
-//       if (!error && successful) {
-//         navigate(APP_URL_PATHS.courses);
-//       }
-//     };
-//
-//     deleteCourse(id);
+  console.log('deleteCourse1'+id);
+
+    const deleteCourse = async (id) => {
+      console.log('deleteCourse2'+id);
+
+      const { successful, error } = await fetchData({
+        method: 'DELETE',
+        url: '/courses/'+id,
+      });
+
+      console.log('finish');
+      if (!error && successful) {
+      console.log('navigate');
+        navigate(APP_URL_PATHS.courses);
+      }
+    };
+
+    deleteCourse(id);
   };
 
 	return (
