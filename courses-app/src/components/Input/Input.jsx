@@ -7,11 +7,15 @@ export const Input = ({
   placeholderText,
   name,
   value,
+  valid,
   onChange
 }) => (
 <label>
 	{labelText}
 	<input
+	      className={
+            valid ? 'valid' : 'invalid'
+          }
 	  placeholder={placeholderText}
 	  name={name}
 	  value={value}

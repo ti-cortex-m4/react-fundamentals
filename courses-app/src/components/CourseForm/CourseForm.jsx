@@ -6,7 +6,7 @@ import AddAuthor from "./components/AddAuthor/AddAuthor";
 import Authors from "./components/Authors/Authors";
 import { getCourseDuration } from '../../helpers/time';
 import { fetchData } from '../../common/utils/fetchData';
-import { useValidation } from "./useValidation";
+// import { useValidation } from "./useValidation";
 import {
   APP_REQUEST_PATHS,
   APP_URL_PATHS,
@@ -23,7 +23,16 @@ export const CourseForm = () => {
   };
 
   const [formData, setFormData] = useState(formInitialState);
-  const [validationData, validateForm] = useValidation();
+  const [validationData, setValidationData] = useState({
+   title: false
+//    description: false,
+//    duration: false,
+//    authors: false,
+ });
+  const [isFormValid, setIsFormValid] = useState(false);
+
+
+//   const [validationData, validateForm] = useValidation();
   const [duration, setDuration] = useState('');
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
@@ -45,26 +54,34 @@ export const CourseForm = () => {
     getAllAuthors();
   }, [isAuthorAdded]);
 
+  const onTitleChange = event => {
+    console.log('onTitleChange');
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+//     validateForm(event.target)
+  console.log('title='+value);
+    validationData.title = value.length > 0;
+    console.log('validationData='+JSON.stringify(validationData));
+
+    if (validationData.title)
+      setIsFormValid(true);
+    else
+      setIsFormValid(false);
+  };
+
   const onFormChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    validateForm(event.target);
+//     validateForm(event.target);
   };
 
   const onDurationChange = event => {
     let value = event.target.value;
-
-    if (value.startsWith('0')) {
-      value = value.slice(1);
-    } else if (value.startsWith('-')) {
-      value = 0;
-    }
-
     setDuration(value);
-    //     handleDurationAdding(Number(value));
+
     let duration = Number(value);
     setFormData({ ...formData, duration });
-    validateForm({ name: 'duration', value: duration });
+//     validateForm({ name: 'duration', value: duration });
   };
 
   const formattedDuration = getCourseDuration(Number(duration));
@@ -74,13 +91,13 @@ export const CourseForm = () => {
     const filteredAuthors = authors.filter(({ id }) => id !== authorId);
     setFormData({ ...formData, authors: [...formData.authors, authorToBeAdded] });
     setAuthors(filteredAuthors);
-    validateForm({ name: 'authors', value: true });
+//     validateForm({ name: 'authors', value: true });
   };
 
   const onDeleteAuthorButtonClick = authorId => {
     const authorToBeAdded = formData.authors.find(({ id }) => id === authorId);
     const filteredAuthors = formData.authors.filter(({ id }) => id !== authorId);
-    validateForm({ name: 'authors', value: formData.authors.length > 1 });
+//     validateForm({ name: 'authors', value: formData.authors.length > 1 });
     setAuthors([...authors, authorToBeAdded]);
     setFormData({ ...formData, authors: filteredAuthors });
   };
@@ -110,8 +127,8 @@ export const CourseForm = () => {
           type='text'
           name='title'
           value={formData.title}
-          isValid={validationData.title}
-          onChange={onFormChange}
+          valid={validationData.title}
+          onChange={onTitleChange}
         />
         <label>
           Description
@@ -130,19 +147,21 @@ export const CourseForm = () => {
             type='number'
             name='duration'
             value={duration}
-            isValid={validationData.duration}
+//             isValid={validationData.duration}
             onChange={onDurationChange}
           />
           <p className={styles.durationText}>
-            Duration: <span className={styles.durationTime}>{formattedDuration}</span> hours
+            <span className={styles.durationTime}>{formattedDuration}</span>
           </p>
         </div>
 
         <Button
           type='submit'
           buttonText='Create course'
-          isValid={validationData.submitButton}
-          disabled={!validationData.submitButton}
+//           isValid={validationData.submitButton}
+//           disabled={() => !isFormValid}
+          disabled={!isFormValid}
+//           disabled={!validationData.submitButton}
         />
       </div>
 
