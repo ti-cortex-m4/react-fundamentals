@@ -28,7 +28,7 @@ export const CourseForm = () => {
     title: false,
     description: false,
     duration: false,
-    //    authors: false,
+    authors: false
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -61,6 +61,13 @@ export const CourseForm = () => {
     //     validateForm(event.target);
   };
 
+  const updateFormValidation = () => {
+      if (validationData.title && validationData.description && validationData.duration && validationData.authors)
+        setIsFormValid(true);
+      else
+        setIsFormValid(false);
+  }
+
   const onTitleChange = event => {
     console.log('onTitleChange');
 
@@ -71,10 +78,7 @@ export const CourseForm = () => {
     validationData.title = value.length > 0;
     console.log('validationData=' + JSON.stringify(validationData));
 
-    if (validationData.title && validationData.description && validationData.duration)
-      setIsFormValid(true);
-    else
-      setIsFormValid(false);
+    updateFormValidation();
   };
 
   const onDescriptionChange = event => {
@@ -87,10 +91,7 @@ export const CourseForm = () => {
     validationData.description = value.length > 0;
     console.log('validationData=' + JSON.stringify(validationData));
 
-    if (validationData.title && validationData.description && validationData.duration)
-      setIsFormValid(true);
-    else
-      setIsFormValid(false);
+    updateFormValidation();
   };
 
   const onDurationChange = event => {
@@ -110,28 +111,29 @@ export const CourseForm = () => {
     setFormData({ ...formData, [name]: value });
     console.log('formData=' + JSON.stringify(formData));
 
-    if (validationData.title && validationData.description && validationData.duration)
-      setIsFormValid(true);
-    else
-      setIsFormValid(false);
+    updateFormValidation();
   };
 
-  //   const formattedDuration = getCourseDuration(Number(duration));
-
   const onAddAuthorButtonClick = authorId => {
-    const authorToBeAdded = authors.find(({ id }) => id === authorId);
-    const filteredAuthors = authors.filter(({ id }) => id !== authorId);
-    setFormData({ ...formData, authors: [...formData.authors, authorToBeAdded] });
-    setAuthors(filteredAuthors);
-    //     validateForm({ name: 'authors', value: true });
+    console.log('onAddAuthorButtonClick');
+
+    const addedAuthor = authors.find(({ id }) => id === authorId);
+    const availableAuthors = authors.filter(({ id }) => id !== authorId);
+    setFormData({ ...formData, authors: [...formData.authors, addedAuthor] });
+    setAuthors(availableAuthors);
+
+    updateFormValidation();
   };
 
   const onDeleteAuthorButtonClick = authorId => {
-    const authorToBeAdded = formData.authors.find(({ id }) => id === authorId);
-    const filteredAuthors = formData.authors.filter(({ id }) => id !== authorId);
-    //     validateForm({ name: 'authors', value: formData.authors.length > 1 });
-    setAuthors([...authors, authorToBeAdded]);
-    setFormData({ ...formData, authors: filteredAuthors });
+    console.log('onDeleteAuthorButtonClick');
+
+    const deletedAuthor = formData.authors.find(({ id }) => id === authorId);
+    const availableAuthors = formData.authors.filter(({ id }) => id !== authorId);
+    setAuthors([...authors, deletedAuthor]);
+    setFormData({ ...formData, authors: availableAuthors });
+
+    updateFormValidation();
   };
 
   const handleFormSubmit = async event => {
@@ -170,7 +172,6 @@ export const CourseForm = () => {
           valid={validationData.description}
           onChange={onDescriptionChange}
         />
-
         <Input
           labelText='Duration'
           placeholder='Enter duration (in minutes)...'
@@ -180,7 +181,6 @@ export const CourseForm = () => {
           valid={validationData.duration}
           onChange={onDurationChange}
         />
-
         <Button
           type='submit'
           buttonText='Create course'
