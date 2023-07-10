@@ -4,7 +4,7 @@ import { APP_REQUEST_PATHS } from '../common/constants';
 
 //export const fetchAuthorsData = async dispatch => {
 //  const { successful, result, error } = await fetchData({
-//    url: APP_REQUEST_PATHS.authorsAll,
+//    url: APP_REQUEST_PATHS.getAllAuthors,
 //  });
 //
 //  if (!error && successful) {

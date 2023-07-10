@@ -43,7 +43,7 @@ export const CourseForm = () => {
   useEffect(() => {
     const getAllAuthors = async () => {
       const { successful, result, error } = await fetchData({
-        url: APP_REQUEST_PATHS.authorsAll,
+        url: APP_REQUEST_PATHS.getAllAuthors,
       });
 
       if (!error && successful) {

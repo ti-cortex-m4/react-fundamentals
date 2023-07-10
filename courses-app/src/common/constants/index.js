@@ -12,7 +12,7 @@ export const APP_REQUEST_PATHS = {
   login: '/login',
   coursesAll: '/courses/all',
   courseAdd: '/courses/add',
-  authorsAll: '/authors/all',
+  getAllAuthors: '/authors/all',
   authorAdd: '/authors/add',
   userData: '/users/me',
   courseInfo: '/courses/',
