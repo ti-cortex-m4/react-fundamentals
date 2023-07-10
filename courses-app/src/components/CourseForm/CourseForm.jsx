@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
+import { Textarea } from '../../components/Textarea/Textarea';
 import AddAuthor from "./components/AddAuthor/AddAuthor";
 import Authors from "./components/Authors/Authors";
 import { getCourseDuration } from '../../helpers/time';
@@ -24,16 +25,16 @@ export const CourseForm = () => {
 
   const [formData, setFormData] = useState(formInitialState);
   const [validationData, setValidationData] = useState({
-   title: false,
-//    description: false,
+    title: false,
+    description: false,
     duration: false,
-//    authors: false,
- });
+    //    authors: false,
+  });
   const [isFormValid, setIsFormValid] = useState(false);
 
 
-//   const [validationData, validateForm] = useValidation();
-//   const [duration, setDuration] = useState('');
+  //   const [validationData, validateForm] = useValidation();
+  //   const [duration, setDuration] = useState('');
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
 
@@ -57,7 +58,7 @@ export const CourseForm = () => {
   const onFormChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-//     validateForm(event.target);
+    //     validateForm(event.target);
   };
 
   const onTitleChange = event => {
@@ -65,12 +66,28 @@ export const CourseForm = () => {
 
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    console.log('formData='+JSON.stringify(formData));
+    console.log('formData=' + JSON.stringify(formData));
 
     validationData.title = value.length > 0;
-    console.log('validationData='+JSON.stringify(validationData));
+    console.log('validationData=' + JSON.stringify(validationData));
 
-    if (validationData.title && validationData.duration)
+    if (validationData.title && validationData.description && validationData.duration)
+      setIsFormValid(true);
+    else
+      setIsFormValid(false);
+  };
+
+  const onDescriptionChange = event => {
+    console.log('onDescriptionChange');
+
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    console.log('formData=' + JSON.stringify(formData));
+
+    validationData.description = value.length > 0;
+    console.log('validationData=' + JSON.stringify(validationData));
+
+    if (validationData.title && validationData.description && validationData.duration)
       setIsFormValid(true);
     else
       setIsFormValid(false);
@@ -79,40 +96,40 @@ export const CourseForm = () => {
   const onDurationChange = event => {
     console.log('onDurationChange');
 
-     const { name, value } = event.target;
-//     setDuration(value);
+    const { name, value } = event.target;
+    //     setDuration(value);
 
     console.log('typeof1' + typeof value);
     const duration = Number(value);
     console.log('typeof2' + typeof duration);
 
 
-    validationData.duration = !isNaN(duration) && value.length > 0;
-    console.log('validationData='+JSON.stringify(validationData));
+    validationData.duration = value.length > 0 && !isNaN(duration) && Number(value) > 0;
+    console.log('validationData=' + JSON.stringify(validationData));
 
     setFormData({ ...formData, [name]: value });
-    console.log('formData='+JSON.stringify(formData));
+    console.log('formData=' + JSON.stringify(formData));
 
-    if (validationData.title && validationData.duration)
+    if (validationData.title && validationData.description && validationData.duration)
       setIsFormValid(true);
     else
       setIsFormValid(false);
   };
 
-//   const formattedDuration = getCourseDuration(Number(duration));
+  //   const formattedDuration = getCourseDuration(Number(duration));
 
   const onAddAuthorButtonClick = authorId => {
     const authorToBeAdded = authors.find(({ id }) => id === authorId);
     const filteredAuthors = authors.filter(({ id }) => id !== authorId);
     setFormData({ ...formData, authors: [...formData.authors, authorToBeAdded] });
     setAuthors(filteredAuthors);
-//     validateForm({ name: 'authors', value: true });
+    //     validateForm({ name: 'authors', value: true });
   };
 
   const onDeleteAuthorButtonClick = authorId => {
     const authorToBeAdded = formData.authors.find(({ id }) => id === authorId);
     const filteredAuthors = formData.authors.filter(({ id }) => id !== authorId);
-//     validateForm({ name: 'authors', value: formData.authors.length > 1 });
+    //     validateForm({ name: 'authors', value: formData.authors.length > 1 });
     setAuthors([...authors, authorToBeAdded]);
     setFormData({ ...formData, authors: filteredAuthors });
   };
@@ -145,31 +162,24 @@ export const CourseForm = () => {
           valid={validationData.title}
           onChange={onTitleChange}
         />
-        <label>
-          Description
-          <textarea
-            placeholder="Enter description"
-            name='description'
-            value={formData.description}
-            onChange={onFormChange}
-          />
-        </label>
+        <Textarea
+          labelText='Description'
+          placeholder="Enter description"
+          name='description'
+          value={formData.description}
+          valid={validationData.description}
+          onChange={onDescriptionChange}
+        />
 
-        <div>
-          <Input
-            labelText='Duration'
-            placeholder='Enter duration (in minutes)...'
-            type='number'
-            name='duration'
-            value={formData.duration}
-            valid={validationData.duration}
-            onChange={onDurationChange}
-          />
-{/*           <p className={styles.durationText}> */}
-{/*             Duration: */}
-{/*             <span className={styles.durationTime}>{formattedDuration}</span> */}
-{/*           </p> */}
-        </div>
+        <Input
+          labelText='Duration'
+          placeholder='Enter duration (in minutes)...'
+          type='number'
+          name='duration'
+          value={formData.duration}
+          valid={validationData.duration}
+          onChange={onDurationChange}
+        />
 
         <Button
           type='submit'
