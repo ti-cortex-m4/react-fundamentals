@@ -12,15 +12,15 @@ export const Input = ({
   const className = valid ? styles.valid : styles.invalid;
 
   return (
-  <label>
-    {labelText}
-    <input
-      className={className}
-      placeholder={placeholderText}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
-  </label>
+    <label>
+      {labelText}
+      <input
+        className={className}
+        placeholder={placeholderText}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+    </label>
   );
 };

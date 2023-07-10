@@ -24,9 +24,9 @@ export const CourseForm = () => {
 
   const [formData, setFormData] = useState(formInitialState);
   const [validationData, setValidationData] = useState({
-   title: false
+   title: false,
 //    description: false,
-//    duration: false,
+    duration: false,
 //    authors: false,
  });
   const [isFormValid, setIsFormValid] = useState(false);
@@ -54,34 +54,47 @@ export const CourseForm = () => {
     getAllAuthors();
   }, [isAuthorAdded]);
 
-  const onTitleChange = event => {
-    console.log('onTitleChange');
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-//     validateForm(event.target)
-  console.log('title='+value);
-    validationData.title = value.length > 0;
-    console.log('validationData='+JSON.stringify(validationData));
-
-    if (validationData.title)
-      setIsFormValid(true);
-    else
-      setIsFormValid(false);
-  };
-
   const onFormChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
 //     validateForm(event.target);
   };
 
+  const onTitleChange = event => {
+    console.log('onTitleChange');
+
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+    console.log('formData='+JSON.stringify(formData));
+
+    validationData.title = value.length > 0;
+    console.log('validationData='+JSON.stringify(validationData));
+
+    if (validationData.title && validationData.duration)
+      setIsFormValid(true);
+    else
+      setIsFormValid(false);
+  };
+
   const onDurationChange = event => {
+    console.log('onDurationChange');
+
     let value = event.target.value;
     setDuration(value);
 
     let duration = Number(value);
+
+
+    validationData.duration = value.length > 0;
+    console.log('validationData='+JSON.stringify(validationData));
+
     setFormData({ ...formData, duration });
-//     validateForm({ name: 'duration', value: duration });
+    console.log('formData='+JSON.stringify(formData));
+
+    if (validationData.title && validationData.duration)
+      setIsFormValid(true);
+    else
+      setIsFormValid(false);
   };
 
   const formattedDuration = getCourseDuration(Number(duration));
@@ -147,10 +160,11 @@ export const CourseForm = () => {
             type='number'
             name='duration'
             value={duration}
-//             isValid={validationData.duration}
+            valid={validationData.duration}
             onChange={onDurationChange}
           />
           <p className={styles.durationText}>
+            Duration:
             <span className={styles.durationTime}>{formattedDuration}</span>
           </p>
         </div>
@@ -158,10 +172,7 @@ export const CourseForm = () => {
         <Button
           type='submit'
           buttonText='Create course'
-//           isValid={validationData.submitButton}
-//           disabled={() => !isFormValid}
           disabled={!isFormValid}
-//           disabled={!validationData.submitButton}
         />
       </div>
 
