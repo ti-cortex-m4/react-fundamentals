@@ -119,11 +119,12 @@ export const CourseForm = () => {
 
     const addedAuthor = authors.find(({ id }) => id === authorId);
     const availableAuthors = authors.filter(({ id }) => id !== authorId);
-    setFormData({ ...formData, authors: [...formData.authors, addedAuthor] });
+    const updatedAuthors = [...formData.authors, addedAuthor];
+    setFormData({ ...formData, authors: updatedAuthors });
     setAuthors(availableAuthors);
 
 //     console.log('formData=' + JSON.stringify(formData));
-    validationData.authors = [...formData.authors, addedAuthor].length > 0;
+    validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 
@@ -132,11 +133,12 @@ export const CourseForm = () => {
 
     const deletedAuthor = formData.authors.find(({ id }) => id === authorId);
     const availableAuthors = formData.authors.filter(({ id }) => id !== authorId);
+    const updatedAuthors = availableAuthors;
     setAuthors([...authors, deletedAuthor]);
-    setFormData({ ...formData, authors: availableAuthors });
+    setFormData({ ...formData, authors: updatedAuthors });
 
 //     console.log('formData=' + JSON.stringify(formData));
-    validationData.authors = availableAuthors.length > 0;
+    validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 

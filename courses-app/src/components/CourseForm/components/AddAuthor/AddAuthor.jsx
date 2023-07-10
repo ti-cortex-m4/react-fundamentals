@@ -38,8 +38,10 @@ export const AddAuthor = ({ setIsAuthorAdded }) => {
         <Input
           labelText='Author name'
           placeholderText='Enter author name...'
+          type='text'
           name='author'
           value={author}
+          valid={true}
           onChange={onAuthorChange}
         />
         <Button
