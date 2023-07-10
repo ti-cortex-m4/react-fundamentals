@@ -122,8 +122,8 @@ export const CourseForm = () => {
     setFormData({ ...formData, authors: [...formData.authors, addedAuthor] });
     setAuthors(availableAuthors);
 
-    console.log('formData=' + JSON.stringify(formData));
-    validationData.authors = formData.authors.length > 0;
+//     console.log('formData=' + JSON.stringify(formData));
+    validationData.authors = [...formData.authors, addedAuthor].length > 0;
     updateFormValidation();
   };
 
@@ -135,8 +135,8 @@ export const CourseForm = () => {
     setAuthors([...authors, deletedAuthor]);
     setFormData({ ...formData, authors: availableAuthors });
 
-    console.log('formData=' + JSON.stringify(formData));
-    validationData.authors = formData.authors.length > 0;
+//     console.log('formData=' + JSON.stringify(formData));
+    validationData.authors = availableAuthors.length > 0;
     updateFormValidation();
   };
 
