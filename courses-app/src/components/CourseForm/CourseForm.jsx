@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Textarea } from '../../components/Textarea/Textarea';
-import AddAuthor from "./components/AddAuthor/AddAuthor";
+import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
 import Authors from "./components/Authors/Authors";
 import { getCourseDuration } from '../../helpers/time';
 import { fetchData } from '../../common/utils/fetchData';
@@ -196,7 +196,7 @@ export const CourseForm = () => {
 
       <div className={styles.infoWrapper}>
         <div className={styles.authorsContainer}>
-          <AddAuthor
+          <CreateAuthor
             setIsAuthorAdded={setIsAuthorAdded}
           />
 

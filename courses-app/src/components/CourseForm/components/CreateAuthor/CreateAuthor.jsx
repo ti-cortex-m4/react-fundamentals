@@ -9,7 +9,7 @@ import {
 } from '../../../../common/constants';
 import styles from './styles.module.css';
 
-export const AddAuthor = ({ setIsAuthorAdded }) => {
+export const CreateAuthor = ({ setIsAuthorAdded }) => {
   const [author, setAuthor] = useState('');
 
   const onCreateAuthorClick = async () => {
@@ -33,7 +33,7 @@ export const AddAuthor = ({ setIsAuthorAdded }) => {
 
   return (
     <div className={styles.newAuthorContainer}>
-      <strong>Add author</strong>
+      <strong>Create author</strong>
       <div>
         <Input
           labelText='Author name'
@@ -54,4 +54,4 @@ export const AddAuthor = ({ setIsAuthorAdded }) => {
   );
 };
 
-export default AddAuthor;
+export default CreateAuthor;
