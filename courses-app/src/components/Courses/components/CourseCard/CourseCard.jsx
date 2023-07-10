@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/Button/Button';
 import { getCourseDuration, formatCreationDate } from '../../../../helpers/time';
+import { fetchData } from '../../../../common/utils/fetchData';
 import { APP_URL_PATHS } from '../../../../common/constants';
 import styles from './styles.module.css';
 
 export const CourseCard = ({course, authorsIdToName}) => {
-
   const {
 	id,
     title,
@@ -16,11 +16,11 @@ export const CourseCard = ({course, authorsIdToName}) => {
     authors
   } = course;
 
-  const navigate = useNavigate();
-
   const formattedAuthors = authors
     .map(authorId => authorsIdToName.get(authorId))
     .join(', ');
+
+  const navigate = useNavigate();
 
   const handleShowButtonClick = () => {
 	navigate(APP_URL_PATHS.courseInfo + id);
@@ -29,7 +29,21 @@ export const CourseCard = ({course, authorsIdToName}) => {
   const handleUpdateButtonClick = () => {
   };
 
-  const handleDeleteButtonClick = () => {
+  const handleDeleteButtonClick = (id) => {
+  console.log('deleteCourse'+id);
+//     const deleteCourse = async (id) => {
+//       console.log('deleteCourse'+id);
+//       const { successful, error } = await fetchData({
+//         method: 'DELETE',
+//         url: '/courses/'+id,
+//       });
+//
+//       if (!error && successful) {
+//         navigate(APP_URL_PATHS.courses);
+//       }
+//     };
+//
+//     deleteCourse(id);
   };
 
 	return (
@@ -63,7 +77,7 @@ export const CourseCard = ({course, authorsIdToName}) => {
                   />
                   <Button
                     buttonText='Delete course'
-                    onClick={handleDeleteButtonClick}
+                    onClick={() => handleDeleteButtonClick(id)}
                   />
 
 				</div>

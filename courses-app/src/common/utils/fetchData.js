@@ -15,10 +15,15 @@ export const fetchData = async config => {
   } = config;
 
   const [authToken, userName] = getUserFromLocalStorage();
+
+  console.log('user ' + authToken + ' ' + userName);
+
   const requestHeaders = new Headers({
     'Authorization': `Bearer ${authToken}`,
     'Content-Type': 'application/json;charset=utf-8'
   });
+
+  console.log('url ' + url);
 
   try {
     const res = await fetch(SERVER_URL_BASE + url, {
