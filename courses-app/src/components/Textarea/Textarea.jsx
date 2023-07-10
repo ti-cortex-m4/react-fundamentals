@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-export const Input = ({
+export const Textarea = ({
   labelText,
   placeholderText,
   type,
@@ -15,10 +15,9 @@ export const Input = ({
   return (
     <label>
       {labelText}
-      <input
+      <textarea
         className={className}
         placeholder={placeholderText}
-        type={type}
         name={name}
         value={value}
         onChange={onChange}

@@ -1,0 +1,7 @@
+.input, .label {
+  display: block;
+}
+
+.invalid {
+  border: solid 2px red;
+}
