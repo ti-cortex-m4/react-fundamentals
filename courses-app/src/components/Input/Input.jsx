@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from './styles.module.css';
 
 export const Input = ({
@@ -9,17 +8,19 @@ export const Input = ({
   value,
   valid,
   onChange
-}) => (
-<label>
-	{labelText}
-	<input
-	      className={
-            valid ? 'valid' : 'invalid'
-          }
-	  placeholder={placeholderText}
-	  name={name}
-	  value={value}
-	  onChange={onChange}
-	/>
-</label>
-);
+}) => {
+  const className = valid ? styles.valid : styles.invalid;
+
+  return (
+  <label>
+    {labelText}
+    <input
+      className={className}
+      placeholder={placeholderText}
+      name={name}
+      value={value}
+      onChange={onChange}
+    />
+  </label>
+  );
+};
