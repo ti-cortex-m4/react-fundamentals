@@ -10,7 +10,7 @@ export const SERVER_URL_BASE = 'http://localhost:4000';
 export const APP_REQUEST_PATHS = {
   registration: '/register',
   login: '/login',
-  coursesAll: '/courses/all',
+  getAllCourses: '/courses/all',
   courseAdd: '/courses/add',
   getAllAuthors: '/authors/all',
   authorAdd: '/authors/add',

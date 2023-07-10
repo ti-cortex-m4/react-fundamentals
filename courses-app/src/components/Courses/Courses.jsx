@@ -1,18 +1,47 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { mockAuthors, mockCourses } from '../../mocks';
+// import { mockAuthors, mockCourses } from '../../mocks';
 import { Button } from "../Button";
 import { CourseCard } from "./components/CourseCard";
-import { APP_URL_PATHS } from '../../common/constants';
+import { fetchData } from '../../common/utils/fetchData';
+import {
+APP_URL_PATHS,
+APP_REQUEST_PATHS
+} from '../../common/constants';
 import styles from './styles.module.css';
 
 export const Courses = () => {
 
     const navigate = useNavigate();
 
-    const [authors, setAuthors] = useState(mockAuthors);
-    const [courses, setCourses] = useState(mockCourses);
+    const [authors, setAuthors] = useState([]);
+    const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const getAllCourses = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllCourses,
+      });
+
+      if (!error && successful) {
+        setCourses(result);
+      }
+    };
+
+    const getAllAuthors = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllAuthors,
+      });
+
+      if (!error && successful) {
+        setAuthors(result);
+      }
+    };
+
+    getAllAuthors();
+    getAllCourses();
+  }, []);
 
     const authorsIdToName = new Map(authors.map(author => [author.id, author.name]));
 

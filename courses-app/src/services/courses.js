@@ -4,7 +4,7 @@ import { APP_REQUEST_PATHS } from '../common/constants';
 
 //export const fetchCoursesData = async dispatch => {
 //  const { successful, result, error } = await fetchData({
-//    url: APP_REQUEST_PATHS.coursesAll,
+//    url: APP_REQUEST_PATHS.getAllCourses,
 //  });
 //
 //  if (!error && successful) {
