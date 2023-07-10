@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-// import MainWrapper from '../MainWrapper';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import {
@@ -19,7 +17,6 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     password: '',
   };
   const [formData, setFormData] = useState(formInitialState);
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -31,7 +28,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     };
     const { successful, result, user, error } = await fetchData(fetchConfig);
 
-    if ( !error && successful ) {
+    if (!error && successful) {
       console.log("login " + result);
       console.log("user " + user?.name);
 
@@ -52,34 +49,37 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   if (isLoggedIn) {
     return <Navigate to={APP_URL_PATHS.courses} />
   }
-	return (
-		<div className={styles.container}>
-			<form onSubmit={handleFormSubmit}>
-				<h1>Login</h1>
-              <Input
-                labelText='Email'
-                placeholderText='Enter email'
-                name='email'
-                value={formData.email}
-                onChange={handleFormChange}
-//                 type='email'
-              />
-              <Input
-                labelText='Password'
-                placeholderText='Enter password'
-                name='password'
-                value={formData.password}
-                onChange={handleFormChange}
-              />
-              <Button
-                type='submit'
-                buttonText='Login'
-              />
-			</form>
-			<p>
-				If you don't have an account you can&nbsp;
-				<Link to='/registration'>register</Link>
-			</p>
-		</div>
-	);
+  return (
+    <div className={styles.container}>
+      <form onSubmit={handleFormSubmit}>
+        <h1>Login</h1>
+        <Input
+          labelText='Email'
+          placeholderText='Enter email'
+          type='email'
+          name='email'
+          value={formData.email}
+          valid={true}
+          onChange={handleFormChange}
+        />
+        <Input
+          labelText='Password'
+          placeholderText='Enter password'
+          type='text'
+          name='password'
+          value={formData.password}
+          valid={true}
+          onChange={handleFormChange}
+        />
+        <Button
+          type='submit'
+          buttonText='Login'
+        />
+      </form>
+      <p>
+        If you don't have an account you can&nbsp;
+        <Link to='/registration'>register</Link>
+      </p>
+    </div>
+  );
 };

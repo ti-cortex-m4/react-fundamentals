@@ -5,25 +5,21 @@ import { Input } from '../../components/Input/Input';
 import { Textarea } from '../../components/Textarea/Textarea';
 import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
 import Authors from "./components/Authors/Authors";
-import { getCourseDuration } from '../../helpers/time';
 import { fetchData } from '../../common/utils/fetchData';
 // import { useValidation } from "./useValidation";
 import {
   APP_REQUEST_PATHS,
   APP_URL_PATHS,
-  HTTP_METHODS,
 } from '../../common/constants';
 import styles from './styles.module.css';
 
 export const CourseForm = () => {
-  const formInitialState = {
+  const [formData, setFormData] = useState({
     title: '',
     description: '',
     duration: '',
     authors: [],
-  };
-
-  const [formData, setFormData] = useState(formInitialState);
+  });
   const [validationData, setValidationData] = useState({
     title: false,
     description: false,
@@ -32,9 +28,6 @@ export const CourseForm = () => {
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
-
-  //   const [validationData, validateForm] = useValidation();
-  //   const [duration, setDuration] = useState('');
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
 
@@ -98,17 +91,13 @@ export const CourseForm = () => {
     console.log('onDurationChange');
 
     const { name, value } = event.target;
-    //     setDuration(value);
 
-    console.log('typeof1' + typeof value);
-    const duration = Number(value);
-    console.log('typeof2' + typeof duration);
+    const valid = !isNaN(Number(value)) && Number(value) > 0;
 
-
-    validationData.duration = value.length > 0 && !isNaN(duration) && Number(value) > 0;
+    validationData.duration = valid;
     console.log('validationData=' + JSON.stringify(validationData));
 
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: valid ? Number(value) : value });
     console.log('formData=' + JSON.stringify(formData));
 
     updateFormValidation();
