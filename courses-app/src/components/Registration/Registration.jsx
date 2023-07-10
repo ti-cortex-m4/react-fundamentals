@@ -3,7 +3,6 @@ import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import {
-  HTTP_METHODS,
   APP_REQUEST_PATHS,
   APP_URL_PATHS
 } from '../../common/constants';

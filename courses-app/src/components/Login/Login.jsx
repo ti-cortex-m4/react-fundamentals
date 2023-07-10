@@ -4,7 +4,6 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import {
   APP_REQUEST_PATHS,
-  HTTP_METHODS,
   APP_URL_PATHS
 } from '../../common/constants';
 import { fetchData } from '../../common/utils/fetchData';
