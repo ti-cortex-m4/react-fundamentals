@@ -33,7 +33,7 @@ export const CourseForm = () => {
 
 
 //   const [validationData, validateForm] = useValidation();
-  const [duration, setDuration] = useState('');
+//   const [duration, setDuration] = useState('');
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
 
@@ -79,16 +79,18 @@ export const CourseForm = () => {
   const onDurationChange = event => {
     console.log('onDurationChange');
 
-    let value = event.target.value;
-    setDuration(value);
+     const { name, value } = event.target;
+//     setDuration(value);
 
-    let duration = Number(value);
+    console.log('typeof1' + typeof value);
+    const duration = Number(value);
+    console.log('typeof2' + typeof duration);
 
 
-    validationData.duration = value.length > 0;
+    validationData.duration = !isNaN(duration) && value.length > 0;
     console.log('validationData='+JSON.stringify(validationData));
 
-    setFormData({ ...formData, duration });
+    setFormData({ ...formData, [name]: value });
     console.log('formData='+JSON.stringify(formData));
 
     if (validationData.title && validationData.duration)
@@ -97,7 +99,7 @@ export const CourseForm = () => {
       setIsFormValid(false);
   };
 
-  const formattedDuration = getCourseDuration(Number(duration));
+//   const formattedDuration = getCourseDuration(Number(duration));
 
   const onAddAuthorButtonClick = authorId => {
     const authorToBeAdded = authors.find(({ id }) => id === authorId);
@@ -159,14 +161,14 @@ export const CourseForm = () => {
             placeholder='Enter duration (in minutes)...'
             type='number'
             name='duration'
-            value={duration}
+            value={formData.duration}
             valid={validationData.duration}
             onChange={onDurationChange}
           />
-          <p className={styles.durationText}>
-            Duration:
-            <span className={styles.durationTime}>{formattedDuration}</span>
-          </p>
+{/*           <p className={styles.durationText}> */}
+{/*             Duration: */}
+{/*             <span className={styles.durationTime}>{formattedDuration}</span> */}
+{/*           </p> */}
         </div>
 
         <Button
