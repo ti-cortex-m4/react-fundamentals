@@ -27,6 +27,7 @@ export const CourseCard = ({ course, authorsIdToName }) => {
   };
 
   const handleUpdateButtonClick = () => {
+     navigate(`/courses/update/${id}`);
   };
 
   const handleDeleteButtonClick = (id) => {

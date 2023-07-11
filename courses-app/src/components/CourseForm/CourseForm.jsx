@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Input } from '../../components/Input/Input';
 import { Textarea } from '../../components/Textarea/Textarea';
@@ -32,6 +32,8 @@ export const CourseForm = () => {
   const [authors, setAuthors] = useState([]);
 
   const navigate = useNavigate();
+  const { courseId } = useParams();
+  console.log('courseId='+courseId);
 
   useEffect(() => {
     const getAllAuthors = async () => {

@@ -16,14 +16,14 @@ export const fetchData = async config => {
 
   const [authToken, userName] = getUserFromLocalStorage();
 
-  console.log('user ' + authToken + ' ' + userName);
+//  console.log('user ' + authToken + ' ' + userName);
 
   const requestHeaders = new Headers({
     'Authorization': `Bearer ${authToken}`,
     'Content-Type': 'application/json;charset=utf-8'
   });
 
-  console.log('url ' + url);
+//  console.log('url ' + url);
 
   try {
     const res = await fetch(SERVER_URL_BASE + url, {
@@ -36,7 +36,7 @@ export const fetchData = async config => {
     error = true;
   }
 
-  console.log("response " + JSON.stringify(response));
+//  console.log("response " + JSON.stringify(response));
 
   return { ...(response || {}), error };
 };

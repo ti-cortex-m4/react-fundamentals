@@ -54,7 +54,11 @@ function App() {
           element={ <CourseInfo /> }
         />
         <Route
-          path={createCourse}
+          path={'/courses/add'}
+          element={ isLoggedIn ? <CourseForm /> : <Navigate to={login} /> }
+        />
+        <Route
+          path={'/courses/update/:courseId'}
           element={ isLoggedIn ? <CourseForm /> : <Navigate to={login} /> }
         />
       </Routes>
