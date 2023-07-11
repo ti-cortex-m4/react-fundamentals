@@ -7,26 +7,44 @@ import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
 import { CourseForm } from "./components/CourseForm";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
-import { APP_URL_PATHS } from "./common/constants";
+import { fetchData } from './common/utils/fetchData';
+import {
+  APP_URL_PATHS,
+  APP_REQUEST_PATHS
+} from './common/constants';
+// import { APP_URL_PATHS } from "./common/constants";
 
 function App() {
-
-  const {
-    root,
-    registration,
-    login,
-    courses,
-    createCourse,
-    courseInfoId,
-  } = APP_URL_PATHS;
+//
+//   const {
+//     root,
+//     registration,
+//     login,
+//     courses,
+//     createCourse,
+//     courseInfoId,
+//   } = APP_URL_PATHS;
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const [authToken, userName] = getUserFromLocalStorage();
     if (authToken) {
       setIsLoggedIn(true);
     }
+
+    const getAllCourses = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllCourses,
+      });
+
+      if (!error && successful) {
+        setCourses(result);
+      }
+    };
+
+    getAllCourses();
   }, []);
 
   return (
@@ -34,32 +52,32 @@ function App() {
       <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Routes>
         <Route
-          path={root}
-          element={<Navigate to={courses} />}
+          path={'/'}
+          element={<Navigate to={'/courses'} />}
         />
         <Route
-          path={login}
+          path={'/login'}
           element={ <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> }
         />
         <Route
-          path={registration}
+          path={'/registration'}
           element={ <Registration /> }
         />
         <Route
-          path={courses}
-          element={ isLoggedIn ? <Courses /> : <Navigate to={login} /> }
+          path={'/courses'}
+          element={ isLoggedIn ? <Courses /> : <Navigate to={'/login'} /> }
         />
         <Route
-          path={courseInfoId}
+          path={'/courses/:courseId'}
           element={ <CourseInfo /> }
         />
         <Route
           path={'/courses/add'}
-          element={ isLoggedIn ? <CourseForm /> : <Navigate to={login} /> }
+          element={ isLoggedIn ? <CourseForm courses={courses}/> : <Navigate to={'/login'} /> }
         />
         <Route
           path={'/courses/update/:courseId'}
-          element={ isLoggedIn ? <CourseForm /> : <Navigate to={login} /> }
+          element={ isLoggedIn ? <CourseForm courses={courses}/> : <Navigate to={'/login'} /> }
         />
       </Routes>
     </div>

@@ -15,16 +15,6 @@ export const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    const getAllCourses = async () => {
-      const { successful, result, error } = await fetchData({
-        url: APP_REQUEST_PATHS.getAllCourses,
-      });
-
-      if (!error && successful) {
-        setCourses(result);
-      }
-    };
-
     const getAllAuthors = async () => {
       const { successful, result, error } = await fetchData({
         url: APP_REQUEST_PATHS.getAllAuthors,
@@ -32,6 +22,16 @@ export const Courses = () => {
 
       if (!error && successful) {
         setAuthors(result);
+      }
+    };
+
+    const getAllCourses = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllCourses,
+      });
+
+      if (!error && successful) {
+        setCourses(result);
       }
     };
 

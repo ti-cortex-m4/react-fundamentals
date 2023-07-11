@@ -13,7 +13,15 @@ import {
 } from '../../common/constants';
 import styles from './styles.module.css';
 
-export const CourseForm = () => {
+export const CourseForm = ({courses}) => {
+
+  const navigate = useNavigate();
+
+  const { courseId } = useParams();
+  console.log('courseId='+courseId);
+  const updatingCourse = courses.filter((course) => course.id === courseId);
+  console.log('updatingCourse='+JSON.stringify(updatingCourse));
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -29,11 +37,9 @@ export const CourseForm = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
+
   const [authors, setAuthors] = useState([]);
 
-  const navigate = useNavigate();
-  const { courseId } = useParams();
-  console.log('courseId='+courseId);
 
   useEffect(() => {
     const getAllAuthors = async () => {
