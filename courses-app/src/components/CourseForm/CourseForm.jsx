@@ -180,7 +180,7 @@ export const CourseForm = () => {
         />
         <Button
           type='submit'
-          buttonText='Create course'
+          buttonText={courseId ? 'Update course' : 'Create course'}
           disabled={!isFormValid}
         />
       </div>
