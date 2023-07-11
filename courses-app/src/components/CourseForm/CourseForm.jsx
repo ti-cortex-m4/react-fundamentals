@@ -19,17 +19,18 @@ export const CourseForm = ({courses}) => {
 
   const { courseId } = useParams();
   console.log('courseId='+courseId);
-  const updatingCourse = courses.filter((course) => course.id === courseId);
+  const updatingCourse = courses.find((course) => course.id === courseId);
   console.log('updatingCourse='+JSON.stringify(updatingCourse));
+  console.log('title='+(courseId ? updatingCourse.title : ''));
 
   const [formData, setFormData] = useState({
-    title: '',
+    title: courseId ? updatingCourse.title : '',
     description: '',
     duration: '',
     authors: [],
   });
   const [validationData, setValidationData] = useState({
-    title: false,
+    title: courseId ? true:false,
     description: false,
     duration: false,
     authors: false
