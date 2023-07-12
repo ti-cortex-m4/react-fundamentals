@@ -25,15 +25,17 @@ export const CourseForm = ({courses}) => {
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',
-    description: '',
-    duration: '',
-    authors: [],
+    description: courseId ? updatingCourse.description : '',
+    duration: courseId ? updatingCourse.duration : '',
+    authors: courseId ? updatingCourse.authors : [],
   });
+  console.log('formData='+JSON.stringify(formData));
+
   const [validationData, setValidationData] = useState({
     title: courseId ? true:false,
-    description: false,
-    duration: false,
-    authors: false
+    description: courseId ? true:false,
+    duration: courseId ? true:false,
+    authors: courseId ? true:false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
