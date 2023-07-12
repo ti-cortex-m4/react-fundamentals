@@ -205,9 +205,6 @@ export const CourseForm = ({allAuthors, allCourses}) => {
 
       <div className={styles.infoWrapper}>
         <div className={styles.authorsContainer}>
-          <CreateAuthor
-            setIsAuthorAdded={setIsAuthorAdded}
-          />
 
           <strong>Authors</strong>
           <Authors
@@ -223,6 +220,9 @@ export const CourseForm = ({allAuthors, allCourses}) => {
             onButtonClick={onDeleteAuthorButtonClick}
           />
         </div>
+          <CreateAuthor
+            setIsAuthorAdded={setIsAuthorAdded}
+          />
       </div>
     </form>
   );
