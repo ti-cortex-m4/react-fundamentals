@@ -29,7 +29,7 @@ export const CourseForm = ({allAuthors, allCourses}) => {
  a1.push('aaa');
  a1.push('bbb');
  console.log('map1='+a1);
- console.log('map2='+a1.map(id => {'id',id}));
+//  console.log('map2='+a1.map(id => {'id',id}));
 //   console.log('map='+JSON.stringify(updatingCourse.authors.map((authorId) => {authorId, authorId})));
 
   const [formData, setFormData] = useState({
