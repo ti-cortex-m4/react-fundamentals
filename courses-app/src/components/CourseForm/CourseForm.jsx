@@ -13,21 +13,30 @@ import {
 } from '../../common/constants';
 import styles from './styles.module.css';
 
-export const CourseForm = ({courses}) => {
+export const CourseForm = ({allAuthors, allCourses}) => {
 
   const navigate = useNavigate();
 
   const { courseId } = useParams();
   console.log('courseId='+courseId);
-  const updatingCourse = courses.find((course) => course.id === courseId);
+  const updatingCourse = allCourses.find((course) => course.id === courseId);
   console.log('updatingCourse='+JSON.stringify(updatingCourse));
   console.log('title='+(courseId ? updatingCourse.title : ''));
+
+//new Map(updatingCourse.authors.map(authorId => [id, authorId]))
+
+ let a1 = [];
+ a1.push('aaa');
+ a1.push('bbb');
+ console.log('map1='+a1);
+ console.log('map2='+a1.map(id => {'id',id}));
+//   console.log('map='+JSON.stringify(updatingCourse.authors.map((authorId) => {authorId, authorId})));
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',
     description: courseId ? updatingCourse.description : '',
     duration: courseId ? updatingCourse.duration : '',
-    authors: courseId ? updatingCourse.authors : [],
+    authors: courseId ? updatingCourse.authors.map(authorId => allAuthors.find((author) => author.id === authorId)) : [],
   });
   console.log('formData='+JSON.stringify(formData));
 

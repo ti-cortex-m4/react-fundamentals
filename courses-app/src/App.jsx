@@ -26,7 +26,8 @@ function App() {
 //   } = APP_URL_PATHS;
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [courses, setCourses] = useState([]);
+  const [allAuthors, setAllAuthors] = useState([]);
+  const [allCourses, setAllCourses] = useState([]);
 
   useEffect(() => {
     const [authToken, userName] = getUserFromLocalStorage();
@@ -34,16 +35,27 @@ function App() {
       setIsLoggedIn(true);
     }
 
+    const getAllAuthors = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllAuthors,
+      });
+
+      if (!error && successful) {
+        setAllAuthors(result);
+      }
+    };
+
     const getAllCourses = async () => {
       const { successful, result, error } = await fetchData({
         url: APP_REQUEST_PATHS.getAllCourses,
       });
 
       if (!error && successful) {
-        setCourses(result);
+        setAllCourses(result);
       }
     };
 
+    getAllAuthors();
     getAllCourses();
   }, []);
 
@@ -73,11 +85,11 @@ function App() {
         />
         <Route
           path={'/courses/add'}
-          element={ isLoggedIn ? <CourseForm courses={courses}/> : <Navigate to={'/login'} /> }
+          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={'/login'} /> }
         />
         <Route
           path={'/courses/update/:courseId'}
-          element={ isLoggedIn ? <CourseForm courses={courses}/> : <Navigate to={'/login'} /> }
+          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={'/login'} /> }
         />
       </Routes>
     </div>
