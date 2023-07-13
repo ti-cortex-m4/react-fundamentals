@@ -5,12 +5,12 @@ export const Button = ({
 	type,
 	buttonText,
 	disabled,
-	onClick
+	handleClick
 }) => (
 	<button
 		type={type}
 		disabled={disabled}
-		onClick={onClick}>
+		onClick={handleClick}>
 		{buttonText}
 	</button>
 );

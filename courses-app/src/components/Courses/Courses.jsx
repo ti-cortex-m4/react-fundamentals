@@ -4,10 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from "../Button";
 import { CourseCard } from "./components/CourseCard";
 import { fetchData } from '../../common/utils/fetchData';
-import {
-  APP_URL_PATHS,
-  APP_REQUEST_PATHS
-} from '../../common/constants';
+import { APP_URL_PATHS, APP_REQUEST_PATHS } from '../../common/constants';
 import styles from './styles.module.css';
 
 export const Courses = () => {

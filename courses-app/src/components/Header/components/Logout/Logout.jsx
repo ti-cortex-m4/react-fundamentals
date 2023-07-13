@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 export const Logout = ({ setIsLogged }) => {
   const [, userName] = getUserFromLocalStorage();
 
-  const onLogoutButtonClick = () => {
+  const handleLogoutButtonClick = () => {
     removeUserFromLocalStorage();
     setIsLogged(false);
   };
@@ -17,7 +17,7 @@ export const Logout = ({ setIsLogged }) => {
       </div>
       <Button
         buttonText='Logout'
-        onClick={onLogoutButtonClick}
+        onClick={handleLogoutButtonClick}
       />
     </div>
   );

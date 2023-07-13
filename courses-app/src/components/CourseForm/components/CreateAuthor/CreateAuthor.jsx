@@ -8,7 +8,7 @@ import styles from './styles.module.css';
 export const CreateAuthor = ({ setIsAuthorAdded }) => {
   const [author, setAuthor] = useState('');
 
-  const onCreateAuthorClick = async () => {
+  const handleCreateAuthorClick = async () => {
     if (author) {
       const { response, error } = await fetchData({
         method: 'POST',
@@ -43,7 +43,7 @@ export const CreateAuthor = ({ setIsAuthorAdded }) => {
         <Button
           type='button'
           buttonText='Create author'
-          onClick={onCreateAuthorClick}
+          onClick={handleCreateAuthorClick}
         />
       </div>
     </div>

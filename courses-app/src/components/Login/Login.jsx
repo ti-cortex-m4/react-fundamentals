@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
-import {
-  APP_REQUEST_PATHS,
-  APP_URL_PATHS
-} from '../../common/constants';
+import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../common/constants';
 import { fetchData } from '../../common/utils/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
@@ -15,7 +12,6 @@ export const Login = ({ isLogged, setIsLogged }) => {
     email: '',
     password: '',
   };
-
   const [formData, setFormData] = useState(formInitialState);
 
   const handleFormSubmit = async event => {
@@ -29,9 +25,6 @@ export const Login = ({ isLogged, setIsLogged }) => {
     const { response, error } = await fetchData(fetchConfig);
 
     if (!error && response.successful) {
-//       console.log("login " + result);
-//       console.log("user " + user?.name);
-
       const authToken = response.result.split(' ')[1];
       const userName = response.user?.name;
       setUserToLocalStorage(authToken, userName);
