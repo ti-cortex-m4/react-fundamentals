@@ -76,8 +76,11 @@ export const CourseInfo = ({allAuthors}) => {
 {getCourseDuration(course.duration)}
 					</p>
 					<p>
-						<b>Created: </b>{course.creationDate}
+						<b>Created: </b>
+						{course.creationDate}
+{/* 						 */}
 {/* {formatCreationDate(course.creationDate)} */}
+
 					</p>
 					<div>
 						<b>Authors</b>

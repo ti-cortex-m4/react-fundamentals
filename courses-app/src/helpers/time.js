@@ -11,13 +11,20 @@ export const getCourseDuration = (duration) => {
 
 export const formatCreationDate = (date) => {
 
+console.log('date '+date);
+
   const dateFields = date.split('/');  
   const day = dateFields[0];
   const month = dateFields[1];
   const year = dateFields[2];
-  
-  const formattedMonth = month.length === 2 ? month : `0${month}`;
-  const formattedDay = day.length === 2 ? day : `0${day}`;
 
-  return `${formattedDay}.${formattedMonth}.${year}`;
+  console.log('month '+month);
+  console.log('month '+typeof month);
+  console.log('month '+month.length);
+
+//  const formattedMonth = (month.length === 2 ? month : `0${month}`);
+//  const formattedDay = (day.length === 2 ? day : `0${day}`);
+
+  return day + ' ' + month + ' ' + year;
+//  return `${formattedDay}.${formattedMonth}.${year}`;
 }
