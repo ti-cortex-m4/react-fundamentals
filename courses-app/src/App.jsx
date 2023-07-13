@@ -8,10 +8,7 @@ import { CourseInfo } from "./components/CourseInfo";
 import { CourseForm } from "./components/CourseForm";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { fetchData } from './common/utils/fetchData';
-import {
-  APP_URL_PATHS,
-  APP_REQUEST_PATHS
-} from './common/constants';
+import { APP_URL_PATHS, APP_REQUEST_PATHS} from './common/constants';
 // import { APP_URL_PATHS } from "./common/constants";
 
 function App() {

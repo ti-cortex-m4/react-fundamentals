@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/Button/Button';
-import { getCourseDuration } from '../../../../helpers/getCourseDuration';
+import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { fetchData } from '../../../../common/utils/fetchData';
 import { APP_URL_PATHS } from '../../../../common/constants';
@@ -59,7 +59,7 @@ export const CourseCard = ({ course, authorsIdToName }) => {
         </p>
         <p>
           <b>Duration: </b>
-          <span>{getCourseDuration(duration)}</span>
+          <span>{formatCourseDuration(duration)}</span>
         </p>
         <p>
           <b>Created: </b>

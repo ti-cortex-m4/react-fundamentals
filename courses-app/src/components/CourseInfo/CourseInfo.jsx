@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
-import { getCourseDuration } from '../../helpers/getCourseDuration';
+import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../common/utils/fetchData';
 import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../common/constants';
@@ -59,7 +59,7 @@ export const CourseInfo = ({ allAuthors }) => {
           </p>
           <p>
             <b>Duration: </b>
-            {course.duration ? getCourseDuration(course.duration) : ''}
+            {course.duration ? formatCourseDuration(course.duration) : ''}
           </p>
           <p>
             <b>Created: </b>
