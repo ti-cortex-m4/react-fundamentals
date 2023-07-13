@@ -77,7 +77,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to='/registration'>register</Link>
+        <Link to={APP_URL_PATHS.registration}>register</Link>
       </p>
     </div>
   );

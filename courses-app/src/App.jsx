@@ -68,16 +68,16 @@ function App() {
           element={<Navigate to={'/courses'} />}
         />
         <Route
-          path={'/login'}
+          path={APP_URL_PATHS.login}
           element={ <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> }
         />
         <Route
-          path={'/registration'}
+          path={APP_URL_PATHS.registration}
           element={ <Registration /> }
         />
         <Route
           path={'/courses'}
-          element={ isLoggedIn ? <Courses /> : <Navigate to={'/login'} /> }
+          element={ isLoggedIn ? <Courses /> : <Navigate to={APP_URL_PATHS.login} /> }
         />
         <Route
           path={'/courses/:courseId'}
@@ -85,11 +85,11 @@ function App() {
         />
         <Route
           path={'/courses/add'}
-          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={'/login'} /> }
+          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
         />
         <Route
           path={'/courses/update/:courseId'}
-          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={'/login'} /> }
+          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
         />
       </Routes>
     </div>

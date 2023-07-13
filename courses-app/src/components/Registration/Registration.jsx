@@ -10,12 +10,12 @@ import { fetchData } from '../../common/utils/fetchData';
 import styles from './styles.module.css';
 
 export const Registration = () => {
-  const formInitialState = {
-    name: '',
-    email: '',
-    password: '',
-  };
-  const [formData, setFormData] = useState(formInitialState);
+//   const formInitialState = ;
+  const [formData, setFormData] = useState({
+                                               name: '',
+                                               email: '',
+                                               password: '',
+                                             });
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleFormSubmit = async event => {
@@ -29,7 +29,7 @@ export const Registration = () => {
     const { successful, error } = await fetchData(fetchConfig);
 
     if (!error && successful) {
-      setFormData(formInitialState);
+//       setFormData(formInitialState);
       setIsRegistered(true);
     }
   };
@@ -81,7 +81,7 @@ export const Registration = () => {
       </form>
       <p>
         If you have an account you can&nbsp;
-        <Link to='/login'>login</Link>
+        <Link to={APP_URL_PATHS.login}>login</Link>
       </p>
     </div>
   );
