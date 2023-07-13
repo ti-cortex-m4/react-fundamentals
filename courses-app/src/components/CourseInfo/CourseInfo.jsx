@@ -9,21 +9,20 @@ import {
 } from '../../common/constants';
 import styles from './styles.module.css';
 
-export const CourseInfo = ({allAuthors}) => {
-  const initialCourseInfo = {
+export const CourseInfo = ({ allAuthors }) => {
+
+  const { courseId } = useParams();
+  const navigate = useNavigate();
+
+  const [course, setCourse] = useState({
     id: '',
     creationDate: '',
     description: '',
     duration: 0,
     title: '',
     authors: [],
-  }
+  });
 
-//    const [allAuthors, setAllAuthors] = useState([]);
-  const [course, setCourse] = useState(initialCourseInfo);
-
-  const { courseId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const getCourseInfo = async () => {
@@ -36,17 +35,6 @@ export const CourseInfo = ({allAuthors}) => {
       }
     };
 
-//     const getAllAuthors = async () => {
-//       const { successful, result, error } = await fetchData({
-//         url: APP_REQUEST_PATHS.getAllAuthors,
-//       });
-//
-//       if (!error && successful) {
-//         setAllAuthors(result);
-//       }
-//     };
-
-//     getAllAuthors();
     getCourseInfo();
   }, []);
 
@@ -56,42 +44,40 @@ export const CourseInfo = ({allAuthors}) => {
     navigate('/courses');
   };
 
-	return (
-		<>
-		        <Button
-		          buttonText='Back'
-                  onClick={handleBackButtonClick}
-                />
+  return (
+    <>
+      <Button
+        buttonText='Back'
+        onClick={handleBackButtonClick}
+      />
 
-			<h1>{course.title}</h1>
-			<div className={styles.courseInfo}>
-				<p className={styles.description}>{course.description}</p>
-				<div>
-					<p>
-						<b>Id: </b>
-						{course.id}
-					</p>
-					<p>
-						<b>Duration: </b>
-{getCourseDuration(course.duration)}
-					</p>
-					<p>
-						<b>Created: </b>
-						{course.creationDate}
-{/* 						 */}
-{/* {formatCreationDate(course.creationDate)} */}
+      <h1>{course.title}</h1>
+      <div className={styles.courseInfo}>
+        <p className={styles.description}>{course.description}</p>
+        <div>
+          <p>
+            <b>Id: </b>
+            {course.id}
+          </p>
+          <p>
+            <b>Duration: </b>
+            {course.duration ? getCourseDuration(course.duration) : ''}
+          </p>
+          <p>
+            <b>Created: </b>
+            {course.creationDate ? formatCreationDate(course.creationDate) : ''}
 
-					</p>
-					<div>
-						<b>Authors</b>
-						<ul className={styles.authorsList}>
- 							{course.authors.map(id => <li key={id}>{authorsIdToName.get(id)}</li>)}
-						</ul>
-					</div>
-				</div>
-			</div>
-		</>
-	);
+          </p>
+          <div>
+            <b>Authors</b>
+            <ul className={styles.authorsList}>
+              {course.authors.map(id => <li key={id}>{authorsIdToName.get(id)}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default CourseInfo;

@@ -1,5 +1,4 @@
 export const getCourseDuration = (duration) => {
-
 	const hours = Math.floor(duration / 60).toString();
 	const minutes = (duration % 60).toString();
 
@@ -10,21 +9,14 @@ export const getCourseDuration = (duration) => {
 };
 
 export const formatCreationDate = (date) => {
+  const dateFields = date.split('/');
 
-console.log('date '+date);
-
-  const dateFields = date.split('/');  
   const day = dateFields[0];
   const month = dateFields[1];
   const year = dateFields[2];
 
-  console.log('month '+month);
-  console.log('month '+typeof month);
-  console.log('month '+month.length);
+  const formattedMonth = (month.length === 2 ? month : `0${month}`);
+  const formattedDay = (day.length === 2 ? day : `0${day}`);
 
-//  const formattedMonth = (month.length === 2 ? month : `0${month}`);
-//  const formattedDay = (day.length === 2 ? day : `0${day}`);
-
-  return day + ' ' + month + ' ' + year;
-//  return `${formattedDay}.${formattedMonth}.${year}`;
+  return `${formattedDay}.${formattedMonth}.${year}`;
 }
