@@ -82,3 +82,5 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     </div>
   );
 };
+
+export default Login;

@@ -26,3 +26,5 @@ export const Input = ({
     </label>
   );
 };
+
+export default Input;

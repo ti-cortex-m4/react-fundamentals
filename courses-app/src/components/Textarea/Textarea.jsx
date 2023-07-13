@@ -4,7 +4,6 @@ import styles from './styles.module.css';
 export const Textarea = ({
   labelText,
   placeholderText,
-  type,
   name,
   value,
   valid,
@@ -25,3 +24,5 @@ export const Textarea = ({
     </label>
   );
 };
+
+export default Textarea;
