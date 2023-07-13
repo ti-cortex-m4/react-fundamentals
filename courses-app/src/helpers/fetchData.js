@@ -20,7 +20,7 @@ export const fetchData = async config => {
   let error;
 
   try {
-    const promise = await fetch(SERVER_URL_BASE + url, {
+    const promise = await fetch(`${process.env.SERVER_URL_BASE}` + url, {
       method,
       headers: requestHeaders,
       body: JSON.stringify(body),
