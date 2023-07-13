@@ -10,11 +10,12 @@ import { fetchData } from '../../common/utils/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
-export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
+export const Login = ({ isLogged, setIsLogged }) => {
   const formInitialState = {
     email: '',
     password: '',
   };
+
   const [formData, setFormData] = useState(formInitialState);
 
   const handleFormSubmit = async event => {
@@ -36,7 +37,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       setUserToLocalStorage(authToken, userName);
 
       setFormData(formInitialState);
-      setIsLoggedIn(true);
+      setIsLogged(true);
     }
   };
 
@@ -45,7 +46,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  if (isLoggedIn) {
+  if (isLogged) {
     return <Navigate to={APP_URL_PATHS.courses} />
   }
   return (
@@ -64,7 +65,7 @@ export const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         <Input
           labelText='Password'
           placeholderText='Enter password'
-          type='text'
+          type='password'
           name='password'
           value={formData.password}
           valid={true}

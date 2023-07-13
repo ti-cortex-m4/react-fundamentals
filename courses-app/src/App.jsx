@@ -25,14 +25,14 @@ function App() {
 //     courseInfoId,
 //   } = APP_URL_PATHS;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [allAuthors, setAllAuthors] = useState([]);
   const [allCourses, setAllCourses] = useState([]);
 
   useEffect(() => {
     const [authToken, userName] = getUserFromLocalStorage();
     if (authToken) {
-      setIsLoggedIn(true);
+      setIsLogged(true);
     }
 
     const getAllAuthors = async () => {
@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+      <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
       <Routes>
         <Route
           path={'/'}
@@ -69,7 +69,7 @@ function App() {
         />
         <Route
           path={APP_URL_PATHS.login}
-          element={ <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> }
+          element={ <Login isLogged={isLogged} setIsLogged={setIsLogged} /> }
         />
         <Route
           path={APP_URL_PATHS.registration}
@@ -77,7 +77,7 @@ function App() {
         />
         <Route
           path={'/courses'}
-          element={ isLoggedIn ? <Courses /> : <Navigate to={APP_URL_PATHS.login} /> }
+          element={ isLogged ? <Courses /> : <Navigate to={APP_URL_PATHS.login} /> }
         />
         <Route
           path={'/courses/:courseId'}
@@ -85,11 +85,11 @@ function App() {
         />
         <Route
           path={'/courses/add'}
-          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
+          element={ isLogged ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
         />
         <Route
           path={'/courses/update/:courseId'}
-          element={ isLoggedIn ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
+          element={ isLogged ? <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> : <Navigate to={APP_URL_PATHS.login} /> }
         />
       </Routes>
     </div>

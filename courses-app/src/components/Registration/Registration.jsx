@@ -10,12 +10,12 @@ import { fetchData } from '../../common/utils/fetchData';
 import styles from './styles.module.css';
 
 export const Registration = () => {
-//   const formInitialState = ;
-  const [formData, setFormData] = useState({
-                                               name: '',
-                                               email: '',
-                                               password: '',
-                                             });
+  const formInitialState = {
+    name: '',
+    email: '',
+    password: '',
+  };
+  const [formData, setFormData] = useState(formInitialState);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleFormSubmit = async event => {
@@ -29,7 +29,7 @@ export const Registration = () => {
     const { successful, error } = await fetchData(fetchConfig);
 
     if (!error && successful) {
-//       setFormData(formInitialState);
+      setFormData(formInitialState);
       setIsRegistered(true);
     }
   };
@@ -68,7 +68,7 @@ export const Registration = () => {
         <Input
           labelText='Password'
           placeholderText='Enter password'
-          type='text'
+          type='password'
           name='password'
           value={formData.password}
           valid={true}
