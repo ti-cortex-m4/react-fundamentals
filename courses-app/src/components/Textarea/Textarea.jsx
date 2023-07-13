@@ -7,7 +7,7 @@ export const Textarea = ({
   name,
   value,
   valid,
-  onChange
+  handleChange
 }) => {
   const className = valid ? styles.valid : styles.invalid;
 
@@ -19,7 +19,7 @@ export const Textarea = ({
         placeholder={placeholderText}
         name={name}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </label>
   );

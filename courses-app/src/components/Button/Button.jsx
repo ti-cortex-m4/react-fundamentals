@@ -14,3 +14,5 @@ export const Button = ({
 		{buttonText}
 	</button>
 );
+
+export default Button;

@@ -8,7 +8,7 @@ export const Input = ({
   name,
   value,
   valid,
-  onChange
+  handleChange
 }) => {
   const className = valid ? styles.valid : styles.invalid;
 
@@ -21,7 +21,7 @@ export const Input = ({
         type={type}
         name={name}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </label>
   );

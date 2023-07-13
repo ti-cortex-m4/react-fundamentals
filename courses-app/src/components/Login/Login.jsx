@@ -53,7 +53,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
           name='email'
           value={formData.email}
           valid={true}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <Input
           labelText='Password'
@@ -62,7 +62,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
           name='password'
           value={formData.password}
           valid={true}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <Button
           type='submit'

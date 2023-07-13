@@ -51,7 +51,7 @@ export const Registration = () => {
           name='name'
           value={formData.name}
           valid={true}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <Input
           labelText='Email'
@@ -60,7 +60,7 @@ export const Registration = () => {
           name='email'
           value={formData.email}
           valid={true}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <Input
           labelText='Password'
@@ -69,7 +69,7 @@ export const Registration = () => {
           name='password'
           value={formData.password}
           valid={true}
-          onChange={handleFormChange}
+          handleChange={handleFormChange}
         />
         <Button
           type='submit'
