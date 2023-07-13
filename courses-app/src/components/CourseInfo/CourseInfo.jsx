@@ -9,7 +9,7 @@ import {
 } from '../../common/constants';
 import styles from './styles.module.css';
 
-export const CourseInfo = () => {
+export const CourseInfo = ({allAuthors}) => {
   const initialCourseInfo = {
     id: '',
     creationDate: '',
@@ -19,7 +19,7 @@ export const CourseInfo = () => {
     authors: [],
   }
 
-   const [allAuthors, setAllAuthors] = useState([]);
+//    const [allAuthors, setAllAuthors] = useState([]);
   const [course, setCourse] = useState(initialCourseInfo);
 
   const { courseId } = useParams();
@@ -36,17 +36,17 @@ export const CourseInfo = () => {
       }
     };
 
-    const getAllAuthors = async () => {
-      const { successful, result, error } = await fetchData({
-        url: APP_REQUEST_PATHS.getAllAuthors,
-      });
+//     const getAllAuthors = async () => {
+//       const { successful, result, error } = await fetchData({
+//         url: APP_REQUEST_PATHS.getAllAuthors,
+//       });
+//
+//       if (!error && successful) {
+//         setAllAuthors(result);
+//       }
+//     };
 
-      if (!error && successful) {
-        setAllAuthors(result);
-      }
-    };
-
-    getAllAuthors();
+//     getAllAuthors();
     getCourseInfo();
   }, []);
 

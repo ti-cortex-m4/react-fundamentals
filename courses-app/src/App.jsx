@@ -81,7 +81,7 @@ function App() {
         />
         <Route
           path={'/courses/:courseId'}
-          element={ <CourseInfo /> }
+          element={ <CourseInfo allAuthors={allAuthors} /> }
         />
         <Route
           path={'/courses/add'}
