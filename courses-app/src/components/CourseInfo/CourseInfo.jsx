@@ -18,6 +18,8 @@ export const CourseInfo = () => {
     title: '',
     authors: [],
   }
+
+   const [allAuthors, setAllAuthors] = useState([]);
   const [course, setCourse] = useState(initialCourseInfo);
 
   const { courseId } = useParams();
@@ -34,20 +36,21 @@ export const CourseInfo = () => {
       }
     };
 
-//     const getAllAuthors = async () => {
-//       const { successful, result, error } = await fetchData({
-//         url: APP_REQUEST_PATHS.authorsAll,
-//       });
-//
-//       if (!error && successful) {
-//         setAuthorsList(result);
-//       }
-//     };
+    const getAllAuthors = async () => {
+      const { successful, result, error } = await fetchData({
+        url: APP_REQUEST_PATHS.getAllAuthors,
+      });
 
-//     getAllAuthors();
+      if (!error && successful) {
+        setAllAuthors(result);
+      }
+    };
+
+    getAllAuthors();
     getCourseInfo();
   }, []);
 
+  const authorsIdToName = new Map(allAuthors.map(author => [author.id, author.name]));
 
   const handleBackButtonClick = () => {
     navigate('/courses');
@@ -73,13 +76,13 @@ export const CourseInfo = () => {
 {getCourseDuration(course.duration)}
 					</p>
 					<p>
-						<b>Created: </b>
-{formatCreationDate(course.creationDate)}
+						<b>Created: </b>{course.creationDate}
+{/* {formatCreationDate(course.creationDate)} */}
 					</p>
 					<div>
 						<b>Authors</b>
 						<ul className={styles.authorsList}>
-							//use '.map' to render authors list with 'li' tag
+// 							{course.authors.map(authorId => authorsIdToName.get(authorId)).map(({ name, id }) => <li key={id}>{name}</li>)}
 						</ul>
 					</div>
 				</div>

@@ -6,7 +6,6 @@ import { Textarea } from '../../components/Textarea/Textarea';
 import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
 import Authors from "./components/Authors/Authors";
 import { fetchData } from '../../common/utils/fetchData';
-// import { useValidation } from "./useValidation";
 import {
   APP_REQUEST_PATHS,
   APP_URL_PATHS,
