@@ -1,5 +1,5 @@
 import { fetchData } from '../common/utils/fetchData';
-import { APP_REQUEST_PATHS } from '../common/constants';
+import { APP_REQUEST_PATHS } from '../constants';
 //import { setCoursesData } from '../store/courses/actionCreators';
 
 //export const fetchCoursesData = async dispatch => {

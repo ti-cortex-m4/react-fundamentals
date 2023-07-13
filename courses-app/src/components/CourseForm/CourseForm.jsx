@@ -6,7 +6,7 @@ import { Textarea } from '../../components/Textarea/Textarea';
 import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
 import Authors from "./components/Authors/Authors";
 import { fetchData } from '../../common/utils/fetchData';
-import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../common/constants';
+import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 export const CourseForm = ({ allAuthors, allCourses }) => {

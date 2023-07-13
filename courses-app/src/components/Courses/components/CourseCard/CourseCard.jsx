@@ -4,7 +4,7 @@ import { Button } from '../../../../components/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { fetchData } from '../../../../common/utils/fetchData';
-import { APP_URL_PATHS } from '../../../../common/constants';
+import { APP_URL_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
 export const CourseCard = ({ course, authorsIdToName }) => {
