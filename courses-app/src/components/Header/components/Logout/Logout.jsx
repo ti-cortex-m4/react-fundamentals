@@ -7,7 +7,7 @@ import {
 import { fetchData } from '../../../../common/utils/fetchData';
 import styles from './styles.module.css';
 
-export const Logout = ({ setIsLoggedIn }) => {
+export const Logout = ({ setIsLogged }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const Logout = ({ setIsLoggedIn }) => {
       if (!error && successful) {
         setUserData(result);
       } else {
-        setIsLoggedIn(false);
+        setIsLogged(false);
       }
     };
 
@@ -28,13 +28,13 @@ export const Logout = ({ setIsLoggedIn }) => {
 
   const onLogoutButtonClick = () => {
     removeUserFromLocalStorage();
-    setIsLoggedIn(false);
+    setIsLogged(false);
   };
 
   return (
     <div className={styles.userContainer}>
       <div className={styles.userName}>
-        {userData.name}
+        {userData.name ? userData.name : 'Admin'}
       </div>
       <Button
         buttonText='Logout'
