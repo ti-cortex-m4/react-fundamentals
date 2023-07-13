@@ -82,7 +82,7 @@ export const CourseInfo = ({allAuthors}) => {
 					<div>
 						<b>Authors</b>
 						<ul className={styles.authorsList}>
-// 							{course.authors.map(authorId => authorsIdToName.get(authorId)).map(({ name, id }) => <li key={id}>{name}</li>)}
+ 							{course.authors.map(id => <li key={id}>{authorsIdToName.get(id)}</li>)}
 						</ul>
 					</div>
 				</div>
