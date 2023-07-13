@@ -1,10 +1,3 @@
-export const HTTP_METHODS = {
-  get: 'GET',
-  post: 'POST',
-  put: 'PUT',
-  delete: 'DELETE'
-};
-
 export const SERVER_URL_BASE = 'http://localhost:4000';
 
 export const APP_REQUEST_PATHS = {

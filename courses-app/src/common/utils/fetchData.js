@@ -1,12 +1,12 @@
 import { getUserFromLocalStorage } from '../../helpers/localStorage';
-import { HTTP_METHODS, SERVER_URL_BASE } from "../constants";
-const { get } = HTTP_METHODS;
+import { SERVER_URL_BASE } from "../constants";
+//const { get } = HTTP_METHODS;
 
 export const fetchData = async config => {
   let response;
   let error;
   const {
-    method = get,
+    method,
     url,
     body
   } = config;

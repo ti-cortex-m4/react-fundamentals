@@ -1,5 +1,5 @@
 import { fetchData } from '../common/utils/fetchData';
-import { APP_REQUEST_PATHS, HTTP_METHODS } from '../common/constants';
+import { APP_REQUEST_PATHS } from '../common/constants';
 //import { loginUserAction } from '../store/user/actionCreators';
 
 //export const fetchUserData = async dispatch => {

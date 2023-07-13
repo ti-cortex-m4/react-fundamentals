@@ -12,16 +12,6 @@ import { APP_URL_PATHS, APP_REQUEST_PATHS} from './common/constants';
 // import { APP_URL_PATHS } from "./common/constants";
 
 function App() {
-//
-//   const {
-//     root,
-//     registration,
-//     login,
-//     courses,
-//     createCourse,
-//     courseInfoId,
-//   } = APP_URL_PATHS;
-
   const [isLogged, setIsLogged] = useState(false);
   const [allAuthors, setAllAuthors] = useState([]);
   const [allCourses, setAllCourses] = useState([]);
