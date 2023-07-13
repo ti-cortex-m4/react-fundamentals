@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/Button/Button';
-import { getCourseDuration, formatCreationDate } from '../../../../helpers/time';
+import { getCourseDuration } from '../../../../helpers/getCourseDuration';
+import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { fetchData } from '../../../../common/utils/fetchData';
 import { APP_URL_PATHS } from '../../../../common/constants';
 import styles from './styles.module.css';

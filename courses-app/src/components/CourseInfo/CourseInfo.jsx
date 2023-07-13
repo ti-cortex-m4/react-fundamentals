@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
-import { getCourseDuration, formatCreationDate } from '../../helpers/time';
+import { getCourseDuration } from '../../helpers/getCourseDuration';
+import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../common/utils/fetchData';
 import {
   APP_REQUEST_PATHS,
