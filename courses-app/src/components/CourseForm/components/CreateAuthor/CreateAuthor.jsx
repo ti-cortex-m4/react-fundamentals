@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Input } from '../../../Input/Input';
 import { Button } from '../../../Button/Button';
-import { fetchData } from '../../../../common/utils/fetchData';
+import { fetchData } from '../../../../helpers/fetchData';
 import { APP_REQUEST_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 

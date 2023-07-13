@@ -1,4 +1,4 @@
-import { fetchData } from '../common/utils/fetchData';
+import { fetchData } from '../helpers/fetchData';
 import { APP_REQUEST_PATHS } from '../constants';
 //import { loginUserAction } from '../store/user/actionCreators';
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../components/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
-import { fetchData } from '../../../../common/utils/fetchData';
+import { fetchData } from '../../../../helpers/fetchData';
 import { APP_URL_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 

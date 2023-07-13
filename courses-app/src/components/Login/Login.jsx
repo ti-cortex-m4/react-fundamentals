@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
-import { fetchData } from '../../common/utils/fetchData';
+import { fetchData } from '../../helpers/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 

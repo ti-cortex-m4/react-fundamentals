@@ -7,7 +7,7 @@ import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
 import { CourseForm } from "./components/CourseForm";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
-import { fetchData } from './common/utils/fetchData';
+import { fetchData } from './helpers/fetchData';
 import { APP_URL_PATHS, APP_REQUEST_PATHS} from './constants';
 // import { APP_URL_PATHS } from "./constants";
 
