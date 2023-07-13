@@ -17,7 +17,7 @@ export const Logout = ({ setIsLogged }) => {
       </div>
       <Button
         buttonText='Logout'
-        onClick={handleLogoutButtonClick}
+        handleClick={handleLogoutButtonClick}
       />
     </div>
   );

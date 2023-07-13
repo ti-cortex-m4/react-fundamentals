@@ -43,7 +43,7 @@ export const CreateAuthor = ({ setIsAuthorAdded }) => {
         <Button
           type='button'
           buttonText='Create author'
-          onClick={handleCreateAuthorClick}
+          handleClick={handleCreateAuthorClick}
         />
       </div>
     </div>

@@ -46,7 +46,7 @@ export const CourseInfo = ({ allAuthors }) => {
     <>
       <Button
         buttonText='Back'
-        onClick={handleBackButtonClick}
+        handleClick={handleBackButtonClick}
       />
 
       <h1>{course.title}</h1>

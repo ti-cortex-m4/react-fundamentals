@@ -13,7 +13,7 @@ export const AuthorItem = ({
     <Button
       type='button'
       buttonText={buttonText}
-      onClick={() => handleButtonClick(id)}
+      handleClick={() => handleButtonClick(id)}
     />
   </div>
 );
