@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 
 export const CourseForm = ({allAuthors, allCourses}) => {
 
+
   const navigate = useNavigate();
 
   const { courseId } = useParams();
@@ -22,15 +23,6 @@ export const CourseForm = ({allAuthors, allCourses}) => {
   const updatingCourse = allCourses.find((course) => course.id === courseId);
   console.log('updatingCourse='+JSON.stringify(updatingCourse));
   console.log('title='+(courseId ? updatingCourse.title : ''));
-
-//new Map(updatingCourse.authors.map(authorId => [id, authorId]))
-
- let a1 = [];
- a1.push('aaa');
- a1.push('bbb');
- console.log('map1='+a1);
-//  console.log('map2='+a1.map(id => {'id',id}));
-//   console.log('map='+JSON.stringify(updatingCourse.authors.map((authorId) => {authorId, authorId})));
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',

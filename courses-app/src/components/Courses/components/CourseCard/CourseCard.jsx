@@ -23,7 +23,7 @@ export const CourseCard = ({ course, authorsIdToName }) => {
   const navigate = useNavigate();
 
   const handleShowButtonClick = () => {
-    navigate(APP_URL_PATHS.courseInfo + id);
+    navigate(`/courses/${id}`);
   };
 
   const handleUpdateButtonClick = () => {
