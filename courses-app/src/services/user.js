@@ -7,7 +7,7 @@ import { APP_REQUEST_PATHS, HTTP_METHODS } from '../common/constants';
 //    url: APP_REQUEST_PATHS.userData,
 //  });
 //
-//  if (!error && successful) {
+//  if (!error && response.successful) {
 //    const { name, email } = result;
 //    const userData = {
 //      name,

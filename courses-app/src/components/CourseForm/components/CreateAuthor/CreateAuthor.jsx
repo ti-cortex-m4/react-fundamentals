@@ -14,13 +14,13 @@ export const CreateAuthor = ({ setIsAuthorAdded }) => {
 
   const onCreateAuthorClick = async () => {
     if (author) {
-      const { successful, error } = await fetchData({
+      const { response, error } = await fetchData({
         method: 'POST',
-        url: APP_REQUEST_PATHS.authorAdd,
+        url: APP_REQUEST_PATHS.addAuthor,
         body: { name: author },
       });
 
-      if (!error && successful) {
+      if (!error && response.successful) {
         setIsAuthorAdded(true);
         setAuthor('');
       }

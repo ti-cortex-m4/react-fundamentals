@@ -46,12 +46,13 @@ export const CourseForm = ({allAuthors, allCourses}) => {
 
   useEffect(() => {
     const getAllAuthors = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.getAllAuthors,
       });
 
-      if (!error && successful) {
-        setAuthors(result);
+      if (!error && response.successful) {
+        setAuthors(response.result);
         setIsAuthorAdded(false);
       }
     };
@@ -147,13 +148,13 @@ export const CourseForm = ({allAuthors, allCourses}) => {
     const authors = formData.authors.map(({ id }) => id);
 
     const fetchConfig = {
-      url: APP_REQUEST_PATHS.courseAdd,
+      url: APP_REQUEST_PATHS.addCourse,
       method: 'POST',
       body: { ...formData, authors },
     };
-    const { successful, error } = await fetchData(fetchConfig);
+    const { response, error } = await fetchData(fetchConfig);
 
-    if (!error && successful) {
+    if (!error && response.successful) {
       navigate(APP_URL_PATHS.courses);
     }
   };

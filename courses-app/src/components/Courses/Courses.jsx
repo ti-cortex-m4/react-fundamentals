@@ -16,22 +16,24 @@ export const Courses = () => {
 
   useEffect(() => {
     const getAllAuthors = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.getAllAuthors,
       });
 
-      if (!error && successful) {
-        setAuthors(result);
+      if (!error && response.successful) {
+        setAuthors(response.result);
       }
     };
 
     const getAllCourses = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.getAllCourses,
       });
 
-      if (!error && successful) {
-        setCourses(result);
+      if (!error && response.successful) {
+        setCourses(response.result);
       }
     };
 

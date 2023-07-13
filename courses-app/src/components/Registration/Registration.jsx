@@ -26,9 +26,9 @@ export const Registration = () => {
       method: 'POST',
       body: formData,
     };
-    const { successful, error } = await fetchData(fetchConfig);
+    const { response, error } = await fetchData(fetchConfig);
 
-    if (!error && successful) {
+    if (!error && response.successful) {
       setFormData(formInitialState);
       setIsRegistered(true);
     }

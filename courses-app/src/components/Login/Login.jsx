@@ -26,14 +26,14 @@ export const Login = ({ isLogged, setIsLogged }) => {
       method: 'POST',
       body: formData,
     };
-    const { successful, result, user, error } = await fetchData(fetchConfig);
+    const { response, error } = await fetchData(fetchConfig);
 
-    if (!error && successful) {
-      console.log("login " + result);
-      console.log("user " + user?.name);
+    if (!error && response.successful) {
+//       console.log("login " + result);
+//       console.log("user " + user?.name);
 
-      const authToken = result.split(' ')[1];
-      const userName = user?.name;
+      const authToken = response.result.split(' ')[1];
+      const userName = response.user?.name;
       setUserToLocalStorage(authToken, userName);
 
       setFormData(formInitialState);

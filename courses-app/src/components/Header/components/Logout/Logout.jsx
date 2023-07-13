@@ -12,12 +12,12 @@ export const Logout = ({ setIsLogged }) => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
         url: APP_REQUEST_PATHS.userData,
       });
 
-      if (!error && successful) {
-        setUserData(result);
+      if (!error && response.successful) {
+        setUserData(response.result);
       } else {
         setIsLogged(false);
       }

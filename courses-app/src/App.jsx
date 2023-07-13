@@ -36,22 +36,24 @@ function App() {
     }
 
     const getAllAuthors = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.getAllAuthors,
       });
 
-      if (!error && successful) {
-        setAllAuthors(result);
+      if (!error && response.successful) {
+        setAllAuthors(response.result);
       }
     };
 
     const getAllCourses = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.getAllCourses,
       });
 
-      if (!error && successful) {
-        setAllCourses(result);
+      if (!error && response.successful) {
+        setAllCourses(response.result);
       }
     };
 

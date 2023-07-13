@@ -7,7 +7,7 @@ import { APP_REQUEST_PATHS } from '../common/constants';
 //    url: APP_REQUEST_PATHS.getAllAuthors,
 //  });
 //
-//  if (!error && successful) {
+//  if (!error && response.successful) {
 //    dispatch(setAuthorsData(result));
 //  }
 //};

@@ -4,10 +4,7 @@ import { Button } from '../../components/Button/Button';
 import { getCourseDuration } from '../../helpers/getCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../common/utils/fetchData';
-import {
-  APP_REQUEST_PATHS,
-  APP_URL_PATHS,
-} from '../../common/constants';
+import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../common/constants';
 import styles from './styles.module.css';
 
 export const CourseInfo = ({ allAuthors }) => {
@@ -27,12 +24,13 @@ export const CourseInfo = ({ allAuthors }) => {
 
   useEffect(() => {
     const getCourseInfo = async () => {
-      const { successful, result, error } = await fetchData({
+      const { response, error } = await fetchData({
+        method: 'GET',
         url: APP_REQUEST_PATHS.courseInfo + courseId,
       });
 
-      if (!error && successful) {
-        setCourse(result);
+      if (!error && response.successful) {
+        setCourse(response.result);
       }
     };
 

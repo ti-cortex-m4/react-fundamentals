@@ -33,12 +33,12 @@ export const CourseCard = ({ course, authorsIdToName }) => {
 
   const handleDeleteButtonClick = (id) => {
     const deleteCourse = async (id) => {
-      const { successful, error } = await fetchData({
+      const { response, error } = await fetchData({
         method: 'DELETE',
         url: '/courses/' + id,
       });
 
-      if (!error && successful) {
+      if (!error && response.successful) {
         navigate(APP_URL_PATHS.courses);
       }
     };

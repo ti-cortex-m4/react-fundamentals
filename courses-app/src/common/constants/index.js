@@ -11,9 +11,9 @@ export const APP_REQUEST_PATHS = {
   registration: '/register',
   login: '/login',
   getAllCourses: '/courses/all',
-  courseAdd: '/courses/add',
+  addCourse: '/courses/add',
   getAllAuthors: '/authors/all',
-  authorAdd: '/authors/add',
+  addAuthor: '/authors/add',
   userData: '/users/me',
   courseInfo: '/courses/',
 };
