@@ -21,7 +21,6 @@ export const CourseInfo = ({ allAuthors }) => {
     authors: [],
   });
 
-
   useEffect(() => {
     const getCourseInfo = async () => {
       const { response, error } = await fetchData({
@@ -65,7 +64,6 @@ export const CourseInfo = ({ allAuthors }) => {
           <p>
             <b>Created: </b>
             {course.creationDate ? formatCreationDate(course.creationDate) : ''}
-
           </p>
           <div>
             <b>Authors</b>

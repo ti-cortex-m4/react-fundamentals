@@ -6,14 +6,14 @@ export const AuthorItem = ({
   id,
   name,
   buttonText,
-  onButtonClick,
+  handleButtonClick,
 }) => (
   <div key={id} className={styles.authorItem}>
     <span>{name}</span>
     <Button
       type='button'
       buttonText={buttonText}
-      onClick={() => onButtonClick(id)}
+      onClick={() => handleButtonClick(id)}
     />
   </div>
 );

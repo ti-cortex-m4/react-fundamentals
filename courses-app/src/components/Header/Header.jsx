@@ -7,11 +7,7 @@ export const Header = ({ isLogged, setIsLogged }) => {
   return (
     <div className={styles.headerContainer}>
       <Logo />
-      {
-        isLogged && <Logout
-          setIsLogged={setIsLogged}
-        />
-      }
+      {isLogged && <Logout setIsLogged={setIsLogged} />}
     </div>
   );
 };

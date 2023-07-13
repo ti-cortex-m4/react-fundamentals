@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 export const Authors = ({
   authors,
   buttonText,
-  onButtonClick,
+  handleButtonClick,
 }) => {
 
   return (
@@ -16,7 +16,7 @@ export const Authors = ({
             id={id}
             name={name}
             buttonText={buttonText}
-            onButtonClick={() => onButtonClick(id)}
+            handleButtonClick={() => handleButtonClick(id)}
           />
         ))
       }

@@ -1,30 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Button } from '../../../Button';
-import { removeUserFromLocalStorage } from '../../../../helpers/localStorage';
-import {
-    APP_REQUEST_PATHS
-} from '../../../../common/constants';
-import { fetchData } from '../../../../common/utils/fetchData';
+import { getUserFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import styles from './styles.module.css';
 
 export const Logout = ({ setIsLogged }) => {
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    const getUserData = async () => {
-      const { response, error } = await fetchData({
-        url: APP_REQUEST_PATHS.userData,
-      });
-
-      if (!error && response.successful) {
-        setUserData(response.result);
-      } else {
-        setIsLogged(false);
-      }
-    };
-
-    getUserData();
-  }, []);
+  const [, userName] = getUserFromLocalStorage();
 
   const onLogoutButtonClick = () => {
     removeUserFromLocalStorage();
@@ -34,7 +13,7 @@ export const Logout = ({ setIsLogged }) => {
   return (
     <div className={styles.userContainer}>
       <div className={styles.userName}>
-        {userData.name ? userData.name : 'Admin'}
+        {userName ? userName : 'Admin'}
       </div>
       <Button
         buttonText='Logout'
@@ -43,3 +22,5 @@ export const Logout = ({ setIsLogged }) => {
     </div>
   );
 };
+
+export default Logout;

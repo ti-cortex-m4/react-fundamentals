@@ -115,7 +115,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     updateFormValidation();
   };
 
-  const onAddAuthorButtonClick = authorId => {
+  const handleAddAuthorButtonClick = authorId => {
     console.log('onAddAuthorButtonClick');
 
     const addedAuthor = authors.find(({ id }) => id === authorId);
@@ -129,7 +129,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     updateFormValidation();
   };
 
-  const onDeleteAuthorButtonClick = authorId => {
+  const handleDeleteAuthorButtonClick = authorId => {
     console.log('onDeleteAuthorButtonClick');
 
     const deletedAuthor = formData.authors.find(({ id }) => id === authorId);
@@ -202,14 +202,14 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           <Authors
             authors={authors}
             buttonText='Add author'
-            onButtonClick={onAddAuthorButtonClick}
+            handleButtonClick={handleAddAuthorButtonClick}
           />
 
           <strong>Course authors</strong>
           <Authors
             authors={formData.authors}
             buttonText='Delete author'
-            onButtonClick={onDeleteAuthorButtonClick}
+            handleButtonClick={handleDeleteAuthorButtonClick}
           />
         </div>
         <CreateAuthor
