@@ -12,16 +12,16 @@ import {
 } from '../../common/constants';
 import styles from './styles.module.css';
 
-export const CourseForm = ({allAuthors, allCourses}) => {
+export const CourseForm = ({ allAuthors, allCourses }) => {
 
 
   const navigate = useNavigate();
 
   const { courseId } = useParams();
-  console.log('courseId='+courseId);
+  console.log('courseId=' + courseId);
   const updatingCourse = allCourses.find((course) => course.id === courseId);
-  console.log('updatingCourse='+JSON.stringify(updatingCourse));
-  console.log('title='+(courseId ? updatingCourse.title : ''));
+  console.log('updatingCourse=' + JSON.stringify(updatingCourse));
+  console.log('title=' + (courseId ? updatingCourse.title : ''));
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',
@@ -29,13 +29,13 @@ export const CourseForm = ({allAuthors, allCourses}) => {
     duration: courseId ? updatingCourse.duration : '',
     authors: courseId ? updatingCourse.authors.map(authorId => allAuthors.find((author) => author.id === authorId)) : [],
   });
-  console.log('formData='+JSON.stringify(formData));
+  console.log('formData=' + JSON.stringify(formData));
 
   const [validationData, setValidationData] = useState({
-    title: courseId ? true:false,
-    description: courseId ? true:false,
-    duration: courseId ? true:false,
-    authors: courseId ? true:false,
+    title: courseId ? true : false,
+    description: courseId ? true : false,
+    duration: courseId ? true : false,
+    authors: courseId ? true : false,
   });
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -67,10 +67,10 @@ export const CourseForm = ({allAuthors, allCourses}) => {
   };
 
   const updateFormValidation = () => {
-      if (validationData.title && validationData.description && validationData.duration && validationData.authors)
-        setIsFormValid(true);
-      else
-        setIsFormValid(false);
+    if (validationData.title && validationData.description && validationData.duration && validationData.authors)
+      setIsFormValid(true);
+    else
+      setIsFormValid(false);
   }
 
   const onTitleChange = event => {
@@ -124,7 +124,7 @@ export const CourseForm = ({allAuthors, allCourses}) => {
     setFormData({ ...formData, authors: updatedAuthors });
     setAuthors(availableAuthors);
 
-//     console.log('formData=' + JSON.stringify(formData));
+    //     console.log('formData=' + JSON.stringify(formData));
     validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
@@ -138,7 +138,7 @@ export const CourseForm = ({allAuthors, allCourses}) => {
     setAuthors([...authors, deletedAuthor]);
     setFormData({ ...formData, authors: updatedAuthors });
 
-//     console.log('formData=' + JSON.stringify(formData));
+    //     console.log('formData=' + JSON.stringify(formData));
     validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
@@ -212,9 +212,9 @@ export const CourseForm = ({allAuthors, allCourses}) => {
             onButtonClick={onDeleteAuthorButtonClick}
           />
         </div>
-          <CreateAuthor
-            setIsAuthorAdded={setIsAuthorAdded}
-          />
+        <CreateAuthor
+          setIsAuthorAdded={setIsAuthorAdded}
+        />
       </div>
     </form>
   );
