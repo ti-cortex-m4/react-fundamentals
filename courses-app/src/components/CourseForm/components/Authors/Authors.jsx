@@ -1,4 +1,4 @@
-import { AuthorItem } from "../AuthorItem/AuthorItem";
+import { AuthorItem } from '../AuthorItem/AuthorItem';
 import styles from './styles.module.css';
 
 /* TODO */ export const Authors = ({

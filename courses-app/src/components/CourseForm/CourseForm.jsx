@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
-import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
-import Authors from "./components/Authors/Authors";
+import CreateAuthor from './components/CreateAuthor/CreateAuthor';
+import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import styles from './styles.module.css';
@@ -133,7 +133,7 @@ import styles from './styles.module.css';
         />
         <Textarea
           labelText='Description'
-          placeholder="Enter description"
+          placeholder='Enter description'
           name='description'
           value={formData.description}
           valid={formValidation.description}
