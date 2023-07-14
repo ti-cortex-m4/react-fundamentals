@@ -33,12 +33,10 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     duration: courseId ? true : false,
     authors: courseId ? true : false,
   });
+
   const [isFormValid, setIsFormValid] = useState(false);
-
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
-
   const [authors, setAuthors] = useState([]);
-
 
   useEffect(() => {
     const getAllAuthors = async () => {
@@ -55,12 +53,6 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
 
     getAllAuthors();
   }, [isAuthorAdded]);
-
-  const onFormChange = event => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    //     validateForm(event.target);
-  };
 
   const updateFormValidation = () => {
     if (validationData.title && validationData.description && validationData.duration && validationData.authors)
@@ -175,14 +167,12 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
 
       <div className={styles.infoWrapper}>
         <div className={styles.authorsContainer}>
-
           <strong>Authors</strong>
           <Authors
             authors={authors}
             buttonText='Add author'
             handleButtonClick={handleAddAuthorButtonClick}
           />
-
           <strong>Course authors</strong>
           <Authors
             authors={formData.authors}
@@ -190,9 +180,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
             handleButtonClick={handleDeleteAuthorButtonClick}
           />
         </div>
-        <CreateAuthor
-          setIsAuthorAdded={setIsAuthorAdded}
-        />
+        <CreateAuthor setIsAuthorAdded={setIsAuthorAdded} />
       </div>
     </form>
   );
