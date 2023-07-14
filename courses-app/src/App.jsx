@@ -10,8 +10,7 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { fetchData } from './helpers/fetchData';
-import { APPLICATION_PATHS, REQUEST_PATHS} from './constants';
-// import { APPLICATION_PATHS } from "./constants";
+import { APPLICATION_PATHS, REQUEST_PATHS } from './constants';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -52,7 +51,7 @@ function App() {
 
   return (
     <div className='app'>
-      <Header isLogged={isLogged} setIsLogged={setIsLogged}/>
+      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
       <Routes>
         <Route
           path={'/'}
@@ -60,25 +59,25 @@ function App() {
         />
         <Route
           path={APPLICATION_PATHS.login}
-          element={ <Login isLogged={isLogged} setIsLogged={setIsLogged} /> }
+          element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
         />
         <Route
           path={APPLICATION_PATHS.registration}
-          element={ <Registration /> }
+          element={<Registration />}
         />
 
-        <Route path={'/courses'} element={ <AuthenticatedRoute /> } >
-            <Route path='' element={ <Courses /> }/>
+        <Route path={'/courses'} element={<AuthenticatedRoute />} >
+          <Route path='' element={<Courses />} />
         </Route>
-        <Route path={'/courses/:courseId'} element={ <AuthenticatedRoute /> } >
-            <Route path='' element={ <CourseInfo allAuthors={allAuthors} /> }/>
+        <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
+          <Route path='' element={<CourseInfo allAuthors={allAuthors} />} />
         </Route>
 
-        <Route path={'/courses/add'} element={ <PrivateRoute /> } >
-           <Route path='' element={ <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> }/>
+        <Route path={'/courses/add'} element={<PrivateRoute />} >
+          <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
         </Route>
-        <Route path={'/courses/update/:courseId'} element={ <PrivateRoute /> } >
-           <Route path='' element={ <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> }/>
+        <Route path={'/courses/update/:courseId'} element={<PrivateRoute />} >
+          <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
         </Route>
       </Routes>
     </div>

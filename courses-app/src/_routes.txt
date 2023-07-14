@@ -17,3 +17,32 @@
 						</Route>
 						<Route path='*' element={<Navigate to={URL_COURSES} />} />
 					</Routes>
+
+
+
+const Header: React.FC<Record<string, never>> = () => {
+	const user = useAppSelector(selectUser);
+	const dispatch = useAppDispatch();
+
+	const onLogout = async () => {
+		await dispatch(logoutUser());
+	};
+
+	return (
+		<header className='Header'>
+			<div className='container Header__container'>
+				<Logo />
+				<div className='Header__user-info'>
+					{user.isAuth && (
+						<>
+							<Username username={user.name} />
+							<Button color='blue' onClick={onLogout}>
+								{LOGOUT_BTN_TEXT}
+							</Button>
+						</>
+					)}
+				</div>
+			</div>
+		</header>
+	);
+};
