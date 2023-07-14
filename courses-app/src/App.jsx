@@ -13,6 +13,7 @@ import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { fetchData } from './helpers/fetchData';
 import { APPLICATION_PATHS, REQUEST_PATHS } from './constants';
 
+/*TODO*/
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [allAuthors, setAllAuthors] = useState([]);
