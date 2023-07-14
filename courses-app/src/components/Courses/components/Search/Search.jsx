@@ -3,23 +3,24 @@ import { Button } from '../../../../components/Button/Button';
 import { Input } from '../../../../components/Input/Input';
 import styles from './styles.module.css';
 
-const Search = ({ handleSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
+export const Search = ({ handleSearchFormSubmit }) => {
+  const [searchValue, setSearchValue] = useState('');
 
-  const onFormSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
-    if (!inputValue) {
-      return;
+    if (searchValue) {
+      handleSearchFormSubmit(searchValue);
+    } else {
+      handleSearchFormSubmit();
     }
-    handleSearchFormSubmit(inputValue);
   };
 
   const handleInputChange = event => {
-    setInputValue(event.target.value);
+    setSearchValue(event.target.value);
   };
 
   const handleInputClear = () => {
-    setInputValue('');
+    setSearchValue('');
     handleSearchFormSubmit();
   };
 
@@ -27,7 +28,10 @@ const Search = ({ handleSubmit }) => {
     <form className={styles.searchForm} onSubmit={handleSubmit}>
       <Input
         placeholderText='Enter course name or id...'
-        value={inputValue}
+        type='text'
+        name='searchValue'
+        value={searchValue}
+        valid={true}
         onChange={handleInputChange}
       />
       <Button

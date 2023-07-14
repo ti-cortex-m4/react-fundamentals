@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "../Button";
 import { CourseCard } from "./components/CourseCard";
-import { CourseCard } from "./components/Search";
+import { Search } from "./components/Search";
 import { fetchData } from '../../helpers/fetchData';
 import { APP_URL_PATHS, APP_REQUEST_PATHS } from '../../constants';
 import styles from './styles.module.css';
@@ -13,6 +13,7 @@ export const Courses = () => {
 
   const [authors, setAuthors] = useState([]);
   const [courses, setCourses] = useState([]);
+  const [foundCourses, setFoundCourses] = useState([]);
 
   useEffect(() => {
     const getAllAuthors = async () => {
@@ -34,6 +35,7 @@ export const Courses = () => {
 
       if (!error && response.successful) {
         setCourses(response.result);
+        setFoundCourses(response.result);
       }
     };
 
@@ -47,27 +49,26 @@ export const Courses = () => {
     navigate(APP_URL_PATHS.createCourse);
   };
 
-  const filterCourses = filterValue => {
-    const value = filterValue.toLowerCase();
+  const filterCourses = searchValue => {
+    const value = searchValue.toLowerCase();
 
-    return courseList.filter(({id, title}) => {
+    return courses.filter(({id, title}) => {
       return title.toLowerCase().includes(value) || id.includes(value);
     });
   };
 
   const handleSearchFormSubmit = searchValue => {
     if (searchValue) {
-      const filteredCourses = filterCourses(searchValue);
-      setFoundCourses(filteredCourses);
-      return;
+      setFoundCourses(filterCourses(searchValue));
+    } else {
+      setFoundCourses(courses);
     }
-    setFoundCourses();
   };
 
   return (
     <>
       <div className={styles.panel}>
-        <Search handleSubmit={handleSearchFormSubmit}/>
+        <Search handleSearchFormSubmit={handleSearchFormSubmit}/>
       </div>
       <div className={styles.panel}>
         <Button
@@ -76,7 +77,7 @@ export const Courses = () => {
         />
       </div>
 
-      {courses.map((course) => (
+      {foundCourses.map((course) => (
         <CourseCard
           key={course.id}
           course={course}
