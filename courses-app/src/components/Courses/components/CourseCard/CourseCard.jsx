@@ -66,7 +66,6 @@ export const CourseCard = ({ course, authorsIdToName }) => {
           <span>{formatCreationDate(creationDate)}</span>
         </p>
         <div>
-
           <Button
             buttonText='Show course'
             onClick={handleShowButtonClick}
@@ -79,9 +78,10 @@ export const CourseCard = ({ course, authorsIdToName }) => {
             buttonText='Delete course'
             onClick={() => handleDeleteButtonClick(id)}
           />
-
         </div>
       </div>
     </div>
   );
 };
+
+export default CourseCard;
