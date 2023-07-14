@@ -10,14 +10,10 @@ import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 export const CourseForm = ({ allAuthors, allCourses }) => {
-
   const navigate = useNavigate();
-
   const { courseId } = useParams();
-  console.log('courseId=' + courseId);
+
   const updatingCourse = allCourses.find((course) => course.id === courseId);
-  console.log('updatingCourse=' + JSON.stringify(updatingCourse));
-  console.log('title=' + (courseId ? updatingCourse.title : ''));
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',
@@ -25,9 +21,8 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     duration: courseId ? updatingCourse.duration : '',
     authors: courseId ? updatingCourse.authors.map(authorId => allAuthors.find((author) => author.id === authorId)) : [],
   });
-  console.log('formData=' + JSON.stringify(formData));
 
-  const [validationData, setValidationData] = useState({
+  const [formValidation, setFormValidation] = useState({
     title: courseId ? true : false,
     description: courseId ? true : false,
     duration: courseId ? true : false,
@@ -55,27 +50,22 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
   }, [isAuthorAdded]);
 
   const updateFormValidation = () => {
-    if (validationData.title && validationData.description && validationData.duration && validationData.authors)
-      setIsFormValid(true);
-    else
-      setIsFormValid(false);
+    setIsFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
   }
 
   const handleTitleChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    console.log('formData=' + JSON.stringify(formData));
 
-    validationData.title = value.length > 0;
+    formValidation.title = value.length > 0;
     updateFormValidation();
   };
 
   const handleDescriptionChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    console.log('formData=' + JSON.stringify(formData));
 
-    validationData.description = value.length > 0;
+    formValidation.description = value.length > 0;
     updateFormValidation();
   };
 
@@ -83,7 +73,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     const { name, value } = event.target;
     const valid = !isNaN(Number(value)) && Number(value) > 0;
 
-    validationData.duration = valid;
+    formValidation.duration = valid;
     setFormData({ ...formData, [name]: valid ? Number(value) : value });
 
     updateFormValidation();
@@ -97,7 +87,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     setFormData({ ...formData, authors: updatedAuthors });
     setAuthors(availableAuthors);
 
-    validationData.authors = updatedAuthors.length > 0;
+    formValidation.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 
@@ -109,7 +99,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     setAuthors([...authors, deletedAuthor]);
     setFormData({ ...formData, authors: updatedAuthors });
 
-    validationData.authors = updatedAuthors.length > 0;
+    formValidation.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 
@@ -138,7 +128,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           type='text'
           name='title'
           value={formData.title}
-          valid={validationData.title}
+          valid={formValidation.title}
           onChange={handleTitleChange}
         />
         <Textarea
@@ -146,7 +136,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           placeholder="Enter description"
           name='description'
           value={formData.description}
-          valid={validationData.description}
+          valid={formValidation.description}
           onChange={handleDescriptionChange}
         />
         <Input
@@ -155,7 +145,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           type='number'
           name='duration'
           value={formData.duration}
-          valid={validationData.duration}
+          valid={formValidation.duration}
           onChange={handleDurationChange}
         />
         <Button
