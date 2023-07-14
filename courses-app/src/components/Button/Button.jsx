@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-/* TODO */ export const Button = ({
+export const Button = ({
 	type,
 	buttonText,
 	disabled,

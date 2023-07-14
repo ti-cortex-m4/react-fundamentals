@@ -25,7 +25,7 @@ import styles from './styles.module.css';
         name='searchValue'
         value={searchValue}
         valid={true}
-        handleChange={handleInputChange}
+        onChange={handleInputChange}
       />
       <Button
         type='text'

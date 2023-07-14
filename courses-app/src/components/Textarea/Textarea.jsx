@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-/* TODO */ export const Textarea = ({
+export const Textarea = ({
   labelText,
   placeholderText,
   name,
   value,
   valid,
-  handleChange
+  onChange
 }) => {
   const className = valid ? styles.valid : styles.invalid;
 
@@ -19,7 +19,7 @@ import styles from './styles.module.css';
         placeholder={placeholderText}
         name={name}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </label>
   );

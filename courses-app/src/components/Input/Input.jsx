@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-/* TODO */ export const Input = ({
+export const Input = ({
   labelText,
   placeholderText,
   type,
   name,
   value,
   valid,
-  handleChange
+  onChange
 }) => {
   const className = valid ? styles.valid : styles.invalid;
 
@@ -21,7 +21,7 @@ import styles from './styles.module.css';
         type={type}
         name={name}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </label>
   );

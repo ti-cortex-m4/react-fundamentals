@@ -60,7 +60,7 @@ import styles from './styles.module.css';
           name='email'
           value={formData.email}
           valid={formValid}
-          handleChange={handleFormChange}
+          onChange={handleFormChange}
         />
         <Input
           labelText='Password'
@@ -69,7 +69,7 @@ import styles from './styles.module.css';
           name='password'
           value={formData.password}
           valid={formValid}
-          handleChange={handleFormChange}
+          onChange={handleFormChange}
         />
         <Button
           type='submit'
