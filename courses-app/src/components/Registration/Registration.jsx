@@ -6,7 +6,7 @@ import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
 
-export const Registration = () => {
+/* TODO */ export const Registration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
   const initialFormData = {
     name: '',

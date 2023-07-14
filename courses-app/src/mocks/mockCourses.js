@@ -1,4 +1,4 @@
-export const mockCourses = [
+/* TODO */ export const mockCourses = [
   {
     "title": "React",
     "description": "The library for web and native user interfaces.",

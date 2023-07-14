@@ -1,4 +1,4 @@
-export const mockAuthors = [
+/* TODO */ export const mockAuthors = [
   {
     "name": "Frank Foe",
     "id": "9b87e8b8-6ba5-40fc-a439-c4e30a373d36"

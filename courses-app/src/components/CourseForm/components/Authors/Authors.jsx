@@ -1,7 +1,7 @@
 import { AuthorItem } from "../AuthorItem/AuthorItem";
 import styles from './styles.module.css';
 
-export const Authors = ({
+/* TODO */ export const Authors = ({
   authors,
   buttonText,
   handleButtonClick,

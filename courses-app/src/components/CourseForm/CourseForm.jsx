@@ -9,7 +9,7 @@ import { fetchData } from '../../helpers/fetchData';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
-export const CourseForm = ({ allAuthors, allCourses }) => {
+/* TODO */ export const CourseForm = ({ allAuthors, allCourses }) => {
   const navigate = useNavigate();
   const { courseId } = useParams();
 

@@ -7,7 +7,7 @@ import { fetchData } from '../../helpers/fetchData';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
-export const CourseInfo = ({ allAuthors }) => {
+/* TODO */ export const CourseInfo = ({ allAuthors }) => {
 
   const { courseId } = useParams();
   const navigate = useNavigate();

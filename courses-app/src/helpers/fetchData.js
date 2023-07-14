@@ -2,7 +2,7 @@ import { getUserFromLocalStorage } from './localStorage';
 import { REQUEST_URL } from "../constants";
 //const { get } = HTTP_METHODS;
 
-export const fetchData = async config => {
+/* TODO */ export const fetchData = async config => {
   const {
     method,
     url,

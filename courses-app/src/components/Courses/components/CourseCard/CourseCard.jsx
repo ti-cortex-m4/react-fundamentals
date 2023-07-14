@@ -7,7 +7,7 @@ import { fetchData } from '../../../../helpers/fetchData';
 import { APPLICATION_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
-export const CourseCard = ({ course, authorsIdToName }) => {
+/* TODO */ export const CourseCard = ({ course, authorsIdToName }) => {
   const {
     id,
     title,

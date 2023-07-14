@@ -3,7 +3,7 @@ import { Logo } from "./components/Logo";
 import { Logout } from "./components/Logout";
 import styles from './styles.module.css';
 
-export const Header = ({ isLogged, setIsLogged }) => {
+/* TODO */ export const Header = ({ isLogged, setIsLogged }) => {
   return (
     <div className={styles.headerContainer}>
       <Logo />

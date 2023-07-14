@@ -5,7 +5,7 @@ import { fetchData } from '../../../../helpers/fetchData';
 import { REQUEST_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
-export const CreateAuthor = ({ setIsAuthorAdded }) => {
+/* TODO */ export const CreateAuthor = ({ setIsAuthorAdded }) => {
   const [author, setAuthor] = useState('');
 
   const handleCreateAuthorClick = async () => {

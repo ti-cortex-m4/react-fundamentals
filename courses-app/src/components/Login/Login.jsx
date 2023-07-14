@@ -7,7 +7,7 @@ import { fetchData } from '../../helpers/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
-export const Login = ({ isLogged, setIsLogged }) => {
+/* TODO */ export const Login = ({ isLogged, setIsLogged }) => {
   const initialFormData = {
     email: '',
     password: '',

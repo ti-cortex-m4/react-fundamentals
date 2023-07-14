@@ -2,7 +2,7 @@ import { fetchData } from '../helpers/fetchData';
 import { REQUEST_PATHS } from '../constants';
 //import { loginUserAction } from '../store/user/actionCreators';
 
-//export const fetchUserData = async dispatch => {
+///* TODO */ export const fetchUserData = async dispatch => {
 //  const { successful, result, error } = await fetchData({
 //    url: REQUEST_PATHS.userData,
 //  });
@@ -18,7 +18,7 @@ import { REQUEST_PATHS } from '../constants';
 //  }
 //};
 
-//export const loginUser = async (dispatch, loginData) => {
+///* TODO */ export const loginUser = async (dispatch, loginData) => {
 //  const fetchConfig = {
 //    url: REQUEST_PATHS.login,
 //    method: 'POST',

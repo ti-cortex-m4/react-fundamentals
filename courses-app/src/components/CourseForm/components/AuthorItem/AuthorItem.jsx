@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../../../Button/Button';
 import styles from './styles.module.css';
 
-export const AuthorItem = ({
+/* TODO */ export const AuthorItem = ({
   id,
   name,
   buttonText,

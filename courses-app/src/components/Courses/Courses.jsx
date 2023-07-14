@@ -8,7 +8,7 @@ import { fetchData } from '../../helpers/fetchData';
 import { APPLICATION_PATHS, REQUEST_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
-export const Courses = () => {
+/* TODO */ export const Courses = () => {
   const navigate = useNavigate();
 
   const [allAuthors, setAllAuthors] = useState([]);

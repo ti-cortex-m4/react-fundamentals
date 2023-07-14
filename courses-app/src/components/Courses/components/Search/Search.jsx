@@ -3,7 +3,7 @@ import { Button } from '../../../../components/Button/Button';
 import { Input } from '../../../../components/Input/Input';
 import styles from './styles.module.css';
 
-export const Search = ({ handleSearchChange }) => {
+/* TODO */ export const Search = ({ handleSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = event => {

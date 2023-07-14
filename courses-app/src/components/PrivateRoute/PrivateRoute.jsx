@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PrivateRoute = () => {
+/* TODO */ export const PrivateRoute = () => {
 
 	//wriet your code here
 
