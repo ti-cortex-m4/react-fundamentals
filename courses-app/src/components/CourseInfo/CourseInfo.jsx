@@ -4,7 +4,7 @@ import { Button } from '../../components/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../helpers/fetchData';
-import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
+import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 export const CourseInfo = ({ allAuthors }) => {
@@ -25,7 +25,7 @@ export const CourseInfo = ({ allAuthors }) => {
     const getCourseInfo = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: APP_REQUEST_PATHS.courseInfo + courseId,
+        url: REQUEST_PATHS.courseInfo + courseId,
       });
 
       if (!error && response.successful) {

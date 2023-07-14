@@ -1,5 +1,5 @@
 import { getUserFromLocalStorage } from './localStorage';
-import { SERVER_URL_BASE } from "../constants";
+import { REQUEST_URL } from "../constants";
 //const { get } = HTTP_METHODS;
 
 export const fetchData = async config => {
@@ -19,9 +19,9 @@ export const fetchData = async config => {
   let response;
   let error;
 
-// `${process.env.SERVER_URL_BASE}`
+// `${process.env.REQUEST_URL}`
   try {
-    const promise = await fetch(SERVER_URL_BASE + url, {
+    const promise = await fetch(REQUEST_URL + url, {
       method,
       headers: requestHeaders,
       body: JSON.stringify(body),

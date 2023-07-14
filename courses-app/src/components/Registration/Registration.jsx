@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
-import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
+import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
 
@@ -20,7 +20,7 @@ export const Registration = () => {
     event.preventDefault();
 
     const fetchConfig = {
-      url: APP_REQUEST_PATHS.registration,
+      url: REQUEST_PATHS.registration,
       method: 'POST',
       body: formData,
     };
@@ -43,7 +43,7 @@ export const Registration = () => {
   };
 
   if (isRegistered) {
-    return <Navigate to={APP_URL_PATHS.login} />
+    return <Navigate to={APPLICATION_PATHS.login} />
   }
 
   return (
@@ -84,7 +84,7 @@ export const Registration = () => {
       </form>
       <p>
         If you have an account you can&nbsp;
-        <Link to={APP_URL_PATHS.login}>login</Link>
+        <Link to={APPLICATION_PATHS.login}>login</Link>
       </p>
     </div>
   );

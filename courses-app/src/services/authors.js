@@ -1,10 +1,10 @@
 import { fetchData } from '../helpers/fetchData';
-import { APP_REQUEST_PATHS } from '../constants';
+import { REQUEST_PATHS } from '../constants';
 //import { setAuthorsData } from '../store/authors/actionCreators';
 
 //export const fetchAuthorsData = async dispatch => {
 //  const { successful, result, error } = await fetchData({
-//    url: APP_REQUEST_PATHS.getAllAuthors,
+//    url: REQUEST_PATHS.getAllAuthors,
 //  });
 //
 //  if (!error && response.successful) {

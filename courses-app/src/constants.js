@@ -22,18 +22,11 @@ export const AUTHORS_ENDPOINT = '/authors/all';
 export const AUTHORS_ADD_ENDPOINT = '/authors/add';
 export const AUTHORS_DELETE_ENDPOINT = '/authors';
 export const USER_ENDPOINT = '/users/me';
-
-export const UserRole = {
-	USER: 'user',
-	ADMIN: 'admin',
-};
-
-export const dateDelimiter = /\//g;
 */
 
-export const SERVER_URL_BASE = 'http://localhost:4000';
+export const REQUEST_URL = 'http://localhost:4000';
 
-export const APP_REQUEST_PATHS = {
+export const REQUEST_PATHS = {
   registration: '/register',
   login: '/login',
   getAllCourses: '/courses/all',
@@ -44,7 +37,7 @@ export const APP_REQUEST_PATHS = {
   courseInfo: '/courses/',
 };
 
-export const APP_URL_PATHS = {
+export const APPLICATION_PATHS = {
   root: '/',
   registration: '/registration',
   login: '/login',

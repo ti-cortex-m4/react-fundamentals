@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
-import { APP_REQUEST_PATHS, APP_URL_PATHS } from '../../constants';
+import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
@@ -20,7 +20,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
     event.preventDefault();
 
     const fetchConfig = {
-      url: APP_REQUEST_PATHS.login,
+      url: REQUEST_PATHS.login,
       method: 'POST',
       body: formData,
     };
@@ -47,7 +47,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   };
 
   if (isLogged) {
-    return <Navigate to={APP_URL_PATHS.courses} />
+    return <Navigate to={APPLICATION_PATHS.courses} />
   }
   return (
     <div className={styles.container}>
@@ -78,7 +78,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to={APP_URL_PATHS.registration}>register</Link>
+        <Link to={APPLICATION_PATHS.registration}>register</Link>
       </p>
     </div>
   );

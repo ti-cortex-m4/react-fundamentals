@@ -1,10 +1,10 @@
 import { fetchData } from '../helpers/fetchData';
-import { APP_REQUEST_PATHS } from '../constants';
+import { REQUEST_PATHS } from '../constants';
 //import { loginUserAction } from '../store/user/actionCreators';
 
 //export const fetchUserData = async dispatch => {
 //  const { successful, result, error } = await fetchData({
-//    url: APP_REQUEST_PATHS.userData,
+//    url: REQUEST_PATHS.userData,
 //  });
 //
 //  if (!error && response.successful) {
@@ -20,7 +20,7 @@ import { APP_REQUEST_PATHS } from '../constants';
 
 //export const loginUser = async (dispatch, loginData) => {
 //  const fetchConfig = {
-//    url: APP_REQUEST_PATHS.login,
+//    url: REQUEST_PATHS.login,
 //    method: 'POST',
 //    body: loginData,
 //  };

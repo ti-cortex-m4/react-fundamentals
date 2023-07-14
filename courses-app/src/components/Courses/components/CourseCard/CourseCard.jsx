@@ -4,7 +4,7 @@ import { Button } from '../../../../components/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { fetchData } from '../../../../helpers/fetchData';
-import { APP_URL_PATHS } from '../../../../constants';
+import { APPLICATION_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
 export const CourseCard = ({ course, authorsIdToName }) => {
@@ -39,7 +39,7 @@ export const CourseCard = ({ course, authorsIdToName }) => {
       });
 
       if (!error && response.successful) {
-        navigate(APP_URL_PATHS.courses);
+        navigate(APPLICATION_PATHS.courses);
       }
     };
 

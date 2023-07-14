@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import { CourseCard } from "./components/CourseCard";
 import { Search } from "./components/Search";
 import { fetchData } from '../../helpers/fetchData';
-import { APP_URL_PATHS, APP_REQUEST_PATHS } from '../../constants';
+import { APPLICATION_PATHS, REQUEST_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 export const Courses = () => {
@@ -19,7 +19,7 @@ export const Courses = () => {
     const getAllAuthors = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: APP_REQUEST_PATHS.getAllAuthors,
+        url: REQUEST_PATHS.getAllAuthors,
       });
 
       if (!error && response.successful) {
@@ -30,7 +30,7 @@ export const Courses = () => {
     const getAllCourses = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: APP_REQUEST_PATHS.getAllCourses,
+        url: REQUEST_PATHS.getAllCourses,
       });
 
       if (!error && response.successful) {
@@ -44,7 +44,7 @@ export const Courses = () => {
   }, []);
 
   const handleCreateCourseButtonClick = () => {
-    navigate(APP_URL_PATHS.createCourse);
+    navigate(APPLICATION_PATHS.createCourse);
   };
 
   const handleSearchChange = searchValue => {
