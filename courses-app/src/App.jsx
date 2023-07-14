@@ -58,14 +58,21 @@ function App() {
           path={'/'}
           element={<Navigate to={'/courses'} />}
         />
-        <Route
-          path={APPLICATION_PATHS.login}
-          element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />}
-        />
-        <Route
-          path={APPLICATION_PATHS.registration}
-          element={<Registration />}
-        />
+{/*         <Route */}
+{/*           path={APPLICATION_PATHS.login} */}
+{/*           element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} */}
+{/*         /> */}
+{/*         <Route */}
+{/*           path={APPLICATION_PATHS.registration} */}
+{/*           element={<Registration />} */}
+{/*         /> */}
+
+        <Route path={APPLICATION_PATHS.login} element={<AnonymousRoute />} >
+          <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
+        </Route>
+        <Route path={APPLICATION_PATHS.registration} element={<AnonymousRoute />} >
+          <Route path='' element={<Registration />} />
+        </Route>
 
         <Route path={'/courses'} element={<AuthenticatedRoute />} >
           <Route path='' element={<Courses />} />
