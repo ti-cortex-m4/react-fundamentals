@@ -23,7 +23,7 @@ export const CreateAuthor = ({ setIsAuthorAdded }) => {
     }
   };
 
-  const onAuthorChange = event => {
+  const handleAuthorChange = event => {
     setAuthor(event.target.value);
   };
 
@@ -38,7 +38,7 @@ export const CreateAuthor = ({ setIsAuthorAdded }) => {
           name='author'
           value={author}
           valid={true}
-          onChange={onAuthorChange}
+          onChange={handleAuthorChange}
         />
         <Button
           type='button'

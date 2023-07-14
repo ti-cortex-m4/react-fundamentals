@@ -6,7 +6,6 @@ export const Authors = ({
   buttonText,
   handleButtonClick,
 }) => {
-
   return (
     <div>
       {
