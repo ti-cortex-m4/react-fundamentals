@@ -69,15 +69,15 @@ export const CourseCard = ({ course, authorsIdToName }) => {
 
           <Button
             buttonText='Show course'
-            handleClick={handleShowButtonClick}
+            onClick={handleShowButtonClick}
           />
           <Button
             buttonText='Edit course'
-            handleClick={handleUpdateButtonClick}
+            onClick={handleUpdateButtonClick}
           />
           <Button
             buttonText='Delete course'
-            handleClick={() => handleDeleteButtonClick(id)}
+            onClick={() => handleDeleteButtonClick(id)}
           />
 
         </div>

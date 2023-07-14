@@ -73,7 +73,7 @@ export const Courses = () => {
       <div className={styles.panel}>
         <Button
           buttonText='Add new course'
-          handleClick={handleCreateCourseButtonClick}
+          onClick={handleCreateCourseButtonClick}
         />
       </div>
 

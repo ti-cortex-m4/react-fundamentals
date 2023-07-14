@@ -32,7 +32,7 @@ export const Search = ({ handleSearchFormSubmit }) => {
         name='searchValue'
         value={searchValue}
         valid={true}
-        onChange={handleInputChange}
+        handleChange={handleInputChange}
       />
       <Button
         type='submit'
