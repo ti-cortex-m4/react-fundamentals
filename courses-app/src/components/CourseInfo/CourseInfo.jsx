@@ -35,10 +35,10 @@ export const CourseInfo = ({ allAuthors }) => {
     };
 
     getCourseInfo();
-  }, []);
+  }, [courseId]);
 
   const handleBackButtonClick = () => {
-    navigate('/courses');
+    navigate(APPLICATION_PATHS.courses);
   };
 
   return (

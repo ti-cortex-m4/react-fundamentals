@@ -13,18 +13,17 @@ import styles from './styles.module.css';
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
-  
+
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const fetchConfig = {
+    const { response, error } = await fetchData({
       url: REQUEST_PATHS.login,
       method: 'POST',
       body: formData,
-    };
-    const { response, error } = await fetchData(fetchConfig);
+    });
 
     if (!error && response.successful) {
       const authToken = response.result.split(' ')[1];

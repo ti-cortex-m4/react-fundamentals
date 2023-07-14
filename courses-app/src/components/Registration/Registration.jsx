@@ -19,12 +19,11 @@ import styles from './styles.module.css';
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const fetchConfig = {
+    const { response, error } = await fetchData({
       url: REQUEST_PATHS.registration,
       method: 'POST',
       body: formData,
-    };
-    const { response, error } = await fetchData(fetchConfig);
+    });
 
     if (!error && response.successful) {
       setFormData(initialFormData);
