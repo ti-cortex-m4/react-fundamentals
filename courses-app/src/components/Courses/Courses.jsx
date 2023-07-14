@@ -43,23 +43,13 @@ export const Courses = () => {
     getAllCourses();
   }, []);
 
-  const authorsIdToName = new Map(allAuthors.map(author => [author.id, author.name]));
-
   const handleCreateCourseButtonClick = () => {
     navigate(APP_URL_PATHS.createCourse);
   };
 
-  const filterCourses = searchValue => {
-    const value = searchValue.toLowerCase();
-
-    return allCourses.filter(({ id, title }) => {
-      return title.toLowerCase().includes(value) || id.includes(value);
-    });
-  };
-
   const handleSearchChange = searchValue => {
     if (searchValue) {
-      setFoundCourses(filterCourses(searchValue));
+      setFoundCourses( allCourses.filter(({ id, title }) => (title.toLowerCase().includes(searchValue.toLowerCase()) || id.includes(searchValue.toLowerCase()))) );
     } else {
       setFoundCourses(allCourses);
     }
@@ -70,21 +60,21 @@ export const Courses = () => {
       <div className={styles.panel}>
         <Search handleSearchChange={handleSearchChange} />
       </div>
-
       <div className={styles.panel}>
         <Button
           buttonText='Add new course'
           onClick={handleCreateCourseButtonClick}
         />
       </div>
-
       {foundCourses.map((course) => (
         <CourseCard
           key={course.id}
           course={course}
-          authorsIdToName={authorsIdToName}
+          authorsIdToName={new Map(allAuthors.map(author => [author.id, author.name]))}
         />
       ))}
     </>
   );
 };
+
+export default Courses;
