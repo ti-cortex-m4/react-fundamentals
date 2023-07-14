@@ -8,11 +8,13 @@ import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
 export const Login = ({ isLogged, setIsLogged }) => {
-  const formInitialState = {
+  const initialFormData = {
     email: '',
     password: '',
   };
-  const [formData, setFormData] = useState(formInitialState);
+  const [formData, setFormData] = useState(initialFormData);
+  
+  const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -29,8 +31,13 @@ export const Login = ({ isLogged, setIsLogged }) => {
       const userName = response.user?.name;
       setUserToLocalStorage(authToken, userName);
 
-      setFormData(formInitialState);
+      setFormData(initialFormData);
       setIsLogged(true);
+
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+      alert('Login failed: ' + response.result);
     }
   };
 
@@ -52,7 +59,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
           type='email'
           name='email'
           value={formData.email}
-          valid={true}
+          valid={formValid}
           handleChange={handleFormChange}
         />
         <Input
@@ -61,7 +68,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
           type='password'
           name='password'
           value={formData.password}
-          valid={true}
+          valid={formValid}
           handleChange={handleFormChange}
         />
         <Button

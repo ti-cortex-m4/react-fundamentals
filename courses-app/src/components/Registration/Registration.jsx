@@ -7,12 +7,13 @@ import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
 
 export const Registration = () => {
-  const formInitialState = {
+  const initialFormData = {
     name: '',
     email: '',
     password: '',
   };
-  const [formData, setFormData] = useState(formInitialState);
+  const [formData, setFormData] = useState(initialFormData);
+  const [formValid, setFormValid] = useState(true);
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleFormSubmit = async event => {
@@ -26,8 +27,13 @@ export const Registration = () => {
     const { response, error } = await fetchData(fetchConfig);
 
     if (!error && response.successful) {
-      setFormData(formInitialState);
+      setFormData(initialFormData);
       setIsRegistered(true);
+
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+      alert('Registration failed: ' + response.errors);
     }
   };
 
@@ -50,7 +56,7 @@ export const Registration = () => {
           type='text'
           name='name'
           value={formData.name}
-          valid={true}
+          valid={formValid}
           handleChange={handleFormChange}
         />
         <Input
@@ -59,7 +65,7 @@ export const Registration = () => {
           type='email'
           name='email'
           value={formData.email}
-          valid={true}
+          valid={formValid}
           handleChange={handleFormChange}
         />
         <Input
@@ -68,7 +74,7 @@ export const Registration = () => {
           type='password'
           name='password'
           value={formData.password}
-          valid={true}
+          valid={formValid}
           handleChange={handleFormChange}
         />
         <Button
