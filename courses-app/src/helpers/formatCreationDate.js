@@ -1,4 +1,4 @@
-/* TODO */ export const formatCreationDate = (date) => {
+export const formatCreationDate = (date) => {
   const dateFields = date.split('/');
 
   const day = dateFields[0];

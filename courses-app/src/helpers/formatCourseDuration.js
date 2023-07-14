@@ -1,4 +1,4 @@
-/* TODO */ export const formatCourseDuration = (duration) => {
+export const formatCourseDuration = (duration) => {
   const hours = Math.floor(duration / 60).toString();
   const minutes = (duration % 60).toString();
 
