@@ -7,6 +7,7 @@ import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
 
 export const Registration = () => {
+  const [isRegistered, setIsRegistered] = useState(false);
   const initialFormData = {
     name: '',
     email: '',
@@ -14,7 +15,6 @@ export const Registration = () => {
   };
   const [formData, setFormData] = useState(initialFormData);
   const [formValid, setFormValid] = useState(true);
-  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
