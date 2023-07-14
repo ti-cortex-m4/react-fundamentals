@@ -7,37 +7,40 @@ import { fetchData } from '../../helpers/fetchData';
 import { setUserToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
-/* TODO */ export const Login = ({ isLogged, setIsLogged }) => {
+export const Login = ({ isLogged, setIsLogged }) => {
   const initialFormData = {
     email: '',
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
-
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const { response, error } = await fetchData({
-      url: REQUEST_PATHS.login,
-      method: 'POST',
-      body: formData,
-    });
+    const login = async (formData) => {
+      const { response, error } = await fetchData({
+        url: REQUEST_PATHS.login,
+        method: 'POST',
+        body: formData,
+      });
 
-    if (!error && response.successful) {
-      const authToken = response.result.split(' ')[1];
-      const userName = response.user?.name;
-      setUserToLocalStorage(authToken, userName);
+      if (!error && response.successful) {
+        const authToken = response.result.split(' ')[1];
+        const userName = response.user?.name;
+        setUserToLocalStorage(authToken, userName);
 
-      setFormData(initialFormData);
-      setIsLogged(true);
+        setFormData(initialFormData);
+        setIsLogged(true);
 
-      setFormValid(true);
-    } else {
-      setFormValid(false);
-      alert('Login failed: ' + response.result);
-    }
+        setFormValid(true);
+      } else {
+        setFormValid(false);
+        alert('Login failed: ' + response.result);
+      }
+    };
+
+    login(formData);
   };
 
   const handleFormChange = event => {

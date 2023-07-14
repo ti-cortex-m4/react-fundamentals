@@ -26,8 +26,8 @@ export const USER_ENDPOINT = '/users/me';
 
 /* TODO */ export const REQUEST_URL = 'http://localhost:4000';
 
-/* TODO */ export const REQUEST_PATHS = {
-  registration: '/register',
+export const REQUEST_PATHS = {
+  register: '/register',
   login: '/login',
   getAllCourses: '/courses/all',
   addCourse: '/courses/add',

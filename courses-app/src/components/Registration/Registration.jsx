@@ -6,7 +6,7 @@ import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
 
-/* TODO */ export const Registration = () => {
+export const Registration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
   const initialFormData = {
     name: '',
@@ -19,21 +19,25 @@ import styles from './styles.module.css';
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const { response, error } = await fetchData({
-      url: REQUEST_PATHS.registration,
-      method: 'POST',
-      body: formData,
-    });
+    const register = async (formData) => {
+      const { response, error } = await fetchData({
+        url: REQUEST_PATHS.register,
+        method: 'POST',
+        body: formData,
+      });
 
-    if (!error && response.successful) {
-      setFormData(initialFormData);
-      setIsRegistered(true);
+      if (!error && response.successful) {
+        setFormData(initialFormData);
+        setIsRegistered(true);
 
-      setFormValid(true);
-    } else {
-      setFormValid(false);
-      alert('Registration failed: ' + response.errors);
-    }
+        setFormValid(true);
+      } else {
+        setFormValid(false);
+        alert('Registration failed: ' + response.errors);
+      }
+    };
+
+    register(formData);
   };
 
   const handleFormChange = event => {
