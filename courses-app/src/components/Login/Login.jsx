@@ -4,8 +4,10 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
-import { setUserToLocalStorage } from '../../helpers/localStorage';
+import { setUserToLocalStorage, setRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
+
+/*TODO*/
 
 export const Login = ({ isLogged, setIsLogged }) => {
   const initialFormData = {
@@ -34,12 +36,28 @@ export const Login = ({ isLogged, setIsLogged }) => {
         setIsLogged(true);
 
         setFormValid(true);
+
+        getUserData();
       } else {
         setFormValid(false);
         alert('Login failed: ' + response.result);
       }
     };
 
+ const getUserData = async () => {
+  const { response, error } = await fetchData({
+    url: REQUEST_PATHS.userData,
+            method: 'GET',
+  });
+
+  if (!error && response.successful) {
+                 const userRole = response.result?.role;
+                 setRoleToLocalStorage(userRole);
+  } else {
+          setFormValid(false);
+          alert('Reading user data failed: ' + response.result);
+  }
+};
     login(formData);
   };
 
