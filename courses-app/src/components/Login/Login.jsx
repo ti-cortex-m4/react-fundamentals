@@ -49,6 +49,7 @@ import styles from './styles.module.css';
   if (isLogged) {
     return <Navigate to={APPLICATION_PATHS.courses} />
   }
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleFormSubmit}>

@@ -20,6 +20,8 @@ export const CourseInfo = ({ allAuthors }) => {
     authors: [],
   });
 
+  const authorIdsToNames = new Map(allAuthors.map(author => [author.id, author.name]));
+
   useEffect(() => {
     const getCourseInfo = async () => {
       const { response, error } = await fetchData({
@@ -34,8 +36,6 @@ export const CourseInfo = ({ allAuthors }) => {
 
     getCourseInfo();
   }, []);
-
-  const authorIdsToNames = new Map(allAuthors.map(author => [author.id, author.name]));
 
   const handleBackButtonClick = () => {
     navigate('/courses');
