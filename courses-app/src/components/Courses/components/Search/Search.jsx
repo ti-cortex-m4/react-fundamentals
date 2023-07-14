@@ -3,29 +3,36 @@ import { Button } from '../../../../components/Button/Button';
 import { Input } from '../../../../components/Input/Input';
 import styles from './styles.module.css';
 
-export const Search = ({ handleSearchFormSubmit }) => {
+export const Search = ({ handleSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    if (searchValue) {
-      handleSearchFormSubmit(searchValue);
-    } else {
-      handleSearchFormSubmit();
-    }
-  };
+//   const handleSubmit = event => {
+//     event.preventDefault();
+//     if (searchValue) {
+//       handleSearchChange(searchValue);
+//     } else {
+//       handleSearchChange();
+//     }
+//   };
 
   const handleInputChange = event => {
-    setSearchValue(event.target.value);
+  setSearchValue(event.target.value);
+//     if (searchValue) {
+      handleSearchChange(searchValue);
+//     } else {
+//       handleSearchChange();
+//     }
+//     setSearchValue(event.target.value);
   };
 
-  const handleInputClear = () => {
+  const handleInputClear = event => {
+  event.preventDefault();
     setSearchValue('');
-    handleSearchFormSubmit();
+    handleSearchChange();
   };
 
   return (
-    <form className={styles.searchForm} onSubmit={handleSubmit}>
+    <form className={styles.searchForm} onSubmit={handleInputClear}>
       <Input
         placeholderText='Enter course name or id...'
         type='text'
@@ -35,13 +42,9 @@ export const Search = ({ handleSearchFormSubmit }) => {
         handleChange={handleInputChange}
       />
       <Button
-        type='submit'
-        buttonText='Search'
-      />
-      <Button
         type='text'
         buttonText='Clear'
-        onClick={handleInputClear}
+//         onClick={handleInputClear}
       />
     </form>
   );

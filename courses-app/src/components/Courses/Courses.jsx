@@ -57,7 +57,7 @@ export const Courses = () => {
     });
   };
 
-  const handleSearchFormSubmit = searchValue => {
+  const handleSearchChange = searchValue => {
     if (searchValue) {
       setFoundCourses(filterCourses(searchValue));
     } else {
@@ -68,7 +68,7 @@ export const Courses = () => {
   return (
     <>
       <div className={styles.panel}>
-        <Search handleSearchFormSubmit={handleSearchFormSubmit}/>
+        <Search handleSearchChange={handleSearchChange}/>
       </div>
       <div className={styles.panel}>
         <Button
