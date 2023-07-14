@@ -70,7 +70,7 @@ import styles from './styles.module.css';
         <CourseCard
           key={course.id}
           course={course}
-          authorsIdToName={new Map(allAuthors.map(author => [author.id, author.name]))}
+          authorIdsToNames={new Map(allAuthors.map(author => [author.id, author.name]))}
         />
       ))}
     </>

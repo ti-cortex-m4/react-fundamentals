@@ -7,7 +7,7 @@ import { fetchData } from '../../../../helpers/fetchData';
 import { APPLICATION_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
-/* TODO */ export const CourseCard = ({ course, authorsIdToName }) => {
+/* TODO */ export const CourseCard = ({ course, authorIdsToNames }) => {
   const {
     id,
     title,
@@ -18,7 +18,7 @@ import styles from './styles.module.css';
   } = course;
 
   const formattedAuthors = authors
-    .map(authorId => authorsIdToName.get(authorId))
+    .map(authorId => authorIdsToNames.get(authorId))
     .join(', ');
 
   const navigate = useNavigate();

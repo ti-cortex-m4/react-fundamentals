@@ -7,10 +7,9 @@ import { fetchData } from '../../helpers/fetchData';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
-/* TODO */ export const CourseInfo = ({ allAuthors }) => {
-
-  const { courseId } = useParams();
+export const CourseInfo = ({ allAuthors }) => {
   const navigate = useNavigate();
+  const { courseId } = useParams();
 
   const [course, setCourse] = useState({
     id: '',
@@ -36,7 +35,7 @@ import styles from './styles.module.css';
     getCourseInfo();
   }, []);
 
-  const authorsIdToName = new Map(allAuthors.map(author => [author.id, author.name]));
+  const authorIdsToNames = new Map(allAuthors.map(author => [author.id, author.name]));
 
   const handleBackButtonClick = () => {
     navigate('/courses');
@@ -68,7 +67,7 @@ import styles from './styles.module.css';
           <div>
             <b>Authors</b>
             <ul className={styles.authorsList}>
-              {course.authors.map(id => <li key={id}>{authorsIdToName.get(id)}</li>)}
+              {course.authors.map(authorId => <li key={authorId}>{authorIdsToNames.get(authorId)}</li>)}
             </ul>
           </div>
         </div>
