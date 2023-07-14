@@ -7,6 +7,7 @@ import { Courses } from "./components/Courses";
 import { CourseInfo } from "./components/CourseInfo";
 import { CourseForm } from "./components/CourseForm";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { AuthenticatedRoute } from "./components/AuthenticatedRoute";
 import { getUserFromLocalStorage } from "./helpers/localStorage";
 import { fetchData } from './helpers/fetchData';
 import { APPLICATION_PATHS, REQUEST_PATHS} from './constants';
@@ -65,14 +66,14 @@ function App() {
           path={APPLICATION_PATHS.registration}
           element={ <Registration /> }
         />
-        <Route
-          path={'/courses'}
-          element={ isLogged ? <Courses /> : <Navigate to={APPLICATION_PATHS.login} /> }
-        />
-        <Route
-          path={'/courses/:courseId'}
-          element={ <CourseInfo allAuthors={allAuthors} /> }
-        />
+
+        <Route path={'/courses'} element={ <AuthenticatedRoute /> } >
+            <Route path='' element={ <Courses /> }/>
+        </Route>
+        <Route path={'/courses/:courseId'} element={ <AuthenticatedRoute /> } >
+            <Route path='' element={ <CourseInfo allAuthors={allAuthors} /> }/>
+        </Route>
+
         <Route path={'/courses/add'} element={ <PrivateRoute /> } >
            <Route path='' element={ <CourseForm allAuthors={allAuthors} allCourses={allCourses}/> }/>
         </Route>

@@ -1,0 +1,19 @@
+					<Routes>
+						<Route path='registration' element={<AnonymousRoute />}>
+							<Route path='' element={<Registration />} />
+						</Route>
+						<Route path='login' element={<AnonymousRoute />}>
+							<Route path='' element={<Login />} />
+						</Route>
+						<Route path='courses' element={<AuthenticatedRoute />}>
+							<Route path='' element={<Courses />} />
+							<Route path='add' element={<PrivateRoute />}>
+								<Route path='' element={<CourseForm />} />
+							</Route>
+							<Route path='update/:courseId' element={<PrivateRoute />}>
+								<Route path='' element={<CourseForm />} />
+							</Route>
+							<Route path=':courseId' element={<CourseInfo />} />
+						</Route>
+						<Route path='*' element={<Navigate to={URL_COURSES} />} />
+					</Routes>
