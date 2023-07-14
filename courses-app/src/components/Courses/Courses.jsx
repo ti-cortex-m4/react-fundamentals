@@ -67,7 +67,7 @@ export const Courses = () => {
   return (
     <>
       <div className={styles.panel}>
-        <Search handleFormSearch={handleSearchFormSubmit}/>
+        <Search handleSubmit={handleSearchFormSubmit}/>
       </div>
       <div className={styles.panel}>
         <Button

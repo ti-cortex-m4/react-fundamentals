@@ -1,10 +1,9 @@
-// import { useState } from 'react';
-// import PropTypes from 'prop-types';
-// import Button from '../../Button';
-// import Input from '../../Input';
-// import styles from './styles/Search.module.css';
+import { useState } from 'react';
+import { Button } from '../../../../components/Button/Button';
+import { Input } from '../../../../components/Input/Input';
+import styles from './styles.module.css';
 
-const Search = ({ handleFormSearch }) => {
+const Search = ({ handleSubmit }) => {
   const [inputValue, setInputValue] = useState('');
 
   const onFormSubmit = event => {
@@ -12,39 +11,34 @@ const Search = ({ handleFormSearch }) => {
     if (!inputValue) {
       return;
     }
-    handleFormSearch(inputValue);
+    handleSearchFormSubmit(inputValue);
   };
 
-  const onDrop = () => {
-    setInputValue('');
-    handleFormSearch();
-  };
-
-  const onInputChange = event => {
+  const handleInputChange = event => {
     setInputValue(event.target.value);
   };
 
+  const handleInputClear = () => {
+    setInputValue('');
+    handleSearchFormSubmit();
+  };
+
   return (
-    <form className={styles.searchForm} onSubmit={onFormSubmit}>
+    <form className={styles.searchForm} onSubmit={handleSubmit}>
       <Input
-        extraStyles={styles.spacing}
+        placeholderText='Enter course name or id...'
         value={inputValue}
-        placeholder='Enter course name or id...'
-        onChange={onInputChange}
+        onChange={handleInputChange}
       />
       <Button
-        size='large'
         type='submit'
-        extraStyles={styles.spacing}
-      >
-        Search
-      </Button>
+        buttonText='Search'
+      />
       <Button
-        size='large'
-        onClick={onDrop}
-      >
-        Drop
-      </Button>
+        type='text'
+        buttonText='Clear'
+        onClick={handleInputClear}
+      />
     </form>
   );
 };
