@@ -69,84 +69,66 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
       setIsFormValid(false);
   }
 
-  const onTitleChange = event => {
-    console.log('onTitleChange');
-
+  const handleTitleChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     console.log('formData=' + JSON.stringify(formData));
 
     validationData.title = value.length > 0;
-    console.log('validationData=' + JSON.stringify(validationData));
-
     updateFormValidation();
   };
 
-  const onDescriptionChange = event => {
-    console.log('onDescriptionChange');
-
+  const handleDescriptionChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
     console.log('formData=' + JSON.stringify(formData));
 
     validationData.description = value.length > 0;
-    console.log('validationData=' + JSON.stringify(validationData));
-
     updateFormValidation();
   };
 
-  const onDurationChange = event => {
-    console.log('onDurationChange');
-
+  const handleDurationChange = event => {
     const { name, value } = event.target;
-
     const valid = !isNaN(Number(value)) && Number(value) > 0;
 
     validationData.duration = valid;
-    console.log('validationData=' + JSON.stringify(validationData));
-
     setFormData({ ...formData, [name]: valid ? Number(value) : value });
-    console.log('formData=' + JSON.stringify(formData));
 
     updateFormValidation();
   };
 
   const handleAddAuthorButtonClick = authorId => {
-    console.log('onAddAuthorButtonClick');
-
     const addedAuthor = authors.find(({ id }) => id === authorId);
     const availableAuthors = authors.filter(({ id }) => id !== authorId);
     const updatedAuthors = [...formData.authors, addedAuthor];
+
     setFormData({ ...formData, authors: updatedAuthors });
     setAuthors(availableAuthors);
 
-    //     console.log('formData=' + JSON.stringify(formData));
     validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 
   const handleDeleteAuthorButtonClick = authorId => {
-    console.log('onDeleteAuthorButtonClick');
-
     const deletedAuthor = formData.authors.find(({ id }) => id === authorId);
     const availableAuthors = formData.authors.filter(({ id }) => id !== authorId);
     const updatedAuthors = availableAuthors;
+
     setAuthors([...authors, deletedAuthor]);
     setFormData({ ...formData, authors: updatedAuthors });
 
-    //     console.log('formData=' + JSON.stringify(formData));
     validationData.authors = updatedAuthors.length > 0;
     updateFormValidation();
   };
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    const authors = formData.authors.map(({ id }) => id);
+    const authorIds = formData.authors.map(({ id }) => id);
 
     const fetchConfig = {
       url: APP_REQUEST_PATHS.addCourse,
       method: 'POST',
-      body: { ...formData, authors },
+      body: { ...formData, authorIds },
     };
     const { response, error } = await fetchData(fetchConfig);
 
@@ -165,7 +147,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           name='title'
           value={formData.title}
           valid={validationData.title}
-          onChange={onTitleChange}
+          onChange={handleTitleChange}
         />
         <Textarea
           labelText='Description'
@@ -173,7 +155,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           name='description'
           value={formData.description}
           valid={validationData.description}
-          onChange={onDescriptionChange}
+          onChange={handleDescriptionChange}
         />
         <Input
           labelText='Duration'
@@ -182,7 +164,7 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
           name='duration'
           value={formData.duration}
           valid={validationData.duration}
-          onChange={onDurationChange}
+          onChange={handleDurationChange}
         />
         <Button
           type='submit'
@@ -215,3 +197,5 @@ export const CourseForm = ({ allAuthors, allCourses }) => {
     </form>
   );
 };
+
+export default CourseForm;
