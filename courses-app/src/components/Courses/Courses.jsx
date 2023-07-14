@@ -11,8 +11,8 @@ import styles from './styles.module.css';
 export const Courses = () => {
   const navigate = useNavigate();
 
-  const [authors, setAuthors] = useState([]);
-  const [courses, setCourses] = useState([]);
+  const [allAuthors, setAllAuthors] = useState([]);
+  const [allCourses, setAllCourses] = useState([]);
   const [foundCourses, setFoundCourses] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export const Courses = () => {
       });
 
       if (!error && response.successful) {
-        setAuthors(response.result);
+        setAllAuthors(response.result);
       }
     };
 
@@ -34,7 +34,7 @@ export const Courses = () => {
       });
 
       if (!error && response.successful) {
-        setCourses(response.result);
+        setAllCourses(response.result);
         setFoundCourses(response.result);
       }
     };
@@ -43,7 +43,7 @@ export const Courses = () => {
     getAllCourses();
   }, []);
 
-  const authorsIdToName = new Map(authors.map(author => [author.id, author.name]));
+  const authorsIdToName = new Map(allAuthors.map(author => [author.id, author.name]));
 
   const handleCreateCourseButtonClick = () => {
     navigate(APP_URL_PATHS.createCourse);
@@ -52,7 +52,7 @@ export const Courses = () => {
   const filterCourses = searchValue => {
     const value = searchValue.toLowerCase();
 
-    return courses.filter(({id, title}) => {
+    return allCourses.filter(({ id, title }) => {
       return title.toLowerCase().includes(value) || id.includes(value);
     });
   };
@@ -61,15 +61,16 @@ export const Courses = () => {
     if (searchValue) {
       setFoundCourses(filterCourses(searchValue));
     } else {
-      setFoundCourses(courses);
+      setFoundCourses(allCourses);
     }
   };
 
   return (
     <>
       <div className={styles.panel}>
-        <Search handleSearchChange={handleSearchChange}/>
+        <Search handleSearchChange={handleSearchChange} />
       </div>
+
       <div className={styles.panel}>
         <Button
           buttonText='Add new course'

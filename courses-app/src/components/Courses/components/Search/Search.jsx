@@ -6,27 +6,13 @@ import styles from './styles.module.css';
 export const Search = ({ handleSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
-//   const handleSubmit = event => {
-//     event.preventDefault();
-//     if (searchValue) {
-//       handleSearchChange(searchValue);
-//     } else {
-//       handleSearchChange();
-//     }
-//   };
-
   const handleInputChange = event => {
-  setSearchValue(event.target.value);
-//     if (searchValue) {
-      handleSearchChange(searchValue);
-//     } else {
-//       handleSearchChange();
-//     }
-//     setSearchValue(event.target.value);
+    setSearchValue(event.target.value);
+    handleSearchChange(searchValue);
   };
 
   const handleInputClear = event => {
-  event.preventDefault();
+    event.preventDefault();
     setSearchValue('');
     handleSearchChange();
   };
@@ -44,7 +30,6 @@ export const Search = ({ handleSearchChange }) => {
       <Button
         type='text'
         buttonText='Clear'
-//         onClick={handleInputClear}
       />
     </form>
   );
