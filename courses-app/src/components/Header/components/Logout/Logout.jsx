@@ -1,4 +1,4 @@
-import { Button } from '../../../Button';
+import { Button } from '../../../../common/Button';
 import { getUserFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import styles from './styles.module.css';
 

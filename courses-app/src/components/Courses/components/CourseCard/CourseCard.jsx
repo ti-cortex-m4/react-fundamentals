@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../../../components/Button/Button';
+import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { fetchData } from '../../../../helpers/fetchData';

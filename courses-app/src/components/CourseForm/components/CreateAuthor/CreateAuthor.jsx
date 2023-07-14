@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Input } from '../../../Input/Input';
-import { Button } from '../../../Button/Button';
+import { Input } from '../../../../common/Input/Input';
+import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
 import { REQUEST_PATHS } from '../../../../constants';
 import styles from './styles.module.css';

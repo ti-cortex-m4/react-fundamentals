@@ -55,9 +55,9 @@ function App() {
     <div className='app'>
       <Header isLogged={isLogged} setIsLogged={setIsLogged} />
       <Routes>
-        <Route
-          path={'/'}
-          element={<Navigate to={'/courses'} />}
+{/*         <Route */}
+{/*           path={'/'} */}
+{/*           element={<Navigate to={'/courses'} />} */}
         />
 {/*         <Route */}
 {/*           path={APPLICATION_PATHS.login} */}

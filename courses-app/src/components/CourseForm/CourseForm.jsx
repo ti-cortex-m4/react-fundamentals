@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '../../components/Button/Button';
-import { Input } from '../../components/Input/Input';
-import { Textarea } from '../../components/Textarea/Textarea';
+import { Button } from '../../common/Button/Button';
+import { Input } from '../../common/Input/Input';
+import { Textarea } from '../../common/Textarea/Textarea';
 import CreateAuthor from "./components/CreateAuthor/CreateAuthor";
 import Authors from "./components/Authors/Authors";
 import { fetchData } from '../../helpers/fetchData';

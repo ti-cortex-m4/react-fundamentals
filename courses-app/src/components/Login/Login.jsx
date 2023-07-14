@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { Input } from '../Input';
-import { Button } from '../Button';
+import { Input } from '../../common/Input';
+import { Button } from '../../common/Button';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import { setUserToLocalStorage, setRoleToLocalStorage } from '../../helpers/localStorage';
@@ -44,20 +44,20 @@ export const Login = ({ isLogged, setIsLogged }) => {
       }
     };
 
- const getUserData = async () => {
-  const { response, error } = await fetchData({
-    url: REQUEST_PATHS.userData,
-            method: 'GET',
-  });
+    const getUserData = async () => {
+      const { response, error } = await fetchData({
+        url: REQUEST_PATHS.userData,
+        method: 'GET',
+      });
 
-  if (!error && response.successful) {
-                 const userRole = response.result?.role;
-                 setRoleToLocalStorage(userRole);
-  } else {
-          setFormValid(false);
-          alert('Reading user data failed: ' + response.result);
-  }
-};
+      if (!error && response.successful) {
+        const userRole = response.result?.role;
+        setRoleToLocalStorage(userRole);
+      } else {
+        setFormValid(false);
+        alert('Reading user data failed: ' + response.result);
+      }
+    };
     login(formData);
   };
 

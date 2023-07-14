@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { Input } from '../Input';
-import { Button } from '../Button';
+import { Input } from '../../common/Input';
+import { Button } from '../../common/Button';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import styles from './styles.module.css';
