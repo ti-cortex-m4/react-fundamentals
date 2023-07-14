@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
@@ -10,6 +10,8 @@ import styles from './styles.module.css';
 /*TODO*/
 
 export const Login = ({ isLogged, setIsLogged }) => {
+const navigate = useNavigate();
+
   const initialFormData = {
     email: '',
     password: '',
@@ -53,11 +55,14 @@ export const Login = ({ isLogged, setIsLogged }) => {
       if (!error && response.successful) {
         const userRole = response.result?.role;
         setRoleToLocalStorage(userRole);
+
+        navigate(APPLICATION_PATHS.courses);
       } else {
         setFormValid(false);
         alert('Reading user data failed: ' + response.result);
       }
     };
+
     login(formData);
   };
 
@@ -66,9 +71,9 @@ export const Login = ({ isLogged, setIsLogged }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  if (isLogged) {
-    return <Navigate to={APPLICATION_PATHS.courses} />
-  }
+//   if (isLogged) {
+//     return <Navigate to={APPLICATION_PATHS.courses} />
+//   }
 
   return (
     <div className={styles.container}>
