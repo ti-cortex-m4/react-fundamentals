@@ -5,7 +5,7 @@ import { APPLICATION_PATHS } from '../../constants';
 
 export const PrivateRoute = () => {
   const [userRole] = getRoleFromLocalStorage();
-  return userRole === 'admin' ?  <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
+  return userRole === 'admin' ? <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
 };
 
 export default PrivateRoute;

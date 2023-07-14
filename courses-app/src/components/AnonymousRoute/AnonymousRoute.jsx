@@ -5,7 +5,7 @@ import { APPLICATION_PATHS } from '../../constants';
 
 export const AnonymousRoute = () => {
   const [userRole] = getRoleFromLocalStorage();
-  return !userRole ?  <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
+  return !userRole ? <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
 };
 
 export default AnonymousRoute;
