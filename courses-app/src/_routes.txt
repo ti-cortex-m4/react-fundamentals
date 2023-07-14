@@ -46,3 +46,17 @@ const Header: React.FC<Record<string, never>> = () => {
 		</header>
 	);
 };
+
+
+const AnonymousRoute: React.FC<Record<string, never>> = () => {
+	const user = useAppSelector(selectUser);
+
+	return !user.isAuth ? <Outlet /> : <Navigate to={URL_COURSES} />;
+};
+
+
+const AuthenticatedRoute: React.FC<Record<string, never>> = () => {
+	const user = useAppSelector(selectUser);
+
+	return user.isAuth ? <Outlet /> : <Navigate to={URL_LOGIN} />;
+};
