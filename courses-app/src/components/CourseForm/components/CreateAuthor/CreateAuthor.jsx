@@ -43,7 +43,6 @@ import styles from './styles.module.css';
           onChange={handleAuthorChange}
         />
         <Button
-          type='button'
           buttonText='Create author'
           onClick={handleCreateAuthorClick}
         />

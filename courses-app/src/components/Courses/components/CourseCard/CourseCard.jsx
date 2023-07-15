@@ -72,6 +72,7 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
           {
             isAdmin() &&
             <Button
+
               buttonText='Delete course'
               onClick={() => handleDeleteButtonClick(id)}
             />

@@ -64,17 +64,20 @@ import styles from './styles.module.css';
       </div>
       <div className={styles.panel}>
         <Button
+
           buttonText='Add new course'
           onClick={handleCreateCourseButtonClick}
         />
       </div>
-      {foundCourses.map((course) => (
+      {
+      foundCourses.map((course) => (
         <CourseCard
           key={course.id}
           course={course}
           authorIdsToNames={new Map(allAuthors.map(author => [author.id, author.name]))}
         />
-      ))}
+      ))
+      }
     </>
   );
 };

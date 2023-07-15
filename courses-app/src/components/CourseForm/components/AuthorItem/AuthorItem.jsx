@@ -13,7 +13,6 @@ export const AuthorItem = ({
   <div key={authorId} className={styles.authorItem}>
     <span>{authorName}</span>
     <Button
-      type='button'
       buttonText={buttonText}
       onClick={() => handleButtonClick(authorId)}
     />

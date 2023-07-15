@@ -31,7 +31,7 @@ export const Search = ({ handleSearchChange }) => {
         onChange={handleInputChange}
       />
       <Button
-        type='text'
+        type='submit'
         buttonText='Clear'
       />
     </form>
