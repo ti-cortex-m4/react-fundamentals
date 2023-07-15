@@ -5,3 +5,4 @@ show admin name
 '/courses/add'
 '/courses/update/:courseId'
 ? search
+isAuthenticated

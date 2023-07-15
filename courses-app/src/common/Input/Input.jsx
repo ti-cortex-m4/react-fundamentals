@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 export const Input = ({
   labelText,
   placeholderText,
-  type,
+  type = 'text',
   name,
   value,
   valid,
