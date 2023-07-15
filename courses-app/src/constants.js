@@ -1,11 +1,11 @@
 export const BACKEND_PATHS = {
-  register: '/register',
-  login: '/login',
+  registerUser: '/register',
+  loginUser: '/login',
   getAllCourses: '/courses/all',
   addCourse: '/courses/add',
   getAllAuthors: '/authors/all',
   addAuthor: '/authors/add',
-  userData: '/users/me',
+  getCurrentUser: '/users/me',
   courseInfo: '/courses/',
 };
 

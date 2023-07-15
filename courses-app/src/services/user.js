@@ -1,10 +1,10 @@
 import { fetchData } from '../helpers/fetchData';
 import { BACKEND_PATHS } from '../constants';
 
-export const register = async (formData, onSuccess, onError) => {
+export const registerUser = async (formData, onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'POST',
-    url: BACKEND_PATHS.register,
+    url: BACKEND_PATHS.registerUser,
     body: formData,
   });
 
@@ -15,10 +15,10 @@ export const register = async (formData, onSuccess, onError) => {
   }
 };
 
-export const login = async (formData, onSuccess, onError) => {
+export const loginUser = async (formData, onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'POST',
-    url: BACKEND_PATHS.login,
+    url: BACKEND_PATHS.loginUser,
     body: formData,
   });
 
@@ -29,10 +29,10 @@ export const login = async (formData, onSuccess, onError) => {
   }
 };
 
-export const getUserData = async (onSuccess, onError) => {
+export const getCurrentUser = async (onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'GET',
-    url: BACKEND_PATHS.userData,
+    url: BACKEND_PATHS.getCurrentUser,
   });
 
   if (!error && response.successful) {

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { FRONTEND_PATHS } from '../../constants';
-import { login, getUserData } from '../../services/user';
+import { loginUser, getCurrentUser } from '../../services/user';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
@@ -20,7 +20,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    login(
+    loginUser(
       formData,
       (response, error) => {
         const authToken = response.result.split(' ')[1];
@@ -29,7 +29,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
         const userName = response.user?.name;
         setUserNameToLocalStorage(userName);
 
-        getUserData(
+        getCurrentUser(
           (response, error) => {
             const userRole = response.result?.role;
             setUserRoleToLocalStorage(userRole);
