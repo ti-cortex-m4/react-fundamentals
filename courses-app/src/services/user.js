@@ -14,4 +14,3 @@ export const register = async(formData, onSuccess, onError) => {
     onError(response, error);
   }
 };
-

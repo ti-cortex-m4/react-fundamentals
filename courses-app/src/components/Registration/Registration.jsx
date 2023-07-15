@@ -7,9 +7,7 @@ import { register } from '../../services/user';
 import styles from './styles.module.css';
 
 export const Registration = () => {
-const navigate = useNavigate();
-
-  const [isRegistered, setIsRegistered] = useState(false);
+  const navigate = useNavigate();
 
   const initialFormData = {
     name: '',
@@ -17,7 +15,6 @@ const navigate = useNavigate();
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
-
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
@@ -27,7 +24,6 @@ const navigate = useNavigate();
       formData,
       (response, error) => {
         setFormData(initialFormData);
-        setIsRegistered(true);
         setFormValid(true);
 
         navigate(APPLICATION_PATHS.login);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
 import { Registration } from './components/Registration/Registration';
 import { Courses } from './components/Courses';
