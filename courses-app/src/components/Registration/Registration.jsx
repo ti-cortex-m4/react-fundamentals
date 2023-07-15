@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { FRONTEND_PATHS } from '../../constants';
-import { register } from '../../services/user';
+import { registerUser } from '../../services/user';
 import styles from './styles.module.css';
 
 export const Registration = () => {
@@ -20,7 +20,7 @@ export const Registration = () => {
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    register(
+    registerUser(
       formData,
       (response, error) => {
         setFormData(initialFormData);

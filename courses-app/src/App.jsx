@@ -3,16 +3,15 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
 import { Registration } from './components/Registration/Registration';
-import { Courses } from './components/Courses';
-import { CourseInfo } from './components/CourseInfo';
-import { CourseForm } from './components/CourseForm';
+import { Courses } from './components/Courses/Courses';
+import { CourseInfo } from './components/CourseInfo/CourseInfo';
+import { CourseForm } from './components/CourseForm/CourseForm';
 import { AnonymousRoute } from './components/AnonymousRoute/AnonymousRoute';
 import { AuthenticatedRoute } from './components/AuthenticatedRoute/AuthenticatedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
-// import { fetchData } from './helpers/fetchData';
 import { FRONTEND_PATHS } from './constants';
 
 /*TODO*/
