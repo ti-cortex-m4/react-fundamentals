@@ -2,23 +2,27 @@ const AUTH_TOKEN = 'authToken';
 const USER_NAME = 'userName';
 const USER_ROLE = 'userRole';
 
-export const getUserFromLocalStorage = () => {
-  const authToken = localStorage.getItem(AUTH_TOKEN);
-  const userName = localStorage.getItem(USER_NAME);
-  return [authToken, userName];
+export const getAuthTokenFromLocalStorage = () => {
+  return localStorage.getItem(AUTH_TOKEN);
 }
 
-export const getRoleFromLocalStorage = () => {
-  const userRole = localStorage.getItem(USER_ROLE);
-  return [userRole];
+export const getUserNameFromLocalStorage = () => {
+  return localStorage.getItem(USER_NAME);
 }
 
-export const setUserToLocalStorage = (authToken, userName) => {
+export const getUserRoleFromLocalStorage = () => {
+  return localStorage.getItem(USER_ROLE);
+}
+
+export const setAuthTokenToLocalStorage = (authToken) => {
   localStorage.setItem(AUTH_TOKEN, authToken);
+}
+
+export const setUserNameToLocalStorage = (userName) => {
   localStorage.setItem(USER_NAME, userName);
 }
 
-export const setRoleToLocalStorage = (userRole) => {
+export const setUserRoleToLocalStorage = (userRole) => {
   localStorage.setItem(USER_ROLE, userRole);
 }
 

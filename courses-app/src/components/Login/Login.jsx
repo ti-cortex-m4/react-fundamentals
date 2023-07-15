@@ -4,7 +4,7 @@ import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
-import { setUserToLocalStorage, setRoleToLocalStorage } from '../../helpers/localStorage';
+import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
 
 /*TODO*/
@@ -31,8 +31,9 @@ const navigate = useNavigate();
 
       if (!error && response.successful) {
         const authToken = response.result.split(' ')[1];
+        setAuthTokenToLocalStorage(authToken);
         const userName = response.user?.name;
-        setUserToLocalStorage(authToken, userName);
+        setUserNameToLocalStorage(userName);
 
         setFormData(initialFormData);
         setIsLogged(true);
@@ -54,7 +55,7 @@ const navigate = useNavigate();
 
       if (!error && response.successful) {
         const userRole = response.result?.role;
-        setRoleToLocalStorage(userRole);
+        setUserRoleToLocalStorage(userRole);
 
         navigate(APPLICATION_PATHS.courses);
       } else {

@@ -1,4 +1,4 @@
-import { getUserFromLocalStorage } from './localStorage';
+import { getAuthTokenFromLocalStorage } from './localStorage';
 import { REQUEST_URL } from '../constants';
 //const { get } = HTTP_METHODS;
 
@@ -9,7 +9,7 @@ import { REQUEST_URL } from '../constants';
     body
   } = config;
 
-  const [authToken, userName] = getUserFromLocalStorage();
+  const authToken = getAuthTokenFromLocalStorage();
 
   const requestHeaders = new Headers({
     'Authorization': `Bearer ${authToken}`,

@@ -1,10 +1,10 @@
 import { Button } from '../../../../common/Button';
-import { getUserFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
+import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import styles from './styles.module.css';
 
 /* TODO */
 export const Logout = ({ setIsLogged }) => {
-  const [, userName] = getUserFromLocalStorage();
+  const userName = getUserNameFromLocalStorage();
 
   const handleLogoutButtonClick = () => {
     removeUserFromLocalStorage();

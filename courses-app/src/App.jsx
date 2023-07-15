@@ -9,7 +9,7 @@ import { CourseForm } from './components/CourseForm';
 import { AnonymousRoute } from './components/AnonymousRoute/AnonymousRoute';
 import { AuthenticatedRoute } from './components/AuthenticatedRoute/AuthenticatedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
-import { getUserFromLocalStorage } from './helpers/localStorage';
+import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
 import { fetchData } from './helpers/fetchData';
@@ -22,7 +22,7 @@ function App() {
   const [allCourses, setAllCourses] = useState([]);
 
   useEffect(() => {
-    const [authToken, userName] = getUserFromLocalStorage();
+    const authToken = getAuthTokenFromLocalStorage();
     if (authToken) {
       setIsLogged(true);
     }
