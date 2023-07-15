@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+import { login, getUserData } from '../../services/user';
 import { fetchData } from '../../helpers/fetchData';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
@@ -10,13 +11,14 @@ import styles from './styles.module.css';
 /*TODO*/
 
 export const Login = ({ isLogged, setIsLogged }) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const initialFormData = {
     email: '',
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
+
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
@@ -64,17 +66,44 @@ const navigate = useNavigate();
       }
     };
 
-    login(formData);
+    login(
+      formData,
+      (response, error) => {
+        const authToken = response.result.split(' ')[1];
+        setAuthTokenToLocalStorage(authToken);
+
+        const userName = response.user?.name;
+        setUserNameToLocalStorage(userName);
+
+        setFormData(initialFormData);
+        setIsLogged(true);
+
+        setFormValid(true);
+
+        getUserData(
+          (response, error) => {
+            const userRole = response.result?.role;
+            setUserRoleToLocalStorage(userRole);
+
+            navigate(FRONTEND_PATHS.courses);
+          },
+          (response, error) => {
+            setFormValid(false);
+            alert('Reading user data failed: ' + response.result);
+          }
+        );
+      },
+      (response, error) => {
+        setFormValid(false);
+        alert('Login failed: ' + response.result);
+      }
+    );
   };
 
   const handleFormChange = event => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-
-//   if (isLogged) {
-//     return <Navigate to={FRONTEND_PATHS.courses} />
-//   }
 
   return (
     <div className={styles.container}>
