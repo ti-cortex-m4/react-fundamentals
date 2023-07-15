@@ -10,7 +10,7 @@ import { FRONTEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';
 
-/* TODO */ export const CourseCard = ({ course, authorIdsToNames }) => {
+export const CourseCard = ({ course, authorIdsToNames }) => {
   const {
     id,
     title,
@@ -32,9 +32,9 @@ import styles from './styles.module.css';
 
   const handleDeleteButtonClick = (courseId) => {
     deleteCourse(
-    courseId,
-     (response, error) => {navigate(FRONTEND_PATHS.courses)},
-     (response, error) => {}
+      courseId,
+      (response, error) => { navigate(FRONTEND_PATHS.courses) },
+      (response, error) => { }
     );
   };
 
@@ -62,17 +62,19 @@ import styles from './styles.module.css';
             buttonText='Show course'
             onClick={handleShowButtonClick}
           />
-          { isAdmin() &&
-          <Button
-            buttonText='Edit course'
-            onClick={handleUpdateButtonClick}
-          />
+          {
+            isAdmin() &&
+            <Button
+              buttonText='Edit course'
+              onClick={handleUpdateButtonClick}
+            />
           }
-           { isAdmin() &&
-          <Button
-            buttonText='Delete course'
-            onClick={() => handleDeleteButtonClick(id)}
-          />
+          {
+            isAdmin() &&
+            <Button
+              buttonText='Delete course'
+              onClick={() => handleDeleteButtonClick(id)}
+            />
           }
         </div>
       </div>

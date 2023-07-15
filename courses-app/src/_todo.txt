@@ -1,0 +1,3 @@
+delete course update
+`/courses/update/${id}` etc
+show admin name
