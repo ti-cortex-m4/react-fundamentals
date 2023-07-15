@@ -1,14 +1,19 @@
 import { Button } from '../../../../common/Button';
+import { useNavigate } from 'react-router-dom';
 import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
+import { FRONTEND_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
-/* TODO */
 export const Logout = ({ setIsLogged }) => {
+  const navigate = useNavigate();
+
   const userName = getUserNameFromLocalStorage();
 
   const handleLogoutButtonClick = () => {
     removeUserFromLocalStorage();
     setIsLogged(false);
+
+    navigate(FRONTEND_PATHS.login);
   };
 
   return (
