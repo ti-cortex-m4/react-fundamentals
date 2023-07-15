@@ -6,3 +6,7 @@ show admin name
 '/courses/update/:courseId'
 ? search
 isAuthenticated
+const className = valid ? styles.valid : styles.invalid;
+CourseForm create update
+CreateAuthor
+authors={authors.filter(author => !formData.authors.includes(author))}
