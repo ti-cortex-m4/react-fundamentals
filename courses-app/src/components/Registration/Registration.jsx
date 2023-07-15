@@ -2,42 +2,38 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
-import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
-import { fetchData } from '../../helpers/fetchData';
+import { APPLICATION_PATHS } from '../../constants';
+import { register } from '../../services/user';
 import styles from './styles.module.css';
 
 export const Registration = () => {
   const [isRegistered, setIsRegistered] = useState(false);
+
   const initialFormData = {
     name: '',
     email: '',
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
+
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const register = async (formData) => {
-      const { response, error } = await fetchData({
-        url: REQUEST_PATHS.register,
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!error && response.successful) {
+    register(
+    formData,
+     (response, error) => {
         setFormData(initialFormData);
         setIsRegistered(true);
 
         setFormValid(true);
-      } else {
-        setFormValid(false);
-        alert('Registration failed: ' + response.errors);
+     },
+      (response, error) => {
+              setFormValid(false);
+              alert('Registration failed: ' + response.errors);
       }
-    };
-
-    register(formData);
+    );
   };
 
   const handleFormChange = event => {
