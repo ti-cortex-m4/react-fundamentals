@@ -7,6 +7,7 @@ import { Textarea } from '../../common/Textarea/Textarea';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
+import { getAllAuthors } from '../../services/author';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
 import styles from './styles.module.css';
@@ -36,19 +37,13 @@ import styles from './styles.module.css';
   const [authors, setAuthors] = useState([]);
 
   useEffect(() => {
-    const getAllAuthors = async () => {
-      const { response, error } = await fetchData({
-        method: 'GET',
-        url: BACKEND_PATHS.getAllAuthors,
-      });
-
-      if (!error && response.successful) {
+    getAllAuthors(
+      (response, error) => {
         setAuthors(response.result);
         setIsAuthorAdded(false);
-      }
-    };
-
-    getAllAuthors();
+      },
+      (response, error) => { }
+    );
   }, [isAuthorAdded]);
 
   const updateFormValidation = () => {
