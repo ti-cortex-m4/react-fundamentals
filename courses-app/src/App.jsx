@@ -10,6 +10,7 @@ import { AnonymousRoute } from './components/AnonymousRoute/AnonymousRoute';
 import { AuthenticatedRoute } from './components/AuthenticatedRoute/AuthenticatedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getUserFromLocalStorage } from './helpers/localStorage';
+import { getAllCourses } from './services/course';
 import { fetchData } from './helpers/fetchData';
 import { APPLICATION_PATHS, REQUEST_PATHS } from './constants';
 
@@ -36,19 +37,22 @@ function App() {
       }
     };
 
-    const getAllCourses = async () => {
-      const { response, error } = await fetchData({
-        method: 'GET',
-        url: REQUEST_PATHS.getAllCourses,
-      });
-
-      if (!error && response.successful) {
-        setAllCourses(response.result);
-      }
-    };
+//     const getAllCourses = async () => {
+//       const { response, error } = await fetchData({
+//         method: 'GET',
+//         url: REQUEST_PATHS.getAllCourses,
+//       });
+//
+//       if (!error && response.successful) {
+//         setAllCourses(response.result);
+//       }
+//     };
 
     getAllAuthors();
-    getAllCourses();
+    getAllCourses(
+     (response, error) => {setAllCourses(response.result)},
+     (response, error) => {}
+    );
   }, []);
 
   return (
