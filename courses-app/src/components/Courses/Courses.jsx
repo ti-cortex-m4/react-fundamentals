@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
-import { fetchData } from '../../helpers/fetchData';
-import { FRONTEND_PATHS, BACKEND_PATHS } from '../../constants';
+import { FRONTEND_PATHS } from '../../constants';
+import { getAllAuthors } from '../../services/author';
+import { getAllCourses } from '../../services/course';
 
 import styles from './styles.module.css';
 
@@ -18,31 +19,14 @@ import styles from './styles.module.css';
   const [foundCourses, setFoundCourses] = useState([]);
 
   useEffect(() => {
-    const getAllAuthors = async () => {
-      const { response, error } = await fetchData({
-        method: 'GET',
-        url: BACKEND_PATHS.getAllAuthors,
-      });
-
-      if (!error && response.successful) {
-        setAllAuthors(response.result);
-      }
-    };
-
-    const getAllCourses = async () => {
-      const { response, error } = await fetchData({
-        method: 'GET',
-        url: BACKEND_PATHS.getAllCourses,
-      });
-
-      if (!error && response.successful) {
-        setAllCourses(response.result);
-        setFoundCourses(response.result);
-      }
-    };
-
-    getAllAuthors();
-    getAllCourses();
+    getAllAuthors(
+      (response, error) => { setAllAuthors(response.result) },
+      (response, error) => { }
+    );
+    getAllCourses(
+      (response, error) => { setAllCourses(response.result); setFoundCourses(response.result); },
+      (response, error) => { }
+    );
   }, []);
 
   const handleCreateCourseButtonClick = () => {
@@ -51,7 +35,7 @@ import styles from './styles.module.css';
 
   const handleSearchChange = searchValue => {
     if (searchValue) {
-      setFoundCourses( allCourses.filter(({ id, title }) => (title.toLowerCase().includes(searchValue.toLowerCase()) || id.includes(searchValue.toLowerCase()))) );
+      setFoundCourses(allCourses.filter(({ id, title }) => (title.toLowerCase().includes(searchValue.toLowerCase()) || id.includes(searchValue.toLowerCase()))));
     } else {
       setFoundCourses(allCourses);
     }
@@ -70,13 +54,13 @@ import styles from './styles.module.css';
         />
       </div>
       {
-      foundCourses.map((course) => (
-        <CourseCard
-          key={course.id}
-          course={course}
-          authorIdsToNames={new Map(allAuthors.map(author => [author.id, author.name]))}
-        />
-      ))
+        foundCourses.map((course) => (
+          <CourseCard
+            key={course.id}
+            course={course}
+            authorIdsToNames={new Map(allAuthors.map(author => [author.id, author.name]))}
+          />
+        ))
       }
     </>
   );
