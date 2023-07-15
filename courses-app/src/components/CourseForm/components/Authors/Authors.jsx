@@ -1,7 +1,7 @@
 import { AuthorItem } from '../AuthorItem/AuthorItem';
 import styles from './styles.module.css';
 
-/* TODO */ export const Authors = ({
+export const Authors = ({
   authors,
   buttonText,
   handleButtonClick,
@@ -9,11 +9,10 @@ import styles from './styles.module.css';
   return (
     <div>
       {
-        (authors.length > 0) &&
-        authors.map(({ name, id }) => (
+        authors.map(({ id, name }) => (
           <AuthorItem
-            id={id}
-            name={name}
+            authorId={id}
+            authorName={name}
             buttonText={buttonText}
             handleButtonClick={() => handleButtonClick(id)}
           />
