@@ -1,3 +1,6 @@
 delete course update
 `/courses/update/${id}` etc
 show admin name
+'/courses/:courseId'
+'/courses/add'
+'/courses/update/:courseId'

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
 import { Registration } from './components/Registration/Registration';
@@ -14,9 +15,9 @@ import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
 import { FRONTEND_PATHS } from './constants';
 
-/*TODO*/
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+
   const [allAuthors, setAllAuthors] = useState([]);
   const [allCourses, setAllCourses] = useState([]);
 
@@ -27,12 +28,12 @@ function App() {
     }
 
     getAllAuthors(
-     (response, error) => {setAllAuthors(response.result)},
-     (response, error) => {}
+      (response, error) => { setAllAuthors(response.result) },
+      (response, error) => { }
     );
     getAllCourses(
-     (response, error) => {setAllCourses(response.result)},
-     (response, error) => {}
+      (response, error) => { setAllCourses(response.result) },
+      (response, error) => { }
     );
   }, []);
 
@@ -48,7 +49,7 @@ function App() {
           <Route path='' element={<Registration />} />
         </Route>
 
-        <Route path={'/courses'} element={<AuthenticatedRoute />} >
+        <Route path={FRONTEND_PATHS.courses} element={<AuthenticatedRoute />} >
           <Route path='' element={<Courses />} />
         </Route>
         <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
@@ -62,7 +63,7 @@ function App() {
           <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
         </Route>
 
-        <Route path={'*'} element={<Navigate to={'/courses'} />} />
+        <Route path={'*'} element={<Navigate to={FRONTEND_PATHS.courses} />} />
       </Routes>
     </div>
   );
