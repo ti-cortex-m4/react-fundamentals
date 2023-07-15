@@ -24,7 +24,7 @@ export const AUTHORS_DELETE_ENDPOINT = '/authors';
 export const USER_ENDPOINT = '/users/me';
 */
 
-/* TODO */ export const BACKEND_URL = 'http://localhost:4000';
+//export const BACKEND_URL = 'http://localhost:4000';
 
 export const BACKEND_PATHS = {
   register: '/register',

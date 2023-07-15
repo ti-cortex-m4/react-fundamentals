@@ -14,7 +14,7 @@ export const Logout = ({ setIsLogged }) => {
   return (
     <div className={styles.userContainer}>
       <div className={styles.userName}>
-        {userName ? userName : 'Admin'}
+        {userName}
       </div>
       <Button
         buttonText='Logout'

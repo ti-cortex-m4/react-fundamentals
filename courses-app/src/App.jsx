@@ -12,8 +12,8 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
-import { fetchData } from './helpers/fetchData';
-import { FRONTEND_PATHS, BACKEND_PATHS } from './constants';
+// import { fetchData } from './helpers/fetchData';
+import { FRONTEND_PATHS } from './constants';
 
 /*TODO*/
 function App() {
