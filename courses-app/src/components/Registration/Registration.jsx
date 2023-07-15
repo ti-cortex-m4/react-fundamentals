@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
 import { APPLICATION_PATHS } from '../../constants';
@@ -7,6 +7,8 @@ import { register } from '../../services/user';
 import styles from './styles.module.css';
 
 export const Registration = () => {
+const navigate = useNavigate();
+
   const [isRegistered, setIsRegistered] = useState(false);
 
   const initialFormData = {
@@ -22,16 +24,17 @@ export const Registration = () => {
     event.preventDefault();
 
     register(
-    formData,
-     (response, error) => {
+      formData,
+      (response, error) => {
         setFormData(initialFormData);
         setIsRegistered(true);
-
         setFormValid(true);
-     },
+
+        navigate(APPLICATION_PATHS.login);
+      },
       (response, error) => {
-              setFormValid(false);
-              alert('Registration failed: ' + response.errors);
+        setFormValid(false);
+        alert('Registration failed: ' + response.errors);
       }
     );
   };
@@ -40,10 +43,6 @@ export const Registration = () => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  if (isRegistered) {
-    return <Navigate to={APPLICATION_PATHS.login} />
-  }
 
   return (
     <div className={styles.container}>
