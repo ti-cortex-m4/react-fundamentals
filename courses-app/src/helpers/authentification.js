@@ -1,5 +1,5 @@
 import { getUserRoleFromLocalStorage } from './localStorage';
 
-export const isAdmin = () => {
+export const isAdministrator = () => {
   return 'admin' === getUserRoleFromLocalStorage();
 }

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
-import { isAdmin } from '../../../../helpers/authentification';
+import { isAdministrator } from '../../../../helpers/authentification';
 import { deleteCourse } from '../../../../services/course';
 import { FRONTEND_PATHS } from '../../../../constants';
 
@@ -63,14 +63,14 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
             onClick={handleShowButtonClick}
           />
           {
-            isAdmin() &&
+            isAdministrator() &&
             <Button
               buttonText='Edit course'
               onClick={handleUpdateButtonClick}
             />
           }
           {
-            isAdmin() &&
+            isAdministrator() &&
             <Button
               buttonText='Delete course'
               onClick={() => handleDeleteButtonClick(id)}

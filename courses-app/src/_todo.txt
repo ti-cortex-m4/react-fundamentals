@@ -4,3 +4,4 @@ show admin name
 '/courses/:courseId'
 '/courses/add'
 '/courses/update/:courseId'
+? search
