@@ -4,7 +4,7 @@ import { BACKEND_PATHS } from '../constants';
 export const getAllAuthors = async (onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'GET',
-    url: BACKEND_PATHS.getAllAuthors,
+    url: '/authors/all',
   });
 
   if (!error && response.successful) {

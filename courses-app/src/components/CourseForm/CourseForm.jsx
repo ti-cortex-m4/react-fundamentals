@@ -8,7 +8,7 @@ import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
-import { addCourse } from '../../services/course';
+import { addCourse, updateCourse } from '../../services/course';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
 import styles from './styles.module.css';
@@ -110,13 +110,24 @@ import styles from './styles.module.css';
     const body = { ...formData, authors };
     console.log('save course body ' + JSON.stringify(body));
 
-    addCourse(
-     body,
-      (response, error) => {
-      navigate(FRONTEND_PATHS.courses);
-      },
-      (response, error) => { }
-    );
+    if (courseId) {
+      updateCourse(
+       courseId,
+       body,
+        (response, error) => {
+        navigate(FRONTEND_PATHS.courses);
+        },
+        (response, error) => { }
+      );
+    } else {
+      addCourse(
+       body,
+        (response, error) => {
+        navigate(FRONTEND_PATHS.courses);
+        },
+        (response, error) => { }
+      );
+    }
   };
 
   return (
