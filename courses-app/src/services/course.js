@@ -13,3 +13,16 @@ export const getAllCourses = async (onSuccess, onError) => {
     onError(response, error);
   }
 };
+
+export const deleteCourse = async (courseId, onSuccess, onError) => {
+  const { response, error } = await fetchData({
+    method: 'DELETE',
+    url: '/courses/' + courseId,
+  });
+
+  if (!error && response.successful) {
+    onSuccess(response, error);
+  } else {
+    onError(response, error);
+  }
+};

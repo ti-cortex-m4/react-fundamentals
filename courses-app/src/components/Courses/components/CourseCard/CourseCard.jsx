@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
-import { fetchData } from '../../../../helpers/fetchData';
+import { deleteCourse } from '../../../../services/course';
 import { APPLICATION_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
@@ -17,10 +17,6 @@ import styles from './styles.module.css';
     authors
   } = course;
 
-  const formattedAuthors = authors
-    .map(authorId => authorIdsToNames.get(authorId))
-    .join(', ');
-
   const navigate = useNavigate();
 
   const handleShowButtonClick = () => {
@@ -31,19 +27,12 @@ import styles from './styles.module.css';
     navigate(`/courses/update/${id}`);
   };
 
-  const handleDeleteButtonClick = (id) => {
-    const deleteCourse = async (id) => {
-      const { response, error } = await fetchData({
-        method: 'DELETE',
-        url: '/courses/' + id,
-      });
-
-      if (!error && response.successful) {
-        navigate(APPLICATION_PATHS.courses);
-      }
-    };
-
-    deleteCourse(id);
+  const handleDeleteButtonClick = (courseId) => {
+    deleteCourse(
+    courseId,
+     (response, error) => {navigate(APPLICATION_PATHS.courses)},
+     (response, error) => {}
+    );
   };
 
   return (
@@ -55,7 +44,7 @@ import styles from './styles.module.css';
       <div className={styles.cardDetails}>
         <p>
           <b>Authors: </b>
-          <span>{formattedAuthors}</span>
+          <span>{authors.map(authorId => authorIdsToNames.get(authorId)).join(', ')}</span>
         </p>
         <p>
           <b>Duration: </b>
