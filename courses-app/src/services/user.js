@@ -1,7 +1,7 @@
 import { fetchData } from '../helpers/fetchData';
 import { BACKEND_PATHS } from '../constants';
 
-export const register = async(formData, onSuccess, onError) => {
+export const register = async (formData, onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'POST',
     url: BACKEND_PATHS.register,
@@ -15,44 +15,29 @@ export const register = async(formData, onSuccess, onError) => {
   }
 };
 
-    const login = async (formData) => {
-      const { response, error } = await fetchData({
-        url: BACKEND_PATHS.login,
-        method: 'POST',
-        body: formData,
-      });
+export const login = async (formData, onSuccess, onError) => {
+  const { response, error } = await fetchData({
+    method: 'POST',
+    url: BACKEND_PATHS.login,
+    body: formData,
+  });
 
-      if (!error && response.successful) {
-        const authToken = response.result.split(' ')[1];
-        setAuthTokenToLocalStorage(authToken);
-        const userName = response.user?.name;
-        setUserNameToLocalStorage(userName);
+  if (!error && response.successful) {
+    onSuccess(response, error);
+  } else {
+    onError(response, error);
+  }
+};
 
-        setFormData(initialFormData);
-        setIsLogged(true);
+export const getUserData = async (onSuccess, onError) => {
+  const { response, error } = await fetchData({
+    method: 'GET',
+    url: BACKEND_PATHS.userData,
+  });
 
-        setFormValid(true);
-
-        getUserData();
-      } else {
-        setFormValid(false);
-        alert('Login failed: ' + response.result);
-      }
-    };
-
-    const getUserData = async () => {
-      const { response, error } = await fetchData({
-        url: BACKEND_PATHS.userData,
-        method: 'GET',
-      });
-
-      if (!error && response.successful) {
-        const userRole = response.result?.role;
-        setUserRoleToLocalStorage(userRole);
-
-        navigate(FRONTEND_PATHS.courses);
-      } else {
-        setFormValid(false);
-        alert('Reading user data failed: ' + response.result);
-      }
-    };
+  if (!error && response.successful) {
+    onSuccess(response, error);
+  } else {
+    onError(response, error);
+  }
+};
