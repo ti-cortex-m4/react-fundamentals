@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../common/Button';
 import { CourseCard } from './components/CourseCard';
-import { Search } from './components/Search';
+import { Search } from './components/Search/Search';
 import { fetchData } from '../../helpers/fetchData';
 import { APPLICATION_PATHS, REQUEST_PATHS } from '../../constants';
 import styles from './styles.module.css';

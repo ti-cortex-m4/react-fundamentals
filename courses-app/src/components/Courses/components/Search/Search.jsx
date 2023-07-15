@@ -3,7 +3,7 @@ import { Button } from '../../../../common/Button/Button';
 import { Input } from '../../../../common/Input/Input';
 import styles from './styles.module.css';
 
-/* TODO */ export const Search = ({ handleSearchChange }) => {
+export const Search = ({ handleSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = event => {
@@ -13,6 +13,7 @@ import styles from './styles.module.css';
 
   const handleInputClear = event => {
     event.preventDefault();
+
     setSearchValue('');
     handleSearchChange();
   };
