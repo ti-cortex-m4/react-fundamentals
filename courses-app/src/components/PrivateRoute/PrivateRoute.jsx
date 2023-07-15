@@ -5,7 +5,7 @@ import { isAdministrator } from '../../helpers/authentification';
 import { FRONTEND_PATHS } from '../../constants';
 
 export const PrivateRoute = () => {
-  return isAdministrator ? <Outlet /> : <Navigate to={FRONTEND_PATHS.courses} />;
+  return isAdministrator() ? <Outlet /> : <Navigate to={FRONTEND_PATHS.courses} />;
 };
 
 export default PrivateRoute;
