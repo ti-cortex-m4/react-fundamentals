@@ -1,10 +1,10 @@
 import { fetchData } from '../helpers/fetchData';
-import { REQUEST_PATHS } from '../constants';
+import { BACKEND_PATHS } from '../constants';
 
 export const getAllCourses = async (onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'GET',
-    url: REQUEST_PATHS.getAllCourses,
+    url: BACKEND_PATHS.getAllCourses,
   });
 
   if (!error && response.successful) {

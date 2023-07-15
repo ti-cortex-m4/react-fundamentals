@@ -4,7 +4,7 @@ import { Button } from '../../common/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../helpers/fetchData';
-import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
+import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 export const CourseInfo = ({ allAuthors }) => {
@@ -26,7 +26,7 @@ export const CourseInfo = ({ allAuthors }) => {
     const getCourseInfo = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: REQUEST_PATHS.courseInfo + courseId,
+        url: BACKEND_PATHS.courseInfo + courseId,
       });
 
       if (!error && response.successful) {
@@ -38,7 +38,7 @@ export const CourseInfo = ({ allAuthors }) => {
   }, [courseId]);
 
   const handleBackButtonClick = () => {
-    navigate(APPLICATION_PATHS.courses);
+    navigate(FRONTEND_PATHS.courses);
   };
 
   return (

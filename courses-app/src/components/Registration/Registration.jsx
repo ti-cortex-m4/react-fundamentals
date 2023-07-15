@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
-import { APPLICATION_PATHS } from '../../constants';
+import { FRONTEND_PATHS } from '../../constants';
 import { register } from '../../services/user';
 import styles from './styles.module.css';
 
@@ -26,7 +26,7 @@ export const Registration = () => {
         setFormData(initialFormData);
         setFormValid(true);
 
-        navigate(APPLICATION_PATHS.login);
+        navigate(FRONTEND_PATHS.login);
       },
       (response, error) => {
         setFormValid(false);
@@ -78,7 +78,7 @@ export const Registration = () => {
       </form>
       <p>
         If you have an account you can&nbsp;
-        <Link to={APPLICATION_PATHS.login}>login</Link>
+        <Link to={FRONTEND_PATHS.login}>login</Link>
       </p>
     </div>
   );

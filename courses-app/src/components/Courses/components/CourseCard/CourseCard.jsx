@@ -4,7 +4,7 @@ import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { deleteCourse } from '../../../../services/course';
-import { APPLICATION_PATHS } from '../../../../constants';
+import { FRONTEND_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
 /* TODO */ export const CourseCard = ({ course, authorIdsToNames }) => {
@@ -30,7 +30,7 @@ import styles from './styles.module.css';
   const handleDeleteButtonClick = (courseId) => {
     deleteCourse(
     courseId,
-     (response, error) => {navigate(APPLICATION_PATHS.courses)},
+     (response, error) => {navigate(FRONTEND_PATHS.courses)},
      (response, error) => {}
     );
   };

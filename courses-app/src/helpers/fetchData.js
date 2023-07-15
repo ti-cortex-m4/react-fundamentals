@@ -1,5 +1,5 @@
 import { getAuthTokenFromLocalStorage } from './localStorage';
-import { REQUEST_URL } from '../constants';
+import { BACKEND_URL } from '../constants';
 //const { get } = HTTP_METHODS;
 
 /* TODO */ export const fetchData = async config => {
@@ -19,9 +19,9 @@ import { REQUEST_URL } from '../constants';
   let response;
   let error;
 
-// `${process.env.REQUEST_URL}`
+// `${process.env.BACKEND_URL}`
   try {
-    const promise = await fetch(REQUEST_URL + url, {
+    const promise = await fetch(BACKEND_URL + url, {
       method,
       headers: requestHeaders,
       body: JSON.stringify(body),

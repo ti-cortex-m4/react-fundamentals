@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
-import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
+import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
@@ -24,7 +24,7 @@ const navigate = useNavigate();
 
     const login = async (formData) => {
       const { response, error } = await fetchData({
-        url: REQUEST_PATHS.login,
+        url: BACKEND_PATHS.login,
         method: 'POST',
         body: formData,
       });
@@ -49,7 +49,7 @@ const navigate = useNavigate();
 
     const getUserData = async () => {
       const { response, error } = await fetchData({
-        url: REQUEST_PATHS.userData,
+        url: BACKEND_PATHS.userData,
         method: 'GET',
       });
 
@@ -57,7 +57,7 @@ const navigate = useNavigate();
         const userRole = response.result?.role;
         setUserRoleToLocalStorage(userRole);
 
-        navigate(APPLICATION_PATHS.courses);
+        navigate(FRONTEND_PATHS.courses);
       } else {
         setFormValid(false);
         alert('Reading user data failed: ' + response.result);
@@ -73,7 +73,7 @@ const navigate = useNavigate();
   };
 
 //   if (isLogged) {
-//     return <Navigate to={APPLICATION_PATHS.courses} />
+//     return <Navigate to={FRONTEND_PATHS.courses} />
 //   }
 
   return (
@@ -105,7 +105,7 @@ const navigate = useNavigate();
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to={APPLICATION_PATHS.registration}>register</Link>
+        <Link to={FRONTEND_PATHS.registration}>register</Link>
       </p>
     </div>
   );

@@ -13,7 +13,7 @@ import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
 import { fetchData } from './helpers/fetchData';
-import { APPLICATION_PATHS, REQUEST_PATHS } from './constants';
+import { FRONTEND_PATHS, BACKEND_PATHS } from './constants';
 
 /*TODO*/
 function App() {
@@ -42,10 +42,10 @@ function App() {
       <Header isLogged={isLogged} setIsLogged={setIsLogged} />
 
       <Routes>
-        <Route path={APPLICATION_PATHS.login} element={<AnonymousRoute />} >
+        <Route path={FRONTEND_PATHS.login} element={<AnonymousRoute />} >
           <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
         </Route>
-        <Route path={APPLICATION_PATHS.registration} element={<AnonymousRoute />} >
+        <Route path={FRONTEND_PATHS.registration} element={<AnonymousRoute />} >
           <Route path='' element={<Registration />} />
         </Route>
 

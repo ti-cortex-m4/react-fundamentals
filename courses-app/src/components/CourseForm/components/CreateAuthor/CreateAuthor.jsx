@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
-import { REQUEST_PATHS } from '../../../../constants';
+import { BACKEND_PATHS } from '../../../../constants';
 import styles from './styles.module.css';
 
 /* TODO */ export const CreateAuthor = ({ setIsAuthorAdded }) => {
@@ -12,7 +12,7 @@ import styles from './styles.module.css';
     if (author) {
       const { response, error } = await fetchData({
         method: 'POST',
-        url: REQUEST_PATHS.addAuthor,
+        url: BACKEND_PATHS.addAuthor,
         body: { name: author },
       });
 

@@ -6,7 +6,7 @@ import { Textarea } from '../../common/Textarea/Textarea';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
-import { REQUEST_PATHS, APPLICATION_PATHS } from '../../constants';
+import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 import styles from './styles.module.css';
 
 /* TODO */ export const CourseForm = ({ allAuthors, allCourses }) => {
@@ -37,7 +37,7 @@ import styles from './styles.module.css';
     const getAllAuthors = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: REQUEST_PATHS.getAllAuthors,
+        url: BACKEND_PATHS.getAllAuthors,
       });
 
       if (!error && response.successful) {
@@ -108,14 +108,14 @@ import styles from './styles.module.css';
     const authorIds = formData.authors.map(({ id }) => id);
 
     const fetchConfig = {
-      url: REQUEST_PATHS.addCourse,
+      url: BACKEND_PATHS.addCourse,
       method: 'POST',
       body: { ...formData, authorIds },
     };
     const { response, error } = await fetchData(fetchConfig);
 
     if (!error && response.successful) {
-      navigate(APPLICATION_PATHS.courses);
+      navigate(FRONTEND_PATHS.courses);
     }
   };
 

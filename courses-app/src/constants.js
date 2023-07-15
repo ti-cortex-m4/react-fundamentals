@@ -24,9 +24,9 @@ export const AUTHORS_DELETE_ENDPOINT = '/authors';
 export const USER_ENDPOINT = '/users/me';
 */
 
-/* TODO */ export const REQUEST_URL = 'http://localhost:4000';
+/* TODO */ export const BACKEND_URL = 'http://localhost:4000';
 
-export const REQUEST_PATHS = {
+export const BACKEND_PATHS = {
   register: '/register',
   login: '/login',
   getAllCourses: '/courses/all',
@@ -37,7 +37,7 @@ export const REQUEST_PATHS = {
   courseInfo: '/courses/',
 };
 
-/* TODO */ export const APPLICATION_PATHS = {
+/* TODO */ export const FRONTEND_PATHS = {
   root: '/',
   registration: '/registration',
   login: '/login',
