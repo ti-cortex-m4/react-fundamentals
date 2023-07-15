@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Input } from '../../common/Input';
-import { Button } from '../../common/Button';
+import { Input } from '../../common/Input/Input';
+import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
 import { loginUser, getCurrentUser } from '../../services/user';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';

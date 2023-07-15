@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
+
 import { getUserRoleFromLocalStorage } from '../../helpers/localStorage';
 import { FRONTEND_PATHS } from '../../constants';
 

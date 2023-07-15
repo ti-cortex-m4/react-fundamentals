@@ -1,4 +1,4 @@
-import { Button } from '../../../../common/Button';
+import { Button } from '../../../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import { FRONTEND_PATHS } from '../../../../constants';
