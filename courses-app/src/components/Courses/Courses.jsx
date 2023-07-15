@@ -48,7 +48,6 @@ import styles from './styles.module.css';
       </div>
       <div className={styles.panel}>
         <Button
-
           buttonText='Add new course'
           onClick={handleCreateCourseButtonClick}
         />
