@@ -1,8 +1,10 @@
 import { useState } from 'react';
+
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
 import { BACKEND_PATHS } from '../../../../constants';
+
 import styles from './styles.module.css';
 
 /* TODO */ export const CreateAuthor = ({ setIsAuthorAdded }) => {

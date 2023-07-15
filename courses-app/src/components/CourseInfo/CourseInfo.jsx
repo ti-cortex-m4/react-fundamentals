@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { Button } from '../../common/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../helpers/fetchData';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+
 import styles from './styles.module.css';
 
 export const CourseInfo = ({ allAuthors }) => {

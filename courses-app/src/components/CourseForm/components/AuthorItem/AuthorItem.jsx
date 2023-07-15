@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Button } from '../../../../common/Button/Button';
+
 import styles from './styles.module.css';
 
 export const AuthorItem = ({

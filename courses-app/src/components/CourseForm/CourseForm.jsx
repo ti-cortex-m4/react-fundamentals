@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
@@ -7,6 +8,7 @@ import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+
 import styles from './styles.module.css';
 
 /* TODO */ export const CourseForm = ({ allAuthors, allCourses }) => {

@@ -1,7 +1,9 @@
-import { Button } from '../../../../common/Button/Button';
 import { useNavigate } from 'react-router-dom';
+
+import { Button } from '../../../../common/Button/Button';
 import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import { FRONTEND_PATHS } from '../../../../constants';
+
 import styles from './styles.module.css';
 
 export const Logout = ({ setIsLogged }) => {

@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
 import { fetchData } from '../../helpers/fetchData';
 import { FRONTEND_PATHS, BACKEND_PATHS } from '../../constants';
+
 import styles from './styles.module.css';
 
 /* TODO */ export const Courses = () => {
