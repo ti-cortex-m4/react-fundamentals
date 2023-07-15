@@ -32,7 +32,7 @@ export const loginUser = async (body, onSuccess, onError) => {
 export const getCurrentUser = async (onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'GET',
-    url: BACKEND_PATHS.getCurrentUser,
+    url: '/users/me',
   });
 
   if (!error && response.successful) {

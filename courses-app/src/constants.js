@@ -5,7 +5,7 @@ export const BACKEND_PATHS = {
 //  addCourse: '/courses/add',
 //  getAllAuthors: '/authors/all',
   addAuthor: '/authors/add',
-  getCurrentUser: '/users/me',
+//  getCurrentUser: '/users/me',
   courseInfo: '/courses/',
 };
 
