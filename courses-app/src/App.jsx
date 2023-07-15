@@ -56,7 +56,7 @@ function App() {
           <Route path='' element={<CourseInfo allAuthors={allAuthors} />} />
         </Route>
 
-        <Route path={'/courses/add'} element={<PrivateRoute />} >
+        <Route path={FRONTEND_PATHS.createCourse} element={<PrivateRoute />} >
           <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
         </Route>
         <Route path={'/courses/update/:courseId'} element={<PrivateRoute />} >

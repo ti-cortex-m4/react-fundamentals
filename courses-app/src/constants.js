@@ -14,6 +14,6 @@ export const FRONTEND_PATHS = {
   register: '/register',
   login: '/login',
   courses: '/courses',
-  addCourse: '/courses/add',
+  createCourse: '/courses/add',
   courseInfo: '/courses/:courseId',
 };

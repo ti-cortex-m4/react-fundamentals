@@ -14,10 +14,11 @@ export const getAllCourses = async (onSuccess, onError) => {
   }
 };
 
-export const saveCourse = async (body, onSuccess, onError) => {
+export const addCourse = async (body, onSuccess, onError) => {
   const { response, error } = await fetchData({
-    method: 'DELETE',
-    url: '/courses/' + courseId,
+      method: 'POST',
+      url: BACKEND_PATHS.addCourse,
+      body: body,
   });
 
   if (!error && response.successful) {

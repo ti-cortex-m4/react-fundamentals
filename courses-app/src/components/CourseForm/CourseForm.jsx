@@ -8,6 +8,7 @@ import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
+import { addCourse } from '../../services/course';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
 import styles from './styles.module.css';
@@ -102,18 +103,18 @@ import styles from './styles.module.css';
 
   const handleFormSubmit = async event => {
     event.preventDefault();
+
     const authorIds = formData.authors.map(({ id }) => id);
+    const body = { ...formData, authorIds };
+    console.log('save course body ' + JSON.stringify(body));
 
-    const fetchConfig = {
-      url: BACKEND_PATHS.addCourse,
-      method: 'POST',
-      body: { ...formData, authorIds },
-    };
-    const { response, error } = await fetchData(fetchConfig);
-
-    if (!error && response.successful) {
+    addCourse(
+     body,
+      (response, error) => {
       navigate(FRONTEND_PATHS.courses);
-    }
+      },
+      (response, error) => { }
+    );
   };
 
   return (
