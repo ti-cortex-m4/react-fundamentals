@@ -104,8 +104,10 @@ import styles from './styles.module.css';
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const authorIds = formData.authors.map(({ id }) => id);
-    const body = { ...formData, authorIds };
+    console.log('authors1 ' + JSON.stringify(formData.authors));
+    const authors = formData.authors.map(({ id }) => id);
+    console.log('authors2 ' + JSON.stringify(authors));
+    const body = { ...formData, authors };
     console.log('save course body ' + JSON.stringify(body));
 
     addCourse(
