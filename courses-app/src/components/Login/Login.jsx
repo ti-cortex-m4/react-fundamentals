@@ -2,13 +2,10 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from '../../common/Input';
 import { Button } from '../../common/Button';
-import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+import { FRONTEND_PATHS } from '../../constants';
 import { login, getUserData } from '../../services/user';
-import { fetchData } from '../../helpers/fetchData';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 import styles from './styles.module.css';
-
-/*TODO*/
 
 export const Login = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
@@ -18,53 +15,10 @@ export const Login = ({ isLogged, setIsLogged }) => {
     password: '',
   };
   const [formData, setFormData] = useState(initialFormData);
-
   const [formValid, setFormValid] = useState(true);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-
-    const login = async (formData) => {
-      const { response, error } = await fetchData({
-        url: BACKEND_PATHS.login,
-        method: 'POST',
-        body: formData,
-      });
-
-      if (!error && response.successful) {
-        const authToken = response.result.split(' ')[1];
-        setAuthTokenToLocalStorage(authToken);
-        const userName = response.user?.name;
-        setUserNameToLocalStorage(userName);
-
-        setFormData(initialFormData);
-        setIsLogged(true);
-
-        setFormValid(true);
-
-        getUserData();
-      } else {
-        setFormValid(false);
-        alert('Login failed: ' + response.result);
-      }
-    };
-
-    const getUserData = async () => {
-      const { response, error } = await fetchData({
-        url: BACKEND_PATHS.userData,
-        method: 'GET',
-      });
-
-      if (!error && response.successful) {
-        const userRole = response.result?.role;
-        setUserRoleToLocalStorage(userRole);
-
-        navigate(FRONTEND_PATHS.courses);
-      } else {
-        setFormValid(false);
-        alert('Reading user data failed: ' + response.result);
-      }
-    };
 
     login(
       formData,
@@ -75,15 +29,14 @@ export const Login = ({ isLogged, setIsLogged }) => {
         const userName = response.user?.name;
         setUserNameToLocalStorage(userName);
 
-        setFormData(initialFormData);
-        setIsLogged(true);
-
-        setFormValid(true);
-
         getUserData(
           (response, error) => {
             const userRole = response.result?.role;
             setUserRoleToLocalStorage(userRole);
+
+            setFormData(initialFormData);
+            setIsLogged(true);
+            setFormValid(true);
 
             navigate(FRONTEND_PATHS.courses);
           },
