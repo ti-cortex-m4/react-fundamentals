@@ -11,6 +11,15 @@ CourseForm create update
 CreateAuthor
 authors={authors.filter(author => !formData.authors.includes(author))}
 
+    style={{
+      width: width ? `${width}rem` : '8rem',
+      margin: margin ? `${margin}px` : 0,
+    }}
+
+    "uuid": "^9.0.0",
+<span key={uuidv4()}>
+import { v4 as uuidv4 } from 'uuid';
+
 AuthController {}
 Mapped {/login, POST} route
 Mapped {/register, POST} route
