@@ -1,13 +1,13 @@
 import apiService from '../services';
 import {
-  saveUserAction,
-  logoutUserAction,
-  loginUserAction,
-  setLoginErrorAction,
-  registrationErrorAction,
-  successfullRegistrationAction,
+//  saveUserAction,
+//  logoutUserAction,
+//  loginUserAction,
+//  setLoginErrorAction,
+//  registrationErrorAction,
+//  successfullRegistrationAction,
 } from './actions';
-import getUserFromLocalStorage from '../../helpers/getUserFromLocalStorage';
+//import getUserFromLocalStorage from '../../helpers/getUserFromLocalStorage';
 
 export const login = (email, password) => {
   return async (dispatch) => {
