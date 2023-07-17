@@ -1,28 +1,31 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
+import { addCourse, updateCourse } from '../../_store/courses/thunk';
 import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';
 
-/* TODO */ export const CreateAuthor = ({ setIsAuthorAdded }) => {
-  const [author, setAuthor] = useState('');
+/* TODO */ export const CreateAuthor = (/*{ setIsAuthorAdded }*/) => {
+  const [name, setName] = useState('');
 
-  const handleCreateAuthorClick = async () => {
-    if (author) {
-      const { response, error } = await fetchData({
-        method: 'POST',
-        url: BACKEND_PATHS.addAuthor,
-        body: { name: author },
-      });
-
-      if (!error && response.successful) {
-        setIsAuthorAdded(true);
-        setAuthor('');
-      }
-    }
+  const handleCreateAuthorClick = () => {
+    dispatch(addAuthor(name));
+//     if (author) {
+//       const { response, error } = await fetchData({
+//         method: 'POST',
+//         url: BACKEND_PATHS.addAuthor,
+//         body: { name: author },
+//       });
+//
+//       if (!error && response.successful) {
+//         setIsAuthorAdded(true);
+//         setAuthor('');
+//       }
+//     }
   };
 
   const handleAuthorChange = event => {
@@ -37,8 +40,8 @@ import styles from './styles.module.css';
           labelText='Author name'
           placeholderText='Enter author name...'
           type='text'
-          name='author'
-          value={author}
+          name='name'
+          value={name}
           valid={true}
           onChange={handleAuthorChange}
         />

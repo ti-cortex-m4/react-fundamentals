@@ -10,7 +10,7 @@ import {
 export const getCourses = () => {
   return courseService.getAllCourses(
     body,
-    (response, error) => {
+    (response,) => {
       dispatch(saveCoursesAction(response.result));
     },
     (response, error) => {
@@ -22,7 +22,7 @@ export const getCourses = () => {
 export const addCourse = (body) => {
   return courseService.addCourse(
     body,
-    (response, error) => {
+    (response,) => {
       dispatch(addCourseAction(body));
     },
     (response, error) => {
@@ -35,7 +35,7 @@ export const updateCourse = (courseId, body) => {
   return courseService.updateCourse(
     courseId,
     body,
-    (response, error) => {
+    (response,) => {
       dispatch(updateCourseAction(body));
     },
     (response, error) => {
@@ -47,7 +47,7 @@ export const updateCourse = (courseId, body) => {
 export const deleteCourse = (id) => {
   return courseService.deleteCourse(
     courseId,
-    (response, error) => {
+    (response,) => {
       dispatch(deleteCourseAction(id));
     },
     (response, error) => {

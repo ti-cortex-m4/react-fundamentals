@@ -1,19 +1,30 @@
-import apiService from '../services';
-import { saveAuthorsAction, addAuthorAction } from './actions';
+import { addAuthor, updateAuthor } from '../../services/author';
+
+import {
+  saveAuthorsAction,
+  addAuthorAction,
+} from './actions';
 
 export const getAuthors = () => {
-  return async (dispatch) => {
-    const response = await apiService.getAllAuthors();
-    const data = await response.json();
-
-    dispatch(saveAuthorsAction(data.result));
-  };
+  return authorService.getAllAuthors(
+    body,
+    (response,) => {
+      dispatch(saveAuthorsAction(response.result));
+    },
+    (response, error) => {
+      alert('Get all authors error: ' + (error || response));
+    }
+  );
 };
 
-export const addAuthor = (name) => {
-  return async (dispatch) => {
-    const response = await apiService.addAuthor(name);
-    const data = await response.json();
-    dispatch(addAuthorAction(data.result));
-  };
+export const addAuthor = (body) => {
+  return authorService.addAuthor(
+    body,
+    (response,) => {
+      dispatch(addAuthorAction(body));
+    },
+    (response, error) => {
+      alert('Add author error: ' + (error || response));
+    }
+  );
 };

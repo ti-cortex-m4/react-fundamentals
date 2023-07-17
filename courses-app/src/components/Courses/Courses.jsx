@@ -1,19 +1,22 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
 import { FRONTEND_PATHS } from '../../constants';
 
+import { getAuthorsSelector } from '../../_store/authors/selectors';
 import { getCoursesSelector } from '../../_store/courses/selectors';
 
 import styles from './styles.module.css';
 
-export const Courses = ({ allAuthors }) => {
+export const Courses = () => {
   const navigate = useNavigate();
 
+  const allAuthors = useSelector(getAuthorsSelector);
   const allCourses = useSelector(getCoursesSelector);
 
   const [foundCourses, setFoundCourses] = useState();

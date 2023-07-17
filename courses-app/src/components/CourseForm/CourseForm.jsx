@@ -10,7 +10,7 @@ import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
-import { addCourse, updateCourse } from '../../services/course';
+// import { addCourse, updateCourse } from '../../services/course';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
 // import { addCourseAction } from '../../_store/courses/actions';
@@ -25,11 +25,11 @@ import styles from './styles.module.css';
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const allAuthors = useSelector(getAuthorsSelector);
+  const allCourses = useSelector(getCoursesSelector);
+
   const { courseId } = useParams();
   const updatingCourse = allCourses.find((course) => course.id === courseId);
-
-  const authors = useSelector(getAuthorsSelector);
-  const courses = useSelector(getCoursesSelector);
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',
@@ -49,15 +49,15 @@ import styles from './styles.module.css';
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
 
-  useEffect(() => {
-    getAllAuthors(
-      (response, error) => {
-        setAuthors(response.result);
-        setIsAuthorAdded(false);
-      },
-      (response, error) => { }
-    );
-  }, [isAuthorAdded]);
+//   useEffect(() => {
+//     getAllAuthors(
+//       (response, error) => {
+//         setAuthors(response.result);
+//         setIsAuthorAdded(false);
+//       },
+//       (response, error) => { }
+//     );
+//   }, [isAuthorAdded]);
 
   const updateFormValidation = () => {
     setIsFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
@@ -198,7 +198,7 @@ import styles from './styles.module.css';
             handleButtonClick={handleDeleteAuthorButtonClick}
           />
         </div>
-        <CreateAuthor setIsAuthorAdded={setIsAuthorAdded} />
+        <CreateAuthor /*setIsAuthorAdded={setIsAuthorAdded}*/ />
       </div>
     </form>
   );

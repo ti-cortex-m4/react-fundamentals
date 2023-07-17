@@ -65,7 +65,7 @@ function App() {
         </Route>
 
         <Route path={FRONTEND_PATHS.courses} element={<AuthenticatedRoute />} >
-          <Route path='' element={<Courses allAuthors={allAuthors} />} />
+          <Route path='' element={<Courses />} />
         </Route>
         <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
           <Route path='' element={<CourseInfo allAuthors={allAuthors} />} />

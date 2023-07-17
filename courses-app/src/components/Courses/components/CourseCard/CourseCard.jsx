@@ -6,7 +6,7 @@ import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { isAdministrator } from '../../../../helpers/authentification';
-import { deleteCourse } from '../../../../services/course';
+// import { deleteCourse } from '../../../../services/course';
 import { FRONTEND_PATHS } from '../../../../constants';
 
 import { deleteCourse } from '../../../../_store/courses/thunk';
@@ -36,7 +36,7 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
 
   const handleDeleteButtonClick = (courseId) => {
     dispatch(deleteCourse(courseId));
-    // TODO navigate(FRONTEND_PATHS.courses)
+    navigate(FRONTEND_PATHS.courses); // TODO ?
 
 //     deleteCourse(
 //       courseId,
