@@ -1,4 +1,3 @@
-//import apiService from '../services';
 import { addCourse, updateCourse } from '../../services/course';
 
 import {
@@ -9,12 +8,15 @@ import {
 } from './actions';
 
 export const getCourses = () => {
-  return async (dispatch) => {
-    const response = await apiService.getAllCourses();
-    const data = await response.json();
-
-    dispatch(saveCoursesAction(data.result));
-  };
+  return courseService.getAllCourses(
+        body,
+         (response, error) => {
+           dispatch(saveCoursesAction(response.result));
+         },
+         (response, error) => {
+           alert('Get all courses error: ' + (error ||response));
+         }
+  );
 };
 
 export const addCourse = (body) => {

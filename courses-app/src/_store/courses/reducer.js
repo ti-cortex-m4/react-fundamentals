@@ -9,7 +9,7 @@ export const initialCoursesState = [];
 
 const coursesReducer = (state = initialCoursesState, action) => {
   switch (action.type) {
-    case SAVE_ALL_COURSES: {
+    case SAVE_COURSES: {
       return action.payload;
     }
     case ADD_COURSE: {
