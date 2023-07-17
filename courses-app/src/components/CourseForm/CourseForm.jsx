@@ -11,13 +11,21 @@ import { getAllAuthors } from '../../services/author';
 import { addCourse, updateCourse } from '../../services/course';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
+// import { addCourseAction } from '../../_store/courses/actions';
+// import { addAuthorAction } from '../../_store/authors/actions';
+import { getAuthorsSelector } from '../../_store/authors/selectors';
+import { getCoursesSelector } from '../../_store/courses/selectors';
+
 import styles from './styles.module.css';
 
-/* TODO */ export const CourseForm = ({ allAuthors, allCourses }) => {
+/* TODO */ export const CourseForm = () => {
   const navigate = useNavigate();
-  const { courseId } = useParams();
 
+  const { courseId } = useParams();
   const updatingCourse = allCourses.find((course) => course.id === courseId);
+
+  const authors = useSelector(getAuthorsSelector);
+  const courses = useSelector(getCoursesSelector);
 
   const [formData, setFormData] = useState({
     title: courseId ? updatingCourse.title : '',

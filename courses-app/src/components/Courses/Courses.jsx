@@ -7,10 +7,14 @@ import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
 import { FRONTEND_PATHS } from '../../constants';
 
+import { getCoursesSelector } from '../../_store/courses/selectors';
+
 import styles from './styles.module.css';
 
-export const Courses = ({ allAuthors, allCourses }) => {
+export const Courses = ({ allAuthors }) => {
   const navigate = useNavigate();
+
+  const allCourses = useSelector(getCoursesSelector);
 
   const [foundCourses, setFoundCourses] = useState();
 

@@ -50,17 +50,17 @@ function App() {
         </Route>
 
         <Route path={FRONTEND_PATHS.courses} element={<AuthenticatedRoute />} >
-          <Route path='' element={<Courses allAuthors={allAuthors} allCourses={allCourses} />} />
+          <Route path='' element={<Courses allAuthors={allAuthors} />} />
         </Route>
         <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
           <Route path='' element={<CourseInfo allAuthors={allAuthors} />} />
         </Route>
 
         <Route path={FRONTEND_PATHS.createCourse} element={<PrivateRoute />} >
-          <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
+          <Route path='' element={<CourseForm />} />
         </Route>
         <Route path={'/courses/update/:courseId'} element={<PrivateRoute />} >
-          <Route path='' element={<CourseForm allAuthors={allAuthors} allCourses={allCourses} />} />
+          <Route path='' element={<CourseForm />} />
         </Route>
 
         <Route path={'*'} element={<Navigate to={FRONTEND_PATHS.courses} />} />
