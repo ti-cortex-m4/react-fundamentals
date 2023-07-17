@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { Header } from './components/Header/Header';
 import { Login } from './components/Login/Login';
@@ -15,7 +16,12 @@ import { getAllAuthors } from './services/author';
 import { getAllCourses } from './services/course';
 import { FRONTEND_PATHS } from './constants';
 
+import { saveCoursesAction } from './_store/courses/actions';
+import { saveAuthorsAction } from './_store/authors/actions';
+
 function App() {
+  const dispatch = useDispatch();
+
   const [isLogged, setIsLogged] = useState(false);
 
   const [allAuthors, setAllAuthors] = useState([]);
@@ -36,6 +42,23 @@ function App() {
       (response, error) => { }
     );
   }, []);
+
+  useEffect(() => {
+    const getAuthors = async () => {
+      const response = await apiService.getAuthors();
+      const data = await response.json();
+      dispatch(saveAuthorsAction(data.result));
+    };
+
+    const getAllCourses = async () => {
+      const response = await apiService.getCourses();
+      const data = await response.json();
+      dispatch(saveCoursesAction(data.result));
+    };
+
+    getAllAuthors();
+    getAllCourses();
+  }, [dispatch]);
 
   return (
     <div className='app'>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
@@ -20,6 +22,7 @@ import styles from './styles.module.css';
 
 /* TODO */ export const CourseForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { courseId } = useParams();
   const updatingCourse = allCourses.find((course) => course.id === courseId);
