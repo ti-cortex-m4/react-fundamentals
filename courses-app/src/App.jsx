@@ -36,29 +36,17 @@ function App() {
 
   useEffect(() => {
     getAllAuthors(
-      (response, error) => {
-        setAllAuthors(response.result)
+      (response, ) => {
+        dispatch(saveAllAuthorsAction(response.result));
       },
       (response, error) => { }
     );
     getAllCourses(
       (response, error) => {
-        setAllCourses(response.result)
+        dispatch(saveAllCoursesAction(response.result));
       },
       (response, error) => { }
     );
-
-    const getAuthors = async () => {
-      const response = await apiService.getAuthors();
-      const data = await response.json();
-      dispatch(saveAuthorsAction(data.result));
-    };
-
-    const getAllCourses = async () => {
-      const response = await apiService.getCourses();
-      const data = await response.json();
-      dispatch(saveCoursesAction(data.result));
-    };
 
     getAllAuthors();
     getAllCourses();
