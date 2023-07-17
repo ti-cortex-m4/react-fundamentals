@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
 import { registerUser } from '../../services/user';
+
+import { register } from '../../_store/user/thunk';
+import { registrationErrorAction, successfullRegistrationAction} from '../../_store/user/actions';
+import { getUserSelector } from '../../_store/user/selectors';
 
 import styles from './styles.module.css';
 
