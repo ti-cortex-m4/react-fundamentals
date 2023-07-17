@@ -1,4 +1,6 @@
-import apiService from '../services';
+//import apiService from '../services';
+import { addCourse, updateCourse } from '../../services/course';
+
 import {
   saveCoursesAction,
   addCourseAction,

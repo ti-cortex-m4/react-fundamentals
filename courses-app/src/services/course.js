@@ -1,7 +1,9 @@
 import { fetchData } from '../helpers/fetchData';
 import { BACKEND_PATHS } from '../constants';
 
-export const getAllCourses = async (onSuccess, onError) => {
+class CourseService {
+
+getAllCourses = async (onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'GET',
     url: '/courses/all',
@@ -12,9 +14,9 @@ export const getAllCourses = async (onSuccess, onError) => {
   } else {
     onError(response, error);
   }
-};
+}
 
-export const addCourse = async (body, onSuccess, onError) => {
+ addCourse = async (body, onSuccess, onError) => {
   const { response, error } = await fetchData({
       method: 'POST',
       url: '/courses/add',
@@ -26,9 +28,9 @@ export const addCourse = async (body, onSuccess, onError) => {
   } else {
     onError(response, error);
   }
-};
+}
 
-export const updateCourse = async (courseId, body, onSuccess, onError) => {
+ updateCourse = async (courseId, body, onSuccess, onError) => {
   const { response, error } = await fetchData({
       method: 'PUT',
       url: '/courses/' + courseId,
@@ -40,9 +42,9 @@ export const updateCourse = async (courseId, body, onSuccess, onError) => {
   } else {
     onError(response, error);
   }
-};
+}
 
-export const deleteCourse = async (courseId, onSuccess, onError) => {
+ deleteCourse = async (courseId, onSuccess, onError) => {
   const { response, error } = await fetchData({
     method: 'DELETE',
     url: '/courses/' + courseId,
@@ -53,4 +55,9 @@ export const deleteCourse = async (courseId, onSuccess, onError) => {
   } else {
     onError(response, error);
   }
-};
+}
+}
+
+const courseService = new CourseService();
+
+export default courseService;

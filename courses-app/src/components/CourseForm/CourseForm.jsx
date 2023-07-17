@@ -17,6 +17,7 @@ import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 // import { addAuthorAction } from '../../_store/authors/actions';
 import { getAuthorsSelector } from '../../_store/authors/selectors';
 import { getCoursesSelector } from '../../_store/courses/selectors';
+import { addCourse, updateCourse } from '../../_store/courses/thunk';
 
 import styles from './styles.module.css';
 
@@ -115,30 +116,35 @@ import styles from './styles.module.css';
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    console.log('authors1 ' + JSON.stringify(formData.authors));
     const authors = formData.authors.map(({ id }) => id);
-    console.log('authors2 ' + JSON.stringify(authors));
     const body = { ...formData, authors };
-    console.log('save course body ' + JSON.stringify(body));
+
+//     if (courseId) {
+//       updateCourse(
+//        courseId,
+//        body,
+//         (response, error) => {
+//         navigate(FRONTEND_PATHS.courses);
+//         },
+//         (response, error) => { }
+//       );
+//     } else {
+//       addCourse(
+//        body,
+//         (response, error) => {
+//         navigate(FRONTEND_PATHS.courses);
+//         },
+//         (response, error) => { }
+//       );
+//     }
 
     if (courseId) {
-      updateCourse(
-       courseId,
-       body,
-        (response, error) => {
-        navigate(FRONTEND_PATHS.courses);
-        },
-        (response, error) => { }
-      );
+      dispatch(updateCourse(courseId, body));
     } else {
-      addCourse(
-       body,
-        (response, error) => {
-        navigate(FRONTEND_PATHS.courses);
-        },
-        (response, error) => { }
-      );
+      dispatch(addCourse(body));
     }
+
+    navigate(FRONTEND_PATHS.courses);
   };
 
   return (
