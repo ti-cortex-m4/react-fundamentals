@@ -24,26 +24,30 @@ function App() {
 
   const [isLogged, setIsLogged] = useState(false);
 
-  const [allAuthors, setAllAuthors] = useState([]);
-  const [allCourses, setAllCourses] = useState([]);
+//   const [allAuthors, setAllAuthors] = useState([]);
+//   const [allCourses, setAllCourses] = useState([]);
 
   useEffect(() => {
     const authToken = getAuthTokenFromLocalStorage();
     if (authToken) {
       setIsLogged(true);
     }
-
-    getAllAuthors(
-      (response, error) => { setAllAuthors(response.result) },
-      (response, error) => { }
-    );
-    getAllCourses(
-      (response, error) => { setAllCourses(response.result) },
-      (response, error) => { }
-    );
   }, []);
 
   useEffect(() => {
+    getAllAuthors(
+      (response, error) => {
+        setAllAuthors(response.result)
+      },
+      (response, error) => { }
+    );
+    getAllCourses(
+      (response, error) => {
+        setAllCourses(response.result)
+      },
+      (response, error) => { }
+    );
+
     const getAuthors = async () => {
       const response = await apiService.getAuthors();
       const data = await response.json();
