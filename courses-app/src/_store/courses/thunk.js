@@ -4,8 +4,8 @@ import { addCourse, updateCourse } from '../../services/course';
 import {
   saveCoursesAction,
   addCourseAction,
+  updateCourseAction,
   deleteCourseAction,
-  updateCorseAction,
 } from './actions';
 
 export const getCourses = () => {
@@ -17,44 +17,39 @@ export const getCourses = () => {
   };
 };
 
-export const addCourse = (title, description, duration, authors) => {
-  return async (dispatch) => {
-    const response = await apiService.addCourse(
-      title,
-      description,
-      duration,
-      authors
-    );
-    const data = await response.json();
-    if (data.successful) {
-      dispatch(
-        addCourseAction({
-          title,
-          description,
-          duration,
-          authors,
-        })
-      );
-    }
-  };
+export const addCourse = (body) => {
+  return courseService.addCourse(
+        body,
+         (response, error) => {
+           dispatch(addCourseAction(body));
+         },
+         (response, error) => {
+           alert('Add course error: ' + (error ||response));
+         }
+  );
 };
 
-export const updateCourse = (id, body) => {
-  return async (dispatch) => {
-    const response = await apiService.updateCourse(id, body);
-    const data = await response.json();
-
-    if (data.successful) {
-      dispatch(updateCorseAction(data.result));
-    }
-  };
+export const updateCourse = (courseId, body) => {
+  return courseService.updateCourse(
+        courseId,
+        body,
+         (response, error) => {
+           dispatch(updateCourseAction(body));
+         },
+         (response, error) => {
+           alert('Update course error: ' + (error ||response));
+         }
+  );
 };
 
 export const deleteCourse = (id) => {
-  return async (dispatch) => {
-    const response = await apiService.deleteCourse(id);
-    if (response.status === 200) {
-      dispatch(deleteCourseAction(id));
-    }
-  };
+  return   courseService.deleteCourse(
+       courseId,
+       (response, error) => {
+         dispatch(deleteCourseAction(id));
+       },
+       (response, error) => {
+           alert('Delete course error: ' + (error ||response));
+       }
+     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
@@ -7,6 +8,8 @@ import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { isAdministrator } from '../../../../helpers/authentification';
 import { deleteCourse } from '../../../../services/course';
 import { FRONTEND_PATHS } from '../../../../constants';
+
+import { deleteCourse } from '../../../../_store/courses/thunk';
 
 import styles from './styles.module.css';
 
@@ -21,6 +24,7 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
   } = course;
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleShowButtonClick = () => {
     navigate(`/courses/${id}`);
@@ -31,11 +35,14 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
   };
 
   const handleDeleteButtonClick = (courseId) => {
-    deleteCourse(
-      courseId,
-      (response, error) => { navigate(FRONTEND_PATHS.courses) },
-      (response, error) => { }
-    );
+    dispatch(deleteCourse(courseId));
+    // TODO navigate(FRONTEND_PATHS.courses)
+
+//     deleteCourse(
+//       courseId,
+//       (response, error) => { navigate(FRONTEND_PATHS.courses) },
+//       (response, error) => { }
+//     );
   };
 
   return (
