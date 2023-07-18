@@ -1,5 +1,5 @@
 //import apiService from '../services';
-import { registerUser, loginUser } from '../../services/user';
+import { userService } from '../../services/user';
 import {
 //  saveUserAction,
 //  logoutUserAction,
@@ -41,7 +41,7 @@ export const login = (email, password) => {
 
 export const registerUser = (body) => {
  return (dispatch) => { 
-  courseService.registerUser(
+  userService.registerUser(
     body,
     (response,) => {
       if (data.successful) {
@@ -57,15 +57,44 @@ export const registerUser = (body) => {
  } 
 };
 
+export const getCurrentUser = () => {
+ return (dispatch) => {
+  userService.getCurrentUser(
+    (response,) => {
+      if (data.successful) {
+         const authToken = response.result.split(' ')[1];
+         setAuthTokenToLocalStorage(authToken);
+
+         const userName = response.user?.name;
+         setUserNameToLocalStorage(userName);
+
+        dispatch(getCurrentUser());
+      } else {
+        dispatch(loginResultAction(false));
+      }
+    },
+    (response, error) => {
+      console.log('Get current user error: ' + (error || response));
+    }
+  );
+ }
+};
+
 export const loginUser = (body) => {
  return (dispatch) => {
-  courseService.loginUser(
+  userService.loginUser(
     body,
     (response,) => {
       if (data.successful) {
-        dispatch(registerResultAction(true));
+         const authToken = response.result.split(' ')[1];
+         setAuthTokenToLocalStorage(authToken);
+
+         const userName = response.user?.name;
+         setUserNameToLocalStorage(userName);
+
+        dispatch(getCurrentUser());
       } else {
-        dispatch(registerResultAction(false));
+        dispatch(loginResultAction(false));
       }
     },
     (response, error) => {

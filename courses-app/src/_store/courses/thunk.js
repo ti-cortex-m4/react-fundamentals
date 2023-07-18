@@ -1,4 +1,4 @@
-import { addCourse, updateCourse } from '../../services/course';
+import { courseService } from '../../services/course';
 
 import {
   saveCoursesAction,

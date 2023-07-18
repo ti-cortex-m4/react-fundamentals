@@ -1,4 +1,4 @@
-import { addAuthor, updateAuthor } from '../../services/author';
+import { authorService } from '../../services/author';
 
 import {
   saveAuthorsAction,
