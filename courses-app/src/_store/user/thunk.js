@@ -40,7 +40,7 @@ export const login = (email, password) => {
 };
 
 export const registerUser = (body) => {
- return (dispatch) => { 
+ return async (dispatch) => {
   userService.registerUser(
     body,
     (response,) => {
@@ -55,7 +55,7 @@ export const registerUser = (body) => {
 };
 
 export const getCurrentUser = () => {
- return (dispatch) => {
+ return async (dispatch) => {
   userService.getCurrentUser(
     (response,) => {
       const userRole = response.result?.role;
@@ -72,7 +72,7 @@ export const getCurrentUser = () => {
 };
 
 export const loginUser = (body) => {
- return (dispatch) => {
+ return async (dispatch) => {
   userService.loginUser(
     body,
     (response,) => {

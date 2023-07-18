@@ -6,7 +6,7 @@ import {
 } from './actions';
 
 export const getAuthors = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     authorService.getAllAuthors(
       body,
       (response,) => {
@@ -20,7 +20,7 @@ export const getAuthors = () => {
 };
 
 export const addAuthor = (body) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     authorService.addAuthor(
       body,
       (response,) => {

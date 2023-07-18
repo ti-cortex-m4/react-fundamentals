@@ -8,7 +8,7 @@ import {
 } from './actions';
 
 export const getCourses = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     courseService.getAllCourses(
       body,
       (response,) => {
@@ -22,7 +22,7 @@ export const getCourses = () => {
 };
 
 export const addCourse = (body) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     courseService.addCourse(
       body,
       (response,) => {
@@ -36,7 +36,7 @@ export const addCourse = (body) => {
 };
 
 export const updateCourse = (courseId, body) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     courseService.updateCourse(
       courseId,
       body,
@@ -51,7 +51,7 @@ export const updateCourse = (courseId, body) => {
 };
 
 export const deleteCourse = (id) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     courseService.deleteCourse(
       courseId,
       (response,) => {
