@@ -8,50 +8,58 @@ import {
 } from './actions';
 
 export const getCourses = () => {
-  return courseService.getAllCourses(
-    body,
-    (response,) => {
-      dispatch(saveCoursesAction(response.result));
-    },
-    (response, error) => {
-      alert('Get all courses error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    courseService.getAllCourses(
+      body,
+      (response,) => {
+        dispatch(saveCoursesAction(response.result));
+      },
+      (response, error) => {
+        console.log('Get all courses error: ' + (error || response));
+      }
+    );
+  }
 };
 
 export const addCourse = (body) => {
-  return courseService.addCourse(
-    body,
-    (response,) => {
-      dispatch(addCourseAction(body));
-    },
-    (response, error) => {
-      alert('Add course error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    courseService.addCourse(
+      body,
+      (response,) => {
+        dispatch(addCourseAction(body));
+      },
+      (response, error) => {
+        console.log('Add course error: ' + (error || response));
+      }
+    );
+  }
 };
 
 export const updateCourse = (courseId, body) => {
-  return courseService.updateCourse(
-    courseId,
-    body,
-    (response,) => {
-      dispatch(updateCourseAction(body));
-    },
-    (response, error) => {
-      alert('Update course error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    courseService.updateCourse(
+      courseId,
+      body,
+      (response,) => {
+        dispatch(updateCourseAction(body));
+      },
+      (response, error) => {
+        console.log('Update course error: ' + (error || response));
+      }
+    );
+  }
 };
 
 export const deleteCourse = (id) => {
-  return courseService.deleteCourse(
-    courseId,
-    (response,) => {
-      dispatch(deleteCourseAction(id));
-    },
-    (response, error) => {
-      alert('Delete course error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    courseService.deleteCourse(
+      courseId,
+      (response,) => {
+        dispatch(deleteCourseAction(id));
+      },
+      (response, error) => {
+        console.log('Delete course error: ' + (error || response));
+      }
+    );
+  }
 };

@@ -53,18 +53,6 @@ export const registerUser = (body) => {
       alert('Register user error: ' + (error || response));
     }
   );
-
-
-//  return async (dispatch) => {
-//    const response = await apiService.registration(name, email, password);
-//    const data = await response.json();
-//
-//    if (data.successful) {
-//      dispatch(successfullRegistrationAction(true));
-//    } else {
-//      dispatch(registrationErrorAction(true));
-//    }
-//  };
 };
 
 export const getLoggedUser = () => {

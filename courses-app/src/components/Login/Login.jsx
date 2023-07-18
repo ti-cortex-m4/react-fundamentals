@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
-import { loginUser, getCurrentUser } from '../../services/user';
+// import { loginUser, getCurrentUser } from '../../services/user';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
+
+import { loginUser } from '../../_store/user/thunk';
+import { loginSuccessAction } from '../../_store/user/actions';
+import { getUserSelector } from '../../_store/user/selectors';
 
 import styles from './styles.module.css';
 
 export const Login = ({ isLogged, setIsLogged }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const initialFormData = {
@@ -22,37 +28,38 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    loginUser(
-      formData,
-      (response, error) => {
-        const authToken = response.result.split(' ')[1];
-        setAuthTokenToLocalStorage(authToken);
-
-        const userName = response.user?.name;
-        setUserNameToLocalStorage(userName);
-
-        getCurrentUser(
-          (response, error) => {
-            const userRole = response.result?.role;
-            setUserRoleToLocalStorage(userRole);
-
-            setFormData(initialFormData);
-            setIsLogged(true);
-            setFormValid(true);
-
-            navigate(FRONTEND_PATHS.courses);
-          },
-          (response, error) => {
-            setFormValid(false);
-            alert('Reading user data failed: ' + response.result);
-          }
-        );
-      },
-      (response, error) => {
-        setFormValid(false);
-        alert('Login failed: ' + response.result);
-      }
-    );
+   dispatch(loginUser(formData));
+//     loginUser(
+//       formData,
+//       (response, error) => {
+//         const authToken = response.result.split(' ')[1];
+//         setAuthTokenToLocalStorage(authToken);
+//
+//         const userName = response.user?.name;
+//         setUserNameToLocalStorage(userName);
+//
+//         getCurrentUser(
+//           (response, error) => {
+//             const userRole = response.result?.role;
+//             setUserRoleToLocalStorage(userRole);
+//
+//             setFormData(initialFormData);
+//             setIsLogged(true);
+//             setFormValid(true);
+//
+//             navigate(FRONTEND_PATHS.courses);
+//           },
+//           (response, error) => {
+//             setFormValid(false);
+//             alert('Reading user data failed: ' + response.result);
+//           }
+//         );
+//       },
+//       (response, error) => {
+//         setFormValid(false);
+//         alert('Login failed: ' + response.result);
+//       }
+//     );
   };
 
   const handleFormChange = event => {

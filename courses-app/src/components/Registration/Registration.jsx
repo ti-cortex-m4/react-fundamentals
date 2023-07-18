@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
-import { registerUser } from '../../services/user';
+// import { registerUser } from '../../services/user';
 
 import { registerUser } from '../../_store/user/thunk';
-import { registerSuccessAction, registerErrorAction} from '../../_store/user/actions';
+import { registerResultAction} from '../../_store/user/actions';
 import { getUserSelector } from '../../_store/user/selectors';
 
 import styles from './styles.module.css';
@@ -26,10 +26,13 @@ export const Registration = () => {
 //   }, [navigate]);
 
   useEffect(() => {
-//     if (loggedUser.successfullRegistration && !loggedUser.registrationError) {
-//       navigate('/login');
-//       dispatch(successfullRegistrationAction(false));
-//     }
+    if (loggedUser.registerResult === true) {
+      navigate('/login');
+      dispatch(registerResultAction(null));
+    }
+
+    if (loggedUser.registerResult === false) {
+    }
 //     if (loggedUser.registrationError) {
 //       setRegistrationError(true);
 //
@@ -39,8 +42,7 @@ export const Registration = () => {
 //       }, 5000);
 //     }
   }, [
-    loggedUser.successfullRegistration,
-    loggedUser.registrationError,
+    loggedUser.registerResult,
     navigate,
     dispatch,
   ]);
@@ -56,8 +58,7 @@ export const Registration = () => {
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    const body = formData;
-    dispatch(registerUser(body));
+    dispatch(registerUser(formData));
 
 //     registerUser(
 //       formData,

@@ -6,25 +6,29 @@ import {
 } from './actions';
 
 export const getAuthors = () => {
-  return authorService.getAllAuthors(
-    body,
-    (response,) => {
-      dispatch(saveAuthorsAction(response.result));
-    },
-    (response, error) => {
-      alert('Get all authors error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    authorService.getAllAuthors(
+      body,
+      (response,) => {
+        dispatch(saveAuthorsAction(response.result));
+      },
+      (response, error) => {
+        console.log('Get all authors error: ' + (error || response));
+      }
+    );
+  }
 };
 
 export const addAuthor = (body) => {
-  return authorService.addAuthor(
-    body,
-    (response,) => {
-      dispatch(addAuthorAction(body));
-    },
-    (response, error) => {
-      alert('Add author error: ' + (error || response));
-    }
-  );
+  return (dispatch) => {
+    authorService.addAuthor(
+      body,
+      (response,) => {
+        dispatch(addAuthorAction(body));
+      },
+      (response, error) => {
+        console.log('Add author error: ' + (error || response));
+      }
+    );
+  }
 };

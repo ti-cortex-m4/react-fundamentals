@@ -13,5 +13,5 @@ export const loginUserAction = (payload) => ({ type: LOGIN_USER, payload });
 export const logoutUserAction = () => ({ type: LOGOUT_USER });
 //export const setLoginErrorAction = (payload) => ({  type: SET_LOGIN_ERROR,  payload,});
 export const registerResultAction = (payload) => ({  type: REGISTER_RESULT,  payload});
-export const registerSuccessAction = (payload) => ({  type: REGISTER_SUCCESS,  payload,});
-export const registerErrorAction = (payload) => ({  type: REGISTER_ERROR,  payload,});
+//export const registerSuccessAction = (payload) => ({  type: REGISTER_SUCCESS,  payload,});
+//export const registerErrorAction = (payload) => ({  type: REGISTER_ERROR,  payload,});
