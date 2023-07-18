@@ -17,6 +17,8 @@ export const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [registrationError, setRegistrationError] = useState(false);
+
   const loggedUser = useSelector(getUserSelector);
 
 //   useEffect(() => {
@@ -32,6 +34,7 @@ export const Registration = () => {
     }
 
     if (loggedUser.registerResult === false) {
+      setRegistrationError(true);
     }
 //     if (loggedUser.registrationError) {
 //       setRegistrationError(true);
@@ -41,7 +44,8 @@ export const Registration = () => {
 //         dispatch(registrationErrorAction(false));
 //       }, 5000);
 //     }
-  }, [
+  },
+  [
     loggedUser.registerResult,
     navigate,
     dispatch,
@@ -55,7 +59,7 @@ export const Registration = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [formValid, setFormValid] = useState(true);
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = /*async*/ event => {
     event.preventDefault();
 
     dispatch(registerUser(formData));
@@ -82,6 +86,12 @@ export const Registration = () => {
 
   return (
     <div className={styles.container}>
+      {
+        registrationError &&
+        <p>
+          registration error
+        </p>
+      }
       <form onSubmit={handleFormSubmit}>
         <h1>Registration</h1>
         <Input

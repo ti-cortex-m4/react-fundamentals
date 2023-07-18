@@ -18,6 +18,8 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [loginError, setLoginError] = useState(false);
+
   const initialFormData = {
     email: '',
     password: '',
@@ -31,7 +33,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
 //     }
 //   }, [navigate]);
 //
-//   useEffect(() => {
+  useEffect(() => {
 //     if (
 //       loggedUser.isAuth &&
 //       loggedUser.name !== '' &&
@@ -50,9 +52,14 @@ export const Login = ({ isLogged, setIsLogged }) => {
 //         dispatch(setLoginErrorAction(false));
 //       }, 5000);
 //     }
-//   }, [loggedUser.isAuth, loggedUser.loginError, navigate, dispatch]);
+  },
+  [
+  loggedUser.loginResult,
+  navigate,
+  dispatch
+  ]);
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = /*async*/ event => {
     event.preventDefault();
 
    dispatch(loginUser(formData));
@@ -96,6 +103,12 @@ export const Login = ({ isLogged, setIsLogged }) => {
 
   return (
     <div className={styles.container}>
+      {
+        loginError &&
+        <p>
+          login error
+        </p>
+      }
       <form onSubmit={handleFormSubmit}>
         <h1>Login</h1>
         <Input

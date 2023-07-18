@@ -4,7 +4,7 @@ import {
 //  saveUserAction,
 //  logoutUserAction,
 //  loginUserAction,
-//  setLoginErrorAction,
+  registerResultAction,
 //  registrationErrorAction,
 //  successfullRegistrationAction,
 } from './actions';
@@ -44,14 +44,11 @@ export const registerUser = (body) => {
   userService.registerUser(
     body,
     (response,) => {
-      if (data.successful) {
-        dispatch(registerResultAction(true));
-      } else {
-        dispatch(registerResultAction(false));
-      }
+      dispatch(registerResultAction(true));
     },
     (response, error) => {
       console.log('Register user error: ' + (error || response));
+      dispatch(registerResultAction(false));
     }
   );
  } 
@@ -61,17 +58,14 @@ export const getCurrentUser = () => {
  return (dispatch) => {
   userService.getCurrentUser(
     (response,) => {
-      if (data.successful) {
-        const userRole = response.result?.role;
-        setUserRoleToLocalStorage(userRole);
+      const userRole = response.result?.role;
+      ///setUserRoleToLocalStorage(userRole);
 
-        dispatch(loginResultAction(true));
-      } else {
-        dispatch(loginResultAction(false));
-      }
+      dispatch(getCurrentUserAction(userRole));
     },
     (response, error) => {
       console.log('Get current user error: ' + (error || response));
+      dispatch(loginResultAction(false));
     }
   );
  }
@@ -82,20 +76,25 @@ export const loginUser = (body) => {
   userService.loginUser(
     body,
     (response,) => {
-      if (data.successful) {
-         const authToken = response.result.split(' ')[1];
-         setAuthTokenToLocalStorage(authToken);
+       const authToken = response.result.split(' ')[1];
+//       setAuthTokenToLocalStorage(authToken);
 
-         const userName = response.user?.name;
-         setUserNameToLocalStorage(userName);
+       const userName = response.user?.name;
+//       setUserNameToLocalStorage(userName);
 
-        dispatch(getCurrentUser());
-      } else {
-        dispatch(loginResultAction(false));
-      }
+       dispatch(loginSuccessAction({
+          authToken: authToken,
+          userName: userName,
+//          isAuth: data.successful,
+//          name: data.user.name,
+//          email: data.user.email,
+//          token: data.result,
+       }));
+       dispatch(getCurrentUser());
     },
     (response, error) => {
       console.log('Login user error: ' + (error || response));
+      dispatch(loginResultAction(false));
     }
   );
  }

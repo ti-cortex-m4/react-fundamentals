@@ -1,7 +1,5 @@
 export const SAVE_USER = 'SAVE_USER';
 export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_RESULT = 'LOGIN_RESULT';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REGISTER_RESULT = 'REGISTER_RESULT';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_ERROR = 'REGISTER_ERROR';
-//export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';

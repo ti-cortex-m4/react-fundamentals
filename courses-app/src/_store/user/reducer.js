@@ -16,8 +16,6 @@ export const initialUserState = {
     token: '',
     role: '',
     registerResult: null,
-    registerSuccess: false,
-    registerError: null,
     successfullLogin: false,
     loginError: null,
   },
@@ -38,6 +36,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
     }
+
     case LOGIN_USER: {
       return {
         ...state,
@@ -47,6 +46,38 @@ const userReducer = (state = initialUserState, action) => {
           name: action.payload.name,
           email: action.payload.email,
           token: action.payload.token,
+        },
+      };
+    }
+
+    case LOGIN_SUCCESS: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+         authToken: authToken,
+          userName: userName,
+//          isAuth: action.payload.isAuth,
+//          name: action.payload.name,
+//          email: action.payload.email,
+//          token: action.payload.token,
+        },
+      };
+    }
+
+    case CURRENT_USER_SUCCESS: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+         userRole: userRole,
+         isAuthenticated: true,
+         loginResult: true,
+//          userName: userName,
+//          isAuth: action.payload.isAuth,
+//          name: action.payload.name,
+//          email: action.payload.email,
+//          token: action.payload.token,
         },
       };
     }
@@ -67,24 +98,6 @@ const userReducer = (state = initialUserState, action) => {
         user: {
           ...state.user,
           registerResult: action.payload,
-        },
-      };
-
-    case REGISTER_SUCCESS:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          registerSuccess: action.payload,
-        },
-      };
-
-    case REGISTER_ERROR:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          REGISTER_ERROR: action.payload,
         },
       };
 
