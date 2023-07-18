@@ -3,8 +3,9 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
 //  SET_LOGIN_ERROR,
-//  SET_REGISTRATION_ERROR,
-//  REGISTRATION_SUCCESS,
+  REGISTER_RESULT,
+  REGISTER_SUCCESS,
+  REGISTER_ERROR,
 } from './types';
 
 export const initialUserState = {
@@ -14,10 +15,11 @@ export const initialUserState = {
     email: '',
     token: '',
     role: '',
-    loginError: null,
-    registrationError: null,
+    registerResult: null,
+    registerSuccess: false,
+    registerError: null,
     successfullLogin: false,
-    successfullRegistration: false,
+    loginError: null,
   },
 };
 
@@ -58,24 +60,33 @@ const userReducer = (state = initialUserState, action) => {
 //        },
 //      };
 //    }
-//
-//    case REGISTRATION_SUCCESS:
-//      return {
-//        ...state,
-//        user: {
-//          ...state.user,
-//          successfullRegistration: action.payload,
-//        },
-//      };
-//
-//    case SET_REGISTRATION_ERROR:
-//      return {
-//        ...state,
-//        user: {
-//          ...state.user,
-//          registrationError: action.payload,
-//        },
-//      };
+
+    case REGISTER_RESULT:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          registerResult: action.payload,
+        },
+      };
+
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          registerSuccess: action.payload,
+        },
+      };
+
+    case REGISTER_ERROR:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          REGISTER_ERROR: action.payload,
+        },
+      };
 
     case LOGOUT_USER: {
       return {

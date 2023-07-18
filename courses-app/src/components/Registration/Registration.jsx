@@ -7,14 +7,43 @@ import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
 import { registerUser } from '../../services/user';
 
-import { register } from '../../_store/user/thunk';
-import { registrationErrorAction, successfullRegistrationAction} from '../../_store/user/actions';
+import { registerUser } from '../../_store/user/thunk';
+import { registerSuccessAction, registerErrorAction} from '../../_store/user/actions';
 import { getUserSelector } from '../../_store/user/selectors';
 
 import styles from './styles.module.css';
 
 export const Registration = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const loggedUser = useSelector(getUserSelector);
+
+//   useEffect(() => {
+//     if (getUserFromLocalStorage()?.token) {
+//       navigate('/courses');
+//     }
+//   }, [navigate]);
+
+  useEffect(() => {
+//     if (loggedUser.successfullRegistration && !loggedUser.registrationError) {
+//       navigate('/login');
+//       dispatch(successfullRegistrationAction(false));
+//     }
+//     if (loggedUser.registrationError) {
+//       setRegistrationError(true);
+//
+//       setTimeout(() => {
+//         setRegistrationError(false);
+//         dispatch(registrationErrorAction(false));
+//       }, 5000);
+//     }
+  }, [
+    loggedUser.successfullRegistration,
+    loggedUser.registrationError,
+    navigate,
+    dispatch,
+  ]);
 
   const initialFormData = {
     name: '',
@@ -27,19 +56,22 @@ export const Registration = () => {
   const handleFormSubmit = async event => {
     event.preventDefault();
 
-    registerUser(
-      formData,
-      (response, error) => {
-        setFormData(initialFormData);
-        setFormValid(true);
+    const body = formData;
+    dispatch(registerUser(body));
 
-        navigate(FRONTEND_PATHS.login);
-      },
-      (response, error) => {
-        setFormValid(false);
-        alert('Registration failed: ' + response.errors);
-      }
-    );
+//     registerUser(
+//       formData,
+//       (response, error) => {
+//         setFormData(initialFormData);
+//         setFormValid(true);
+//
+//         navigate(FRONTEND_PATHS.login);
+//       },
+//       (response, error) => {
+//         setFormValid(false);
+//         alert('Registration failed: ' + response.errors);
+//       }
+//     );
   };
 
   const handleFormChange = event => {

@@ -1,4 +1,5 @@
-import apiService from '../services';
+//import apiService from '../services';
+import { registerUser } from '../../services/user';
 import {
 //  saveUserAction,
 //  logoutUserAction,
@@ -38,17 +39,32 @@ export const login = (email, password) => {
   };
 };
 
-export const register = (name, email, password) => {
-  return async (dispatch) => {
-    const response = await apiService.registration(name, email, password);
-    const data = await response.json();
-
-    if (data.successful) {
-      dispatch(successfullRegistrationAction(true));
-    } else {
-      dispatch(registrationErrorAction(true));
+export const registerUser = (body) => {
+  return courseService.registerUser(
+    body,
+    (response,) => {
+      if (data.successful) {
+        dispatch(registerResultAction(true));
+      } else {
+        dispatch(registerResultAction(false));
+      }
+    },
+    (response, error) => {
+      alert('Register user error: ' + (error || response));
     }
-  };
+  );
+
+
+//  return async (dispatch) => {
+//    const response = await apiService.registration(name, email, password);
+//    const data = await response.json();
+//
+//    if (data.successful) {
+//      dispatch(successfullRegistrationAction(true));
+//    } else {
+//      dispatch(registrationErrorAction(true));
+//    }
+//  };
 };
 
 export const getLoggedUser = () => {
