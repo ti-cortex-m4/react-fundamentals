@@ -62,13 +62,10 @@ export const getCurrentUser = () => {
   userService.getCurrentUser(
     (response,) => {
       if (data.successful) {
-         const authToken = response.result.split(' ')[1];
-         setAuthTokenToLocalStorage(authToken);
+        const userRole = response.result?.role;
+        setUserRoleToLocalStorage(userRole);
 
-         const userName = response.user?.name;
-         setUserNameToLocalStorage(userName);
-
-        dispatch(getCurrentUser());
+        dispatch(loginResultAction(true));
       } else {
         dispatch(loginResultAction(false));
       }

@@ -25,6 +25,33 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const [formData, setFormData] = useState(initialFormData);
   const [formValid, setFormValid] = useState(true);
 
+//   useEffect(() => {
+//     if (getUserFromLocalStorage()?.token) {
+//       navigate('/courses');
+//     }
+//   }, [navigate]);
+//
+//   useEffect(() => {
+//     if (
+//       loggedUser.isAuth &&
+//       loggedUser.name !== '' &&
+//       loggedUser.email !== '' &&
+//       loggedUser.token !== '' &&
+//       !loggedUser.loginError
+//     ) {
+//       navigate('/courses');
+//     }
+//
+//     if (loggedUser.loginError === true) {
+//       setError(true);
+//
+//       setTimeout(() => {
+//         setError(false);
+//         dispatch(setLoginErrorAction(false));
+//       }, 5000);
+//     }
+//   }, [loggedUser.isAuth, loggedUser.loginError, navigate, dispatch]);
+
   const handleFormSubmit = async event => {
     event.preventDefault();
 
