@@ -103,7 +103,16 @@ const userReducer = (state = initialUserState, action) => {
 //      };
 //    }
 
-    case REGISTER_RESULT:
+    case REGISTER_USER_SUCCESS_ACTION:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          registerResult: action.payload,
+        },
+      };
+
+    case REGISTER_USER_ERROR_ACTION:
       return {
         ...state,
         user: {

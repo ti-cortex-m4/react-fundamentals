@@ -14,4 +14,5 @@ export const getCurrentUserSuccessAction = (payload) => ({ type: GET_CURRENT_USE
 export const getCurrentUserErrorAction = (payload) => ({ type: GET_CURRENT_USER_ERROR, payload });
 export const logoutUserAction = () => ({ type: LOGOUT_USER });
 //export const setLoginErrorAction = (payload) => ({  type: SET_LOGIN_ERROR,  payload,});
-export const registerResultAction = (payload) => ({  type: REGISTER_RESULT,  payload});
+export const registerUserSuccessAction = (payload) => ({  type: REGISTER_USER_SUCCESS_ACTION,  payload});
+export const registerUserErrorAction = (payload) => ({  type: REGISTER_USER_ERROR_ACTION,  payload});
