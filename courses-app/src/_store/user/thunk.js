@@ -1,5 +1,5 @@
 //import apiService from '../services';
-import { registerUser } from '../../services/user';
+import { registerUser, loginUser } from '../../services/user';
 import {
 //  saveUserAction,
 //  logoutUserAction,
@@ -40,7 +40,8 @@ export const login = (email, password) => {
 };
 
 export const registerUser = (body) => {
-  return courseService.registerUser(
+ return (dispatch) => { 
+  courseService.registerUser(
     body,
     (response,) => {
       if (data.successful) {
@@ -50,9 +51,28 @@ export const registerUser = (body) => {
       }
     },
     (response, error) => {
-      alert('Register user error: ' + (error || response));
+      console.log('Register user error: ' + (error || response));
     }
   );
+ } 
+};
+
+export const loginUser = (body) => {
+ return (dispatch) => {
+  courseService.loginUser(
+    body,
+    (response,) => {
+      if (data.successful) {
+        dispatch(registerResultAction(true));
+      } else {
+        dispatch(registerResultAction(false));
+      }
+    },
+    (response, error) => {
+      console.log('Login user error: ' + (error || response));
+    }
+  );
+ }
 };
 
 export const getLoggedUser = () => {
