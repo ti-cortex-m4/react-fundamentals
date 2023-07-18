@@ -59,13 +59,13 @@ export const getCurrentUser = () => {
   userService.getCurrentUser(
     (response,) => {
       const userRole = response.result?.role;
-      ///setUserRoleToLocalStorage(userRole);
+      setUserRoleToLocalStorage(userRole);
 
-      dispatch(getCurrentUserAction(userRole));
+      dispatch(getCurrentUserSuccessAction(userRole));
     },
     (response, error) => {
       console.log('Get current user error: ' + (error || response));
-      dispatch(loginResultAction(false));
+      dispatch(getCurrentUserErrorAction(false));
     }
   );
  }
@@ -77,12 +77,12 @@ export const loginUser = (body) => {
     body,
     (response,) => {
        const authToken = response.result.split(' ')[1];
-//       setAuthTokenToLocalStorage(authToken);
+       setAuthTokenToLocalStorage(authToken);
 
        const userName = response.user?.name;
-//       setUserNameToLocalStorage(userName);
+       setUserNameToLocalStorage(userName);
 
-       dispatch(loginSuccessAction({
+       dispatch(loginUserSuccessAction({
           authToken: authToken,
           userName: userName,
 //          isAuth: data.successful,
@@ -94,7 +94,7 @@ export const loginUser = (body) => {
     },
     (response, error) => {
       console.log('Login user error: ' + (error || response));
-      dispatch(loginResultAction(false));
+      dispatch(loginUserErrorAction(false));
     }
   );
  }

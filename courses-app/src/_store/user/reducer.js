@@ -50,22 +50,28 @@ const userReducer = (state = initialUserState, action) => {
       };
     }
 
-    case LOGIN_SUCCESS: {
+    case LOGIN_USER_SUCCESS: {
       return {
         ...state,
         user: {
           ...state.user,
-         authToken: authToken,
+          authToken: authToken,
           userName: userName,
-//          isAuth: action.payload.isAuth,
-//          name: action.payload.name,
-//          email: action.payload.email,
-//          token: action.payload.token,
         },
       };
     }
 
-    case CURRENT_USER_SUCCESS: {
+    case LOGIN_USER_ERROR: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          loginResult: false,
+        },
+      };
+    }
+
+    case GET_CURRENT_USER_SUCCESS: {
       return {
         ...state,
         user: {
@@ -73,11 +79,16 @@ const userReducer = (state = initialUserState, action) => {
          userRole: userRole,
          isAuthenticated: true,
          loginResult: true,
-//          userName: userName,
-//          isAuth: action.payload.isAuth,
-//          name: action.payload.name,
-//          email: action.payload.email,
-//          token: action.payload.token,
+        },
+      };
+    }
+
+    case GET_CURRENT_USER_ERROR: {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+         loginResult: false,
         },
       };
     }
