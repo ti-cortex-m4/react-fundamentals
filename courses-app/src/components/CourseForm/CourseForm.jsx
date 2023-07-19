@@ -13,11 +13,11 @@ import { getAllAuthors } from '../../services/author';
 // import { addCourse, updateCourse } from '../../services/course';
 import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
 
-// import { addCourseAction } from '../../_store/courses/actions';
-// import { addAuthorAction } from '../../_store/authors/actions';
-import { getAuthorsSelector } from '../../_store/authors/selectors';
-import { getCoursesSelector } from '../../_store/courses/selectors';
-import { addCourse, updateCourse } from '../../_store/courses/thunk';
+// import { addCourseAction } from '../../store/courses/actions';
+// import { addAuthorAction } from '../../store/authors/actions';
+import { getAuthorsSelector } from '../../store/authors/selectors';
+import { getCoursesSelector } from '../../store/courses/selectors';
+import { addCourse, updateCourse } from '../../store/courses/thunk';
 
 import styles from './styles.module.css';
 

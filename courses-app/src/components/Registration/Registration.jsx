@@ -7,9 +7,9 @@ import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
 // import { registerUser } from '../../services/user';
 
-import { registerUser } from '../../_store/user/thunk';
-// import { registerResultAction} from '../../_store/user/actions';
-import { getUserSelector } from '../../_store/user/selectors';
+import { registerUser } from '../../store/user/thunk';
+// import { registerResultAction} from '../../store/user/actions';
+import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
 

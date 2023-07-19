@@ -16,10 +16,10 @@ import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 // import { getAllCourses } from './services/course';
 import { FRONTEND_PATHS } from './constants';
 
-import { getCourses } from './_store/courses/thunk';
-import { getAuthors } from './_store/authors/thunk';
-import { saveCoursesAction } from './_store/courses/actions';
-import { saveAuthorsAction } from './_store/authors/actions';
+import { getCourses } from './store/courses/thunk';
+import { getAuthors } from './store/authors/thunk';
+import { saveCoursesAction } from './store/courses/actions';
+import { saveAuthorsAction } from './store/authors/actions';
 
 function App() {
   const dispatch = useDispatch();

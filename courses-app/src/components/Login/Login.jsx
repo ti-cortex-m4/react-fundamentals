@@ -8,9 +8,9 @@ import { FRONTEND_PATHS } from '../../constants';
 // import { loginUser, getCurrentUser } from '../../services/user';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
-import { loginUser } from '../../_store/user/thunk';
-import { loginSuccessAction } from '../../_store/user/actions';
-import { getUserSelector } from '../../_store/user/selectors';
+import { loginUser } from '../../store/user/thunk';
+import { loginSuccessAction } from '../../store/user/actions';
+import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
 

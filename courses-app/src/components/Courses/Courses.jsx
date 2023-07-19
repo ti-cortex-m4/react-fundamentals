@@ -8,8 +8,8 @@ import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
 import { FRONTEND_PATHS } from '../../constants';
 
-import { getAuthorsSelector } from '../../_store/authors/selectors';
-import { getCoursesSelector } from '../../_store/courses/selectors';
+import { getAuthorsSelector } from '../../store/authors/selectors';
+import { getCoursesSelector } from '../../store/courses/selectors';
 
 import styles from './styles.module.css';
 

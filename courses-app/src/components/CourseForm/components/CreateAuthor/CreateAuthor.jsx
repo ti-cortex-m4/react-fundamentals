@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
-import { addAuthor } from '../../../../_store/authors/thunk';
+import { addAuthor } from '../../../../store/authors/thunk';
 import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';

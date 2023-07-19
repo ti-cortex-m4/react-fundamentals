@@ -9,7 +9,7 @@ import { isAdministrator } from '../../../../helpers/authentification';
 // import { deleteCourse } from '../../../../services/course';
 import { FRONTEND_PATHS } from '../../../../constants';
 
-import { deleteCourse } from '../../../../_store/courses/thunk';
+import { deleteCourse } from '../../../../store/courses/thunk';
 
 import styles from './styles.module.css';
 
