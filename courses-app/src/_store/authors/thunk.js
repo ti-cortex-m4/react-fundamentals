@@ -1,4 +1,4 @@
-import { authorService } from '../../services/author';
+import  authorService  from '../../services/author';
 
 import {
   saveAuthorsAction,
@@ -8,7 +8,7 @@ import {
 export const getAuthors = () => {
   return async (dispatch) => {
     authorService.getAllAuthors(
-      body,
+//      body,
       (response,) => {
         dispatch(saveAuthorsAction(response.result));
       },

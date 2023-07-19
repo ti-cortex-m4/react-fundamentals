@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,7 +19,8 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState(false);
-
+  const loggedUser = useSelector(getUserSelector);
+  
   const initialFormData = {
     email: '',
     password: '',

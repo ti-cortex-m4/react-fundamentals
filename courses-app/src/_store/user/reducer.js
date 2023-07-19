@@ -55,8 +55,8 @@ const userReducer = (state = initialUserState, action) => {
         ...state,
         user: {
           ...state.user,
-          authToken: authToken,
-          userName: userName,
+          authToken: action.payload.authToken,
+          userName: action.payload.userName,
         },
       };
     }
@@ -76,7 +76,7 @@ const userReducer = (state = initialUserState, action) => {
         ...state,
         user: {
           ...state.user,
-         userRole: userRole,
+         userRole: action.payload.userRole,
          isAuthenticated: true,
          loginResult: true,
         },

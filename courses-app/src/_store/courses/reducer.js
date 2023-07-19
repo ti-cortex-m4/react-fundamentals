@@ -1,5 +1,5 @@
 import {
-  SAVE_ALL_COURSES,
+  SAVE_COURSES,
   ADD_COURSE,
   UPDATE_COURSE,
   DELETE_COURSE,
@@ -18,7 +18,7 @@ const coursesReducer = (state = initialCoursesState, action) => {
     case UPDATE_COURSE: {
       return state.map((course) => course.id === action.payload.id ? action.payload : course);
     }
-    case DELETE_COURSES: {
+    case DELETE_COURSE: {
       return state.filter((course) => course.id !== action.payload);
     }
     default:

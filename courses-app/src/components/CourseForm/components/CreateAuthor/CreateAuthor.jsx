@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
-import { addCourse, updateCourse } from '../../../../_store/courses/thunk';
+import { addAuthor } from '../../../../_store/authors/thunk';
 import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';
 
 /* TODO */ export const CreateAuthor = (/*{ setIsAuthorAdded }*/) => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
 
   const handleCreateAuthorClick = () => {
@@ -29,7 +31,7 @@ import styles from './styles.module.css';
   };
 
   const handleAuthorChange = event => {
-    setAuthor(event.target.value);
+    setName(event.target.value);
   };
 
   return (

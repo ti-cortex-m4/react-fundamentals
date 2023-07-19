@@ -4,12 +4,18 @@ import {
 //  saveUserAction,
 //  logoutUserAction,
 //  loginUserAction,
-  registerResultAction,
-//  registrationErrorAction,
+  loginUserSuccessAction,
+  loginUserErrorAction,
+  getCurrentUserSuccessAction,
+  getCurrentUserErrorAction,
+  registerUserSuccessAction,
+  registerUserErrorAction,
 //  successfullRegistrationAction,
 } from './actions';
-//import getUserFromLocalStorage from '../../helpers/getUserFromLocalStorage';
+import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
+//import getUserFromLocalStorage from '../../helpers/getUserFromLocalStorage';
+/*
 export const login = (email, password) => {
   return async (dispatch) => {
     const response = await apiService.login(email, password);
@@ -38,7 +44,7 @@ export const login = (email, password) => {
     }
   };
 };
-
+*/
 export const registerUser = (body) => {
  return async (dispatch) => {
   userService.registerUser(

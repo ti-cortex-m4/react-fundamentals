@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -30,7 +30,7 @@ export const Registration = () => {
   useEffect(() => {
     if (loggedUser.registerResult === true) {
       navigate('/login');
-      dispatch(registerResultAction(null));
+//       dispatch(registerResultAction(null)); TODO
     }
 
     if (loggedUser.registerResult === false) {

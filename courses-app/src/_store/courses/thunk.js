@@ -10,7 +10,6 @@ import {
 export const getCourses = () => {
   return async (dispatch) => {
     courseService.getAllCourses(
-      body,
       (response,) => {
         dispatch(saveCoursesAction(response.result));
       },
@@ -50,12 +49,12 @@ export const updateCourse = (courseId, body) => {
   }
 };
 
-export const deleteCourse = (id) => {
+export const deleteCourse = (courseId) => {
   return async (dispatch) => {
     courseService.deleteCourse(
       courseId,
       (response,) => {
-        dispatch(deleteCourseAction(id));
+        dispatch(deleteCourseAction(courseId));
       },
       (response, error) => {
         console.log('Delete course error: ' + (error || response));
