@@ -14,14 +14,14 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { FRONTEND_PATHS } from './constants';
 
-import { getAuthors } from './store/authors/thunk';
+import { getAllAuthors } from './store/authors/thunk';
 import { getAllCourses } from './store/courses/thunk';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAuthors());
+    dispatch(getAllAuthors());
     dispatch(getAllCourses());
   }, [dispatch]);
 

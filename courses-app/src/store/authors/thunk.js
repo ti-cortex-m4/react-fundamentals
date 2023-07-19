@@ -1,16 +1,14 @@
-import  authorService  from '../../services/author';
-
+import authorService from '../../services/author';
 import {
-  saveAuthorsAction,
+  saveAllAuthorsAction,
   addAuthorAction,
 } from './actions';
 
-export const getAuthors = () => {
+export const getAllAuthors = () => {
   return async (dispatch) => {
     authorService.getAllAuthors(
-//      body,
       (response,) => {
-        dispatch(saveAuthorsAction(response.result));
+        dispatch(saveAllAuthorsAction(response.result));
       },
       (response, error) => {
         console.log('Get all authors error: ' + (error || response));
