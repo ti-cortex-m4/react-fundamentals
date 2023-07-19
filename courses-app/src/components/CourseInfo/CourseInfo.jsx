@@ -28,7 +28,7 @@ export const CourseInfo = ({ allAuthors }) => {
     const getCourseInfo = async () => {
       const { response, error } = await fetchData({
         method: 'GET',
-        url: BACKEND_PATHS.courseInfo + courseId,
+        url: BACKEND_PATHS.courseInfo + courseId, // TODO
       });
 
       if (!error && response.successful) {

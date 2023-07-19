@@ -11,7 +11,7 @@ import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
 // import { addCourse, updateCourse } from '../../services/course';
-import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+import { FRONTEND_PATHS } from '../../constants';
 
 // import { addCourseAction } from '../../store/courses/actions';
 // import { addAuthorAction } from '../../store/authors/actions';
