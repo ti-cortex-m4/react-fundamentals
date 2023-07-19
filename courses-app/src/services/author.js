@@ -1,5 +1,4 @@
 import { fetchData } from '../helpers/fetchData';
-import { BACKEND_PATHS } from '../constants';
 
 class AuthorService {
 
