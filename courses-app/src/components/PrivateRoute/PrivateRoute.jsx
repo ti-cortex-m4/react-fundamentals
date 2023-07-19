@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { isAdministrator } from '../../helpers/authentification';
+import { isAdministrator } from '../../helpers/authentication';
 import { FRONTEND_PATHS } from '../../constants';
 
 export const PrivateRoute = () => {

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
-import { isAdministrator } from '../../../../helpers/authentification';
+import { isAdministrator } from '../../../../helpers/authentication';
 // import { deleteCourse } from '../../../../services/course';
 import { FRONTEND_PATHS } from '../../../../constants';
 
