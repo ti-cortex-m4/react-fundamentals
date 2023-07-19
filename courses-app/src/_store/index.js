@@ -1,24 +1,19 @@
-import {
-  /*legacy_*/createStore as createStore,
-  compose,
-  applyMiddleware,
-} from 'redux';
+import { configureStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import { initialUserState } from './user/reducer';
 import { initialAuthorsState } from './authors/reducer';
 import { initialCoursesState } from './courses/reducer';
-import { initialUserState } from './user/reducer';
-
-import {rootReducer} from './rootReducer';
+import { rootReducer } from './rootReducer';
 
 const appInitialState = {
-  courses: initialCoursesState,
-  authors: initialAuthorsState,
   user: initialUserState,
+  authors: initialAuthorsState,
+  courses: initialCoursesState,
 };
 
-const store = createStore(
+const store = configureStore(
   rootReducer,
   appInitialState,
   composeWithDevTools(applyMiddleware(thunk))
