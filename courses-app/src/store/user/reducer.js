@@ -1,5 +1,4 @@
 import {
-  SAVE_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   GET_CURRENT_USER_SUCCESS,
@@ -9,15 +8,15 @@ import {
 } from './types';
 
 export const initialUserState = {
-  user: {
-    isAuthenticated: false,
-    userName: null,
-    email: null,
+    isAuthenticated: null,
+    isAdministrator: null,
+//    email: null,
     authToken: null,
-    role: null,
+    userName: null,
+    userRole: null,
+//    role: null,
+    loginResult: null,
     registerResult: null,
-    loginError: null,
-  },
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -53,72 +52,44 @@ const userReducer = (state = initialUserState, action) => {
     case LOGIN_USER_SUCCESS: {
       return {
         ...state,
-        user: {
-          ...state.user,
           authToken: action.payload.authToken,
           userName: action.payload.userName,
-        },
       };
     }
 
     case LOGIN_USER_ERROR: {
       return {
         ...state,
-        user: {
-          ...state.user,
           loginResult: false,
-        },
       };
     }
 
     case GET_CURRENT_USER_SUCCESS: {
       return {
         ...state,
-        user: {
-          ...state.user,
          userRole: action.payload.userRole,
          isAuthenticated: true,
          loginResult: true,
-        },
       };
     }
 
     case GET_CURRENT_USER_ERROR: {
       return {
         ...state,
-        user: {
-          ...state.user,
          loginResult: false,
-        },
       };
     }
-
-//    case SET_LOGIN_ERROR: {
-//      return {
-//        ...state,
-//        user: {
-//          ...state.user,
-//          loginError: action.payload,
-//        },
-//      };
-//    }
 
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        user: {
-          ...state.user,
           registerResult: action.payload,
-        },
       };
 
     case REGISTER_USER_ERROR:
       return {
         ...state,
-        user: {
-          ...state.user,
           registerResult: action.payload,
-        },
       };
 /*
     case LOGOUT_USER: {
@@ -139,8 +110,9 @@ const userReducer = (state = initialUserState, action) => {
       };
     }
 */
-    default:
+    default: {
       return state;
+      }
   }
 };
 
