@@ -20,7 +20,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
 
   const [loginError, setLoginError] = useState(false);
   const loggedUser = useSelector(getUserSelector);
-  
+
   const initialFormData = {
     email: '',
     password: '',
@@ -35,6 +35,10 @@ export const Login = ({ isLogged, setIsLogged }) => {
 //   }, [navigate]);
 //
   useEffect(() => {
+    if (loggedUser.loginResult === true) {
+      navigate('/courses');
+//       dispatch(registerResultAction(null)); TODO
+    }
 //     if (
 //       loggedUser.isAuth &&
 //       loggedUser.name !== '' &&
