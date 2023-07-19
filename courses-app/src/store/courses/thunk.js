@@ -1,17 +1,16 @@
-import  courseService  from '../../services/course';
-
+import courseService from '../../services/course';
 import {
-  saveCoursesAction,
+  saveAllCoursesAction,
   addCourseAction,
   updateCourseAction,
   deleteCourseAction,
 } from './actions';
 
-export const getCourses = () => {
+export const getAllCourses = () => {
   return async (dispatch) => {
     courseService.getAllCourses(
       (response,) => {
-        dispatch(saveCoursesAction(response.result));
+        dispatch(saveAllCoursesAction(response.result));
       },
       (response, error) => {
         console.log('Get all courses error: ' + (error || response));

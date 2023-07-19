@@ -12,21 +12,17 @@ import { AnonymousRoute } from './components/AnonymousRoute/AnonymousRoute';
 import { AuthenticatedRoute } from './components/AuthenticatedRoute/AuthenticatedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
-// import { getAllAuthors } from './services/author';
-// import { getAllCourses } from './services/course';
 import { FRONTEND_PATHS } from './constants';
 
-import { getCourses } from './store/courses/thunk';
 import { getAuthors } from './store/authors/thunk';
-import { saveCoursesAction } from './store/courses/actions';
-import { saveAuthorsAction } from './store/authors/actions';
+import { getAllCourses } from './store/courses/thunk';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCourses());
     dispatch(getAuthors());
+    dispatch(getAllCourses());
   }, [dispatch]);
 
   const [isLogged, setIsLogged] = useState(false);
