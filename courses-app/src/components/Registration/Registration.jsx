@@ -8,7 +8,7 @@ import { FRONTEND_PATHS } from '../../constants';
 // import { registerUser } from '../../services/user';
 
 import { registerUser } from '../../_store/user/thunk';
-import { registerResultAction} from '../../_store/user/actions';
+// import { registerResultAction} from '../../_store/user/actions';
 import { getUserSelector } from '../../_store/user/selectors';
 
 import styles from './styles.module.css';

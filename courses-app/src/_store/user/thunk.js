@@ -1,5 +1,5 @@
 //import apiService from '../services';
-import { userService } from '../../services/user';
+import userService  from '../../services/user';
 import {
 //  saveUserAction,
 //  logoutUserAction,

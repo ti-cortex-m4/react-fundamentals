@@ -12,8 +12,8 @@ import { AnonymousRoute } from './components/AnonymousRoute/AnonymousRoute';
 import { AuthenticatedRoute } from './components/AuthenticatedRoute/AuthenticatedRoute';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
-import { getAllAuthors } from './services/author';
-import { getAllCourses } from './services/course';
+// import { getAllAuthors } from './services/author';
+// import { getAllCourses } from './services/course';
 import { FRONTEND_PATHS } from './constants';
 
 import { saveCoursesAction } from './_store/courses/actions';
@@ -34,23 +34,23 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    getAllAuthors(
-      (response, ) => {
-        dispatch(saveAllAuthorsAction(response.result));
-      },
-      (response, error) => { }
-    );
-    getAllCourses(
-      (response, error) => {
-        dispatch(saveAllCoursesAction(response.result));
-      },
-      (response, error) => { }
-    );
-
-    getAllAuthors();
-    getAllCourses();
-  }, [dispatch]);
+//   useEffect(() => {
+//     getAllAuthors(
+//       (response, ) => {
+//         dispatch(saveAllAuthorsAction(response.result));
+//       },
+//       (response, error) => { }
+//     );
+//     getAllCourses(
+//       (response, error) => {
+//         dispatch(saveAllCoursesAction(response.result));
+//       },
+//       (response, error) => { }
+//     );
+//
+//     getAllAuthors();
+//     getAllCourses();
+//   }, [dispatch]);
 
   return (
     <div className='app'>
@@ -68,7 +68,7 @@ function App() {
           <Route path='' element={<Courses />} />
         </Route>
         <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
-          <Route path='' element={<CourseInfo allAuthors={allAuthors} />} />
+          <Route path='' element={<CourseInfo />} />
         </Route>
 
         <Route path={FRONTEND_PATHS.createCourse} element={<PrivateRoute />} >

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
-import { addCourse, updateCourse } from '../../_store/courses/thunk';
+import { addCourse, updateCourse } from '../../../../_store/courses/thunk';
 import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';

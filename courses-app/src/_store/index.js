@@ -10,7 +10,7 @@ import { initialAuthorsState } from './authors/reducer';
 import { initialCoursesState } from './courses/reducer';
 import { initialUserState } from './user/reducer';
 
-import rootReducer from './rootReducer';
+import {rootReducer} from './rootReducer';
 
 const appInitialState = {
   courses: initialCoursesState,

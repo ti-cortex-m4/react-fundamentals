@@ -1,8 +1,9 @@
 import {
   SAVE_USER,
-  LOGIN_USER,
-  LOGOUT_USER,
-//  SET_LOGIN_ERROR,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_ERROR,
+  GET_CURRENT_USER_SUCCESS,
+  GET_CURRENT_USER_ERROR,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
 } from './types';
@@ -35,7 +36,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
     }
-*/
+
     case LOGIN_USER: {
       return {
         ...state,
@@ -48,7 +49,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
     }
-
+*/
     case LOGIN_USER_SUCCESS: {
       return {
         ...state,
