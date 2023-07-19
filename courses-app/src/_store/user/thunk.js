@@ -44,11 +44,11 @@ export const registerUser = (body) => {
   userService.registerUser(
     body,
     (response,) => {
-      dispatch(registerResultAction(true));
+      dispatch(registerUserSuccessAction(true));
     },
     (response, error) => {
       console.log('Register user error: ' + (error || response));
-      dispatch(registerResultAction(false));
+      dispatch(registerUserErrorAction(false));
     }
   );
  } 
@@ -99,7 +99,7 @@ export const loginUser = (body) => {
   );
  }
 };
-
+/*
 export const getLoggedUser = () => {
   return async (dispatch) => {
     const response = await apiService.getCurrentUser();
@@ -132,3 +132,4 @@ export const logoutUser = () => {
     dispatch(logoutUserAction());
   };
 };
+*/

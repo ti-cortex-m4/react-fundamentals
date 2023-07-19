@@ -3,26 +3,25 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
 //  SET_LOGIN_ERROR,
-  REGISTER_RESULT,
-  REGISTER_SUCCESS,
-  REGISTER_ERROR,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_ERROR,
 } from './types';
 
 export const initialUserState = {
   user: {
-    isAuth: false,
-    name: '',
-    email: '',
-    token: '',
-    role: '',
+    isAuthenticated: false,
+    userName: null,
+    email: null,
+    authToken: null,
+    role: null,
     registerResult: null,
-    successfullLogin: false,
     loginError: null,
   },
 };
 
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
+/*
     case SAVE_USER: {
       return {
         ...state,
@@ -36,7 +35,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
     }
-
+*/
     case LOGIN_USER: {
       return {
         ...state,
@@ -103,7 +102,7 @@ const userReducer = (state = initialUserState, action) => {
 //      };
 //    }
 
-    case REGISTER_USER_SUCCESS_ACTION:
+    case REGISTER_USER_SUCCESS:
       return {
         ...state,
         user: {
@@ -112,7 +111,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
 
-    case REGISTER_USER_ERROR_ACTION:
+    case REGISTER_USER_ERROR:
       return {
         ...state,
         user: {
@@ -120,7 +119,7 @@ const userReducer = (state = initialUserState, action) => {
           registerResult: action.payload,
         },
       };
-
+/*
     case LOGOUT_USER: {
       return {
         ...state,
@@ -138,6 +137,7 @@ const userReducer = (state = initialUserState, action) => {
         },
       };
     }
+*/
     default:
       return state;
   }
