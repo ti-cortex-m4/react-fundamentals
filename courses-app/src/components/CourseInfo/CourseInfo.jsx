@@ -5,7 +5,7 @@ import { Button } from '../../common/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../helpers/fetchData';
-import { BACKEND_PATHS, FRONTEND_PATHS } from '../../constants';
+import { BACKEND_PATHS, APPLICATION_PATHS } from '../../constants';
 
 import styles from './styles.module.css';
 
@@ -40,7 +40,7 @@ export const CourseInfo = ({ allAuthors }) => {
   }, [courseId]);
 
   const handleBackButtonClick = () => {
-    navigate(FRONTEND_PATHS.courses);
+    navigate(APPLICATION_PATHS.courses);
   };
 
   return (

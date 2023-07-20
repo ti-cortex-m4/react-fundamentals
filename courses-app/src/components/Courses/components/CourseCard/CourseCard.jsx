@@ -7,7 +7,7 @@ import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { isAdministrator } from '../../../../helpers/authentication';
 // import { deleteCourse } from '../../../../services/course';
-import { FRONTEND_PATHS } from '../../../../constants';
+import { APPLICATION_PATHS } from '../../../../constants';
 
 import { deleteCourse } from '../../../../store/courses/thunk';
 
@@ -36,11 +36,11 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
 
   const handleDeleteButtonClick = (courseId) => {
     dispatch(deleteCourse(courseId));
-    navigate(FRONTEND_PATHS.courses); // TODO ?
+    navigate(APPLICATION_PATHS.courses); // TODO ?
 
 //     deleteCourse(
 //       courseId,
-//       (response, error) => { navigate(FRONTEND_PATHS.courses) },
+//       (response, error) => { navigate(APPLICATION_PATHS.courses) },
 //       (response, error) => { }
 //     );
   };

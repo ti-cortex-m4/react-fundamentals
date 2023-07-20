@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
-import { FRONTEND_PATHS } from '../../constants';
-import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
+import { APPLICATION_PATHS } from '../../constants';
+// import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
+import { getUserSelector } from '../../store/user/selectors';
 import { loginUserAction } from '../../store/user/thunk';
 import { loginUserErrorAction } from '../../store/user/actions';
-import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
 
@@ -18,6 +18,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState(false);
+
   const user = useSelector(getUserSelector);
 
   const initialFormData = {
@@ -33,7 +34,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       setIsLogged(true);
       //setFormValid(true);
 
-      navigate(FRONTEND_PATHS.courses);
+      navigate(APPLICATION_PATHS.courses);
     }
 
     if (user.loginResult === false) {
@@ -93,7 +94,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to={FRONTEND_PATHS.register}>register</Link>
+        <Link to={APPLICATION_PATHS.register}>register</Link>
       </p>
     </div>
   );

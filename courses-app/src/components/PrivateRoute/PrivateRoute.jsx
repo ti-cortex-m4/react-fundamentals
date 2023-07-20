@@ -2,10 +2,10 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 import { isAdministrator } from '../../helpers/authentication';
-import { FRONTEND_PATHS } from '../../constants';
+import { APPLICATION_PATHS } from '../../constants';
 
 export const PrivateRoute = () => {
-  return isAdministrator() ? <Outlet /> : <Navigate to={FRONTEND_PATHS.courses} />;
+  return isAdministrator() ? <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
 };
 
 export default PrivateRoute;

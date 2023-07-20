@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
-import { FRONTEND_PATHS } from '../../constants';
+import { APPLICATION_PATHS } from '../../constants';
 
+import { getUserSelector } from '../../store/user/selectors';
 import { registerUserAction } from '../../store/user/thunk';
 import { registerUserErrorAction } from '../../store/user/actions';
-import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
 
@@ -20,18 +20,12 @@ export const Registration = () => {
 
   const user = useSelector(getUserSelector);
 
-//   useEffect(() => {
-//     if (getUserFromLocalStorage()?.token) {
-//       navigate('/courses');
-//     }
-//   }, [navigate]);
-
   useEffect(() => {
     if (user.registerResult === true) {
 //         setFormData(initialFormData);
 //         setFormValid(true);
-//
-        navigate(FRONTEND_PATHS.login);
+
+        navigate(APPLICATION_PATHS.login);
 //       navigate('/login');
 //       dispatch(registerResultAction(null)); TODO
     }
@@ -45,14 +39,6 @@ export const Registration = () => {
         registerError: null
       }));
     }
-//     if (user.registrationError) {
-//       setRegistrationError(true);
-//
-//       setTimeout(() => {
-//         setRegistrationError(false);
-//         dispatch(registrationErrorAction(false));
-//       }, 5000);
-//     }
   },
   [
     user.registerResult,
@@ -73,20 +59,6 @@ export const Registration = () => {
     event.preventDefault();
 
     dispatch(registerUserAction(formData));
-
-//     registerUser(
-//       formData,
-//       (response, error) => {
-//         setFormData(initialFormData);
-//         setFormValid(true);
-//
-//         navigate(FRONTEND_PATHS.login);
-//       },
-//       (response, error) => {
-//         setFormValid(false);
-//         alert('Registration failed: ' + response.errors);
-//       }
-//     );
   };
 
   const handleFormChange = event => {
@@ -132,7 +104,7 @@ export const Registration = () => {
       </form>
       <p>
         If you have an account you can&nbsp;
-        <Link to={FRONTEND_PATHS.login}>login</Link>
+        <Link to={APPLICATION_PATHS.login}>login</Link>
       </p>
     </div>
   );

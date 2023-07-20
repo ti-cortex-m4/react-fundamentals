@@ -9,7 +9,7 @@ export const BACKEND_PATHS = {
   courseInfo: '/courses/',
 };
 
-export const FRONTEND_PATHS = {
+export const APPLICATION_PATHS = {
   root: '/',
   register: '/register',
   login: '/login',

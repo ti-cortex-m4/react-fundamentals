@@ -11,7 +11,7 @@ import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
 // import { addCourse, updateCourse } from '../../services/course';
-import { FRONTEND_PATHS } from '../../constants';
+import { APPLICATION_PATHS } from '../../constants';
 
 // import { addCourseAction } from '../../store/courses/actions';
 // import { addAuthorAction } from '../../store/authors/actions';
@@ -124,7 +124,7 @@ import styles from './styles.module.css';
 //        courseId,
 //        body,
 //         (response, error) => {
-//         navigate(FRONTEND_PATHS.courses);
+//         navigate(APPLICATION_PATHS.courses);
 //         },
 //         (response, error) => { }
 //       );
@@ -132,7 +132,7 @@ import styles from './styles.module.css';
 //       addCourse(
 //        body,
 //         (response, error) => {
-//         navigate(FRONTEND_PATHS.courses);
+//         navigate(APPLICATION_PATHS.courses);
 //         },
 //         (response, error) => { }
 //       );
@@ -144,7 +144,7 @@ import styles from './styles.module.css';
       dispatch(addCourse(body));
     }
 
-    navigate(FRONTEND_PATHS.courses);
+    navigate(APPLICATION_PATHS.courses);
   };
 
   return (

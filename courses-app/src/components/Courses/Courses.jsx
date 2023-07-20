@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Button } from '../../common/Button/Button';
 import { CourseCard } from './components/CourseCard/CourseCard';
 import { Search } from './components/Search/Search';
-import { FRONTEND_PATHS } from '../../constants';
+import { APPLICATION_PATHS } from '../../constants';
 
 import { getAuthorsSelector } from '../../store/authors/selectors';
 import { getCoursesSelector } from '../../store/courses/selectors';
@@ -22,7 +22,7 @@ export const Courses = () => {
   const [foundCourses, setFoundCourses] = useState();
 
   const handleCreateCourseButtonClick = () => {
-    navigate(FRONTEND_PATHS.createCourse);
+    navigate(APPLICATION_PATHS.createCourse);
   };
 
   const handleSearchChange = searchValue => {
