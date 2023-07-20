@@ -5,11 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
-// import { loginUser, getCurrentUser } from '../../services/user';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
 import { loginUser } from '../../store/user/thunk';
-import { loginSuccessAction } from '../../store/user/actions';
+import { loginUserErrorAction } from '../../store/user/actions';
 import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
@@ -19,7 +18,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState(false);
-  const loggedUser = useSelector(getUserSelector);
+  const user = useSelector(getUserSelector);
 
   const initialFormData = {
     email: '',
@@ -28,53 +27,35 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const [formData, setFormData] = useState(initialFormData);
   const [formValid, setFormValid] = useState(true);
 
-//   useEffect(() => {
-//     if (getUserFromLocalStorage()?.token) {
-//       navigate('/courses');
-//     }
-//   }, [navigate]);
-//
   useEffect(() => {
-    if (loggedUser.loginResult === true) {
-//             setFormData(initialFormData);
-             setIsLogged(true);
-//             setFormValid(true);
+    if (user.loginResult === true) {
+      //setFormData(initialFormData);
+      setIsLogged(true);
+      //setFormValid(true);
 
       navigate(FRONTEND_PATHS.courses);
     }
 
-    if (loggedUser.loginResult === false) {
-//         setFormValid(false);
-         alert('Login failed: ' + loggedUser.loginError);
+    if (user.loginResult === false) {
+      setFormValid(false);
+      alert('Login error: ' + user.loginError);
+
+      dispatch(loginUserErrorAction({
+        loginResult: null,
+        loginError: null
+      }));
     }
-//     if (
-//       loggedUser.isAuth &&
-//       loggedUser.name !== '' &&
-//       loggedUser.email !== '' &&
-//       loggedUser.token !== '' &&
-//       !loggedUser.loginError
-//     ) {
-//       navigate('/courses');
-//     }
-//
-//     if (loggedUser.loginError === true) {
-//       setError(true);
-//
-//       setTimeout(() => {
-//         setError(false);
-//         dispatch(setLoginErrorAction(false));
-//       }, 5000);
-//     }
   },
-  [
-  loggedUser.loginResult,
-   navigate
-  ]);
+    [
+      user.loginResult,
+      navigate,
+      dispatch
+    ]);
 
   const handleFormSubmit = event => {
     event.preventDefault();
 
-   dispatch(loginUser(formData));
+    dispatch(loginUser(formData));
   };
 
   const handleFormChange = event => {
