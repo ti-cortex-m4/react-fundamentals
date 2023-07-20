@@ -41,8 +41,9 @@ const userReducer = (state = initialUserState, action) => {
     case GET_USER_SUCCESS: {
       return {
         ...state,
-        userRole: action.payload.userRole,
         isAuthenticated: true,
+        isAdministrator: 'admin' === action.payload.userRole,
+        userRole: action.payload.userRole,
         loginResult: true,
         loginError: null,
       };
