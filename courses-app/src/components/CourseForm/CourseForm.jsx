@@ -28,9 +28,11 @@ import styles from './styles.module.css';
   const updatingCourse = allCourses.find((course) => course.id === courseId);
 
   const [formData, setFormData] = useState({
+    id: courseId ? updatingCourse.id : null,
     title: courseId ? updatingCourse.title : '',
     description: courseId ? updatingCourse.description : '',
     duration: courseId ? updatingCourse.duration : '',
+    creationDate: courseId ? updatingCourse.creationDate : null,
     authors: courseId ? updatingCourse.authors.map(authorId => allAuthors.find((author) => author.id === authorId)) : [],
   });
 
