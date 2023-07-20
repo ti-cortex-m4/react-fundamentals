@@ -7,8 +7,6 @@ import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
-// import { fetchData } from '../../helpers/fetchData';
-// import { getAllAuthors } from '../../services/author';
 import { APPLICATION_PATHS } from '../../constants';
 
 import { getAuthorsSelector } from '../../store/authors/selectors';

@@ -6,7 +6,6 @@ import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { isAdministrator } from '../../../../helpers/authentication';
-// import { deleteCourse } from '../../../../services/course';
 import { APPLICATION_PATHS } from '../../../../constants';
 
 import { deleteCourseThunk } from '../../../../store/courses/thunk';

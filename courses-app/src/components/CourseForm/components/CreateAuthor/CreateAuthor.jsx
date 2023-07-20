@@ -3,10 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
-// import { fetchData } from '../../../../helpers/fetchData';
 
 import { addAuthorThunk } from '../../../../store/authors/thunk';
-// import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';
 
@@ -17,18 +15,6 @@ import styles from './styles.module.css';
 
   const handleCreateAuthorClick = () => {
     dispatch(addAuthorThunk(name));
-//     if (author) {
-//       const { response, error } = await fetchData({
-//         method: 'POST',
-//         url: BACKEND_PATHS.addAuthor,
-//         body: { name: author },
-//       });
-//
-//       if (!error && response.successful) {
-//         setIsAuthorAdded(true);
-//         setAuthor('');
-//       }
-//     }
   };
 
   const handleAuthorChange = event => {
