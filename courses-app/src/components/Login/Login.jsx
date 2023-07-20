@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { APPLICATION_PATHS } from '../../constants';
-// import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
 import { getUserSelector } from '../../store/user/selectors';
-import { loginUserAction } from '../../store/user/thunk';
+import { loginUserThunk } from '../../store/user/thunk';
 import { loginUserErrorAction } from '../../store/user/actions';
 
 import styles from './styles.module.css';
@@ -57,7 +56,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const handleFormSubmit = event => {
     event.preventDefault();
 
-    dispatch(loginUserAction(formData));
+    dispatch(loginUserThunk(formData));
   };
 
   const handleFormChange = event => {

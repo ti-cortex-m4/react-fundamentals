@@ -9,7 +9,7 @@ import { isAdministrator } from '../../../../helpers/authentication';
 // import { deleteCourse } from '../../../../services/course';
 import { APPLICATION_PATHS } from '../../../../constants';
 
-import { deleteCourse } from '../../../../store/courses/thunk';
+import { deleteCourseThunk } from '../../../../store/courses/thunk';
 
 import styles from './styles.module.css';
 
@@ -35,7 +35,7 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
   };
 
   const handleDeleteButtonClick = (courseId) => {
-    dispatch(deleteCourse(courseId));
+    dispatch(deleteCourseThunk(courseId));
     navigate(APPLICATION_PATHS.courses); // TODO ?
 
 //     deleteCourse(

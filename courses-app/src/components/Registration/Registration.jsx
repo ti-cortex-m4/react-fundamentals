@@ -7,7 +7,7 @@ import { Button } from '../../common/Button/Button';
 import { APPLICATION_PATHS } from '../../constants';
 
 import { getUserSelector } from '../../store/user/selectors';
-import { registerUserAction } from '../../store/user/thunk';
+import { registerUserThunk } from '../../store/user/thunk';
 import { registerUserErrorAction } from '../../store/user/actions';
 
 import styles from './styles.module.css';
@@ -58,7 +58,7 @@ export const Registration = () => {
   const handleFormSubmit = /*async*/ event => {
     event.preventDefault();
 
-    dispatch(registerUserAction(formData));
+    dispatch(registerUserThunk(formData));
   };
 
   const handleFormChange = event => {

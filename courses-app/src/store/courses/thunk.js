@@ -6,7 +6,7 @@ import {
   deleteCourseAction,
 } from './actions';
 
-export const getAllCourses = () => {
+export const getAllCoursesThunk = () => {
   return async (dispatch) => {
     courseService.getAllCourses(
       (response,) => {
@@ -19,7 +19,7 @@ export const getAllCourses = () => {
   }
 };
 
-export const addCourse = (body) => {
+export const addCourseThunk = (body) => {
   return async (dispatch) => {
     courseService.addCourse(
       body,
@@ -33,7 +33,7 @@ export const addCourse = (body) => {
   }
 };
 
-export const updateCourse = (courseId, body) => {
+export const updateCourseThunk = (courseId, body) => {
   return async (dispatch) => {
     courseService.updateCourse(
       courseId,
@@ -48,7 +48,7 @@ export const updateCourse = (courseId, body) => {
   }
 };
 
-export const deleteCourse = (courseId) => {
+export const deleteCourseThunk = (courseId) => {
   return async (dispatch) => {
     courseService.deleteCourse(
       courseId,

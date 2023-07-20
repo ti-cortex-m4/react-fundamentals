@@ -4,7 +4,7 @@ import {
   addAuthorAction,
 } from './actions';
 
-export const getAllAuthors = () => {
+export const getAllAuthorsThunk = () => {
   return async (dispatch) => {
     authorService.getAllAuthors(
       (response,) => {
@@ -17,7 +17,7 @@ export const getAllAuthors = () => {
   }
 };
 
-export const addAuthor = (body) => {
+export const addAuthorThunk = (body) => {
   return async (dispatch) => {
     authorService.addAuthor(
       body,

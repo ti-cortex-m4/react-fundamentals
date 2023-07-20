@@ -14,15 +14,15 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import { APPLICATION_PATHS } from './constants';
 
-import { getAllAuthors } from './store/authors/thunk';
-import { getAllCourses } from './store/courses/thunk';
+import { getAllAuthorsThunk } from './store/authors/thunk';
+import { getAllCoursesThunk } from './store/courses/thunk';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllAuthors());
-    dispatch(getAllCourses());
+    dispatch(getAllAuthorsThunk());
+    dispatch(getAllCoursesThunk());
   }, [dispatch]);
 
   const [isLogged, setIsLogged] = useState(false);

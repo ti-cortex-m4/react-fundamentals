@@ -17,7 +17,7 @@ import { APPLICATION_PATHS } from '../../constants';
 // import { addAuthorAction } from '../../store/authors/actions';
 import { getAuthorsSelector } from '../../store/authors/selectors';
 import { getCoursesSelector } from '../../store/courses/selectors';
-import { addCourse, updateCourse } from '../../store/courses/thunk';
+import { addCourseThunk, updateCourseThunk } from '../../store/courses/thunk';
 
 import styles from './styles.module.css';
 
@@ -139,9 +139,9 @@ import styles from './styles.module.css';
 //     }
 
     if (courseId) {
-      dispatch(updateCourse(courseId, body));
+      dispatch(updateCourseThunk(courseId, body));
     } else {
-      dispatch(addCourse(body));
+      dispatch(addCourseThunk(body));
     }
 
     navigate(APPLICATION_PATHS.courses);

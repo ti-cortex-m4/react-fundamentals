@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
 import { fetchData } from '../../../../helpers/fetchData';
-import { addAuthor } from '../../../../store/authors/thunk';
+
+import { addAuthorThunk } from '../../../../store/authors/thunk';
 // import { BACKEND_PATHS } from '../../../../constants';
 
 import styles from './styles.module.css';
@@ -15,7 +16,7 @@ import styles from './styles.module.css';
   const [name, setName] = useState('');
 
   const handleCreateAuthorClick = () => {
-    dispatch(addAuthor(name));
+    dispatch(addAuthorThunk(name));
 //     if (author) {
 //       const { response, error } = await fetchData({
 //         method: 'POST',
