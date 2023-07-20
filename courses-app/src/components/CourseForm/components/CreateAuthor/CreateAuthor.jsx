@@ -15,6 +15,7 @@ import styles from './styles.module.css';
 
   const handleCreateAuthorClick = () => {
     dispatch(addAuthorThunk(name));
+    setName('');
   };
 
   const handleAuthorChange = event => {

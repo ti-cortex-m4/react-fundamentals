@@ -22,7 +22,7 @@ export const addAuthorThunk = (body) => {
     authorService.addAuthor(
       body,
       (response,) => {
-        dispatch(addAuthorAction(body));
+        dispatch(addAuthorAction(response.result));
       },
       (response, error) => {
         console.log('Add author error: ' + JSON.stringify(error || response));

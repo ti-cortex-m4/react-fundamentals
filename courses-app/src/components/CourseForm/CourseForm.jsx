@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -43,9 +43,13 @@ import styles from './styles.module.css';
 
   const [formValid, setFormValid] = useState(false);
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
-  const [authors, setAuthors] = useState(
-    courseId ? allAuthors.filter(author => !formData.authors.includes(author)) : allAuthors
-  );
+  const [authors, setAuthors] = useState(courseId ? allAuthors.filter(author => !formData.authors.includes(author)) : allAuthors);
+
+const authors2 = useSelector(getAuthorsSelector);
+useEffect(() => {
+  console.log('update authors');
+  setAuthors(authors2);
+}, [authors2]);
 
   const updateFormValidation = () => {
     setFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
