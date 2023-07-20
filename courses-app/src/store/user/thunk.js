@@ -39,7 +39,10 @@ export const getCurrentUser = () => {
       },
       (response, error) => {
         console.log('Get current user error: ' + JSON.stringify(error || response));
-        dispatch(getCurrentUserErrorAction(false));
+        dispatch(getCurrentUserErrorAction({
+          loginResult: false,
+          loginError: response.result
+        }));
       }
     );
   }
@@ -64,7 +67,10 @@ export const loginUser = (body) => {
       },
       (response, error) => {
         console.log('Login user error: ' + JSON.stringify(error || response));
-        dispatch(loginUserErrorAction(false));
+        dispatch(loginUserErrorAction({
+          loginResult: false,
+          loginError: response.result
+        }));
       }
     );
   }

@@ -14,6 +14,7 @@ export const initialUserState = {
   userName: null,
   userRole: null,
   loginResult: null,
+  loginError: null,
   registerResult: null,
 };
 
@@ -31,7 +32,8 @@ const userReducer = (state = initialUserState, action) => {
     case LOGIN_USER_ERROR: {
       return {
         ...state,
-        loginResult: false,
+        loginResult: action.payload.loginResult,
+        loginError: action.payload.loginError,
       };
     }
 
@@ -41,13 +43,15 @@ const userReducer = (state = initialUserState, action) => {
         userRole: action.payload.userRole,
         isAuthenticated: true,
         loginResult: true,
+        loginError: null,
       };
     }
 
     case GET_CURRENT_USER_ERROR: {
       return {
         ...state,
-        loginResult: false,
+        loginResult: action.payload.loginResult,
+        loginError: action.payload.loginError,
       };
     }
 
