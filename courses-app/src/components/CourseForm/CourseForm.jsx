@@ -43,7 +43,9 @@ import styles from './styles.module.css';
 
   const [formValid, setFormValid] = useState(false);
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
-  const [authors, setAuthors] = useState(allAuthors);
+  const [authors, setAuthors] = useState(
+    courseId ? allAuthors.filter(author => !formData.authors.includes(author)) : allAuthors
+  );
 
   const updateFormValidation = () => {
     setFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
