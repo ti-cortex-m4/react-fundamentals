@@ -37,16 +37,15 @@ export const Login = ({ isLogged, setIsLogged }) => {
   useEffect(() => {
     if (loggedUser.loginResult === true) {
 //             setFormData(initialFormData);
-//             setIsLogged(true);
+             setIsLogged(true);
 //             setFormValid(true);
 
-      navigate('/courses');
-//       dispatch(registerResultAction(null)); TODO
+      navigate(FRONTEND_PATHS.courses);
     }
 
     if (loggedUser.loginResult === false) {
 //         setFormValid(false);
-//         alert('Login failed: ' + response.result);
+         alert('Login failed: ' + loggedUser.loginError);
     }
 //     if (
 //       loggedUser.isAuth &&
@@ -69,45 +68,13 @@ export const Login = ({ isLogged, setIsLogged }) => {
   },
   [
   loggedUser.loginResult,
-   navigate,
-//   dispatch
+   navigate
   ]);
 
-  const handleFormSubmit = /*async*/ event => {
+  const handleFormSubmit = event => {
     event.preventDefault();
 
    dispatch(loginUser(formData));
-//     loginUser(
-//       formData,
-//       (response, error) => {
-//         const authToken = response.result.split(' ')[1];
-//         setAuthTokenToLocalStorage(authToken);
-//
-//         const userName = response.user?.name;
-//         setUserNameToLocalStorage(userName);
-//
-//         getCurrentUser(
-//           (response, error) => {
-//             const userRole = response.result?.role;
-//             setUserRoleToLocalStorage(userRole);
-//
-//             setFormData(initialFormData);
-//             setIsLogged(true);
-//             setFormValid(true);
-//
-//             navigate(FRONTEND_PATHS.courses);
-//           },
-//           (response, error) => {
-//             setFormValid(false);
-//             alert('Reading user data failed: ' + response.result);
-//           }
-//         );
-//       },
-//       (response, error) => {
-//         setFormValid(false);
-//         alert('Login failed: ' + response.result);
-//       }
-//     );
   };
 
   const handleFormChange = event => {
@@ -117,12 +84,6 @@ export const Login = ({ isLogged, setIsLogged }) => {
 
   return (
     <div className={styles.container}>
-      {
-        (loggedUser.loginResult === false) &&
-        <p>
-          login error: {loggedUser.loginError}
-        </p>
-      }
       <form onSubmit={handleFormSubmit}>
         <h1>Login</h1>
         <Input
