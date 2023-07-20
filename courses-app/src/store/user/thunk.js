@@ -24,7 +24,7 @@ export const registerUserAction = (body) => {
         console.log('Register user error: ' + JSON.stringify(error || response));
         dispatch(registerUserErrorAction({
                                                    registerResult: false,
-                                                   registerError: (response.errors || response.result)
+                                                   registerError: (error ||response.errors || response.result)
                                                  }));
       }
     );
@@ -44,7 +44,7 @@ export const getCurrentUserAction = () => {
         console.log('Get current user error: ' + JSON.stringify(error || response));
         dispatch(getCurrentUserErrorAction({
           loginResult: false,
-          loginError: response.result
+          loginError: (error ||response.errors || response.result)
         }));
       }
     );
@@ -72,7 +72,7 @@ export const loginUserAction = (body) => {
         console.log('Login user error: ' + JSON.stringify(error || response));
         dispatch(loginUserErrorAction({
           loginResult: false,
-          loginError: (response.errors || response.result)
+          loginError: (error ||response.errors || response.result)
         }));
       }
     );

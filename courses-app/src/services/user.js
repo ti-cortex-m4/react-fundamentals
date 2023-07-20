@@ -30,10 +30,10 @@ class UserService {
     }
   };
 
-  logoutUser = async (body, onSuccess, onError) => {
+  getCurrentUser = async (onSuccess, onError) => {
     const { response, error } = await fetchData({
-      method: 'DELETE',
-      url: '/logout'
+      method: 'GET',
+      url: '/users/me',
     });
 
     if (!error && response.successful) {
@@ -43,10 +43,10 @@ class UserService {
     }
   };
 
-  getCurrentUser = async (onSuccess, onError) => {
+  logoutUser = async (body, onSuccess, onError) => {
     const { response, error } = await fetchData({
-      method: 'GET',
-      url: '/users/me',
+      method: 'DELETE',
+      url: '/logout'
     });
 
     if (!error && response.successful) {

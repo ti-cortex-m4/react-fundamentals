@@ -70,14 +70,14 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
             onClick={handleShowButtonClick}
           />
           {
-            isAdministrator() &&
+//             isAdministrator() &&
             <Button
               buttonText='Edit course'
               onClick={handleUpdateButtonClick}
             />
           }
           {
-            isAdministrator() &&
+//             isAdministrator() &&
             <Button
               buttonText='Delete course'
               onClick={() => handleDeleteButtonClick(id)}
