@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../../common/Button/Button';
@@ -10,11 +9,8 @@ import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
 import { fetchData } from '../../helpers/fetchData';
 import { getAllAuthors } from '../../services/author';
-// import { addCourse, updateCourse } from '../../services/course';
 import { APPLICATION_PATHS } from '../../constants';
 
-// import { addCourseAction } from '../../store/courses/actions';
-// import { addAuthorAction } from '../../store/authors/actions';
 import { getAuthorsSelector } from '../../store/authors/selectors';
 import { getCoursesSelector } from '../../store/courses/selectors';
 import { addCourseThunk, updateCourseThunk } from '../../store/courses/thunk';
@@ -48,6 +44,8 @@ import styles from './styles.module.css';
   const [isFormValid, setIsFormValid] = useState(false);
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
   const [authors, setAuthors] = useState([]);
+
+  //setAuthors(allAuthors); TODO
 
 //   useEffect(() => {
 //     getAllAuthors(
