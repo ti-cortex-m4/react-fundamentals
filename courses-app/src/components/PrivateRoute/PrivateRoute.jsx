@@ -4,7 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { isAdministrator } from '../../helpers/authentication';
 import { APPLICATION_PATHS } from '../../constants';
 
-export const PrivateRoute = () => {
+const PrivateRoute = () => {
   return isAdministrator() ? <Outlet /> : <Navigate to={APPLICATION_PATHS.courses} />;
 };
 
