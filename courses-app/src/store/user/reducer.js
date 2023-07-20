@@ -16,6 +16,7 @@ export const initialUserState = {
   loginResult: null,
   loginError: null,
   registerResult: null,
+  registerError: null,
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -59,12 +60,14 @@ const userReducer = (state = initialUserState, action) => {
       return {
         ...state,
         registerResult: action.payload,
+        registerError: null
       };
 
     case REGISTER_USER_ERROR:
       return {
         ...state,
-        registerResult: action.payload,
+        registerResult: action.payload.registerResult,
+        registerError: action.payload.registerError,
       };
     /*
         case LOGOUT_USER: {

@@ -7,7 +7,7 @@ import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
 import { setAuthTokenToLocalStorage, setUserNameToLocalStorage, setUserRoleToLocalStorage } from '../../helpers/localStorage';
 
-import { loginUser } from '../../store/user/thunk';
+import { loginUserAction } from '../../store/user/thunk';
 import { loginUserErrorAction } from '../../store/user/actions';
 import { getUserSelector } from '../../store/user/selectors';
 
@@ -55,7 +55,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const handleFormSubmit = event => {
     event.preventDefault();
 
-    dispatch(loginUser(formData));
+    dispatch(loginUserAction(formData));
   };
 
   const handleFormChange = event => {

@@ -13,7 +13,7 @@ import {
   setUserRoleToLocalStorage
 } from '../../helpers/localStorage';
 
-export const registerUser = (body) => {
+export const registerUserAction = (body) => {
   return async (dispatch) => {
     userService.registerUser(
       body,
@@ -22,13 +22,16 @@ export const registerUser = (body) => {
       },
       (response, error) => {
         console.log('Register user error: ' + JSON.stringify(error || response));
-        dispatch(registerUserErrorAction(false));
+        dispatch(registerUserErrorAction({
+                                                   registerResult: false,
+                                                   registerError: response.result
+                                                 }));
       }
     );
   }
 };
 
-export const getCurrentUser = () => {
+export const getCurrentUserAction = () => {
   return async (dispatch) => {
     userService.getCurrentUser(
       (response,) => {
@@ -48,7 +51,7 @@ export const getCurrentUser = () => {
   }
 };
 
-export const loginUser = (body) => {
+export const loginUserAction = (body) => {
   return async (dispatch) => {
     userService.loginUser(
       body,
@@ -63,7 +66,7 @@ export const loginUser = (body) => {
           authToken: authToken,
           userName: userName,
         }));
-        dispatch(getCurrentUser());
+        dispatch(getCurrentUserAction());
       },
       (response, error) => {
         console.log('Login user error: ' + JSON.stringify(error || response));

@@ -19,7 +19,7 @@ export const Registration = () => {
 
   const [registrationError, setRegistrationError] = useState(false);
 
-  const loggedUser = useSelector(getUserSelector);
+  const user = useSelector(getUserSelector);
 
 //   useEffect(() => {
 //     if (getUserFromLocalStorage()?.token) {
@@ -28,15 +28,25 @@ export const Registration = () => {
 //   }, [navigate]);
 
   useEffect(() => {
-    if (loggedUser.registerResult === true) {
-      navigate('/login');
+    if (user.registerResult === true) {
+//         setFormData(initialFormData);
+//         setFormValid(true);
+//
+        navigate(FRONTEND_PATHS.login);
+//       navigate('/login');
 //       dispatch(registerResultAction(null)); TODO
     }
 
-    if (loggedUser.registerResult === false) {
-      setRegistrationError(true);
+    if (user.registerResult === false) {
+      setFormValid(false);
+      alert('Register error: ' + user.registerError);
+
+      dispatch(registerUserErrorAction({
+        registerResult: null,
+        registerError: null
+      }));
     }
-//     if (loggedUser.registrationError) {
+//     if (user.registrationError) {
 //       setRegistrationError(true);
 //
 //       setTimeout(() => {
@@ -46,7 +56,7 @@ export const Registration = () => {
 //     }
   },
   [
-    loggedUser.registerResult,
+    user.registerResult,
     navigate,
     dispatch,
   ]);
@@ -62,7 +72,7 @@ export const Registration = () => {
   const handleFormSubmit = /*async*/ event => {
     event.preventDefault();
 
-    dispatch(registerUser(formData));
+    dispatch(registerUserAction(formData));
 
 //     registerUser(
 //       formData,
@@ -86,12 +96,6 @@ export const Registration = () => {
 
   return (
     <div className={styles.container}>
-      {
-        registrationError &&
-        <p>
-          registration error
-        </p>
-      }
       <form onSubmit={handleFormSubmit}>
         <h1>Registration</h1>
         <Input
