@@ -60,8 +60,8 @@ export const Login = ({ isLogged, setIsLogged }) => {
   },
   [
   loggedUser.loginResult,
-  navigate,
-  dispatch
+//   navigate,
+//   dispatch
   ]);
 
   const handleFormSubmit = /*async*/ event => {
@@ -109,9 +109,9 @@ export const Login = ({ isLogged, setIsLogged }) => {
   return (
     <div className={styles.container}>
       {
-        loginError &&
+        (loggedUser.loginResult === false) &&
         <p>
-          login error
+          login error: {loggedUser.loginError}
         </p>
       }
       <form onSubmit={handleFormSubmit}>
