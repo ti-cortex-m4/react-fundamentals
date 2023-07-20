@@ -13,7 +13,7 @@ export const getAllCourses = () => {
         dispatch(saveAllCoursesAction(response.result));
       },
       (response, error) => {
-        console.log('Get all courses error: ' + (error || response));
+        console.log('Get all courses error: ' + JSON.stringify(error || response));
       }
     );
   }
@@ -27,7 +27,7 @@ export const addCourse = (body) => {
         dispatch(addCourseAction(body));
       },
       (response, error) => {
-        console.log('Add course error: ' + (error || response));
+        console.log('Add course error: ' + JSON.stringify(error || response));
       }
     );
   }
@@ -42,7 +42,7 @@ export const updateCourse = (courseId, body) => {
         dispatch(updateCourseAction(body));
       },
       (response, error) => {
-        console.log('Update course error: ' + (error || response));
+        console.log('Update course error: ' + JSON.stringify(error || response));
       }
     );
   }
@@ -56,7 +56,7 @@ export const deleteCourse = (courseId) => {
         dispatch(deleteCourseAction(courseId));
       },
       (response, error) => {
-        console.log('Delete course error: ' + (error || response));
+        console.log('Delete course error: ' + JSON.stringify(error || response));
       }
     );
   }

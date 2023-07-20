@@ -21,7 +21,7 @@ export const registerUser = (body) => {
         dispatch(registerUserSuccessAction(true));
       },
       (response, error) => {
-        console.log('Register user error: ' + (error || response));
+        console.log('Register user error: ' + JSON.stringify(error || response));
         dispatch(registerUserErrorAction(false));
       }
     );
@@ -38,7 +38,7 @@ export const getCurrentUser = () => {
         dispatch(getCurrentUserSuccessAction(userRole));
       },
       (response, error) => {
-        console.log('Get current user error: ' + (error || response));
+        console.log('Get current user error: ' + JSON.stringify(error || response));
         dispatch(getCurrentUserErrorAction(false));
       }
     );
@@ -63,7 +63,7 @@ export const loginUser = (body) => {
         dispatch(getCurrentUser());
       },
       (response, error) => {
-        console.log('Login user error: ' + (error || response));
+        console.log('Login user error: ' + JSON.stringify(error || response));
         dispatch(loginUserErrorAction(false));
       }
     );

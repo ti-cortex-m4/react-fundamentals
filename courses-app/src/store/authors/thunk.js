@@ -11,7 +11,7 @@ export const getAllAuthors = () => {
         dispatch(saveAllAuthorsAction(response.result));
       },
       (response, error) => {
-        console.log('Get all authors error: ' + (error || response));
+        console.log('Get all authors error: ' + JSON.stringify(error || response));
       }
     );
   }
@@ -25,7 +25,7 @@ export const addAuthor = (body) => {
         dispatch(addAuthorAction(body));
       },
       (response, error) => {
-        console.log('Add author error: ' + (error || response));
+        console.log('Add author error: ' + JSON.stringify(error || response));
       }
     );
   }
