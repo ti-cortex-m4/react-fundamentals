@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { Button } from '../../common/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
@@ -7,37 +8,45 @@ import { formatCreationDate } from '../../helpers/formatCreationDate';
 import { fetchData } from '../../helpers/fetchData';
 import { BACKEND_PATHS, APPLICATION_PATHS } from '../../constants';
 
+import { getAuthorsSelector } from '../../store/authors/selectors';
+import { getCoursesSelector } from '../../store/courses/selectors';
+
 import styles from './styles.module.css';
 
-export const CourseInfo = ({ allAuthors }) => {
+export const CourseInfo = () => {
   const navigate = useNavigate();
   const { courseId } = useParams();
 
-  const [course, setCourse] = useState({
-    id: '',
-    creationDate: '',
-    description: '',
-    duration: 0,
-    title: '',
-    authors: [],
-  });
+//   const [course, setCourse] = useState({
+//     id: '',
+//     creationDate: '',
+//     description: '',
+//     duration: 0,
+//     title: '',
+//     authors: [],
+//   });
+
+  const allAuthors = useSelector(getAuthorsSelector);
+  const allCourses = useSelector(getCoursesSelector);
 
   const authorIdsToNames = new Map(allAuthors.map(author => [author.id, author.name]));
 
-  useEffect(() => {
-    const getCourseInfo = async () => {
-      const { response, error } = await fetchData({
-        method: 'GET',
-        url: BACKEND_PATHS.courseInfo + courseId, // TODO
-      });
+  const course = allCourses.find((course) => course.id === courseId);
 
-      if (!error && response.successful) {
-        setCourse(response.result);
-      }
-    };
-
-    getCourseInfo();
-  }, [courseId]);
+//   useEffect(() => {
+//     const getCourseInfo = async () => {
+//       const { response, error } = await fetchData({
+//         method: 'GET',
+//         url: BACKEND_PATHS.courseInfo + courseId, // TODO
+//       });
+//
+//       if (!error && response.successful) {
+//         setCourse(response.result);
+//       }
+//     };
+//
+//     getCourseInfo();
+//   }, [courseId]);
 
   const handleBackButtonClick = () => {
     navigate(APPLICATION_PATHS.courses);

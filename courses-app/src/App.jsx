@@ -37,24 +37,6 @@ function App() {
     }
   }, []);
 
-//   useEffect(() => {
-//     getAllAuthors(
-//       (response, ) => {
-//         dispatch(saveAllAuthorsAction(response.result));
-//       },
-//       (response, error) => { }
-//     );
-//     getAllCourses(
-//       (response, error) => {
-//         dispatch(saveAllCoursesAction(response.result));
-//       },
-//       (response, error) => { }
-//     );
-//
-//     getAllAuthors();
-//     getAllCourses();
-//   }, [dispatch]);
-
   return (
     <div className='app'>
       <Header isLogged={isLogged} setIsLogged={setIsLogged} />

@@ -27,11 +27,11 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
   const dispatch = useDispatch();
 
   const handleShowButtonClick = () => {
-    navigate(`/courses/${id}`);
+    navigate(`/courses/${id}`); // TODO ?
   };
 
   const handleUpdateButtonClick = () => {
-    navigate(`/courses/update/${id}`);
+    navigate(`/courses/update/${id}`); // TODO ?
   };
 
   const handleDeleteButtonClick = (courseId) => {
