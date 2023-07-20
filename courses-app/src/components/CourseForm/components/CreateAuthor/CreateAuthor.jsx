@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { Input } from '../../../../common/Input/Input';
 import { Button } from '../../../../common/Button/Button';
-import { fetchData } from '../../../../helpers/fetchData';
+// import { fetchData } from '../../../../helpers/fetchData';
 
 import { addAuthorThunk } from '../../../../store/authors/thunk';
 // import { BACKEND_PATHS } from '../../../../constants';

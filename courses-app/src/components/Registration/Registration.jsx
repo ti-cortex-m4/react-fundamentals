@@ -16,7 +16,7 @@ export const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [registrationError, setRegistrationError] = useState(false);
+//   const [registrationError, setRegistrationError] = useState(false);
 
   const user = useSelector(getUserSelector);
 
@@ -55,7 +55,7 @@ export const Registration = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [formValid, setFormValid] = useState(true);
 
-  const handleFormSubmit = /*async*/ event => {
+  const handleFormSubmit = event => {
     event.preventDefault();
 
     dispatch(registerUserThunk(formData));

@@ -41,24 +41,12 @@ import styles from './styles.module.css';
     authors: courseId ? true : false,
   });
 
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [formValid, setFormValid] = useState(false);
   const [isAuthorAdded, setIsAuthorAdded] = useState(false);
-  const [authors, setAuthors] = useState([]);
-
-  //setAuthors(allAuthors); TODO
-
-//   useEffect(() => {
-//     getAllAuthors(
-//       (response, error) => {
-//         setAuthors(response.result);
-//         setIsAuthorAdded(false);
-//       },
-//       (response, error) => { }
-//     );
-//   }, [isAuthorAdded]);
+  const [authors, setAuthors] = useState(allAuthors);
 
   const updateFormValidation = () => {
-    setIsFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
+    setFormValid(formValidation.title && formValidation.description && formValidation.duration && formValidation.authors);
   }
 
   const handleTitleChange = event => {
@@ -111,30 +99,11 @@ import styles from './styles.module.css';
     updateFormValidation();
   };
 
-  const handleFormSubmit = async event => {
+  const handleFormSubmit = event => {
     event.preventDefault();
 
     const authors = formData.authors.map(({ id }) => id);
     const body = { ...formData, authors };
-
-//     if (courseId) {
-//       updateCourse(
-//        courseId,
-//        body,
-//         (response, error) => {
-//         navigate(APPLICATION_PATHS.courses);
-//         },
-//         (response, error) => { }
-//       );
-//     } else {
-//       addCourse(
-//        body,
-//         (response, error) => {
-//         navigate(APPLICATION_PATHS.courses);
-//         },
-//         (response, error) => { }
-//       );
-//     }
 
     if (courseId) {
       dispatch(updateCourseThunk(courseId, body));
@@ -177,7 +146,7 @@ import styles from './styles.module.css';
         <Button
           type='submit'
           buttonText={courseId ? 'Update course' : 'Create course'}
-          disabled={!isFormValid}
+          disabled={!formValid}
         />
       </div>
 
