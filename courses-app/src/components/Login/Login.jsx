@@ -36,8 +36,17 @@ export const Login = ({ isLogged, setIsLogged }) => {
 //
   useEffect(() => {
     if (loggedUser.loginResult === true) {
+//             setFormData(initialFormData);
+//             setIsLogged(true);
+//             setFormValid(true);
+
       navigate('/courses');
 //       dispatch(registerResultAction(null)); TODO
+    }
+
+    if (loggedUser.loginResult === false) {
+//         setFormValid(false);
+//         alert('Login failed: ' + response.result);
     }
 //     if (
 //       loggedUser.isAuth &&
@@ -60,7 +69,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   },
   [
   loggedUser.loginResult,
-//   navigate,
+   navigate,
 //   dispatch
   ]);
 
