@@ -63,7 +63,7 @@ function App() {
         <Route path={FRONTEND_PATHS.login} element={<AnonymousRoute />} >
           <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
         </Route>
-        <Route path={FRONTEND_PATHS.registration} element={<AnonymousRoute />} >
+        <Route path={FRONTEND_PATHS.register} element={<AnonymousRoute />} >
           <Route path='' element={<Registration />} />
         </Route>
 

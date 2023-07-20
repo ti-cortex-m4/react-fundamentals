@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
 import { FRONTEND_PATHS } from '../../constants';
-// import { registerUser } from '../../services/user';
 
-import { registerUser } from '../../store/user/thunk';
-// import { registerResultAction} from '../../store/user/actions';
+import { registerUserAction } from '../../store/user/thunk';
+import { registerUserErrorAction } from '../../store/user/actions';
 import { getUserSelector } from '../../store/user/selectors';
 
 import styles from './styles.module.css';
@@ -57,6 +56,7 @@ export const Registration = () => {
   },
   [
     user.registerResult,
+    user.registerError,
     navigate,
     dispatch,
   ]);

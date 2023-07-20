@@ -48,6 +48,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   },
     [
       user.loginResult,
+      user.loginError,
       navigate,
       dispatch
     ]);
@@ -92,7 +93,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to={FRONTEND_PATHS.registration}>register</Link>
+        <Link to={FRONTEND_PATHS.register}>register</Link>
       </p>
     </div>
   );
