@@ -4,7 +4,8 @@ export const fetchData = async config => {
   const {
     method,
     url,
-    body
+    body,
+    noresponse = false
   } = config;
 
   const authToken = getAuthTokenFromLocalStorage();
@@ -23,10 +24,10 @@ export const fetchData = async config => {
       headers: requestHeaders,
       body: JSON.stringify(body),
     });
-    response = await promise.json();
+    response = noresponse ? null : await promise.json();
   } catch (e) {
     error = true;
-    //alert('Fetch error: ' + e);
+    alert('Fetch error: ' + e);
   }
 
   return { response, error };

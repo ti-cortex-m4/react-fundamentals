@@ -46,10 +46,11 @@ class UserService {
   logoutUser = async (onSuccess, onError) => {
     const { response, error } = await fetchData({
       method: 'DELETE',
-      url: '/logout'
+      url: '/logout',
+      noresponse: true
     });
 
-    if (!error && response.successful) {
+    if (!error) {
       onSuccess(response, error);
     } else {
       onError(response, error);

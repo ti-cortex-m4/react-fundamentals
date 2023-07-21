@@ -21,36 +21,38 @@ export const Logout = ({ setIsLogged }) => {
 //   console.log('logout ' + JSON.stringify(user));
 //   const userName = getUserNameFromLocalStorage();
 
-//   useEffect(() => {
-//     if (user.actionResult === true) {
-//       //setFormData(initialFormData);
-// //       setIsLogged(true);
-//       //setFormValid(true);
+  useEffect(() => {
+    if (user.actionResult === true) {
+      //setFormData(initialFormData);
+//       setIsLogged(true);
+      //setFormValid(true);
+
+      navigate(LOGIN_PATH);
+    }
+
+    if (user.actionResult === false) {
+      navigate(LOGIN_PATH);
+    }
+// //       setFormValid(false);
+//       alert('Logout error: ' + user.actionError);
 //
-//       navigate(LOGIN_PATH);
+//       dispatch(logoutUserErrorAction({
+//         actionResult: null,
+//         actionError: null
+//       }));
 //     }
-//
-// //     if (user.actionResult === false) {
-// // //       setFormValid(false);
-// //       alert('Logout error: ' + user.actionError);
-// //
-// //       dispatch(logoutUserErrorAction({
-// //         actionResult: null,
-// //         actionError: null
-// //       }));
-// //     }
-//   },
-//     [
-//       user.actionResult,
-//       user.actionError,
-//       navigate,
-//       dispatch
-//     ]);
+  },
+    [
+      user.actionResult,
+      user.actionError,
+      navigate,
+      dispatch
+    ]);
 
   const handleLogoutButtonClick = () => {
 //      removeUserFromLocalStorage();
      dispatch(logoutUserThunk());
-     navigate(LOGIN_PATH);
+//      navigate(LOGIN_PATH);
 //     localStorage.removeItem('user');
 //     navigate('/login');
 

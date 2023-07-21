@@ -93,10 +93,10 @@ export const logoutUserThunk = () => {
       (response, error) => {
         removeUserFromLocalStorage();
 
-        console.log('Logout user error: ' + JSON.stringify(error || response));
+        console.log('Logout user error: ' + JSON.stringify(error));
         dispatch(logoutUserErrorAction({
           logoutResult: false,
-          logoutError: (error || response.errors || response.result)
+          logoutError: (error)
         }));
       }
     );
