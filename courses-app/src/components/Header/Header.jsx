@@ -5,11 +5,13 @@ import { Logout } from './components/Logout/Logout';
 
 import styles from './styles.module.css';
 
-export const Header = ({ isLogged, setIsLogged }) => {
+export const Header = (/*{ isLogged, setIsLogged }*/) => {
   return (
     <div className={styles.headerContainer}>
       <Logo />
-      {isLogged && <Logout setIsLogged={setIsLogged} />}
+{/*       {isLogged &&  */}
+      <Logout /*setIsLogged={setIsLogged}*/ />
+{/*       } */}
     </div>
   );
 };

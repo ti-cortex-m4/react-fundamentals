@@ -32,22 +32,22 @@ function App() {
     dispatch(getAllCoursesThunk());
   }, [dispatch]);
 
-  const [isLogged, setIsLogged] = useState(false);
+//   const [isLogged, setIsLogged] = useState(false);
 
-  useEffect(() => {
-    const authToken = getAuthTokenFromLocalStorage();
-    if (authToken) {
-      setIsLogged(true);
-    }
-  }, []);
+//   useEffect(() => {
+//     const authToken = getAuthTokenFromLocalStorage();
+//     if (authToken) {
+//       setIsLogged(true);
+//     }
+//   }, []);
 
   return (
     <div className='app'>
-      <Header isLogged={isLogged} setIsLogged={setIsLogged} />
+      <Header /*isLogged={isLogged} setIsLogged={setIsLogged}*/ />
 
       <Routes>
         <Route path={LOGIN_PATH} element={<AnonymousRoute />} >
-          <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
+          <Route path='' element={<Login /*isLogged={isLogged} setIsLogged={setIsLogged}*/ />} />
         </Route>
         <Route path={REGISTER_PATH} element={<AnonymousRoute />} >
           <Route path='' element={<Registration />} />

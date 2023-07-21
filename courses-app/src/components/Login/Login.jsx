@@ -12,13 +12,14 @@ import { loginUserErrorAction } from '../../store/user/actions';
 
 import styles from './styles.module.css';
 
-export const Login = ({ isLogged, setIsLogged }) => {
+export const Login = (/*{ isLogged, setIsLogged }*/) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [actionError, setactionError] = useState(false);
+  const [actionError, setActionError] = useState(false);
 
   const user = useSelector(getUserSelector);
+  console.log('Login user ' + JSON.stringify(user));
 
   const initialFormData = {
     email: '',
@@ -30,7 +31,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   useEffect(() => {
     if (user.actionResult === true) {
       //setFormData(initialFormData);
-      setIsLogged(true);
+//      setIsLogged(true);
       //setFormValid(true);
 
       navigate(COURSES_PATH);

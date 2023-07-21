@@ -17,6 +17,7 @@ export const Logout = ({ setIsLogged }) => {
   const navigate = useNavigate();
 
   const user = useSelector(getUserSelector);
+  console.log('logout ' + JSON.stringify(user));
 //   const userName = getUserNameFromLocalStorage();
 
   useEffect(() => {
