@@ -26,6 +26,20 @@ export const initialUserState = {
 const userReducer = (state = initialUserState, action) => {
   switch (action.type) {
 
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+        registerResult: action.payload,
+        registerError: null
+      };
+
+    case REGISTER_USER_ERROR:
+      return {
+        ...state,
+        registerResult: action.payload.registerResult,
+        registerError: action.payload.registerError,
+      };
+
     case LOGIN_USER_SUCCESS: {
       return {
         ...state,
@@ -61,38 +75,22 @@ const userReducer = (state = initialUserState, action) => {
       };
     }
 
-    case REGISTER_USER_SUCCESS:
-      return {
-        ...state,
-        registerResult: action.payload,
-        registerError: null
-      };
-
-    case REGISTER_USER_ERROR:
-      return {
-        ...state,
-        registerResult: action.payload.registerResult,
-        registerError: action.payload.registerError,
-      };
-
     case LOGOUT_USER_SUCCESS:
-    console.log('4');
       return {
-  isAuthenticated: null,
-  isAdministrator: null,
-  authToken: null,
-  userName: null,
-  userRole: null,
-  registerResult: null,
-  registerError: null,
-  loginResult: null,
-  loginError: null,
+        isAuthenticated: null,
+        isAdministrator: null,
+        authToken: null,
+        userName: null,
+        userRole: null,
+        registerResult: null,
+        registerError: null,
+        loginResult: null,
+        loginError: null,
         logoutResult: action.payload,
         logoutError: null
       }
 
     case LOGOUT_USER_ERROR:
-    console.log('5');
       return {
         ...state,
         logoutResult: action.payload.logoutResult,
