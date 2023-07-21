@@ -48,7 +48,7 @@ export const Logout = ({ setIsLogged }) => {
 //     ]);
 
   const handleLogoutButtonClick = () => {
-     removeUserFromLocalStorage();
+//      removeUserFromLocalStorage();
      dispatch(logoutUserThunk());
      navigate(LOGIN_PATH);
 //     localStorage.removeItem('user');

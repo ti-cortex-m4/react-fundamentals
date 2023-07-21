@@ -19,7 +19,7 @@ export const Login = (/*{ isLogged, setIsLogged }*/) => {
   const [actionError, setActionError] = useState(false);
 
   const user = useSelector(getUserSelector);
-  console.log('Login user ' + JSON.stringify(user));
+//   console.log('Login user ' + JSON.stringify(user));
 
   const initialFormData = {
     email: '',
