@@ -18,7 +18,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const user = useSelector(getUserSelector);
-    const userName = getUserNameFromLocalStorage();
+  const userName = getUserNameFromLocalStorage();
 
   useEffect(() => {
     if (user.logoutResult === true) {
@@ -28,32 +28,26 @@ export const Header = () => {
     if (user.logoutResult === false) {
       navigate(LOGIN_PATH);
     }
-  },
-    [
-      user.logoutResult,
-      navigate,
-      dispatch
-    ]);
+  },    [      user.logoutResult,      navigate,    ]);
 
   const handleLogoutButtonClick = () => {
-     dispatch(logoutUserThunk());
+    dispatch(logoutUserThunk());
   };
-
 
   return (
     <div className={styles.headerContainer}>
       <Logo />
-{/*       {isLogged &&  */}
-    <div className={styles.userContainer}>
-      <div className={styles.userName}>
-        {userName}
+      {/*       {isLogged &&  */}
+      <div className={styles.userContainer}>
+        <div className={styles.userName}>
+          {userName}
+        </div>
+        <Button
+          buttonText='Logout'
+          onClick={handleLogoutButtonClick}
+        />
       </div>
-      <Button
-        buttonText='Logout'
-        onClick={handleLogoutButtonClick}
-      />
-    </div>
-{/*       } */}
+      {/*       } */}
     </div>
   );
 };
