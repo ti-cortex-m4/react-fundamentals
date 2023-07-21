@@ -12,7 +12,7 @@ import AnonymousRoute from './components/AnonymousRoute/AnonymousRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
-import { APPLICATION_PATHS } from './constants';
+import { APPLICATION_PATHS, REGISTER_PATH, COURSES_PATH } from './constants';
 
 import { getAllAuthorsThunk } from './store/authors/thunk';
 import { getAllCoursesThunk } from './store/courses/thunk';
@@ -26,9 +26,6 @@ function App() {
   }, [dispatch]);
 
   const [isLogged, setIsLogged] = useState(false);
-
-//   const [allAuthors, setAllAuthors] = useState([]);
-//   const [allCourses, setAllCourses] = useState([]);
 
   useEffect(() => {
     const authToken = getAuthTokenFromLocalStorage();
@@ -45,11 +42,11 @@ function App() {
         <Route path={APPLICATION_PATHS.login} element={<AnonymousRoute />} >
           <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
         </Route>
-        <Route path={APPLICATION_PATHS.register} element={<AnonymousRoute />} >
+        <Route path={REGISTER_PATH} element={<AnonymousRoute />} >
           <Route path='' element={<Registration />} />
         </Route>
 
-        <Route path={APPLICATION_PATHS.courses} element={<AuthenticatedRoute />} >
+        <Route path={COURSES_PATH} element={<AuthenticatedRoute />} >
           <Route path='' element={<Courses />} />
         </Route>
         <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
@@ -63,7 +60,7 @@ function App() {
           <Route path='' element={<CourseForm />} />
         </Route>
 
-        <Route path={'*'} element={<Navigate to={APPLICATION_PATHS.courses} />} />
+        <Route path={'*'} element={<Navigate to={COURSES_PATH} />} />
       </Routes>
     </div>
   );

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
-import { APPLICATION_PATHS } from '../../constants';
+import { REGISTER_PATH, COURSES_PATH } from '../../constants';
 
 import { getUserSelector } from '../../store/user/selectors';
 import { loginUserThunk } from '../../store/user/thunk';
@@ -33,7 +33,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       setIsLogged(true);
       //setFormValid(true);
 
-      navigate(APPLICATION_PATHS.courses);
+      navigate(COURSES_PATH);
     }
 
     if (user.loginResult === false) {
@@ -93,7 +93,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
       </form>
       <p>
         If you don't have an account you can&nbsp;
-        <Link to={APPLICATION_PATHS.register}>register</Link>
+        <Link to={REGISTER_PATH}>register</Link>
       </p>
     </div>
   );

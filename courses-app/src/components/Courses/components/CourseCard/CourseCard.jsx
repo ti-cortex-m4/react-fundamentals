@@ -6,7 +6,7 @@ import { Button } from '../../../../common/Button/Button';
 import { formatCourseDuration } from '../../../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../../../helpers/formatCreationDate';
 import { isAdministrator } from '../../../../helpers/authentication';
-import { APPLICATION_PATHS } from '../../../../constants';
+import { COURSES_PATH } from '../../../../constants';
 
 import { deleteCourseThunk } from '../../../../store/courses/thunk';
 
@@ -35,11 +35,11 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
 
   const handleDeleteButtonClick = (courseId) => {
     dispatch(deleteCourseThunk(courseId));
-    navigate(APPLICATION_PATHS.courses); // TODO ?
+    navigate(COURSES_PATH); // TODO ?
 
 //     deleteCourse(
 //       courseId,
-//       (response, error) => { navigate(APPLICATION_PATHS.courses) },
+//       (response, error) => { navigate(COURSES_PATH) },
 //       (response, error) => { }
 //     );
   };

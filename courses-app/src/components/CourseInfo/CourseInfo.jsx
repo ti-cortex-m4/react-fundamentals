@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Button } from '../../common/Button/Button';
 import { formatCourseDuration } from '../../helpers/formatCourseDuration';
 import { formatCreationDate } from '../../helpers/formatCreationDate';
-import { APPLICATION_PATHS } from '../../constants';
+import { COURSES_PATH } from '../../constants';
 
 import { getAuthorsSelector } from '../../store/authors/selectors';
 import { getCoursesSelector } from '../../store/courses/selectors';
@@ -23,7 +23,7 @@ export const CourseInfo = () => {
   const course = allCourses.find((course) => course.id === courseId);
 
   const handleBackButtonClick = () => {
-    navigate(APPLICATION_PATHS.courses);
+    navigate(COURSES_PATH);
   };
 
   return (

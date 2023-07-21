@@ -7,7 +7,7 @@ import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
 import CreateAuthor from './components/CreateAuthor/CreateAuthor';
 import Authors from './components/Authors/Authors';
-import { APPLICATION_PATHS } from '../../constants';
+import { COURSES_PATH } from '../../constants';
 
 import { getAuthorsSelector } from '../../store/authors/selectors';
 import { getCoursesSelector } from '../../store/courses/selectors';
@@ -117,7 +117,7 @@ useEffect(() => {
       dispatch(addCourseThunk(body));
     }
 
-    navigate(APPLICATION_PATHS.courses);
+    navigate(COURSES_PATH);
   };
 
   return (
