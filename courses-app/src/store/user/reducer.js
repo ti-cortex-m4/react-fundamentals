@@ -76,9 +76,15 @@ const userReducer = (state = initialUserState, action) => {
       };
 
     case LOGOUT_USER_SUCCESS:
-      return initialUserState;
+    console.log('4');
+      return {
+        ...initialUserState,
+        logoutResult: action.payload,
+        logoutError: null
+      }
 
     case LOGOUT_USER_ERROR:
+    console.log('5');
       return {
         ...state,
         logoutResult: action.payload.logoutResult,

@@ -23,6 +23,7 @@ export const Logout = ({ setIsLogged }) => {
 
   useEffect(() => {
     if (user.logoutResult === true) {
+    console.log('6');
       //setFormData(initialFormData);
 //       setIsLogged(true);
       //setFormValid(true);
@@ -31,6 +32,7 @@ export const Logout = ({ setIsLogged }) => {
     }
 
     if (user.logoutResult === false) {
+    console.log('7');
       navigate(LOGIN_PATH);
     }
 // //       setFormValid(false);
@@ -50,6 +52,7 @@ export const Logout = ({ setIsLogged }) => {
     ]);
 
   const handleLogoutButtonClick = () => {
+    console.log('1');
 //      removeUserFromLocalStorage();
      dispatch(logoutUserThunk());
 //      navigate(LOGIN_PATH);
