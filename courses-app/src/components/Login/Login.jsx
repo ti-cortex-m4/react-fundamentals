@@ -16,7 +16,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [loginError, setLoginError] = useState(false);
+  const [actionError, setactionError] = useState(false);
 
   const user = useSelector(getUserSelector);
 
@@ -28,7 +28,7 @@ export const Login = ({ isLogged, setIsLogged }) => {
   const [formValid, setFormValid] = useState(true);
 
   useEffect(() => {
-    if (user.loginResult === true) {
+    if (user.actionResult === true) {
       //setFormData(initialFormData);
       setIsLogged(true);
       //setFormValid(true);
@@ -36,19 +36,19 @@ export const Login = ({ isLogged, setIsLogged }) => {
       navigate(COURSES_PATH);
     }
 
-    if (user.loginResult === false) {
+    if (user.actionResult === false) {
       setFormValid(false);
-      alert('Login error: ' + user.loginError);
+      alert('Login error: ' + user.actionError);
 
       dispatch(loginUserErrorAction({
-        loginResult: null,
-        loginError: null
+        actionResult: null,
+        actionError: null
       }));
     }
   },
     [
-      user.loginResult,
-      user.loginError,
+      user.actionResult,
+      user.actionError,
       navigate,
       dispatch
     ]);

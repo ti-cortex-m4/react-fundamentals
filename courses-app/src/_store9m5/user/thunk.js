@@ -3,7 +3,7 @@ import {
   saveUserAction,
   logoutUserAction,
   loginUserAction,
-  setLoginErrorAction,
+  setactionErrorAction,
   registrationErrorAction,
   successfullRegistrationAction,
 } from './actions';
@@ -33,7 +33,7 @@ export const login = (email, password) => {
         })
       );
     } else {
-      dispatch(setLoginErrorAction(true));
+      dispatch(setactionErrorAction(true));
     }
   };
 };

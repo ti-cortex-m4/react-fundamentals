@@ -43,7 +43,7 @@ class UserService {
     }
   };
 
-  logoutUser = async (body, onSuccess, onError) => {
+  logoutUser = async (onSuccess, onError) => {
     const { response, error } = await fetchData({
       method: 'DELETE',
       url: '/logout'

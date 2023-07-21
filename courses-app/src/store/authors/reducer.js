@@ -13,9 +13,8 @@ export const authorsReducer = (state = initialAuthorsState, action) => {
       return [...state, action.payload];
     }
 
-    default: {
+    default:
       return state;
-    }
   }
 };
 

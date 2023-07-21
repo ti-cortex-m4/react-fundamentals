@@ -10,7 +10,7 @@ import {
 export const saveUserAction = (payload) => ({ type: SAVE_USER, payload });
 export const logoutUserAction = () => ({ type: LOGOUT_USER });
 export const loginUserAction = (payload) => ({ type: LOGIN_USER, payload });
-export const setLoginErrorAction = (payload) => ({
+export const setactionErrorAction = (payload) => ({
   type: SET_LOGIN_ERROR,
   payload,
 });

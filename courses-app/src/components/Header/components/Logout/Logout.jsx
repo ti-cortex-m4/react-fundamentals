@@ -12,6 +12,10 @@ export const Logout = ({ setIsLogged }) => {
   const userName = getUserNameFromLocalStorage();
 
   const handleLogoutButtonClick = () => {
+//     dispatch(logoutUser());
+//     localStorage.removeItem('user');
+//     navigate('/login');
+
     removeUserFromLocalStorage();
     setIsLogged(false);
 

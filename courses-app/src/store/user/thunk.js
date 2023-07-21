@@ -2,15 +2,18 @@ import userService from '../../services/user';
 import {
   loginUserSuccessAction,
   loginUserErrorAction,
-  getCurrentUserSuccessAction,
-  getCurrentUserErrorAction,
   registerUserSuccessAction,
   registerUserErrorAction,
+  getCurrentUserSuccessAction,
+  getCurrentUserErrorAction,
+  logoutUserSuccessAction,
+  logoutUserErrorAction,
 } from './actions';
 import {
   setAuthTokenToLocalStorage,
   setUserNameToLocalStorage,
-  setUserRoleToLocalStorage
+  setUserRoleToLocalStorage,
+  removeUserFromLocalStorage
 } from '../../helpers/localStorage';
 
 export const registerUserThunk = (body) => {
@@ -23,8 +26,8 @@ export const registerUserThunk = (body) => {
       (response, error) => {
         console.log('Register user error: ' + JSON.stringify(error || response));
         dispatch(registerUserErrorAction({
-          registerResult: false,
-          registerError: (error || response.errors || response.result)
+          actionResult: false,
+          actionError: (error || response.errors || response.result)
         }));
       }
     );
@@ -43,8 +46,8 @@ export const getCurrentUserThunk = () => {
       (response, error) => {
         console.log('Get current user error: ' + JSON.stringify(error || response));
         dispatch(getCurrentUserErrorAction({
-          loginResult: false,
-          loginError: (error || response.errors || response.result)
+          actionResult: false,
+          actionError: (error || response.errors || response.result)
         }));
       }
     );
@@ -71,19 +74,29 @@ export const loginUserThunk = (body) => {
       (response, error) => {
         console.log('Login user error: ' + JSON.stringify(error || response));
         dispatch(loginUserErrorAction({
-          loginResult: false,
-          loginError: (error || response.errors || response.result)
+          actionResult: false,
+          actionError: (error || response.errors || response.result)
         }));
       }
     );
   }
 };
-/*
-export const logoutUser = () => {
-  return async (dispatch) => {
-    await apiService.logoutUser();
 
-    dispatch(logoutUserAction());
-  };
+export const logoutUserThunk = () => {
+  return async (dispatch) => {
+    userService.logoutUser(
+      (response,) => {
+        removeUserFromLocalStorage();
+
+        dispatch(logoutUserSuccessAction());
+      },
+      (response, error) => {
+        console.log('Logout user error: ' + JSON.stringify(error || response));
+        dispatch(logoutUserErrorAction({
+          logoutResult: false,
+          logoutError: (error || response.errors || response.result)
+        }));
+      }
+    );
+  }
 };
-*/

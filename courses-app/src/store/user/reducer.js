@@ -5,6 +5,8 @@ import {
   GET_USER_ERROR,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_ERROR,
 } from './types';
 
 export const initialUserState = {
@@ -13,10 +15,8 @@ export const initialUserState = {
   authToken: null,
   userName: null,
   userRole: null,
-  loginResult: null,
-  loginError: null,
-  registerResult: null,
-  registerError: null,
+  actionResult: null,
+  actionError: null,
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -33,8 +33,8 @@ const userReducer = (state = initialUserState, action) => {
     case LOGIN_USER_ERROR: {
       return {
         ...state,
-        loginResult: action.payload.loginResult,
-        loginError: action.payload.loginError,
+        actionResult: action.payload.actionResult,
+        actionError: action.payload.actionError,
       };
     }
 
@@ -44,54 +44,45 @@ const userReducer = (state = initialUserState, action) => {
         isAuthenticated: true,
         isAdministrator: 'admin' === action.payload.userRole,
         userRole: action.payload.userRole,
-        loginResult: true,
-        loginError: null,
+        actionResult: true,
+        actionError: null,
       };
     }
 
     case GET_USER_ERROR: {
       return {
         ...state,
-        loginResult: action.payload.loginResult,
-        loginError: action.payload.loginError,
+        actionResult: action.payload.actionResult,
+        actionError: action.payload.actionError,
       };
     }
 
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        registerResult: action.payload,
-        registerError: null
+        actionResult: action.payload,
+        actionError: null
       };
 
     case REGISTER_USER_ERROR:
       return {
         ...state,
-        registerResult: action.payload.registerResult,
-        registerError: action.payload.registerError,
+        actionResult: action.payload.actionResult,
+        actionError: action.payload.actionError,
       };
-    /*
-        case LOGOUT_USER: {
-          return {
-            ...state,
-            user: {
-              ...state.user,
-              isAuth: false,
-              name: '',
-              email: '',
-              token: '',
-              role: '',
-              loginError: null,
-              registrationError: null,
-              successfullLogin: false,
-              successfullRegistration: false,
-            },
-          };
-        }
-    */
-    default: {
+
+    case LOGOUT_USER_SUCCESS:
+      return initialUserState;
+
+    case LOGOUT_USER_ERROR:
+      return {
+        ...state,
+        actionResult: action.payload.actionResult,
+        actionError: action.payload.actionError,
+      };
+
+    default:
       return state;
-    }
   }
 };
 

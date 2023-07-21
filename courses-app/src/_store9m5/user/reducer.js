@@ -14,7 +14,7 @@ export const initialUserState = {
     email: '',
     token: '',
     role: '',
-    loginError: null,
+    actionError: null,
     registrationError: null,
     successfullLogin: false,
     successfullRegistration: false,
@@ -54,7 +54,7 @@ const userReducer = (state = initialUserState, action) => {
         ...state,
         user: {
           ...state.user,
-          loginError: action.payload,
+          actionError: action.payload,
         },
       };
     }
@@ -87,7 +87,7 @@ const userReducer = (state = initialUserState, action) => {
           email: '',
           token: '',
           role: '',
-          loginError: null,
+          actionError: null,
           registrationError: null,
           successfullLogin: false,
           successfullRegistration: false,

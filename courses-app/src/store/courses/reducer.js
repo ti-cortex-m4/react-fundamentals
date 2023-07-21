@@ -26,9 +26,8 @@ const coursesReducer = (state = initialCoursesState, action) => {
       return state.filter((course) => course.id !== action.payload);
     }
 
-    default: {
+    default:
       return state;
-    }
   }
 };
 
