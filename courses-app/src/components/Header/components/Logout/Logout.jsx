@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -5,9 +6,9 @@ import { Button } from '../../../../common/Button/Button';
 import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
 import { LOGIN_PATH } from '../../../../constants';
 
-import { getUserSelector } from '../../store/user/selectors';
-import { logoutUserThunk } from '../../store/user/thunk';
-import { loginUserErrorAction } from '../../store/user/actions';
+import { getUserSelector } from '../../../../store/user/selectors';
+import { logoutUserThunk } from '../../../../store/user/thunk';
+import { logoutUserErrorAction } from '../../../../store/user/actions';
 
 import styles from './styles.module.css';
 
@@ -15,22 +16,23 @@ export const Logout = ({ setIsLogged }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userName = getUserNameFromLocalStorage();
+  const user = useSelector(getUserSelector);
+//   const userName = getUserNameFromLocalStorage();
 
   useEffect(() => {
     if (user.actionResult === true) {
       //setFormData(initialFormData);
-      setIsLogged(true);
+//       setIsLogged(true);
       //setFormValid(true);
 
-      navigate(COURSES_PATH);
+      navigate(LOGIN_PATH);
     }
 
     if (user.actionResult === false) {
-      setFormValid(false);
-      alert('Login error: ' + user.actionError);
+//       setFormValid(false);
+      alert('Logout error: ' + user.actionError);
 
-      dispatch(loginUserErrorAction({
+      dispatch(logoutUserErrorAction({
         actionResult: null,
         actionError: null
       }));
@@ -48,16 +50,16 @@ export const Logout = ({ setIsLogged }) => {
 //     localStorage.removeItem('user');
 //     navigate('/login');
 
-    removeUserFromLocalStorage();
-    setIsLogged(false);
-
-    navigate(LOGIN_PATH);
+//     removeUserFromLocalStorage();
+//     setIsLogged(false);
+//
+//     navigate(LOGIN_PATH);
   };
 
   return (
     <div className={styles.userContainer}>
       <div className={styles.userName}>
-        {userName}
+        {user?.userName}
       </div>
       <Button
         buttonText='Logout'
