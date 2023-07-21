@@ -26,7 +26,7 @@ export const fetchData = async config => {
     response = await promise.json();
   } catch (e) {
     error = true;
-    alert('Fetching error: ' + e);
+    //alert('Fetch error: ' + e);
   }
 
   return { response, error };
