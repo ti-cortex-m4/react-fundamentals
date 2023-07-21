@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import { getCoursesSelector } from '../../store/courses/selectors';
 
 import styles from './styles.module.css';
 
-export const CourseInfo = () => {
+const CourseInfo = () => {
   const navigate = useNavigate();
   const { courseId } = useParams();
 

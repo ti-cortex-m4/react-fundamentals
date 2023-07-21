@@ -8,7 +8,7 @@ import { addAuthorThunk } from '../../../../store/authors/thunk';
 
 import styles from './styles.module.css';
 
-/* TODO */ export const CreateAuthor = (/*{ setIsAuthorAdded }*/) => {
+/* TODO */ const CreateAuthor = (/*{ setIsAuthorAdded }*/) => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');

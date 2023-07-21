@@ -4,7 +4,7 @@ import { Button } from '../../../../common/Button/Button';
 
 import styles from './styles.module.css';
 
-export const AuthorItem = ({
+const AuthorItem = ({
   authorId,
   authorName,
   buttonText,
