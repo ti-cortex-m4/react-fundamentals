@@ -17,6 +17,7 @@ export const Logout = ({ setIsLogged }) => {
   const navigate = useNavigate();
 
   const user = useSelector(getUserSelector);
+    const userName = getUserNameFromLocalStorage();
 //   console.log('logout ' + JSON.stringify(user));
 //   const userName = getUserNameFromLocalStorage();
 
@@ -62,7 +63,7 @@ export const Logout = ({ setIsLogged }) => {
   return (
     <div className={styles.userContainer}>
       <div className={styles.userName}>
-        {user?.userName}
+        {userName}
       </div>
       <Button
         buttonText='Logout'
