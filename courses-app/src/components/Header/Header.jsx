@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Logo } from './components/Logo/Logo';
 import { Button } from '../../common/Button/Button';
-import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../helpers/localStorage';
+import { getUserNameFromLocalStorage, getUserRoleFromLocalStorage, removeUserFromLocalStorage } from '../../helpers/localStorage';
 import { LOGIN_PATH } from '../../constants';
 
 import { getUserSelector } from '../../store/user/selectors';
@@ -18,36 +18,33 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const user = useSelector(getUserSelector);
+
   const userName = getUserNameFromLocalStorage();
+  const userRole = getUserRoleFromLocalStorage();
 
-  useEffect(() => {
-    if (user.logoutResult === true) {
-      navigate(LOGIN_PATH);
-    }
-
-    if (user.logoutResult === false) {
-      navigate(LOGIN_PATH);
-    }
-  },    [      user.logoutResult,      navigate,    ]);
+  const [logged, setLogged] = useState(userRole !== null);
 
   const handleLogoutButtonClick = () => {
+    setLogged(false);
     dispatch(logoutUserThunk());
+    removeUserFromLocalStorage();
+    navigate(LOGIN_PATH);
   };
 
   return (
     <div className={styles.headerContainer}>
       <Logo />
-      {/*       {isLogged &&  */}
-      <div className={styles.userContainer}>
-        <div className={styles.userName}>
-          {userName}
+      {(getUserRoleFromLocalStorage() !== null) &&
+        <div className={styles.userContainer}>
+          <div className={styles.userName}>
+            {userName}
+          </div>
+          <Button
+            buttonText='Logout'
+            onClick={handleLogoutButtonClick}
+          />
         </div>
-        <Button
-          buttonText='Logout'
-          onClick={handleLogoutButtonClick}
-        />
-      </div>
-      {/*       } */}
+      }
     </div>
   );
 };
