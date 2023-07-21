@@ -1,7 +1,7 @@
 export const APPLICATION_PATHS = {
   root: '/',
 //  register: '/register',
-  login: '/login',
+//  login: '/login',
 //  courses: '/courses',
   createCourse: '/courses/add',
   courseInfo: '/courses/:courseId',

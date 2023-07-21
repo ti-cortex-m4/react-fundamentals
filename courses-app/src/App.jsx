@@ -12,7 +12,7 @@ import AnonymousRoute from './components/AnonymousRoute/AnonymousRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
-import { APPLICATION_PATHS, REGISTER_PATH, COURSES_PATH } from './constants';
+import { APPLICATION_PATHS, REGISTER_PATH, LOGIN_PATH, COURSES_PATH } from './constants';
 
 import { getAllAuthorsThunk } from './store/authors/thunk';
 import { getAllCoursesThunk } from './store/courses/thunk';
@@ -39,7 +39,7 @@ function App() {
       <Header isLogged={isLogged} setIsLogged={setIsLogged} />
 
       <Routes>
-        <Route path={APPLICATION_PATHS.login} element={<AnonymousRoute />} >
+        <Route path={LOGIN_PATH} element={<AnonymousRoute />} >
           <Route path='' element={<Login isLogged={isLogged} setIsLogged={setIsLogged} />} />
         </Route>
         <Route path={REGISTER_PATH} element={<AnonymousRoute />} >

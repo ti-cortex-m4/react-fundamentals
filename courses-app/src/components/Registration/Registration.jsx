@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../../common/Input/Input';
 import { Button } from '../../common/Button/Button';
-import { APPLICATION_PATHS } from '../../constants';
+import { LOGIN_PATH } from '../../constants';
 
 import { getUserSelector } from '../../store/user/selectors';
 import { registerUserThunk } from '../../store/user/thunk';
@@ -25,7 +25,7 @@ export const Registration = () => {
 //         setFormData(initialFormData);
 //         setFormValid(true);
 
-        navigate(APPLICATION_PATHS.login);
+        navigate(LOGIN_PATH);
 //       navigate('/login');
 //       dispatch(registerResultAction(null)); TODO
     }
@@ -104,7 +104,7 @@ export const Registration = () => {
       </form>
       <p>
         If you have an account you can&nbsp;
-        <Link to={APPLICATION_PATHS.login}>login</Link>
+        <Link to={LOGIN_PATH}>login</Link>
       </p>
     </div>
   );

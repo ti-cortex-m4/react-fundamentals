@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../../../common/Button/Button';
 import { getUserNameFromLocalStorage, removeUserFromLocalStorage } from '../../../../helpers/localStorage';
-import { APPLICATION_PATHS } from '../../../../constants';
+import { LOGIN_PATH } from '../../../../constants';
 
 import styles from './styles.module.css';
 
@@ -15,7 +15,7 @@ export const Logout = ({ setIsLogged }) => {
     removeUserFromLocalStorage();
     setIsLogged(false);
 
-    navigate(APPLICATION_PATHS.login);
+    navigate(LOGIN_PATH);
   };
 
   return (
