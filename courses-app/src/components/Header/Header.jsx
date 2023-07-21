@@ -11,8 +11,8 @@ import styles from './styles.module.css';
 
 export const Header = (/*{ isLogged, setIsLogged }*/) => {
 
-  const user = useSelector(getUserSelector);
-   console.log('Header user ' + JSON.stringify(user));
+//   const user = useSelector(getUserSelector);
+//    console.log('Header user ' + JSON.stringify(user));
 
   return (
     <div className={styles.headerContainer}>

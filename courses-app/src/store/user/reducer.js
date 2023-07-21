@@ -17,6 +17,8 @@ export const initialUserState = {
   userRole: null,
   actionResult: null,
   actionError: null,
+  logoutResult: null,
+  logoutError: null,
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -77,8 +79,8 @@ const userReducer = (state = initialUserState, action) => {
     case LOGOUT_USER_ERROR:
       return {
         ...state,
-        actionResult: action.payload.actionResult,
-        actionError: action.payload.actionError,
+        logoutResult: action.payload.logoutResult,
+        logoutError: action.payload.logoutError,
       };
 
     default:
