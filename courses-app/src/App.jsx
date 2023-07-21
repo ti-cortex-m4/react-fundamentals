@@ -12,7 +12,14 @@ import AnonymousRoute from './components/AnonymousRoute/AnonymousRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
-import { REGISTER_PATH, LOGIN_PATH, COURSES_PATH, CREATE_COURSE_PATH } from './constants';
+import {
+REGISTER_PATH,
+LOGIN_PATH,
+COURSES_PATH,
+COURSE_INFO_PATH,
+CREATE_COURSE_PATH,
+UPDATE_COURSE_PATH
+} from './constants';
 
 import { getAllAuthorsThunk } from './store/authors/thunk';
 import { getAllCoursesThunk } from './store/courses/thunk';
@@ -49,14 +56,14 @@ function App() {
         <Route path={COURSES_PATH} element={<AuthenticatedRoute />} >
           <Route path='' element={<Courses />} />
         </Route>
-        <Route path={'/courses/:courseId'} element={<AuthenticatedRoute />} >
+        <Route path={COURSE_INFO_PATH} element={<AuthenticatedRoute />} >
           <Route path='' element={<CourseInfo />} />
         </Route>
 
         <Route path={CREATE_COURSE_PATH} element={<PrivateRoute />} >
           <Route path='' element={<CourseForm />} />
         </Route>
-        <Route path={'/courses/update/:courseId'} element={<PrivateRoute />} >
+        <Route path={UPDATE_COURSE_PATH} element={<PrivateRoute />} >
           <Route path='' element={<CourseForm />} />
         </Route>
 
