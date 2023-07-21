@@ -78,7 +78,15 @@ const userReducer = (state = initialUserState, action) => {
     case LOGOUT_USER_SUCCESS:
     console.log('4');
       return {
-        ...initialUserState,
+  isAuthenticated: null,
+  isAdministrator: null,
+  authToken: null,
+  userName: null,
+  userRole: null,
+  registerResult: null,
+  registerError: null,
+  loginResult: null,
+  loginError: null,
         logoutResult: action.payload,
         logoutError: null
       }
