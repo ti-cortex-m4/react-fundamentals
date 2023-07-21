@@ -7,7 +7,7 @@ import { Login } from './components/Login/Login';
 import { Registration } from './components/Registration/Registration';
 import { Courses } from './components/Courses/Courses';
 import CourseInfo from './components/CourseInfo/CourseInfo';
-import { CourseForm } from './components/CourseForm/CourseForm';
+import CourseForm from './components/CourseForm/CourseForm';
 import AnonymousRoute from './components/AnonymousRoute/AnonymousRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';

@@ -19,8 +19,8 @@ export const initialUserState = {
   registerError: null,
   loginResult: null,
   loginError: null,
-  logoutResult: null,
-  logoutError: null,
+  logoutResult: null, //
+  logoutError: null, //
 };
 
 const userReducer = (state = initialUserState, action) => {

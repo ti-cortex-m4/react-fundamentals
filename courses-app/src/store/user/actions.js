@@ -15,5 +15,5 @@ export const loginUserSuccessAction = (payload) => ({ type: LOGIN_USER_SUCCESS, 
 export const loginUserErrorAction = (payload) => ({ type: LOGIN_USER_ERROR, payload });
 export const getCurrentUserSuccessAction = (payload) => ({ type: GET_USER_SUCCESS, payload });
 export const getCurrentUserErrorAction = (payload) => ({ type: GET_USER_ERROR, payload });
-export const logoutUserSuccessAction = (payload) => ({ type: LOGOUT_USER_SUCCESS, payload });
-export const logoutUserErrorAction = (payload) => ({ type: LOGOUT_USER_ERROR, payload });
+export const logoutUserSuccessAction = (payload) => ({ type: LOGOUT_USER_SUCCESS, payload }); //
+export const logoutUserErrorAction = (payload) => ({ type: LOGOUT_USER_ERROR, payload }); //

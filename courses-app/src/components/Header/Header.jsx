@@ -22,8 +22,8 @@ export const Header = () => {
 
   const handleLogoutButtonClick = () => {
     dispatch(logoutUserThunk());
-    removeUserFromLocalStorage();
 
+    removeUserFromLocalStorage();
     navigate(LOGIN_PATH);
   };
 

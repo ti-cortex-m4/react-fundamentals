@@ -15,7 +15,7 @@ import { addCourseThunk, updateCourseThunk } from '../../store/courses/thunk';
 
 import styles from './styles.module.css';
 
-/* TODO */ export const CourseForm = () => {
+/* TODO */  const CourseForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
