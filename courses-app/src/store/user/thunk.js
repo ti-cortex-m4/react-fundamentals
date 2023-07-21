@@ -86,8 +86,6 @@ export const logoutUserThunk = () => {
   return async (dispatch) => {
     userService.logoutUser(
       (response,) => {
-        removeUserFromLocalStorage();
-
         dispatch(logoutUserSuccessAction());
       },
       (response, error) => {
