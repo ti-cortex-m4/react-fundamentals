@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Logo } from './components/Logo/Logo';
 import { Button } from '../../common/Button/Button';
 import { getUserNameFromLocalStorage, getUserRoleFromLocalStorage, removeUserFromLocalStorage } from '../../helpers/localStorage';
+import { isAdministrator } from '../../helpers/authentication';
 import { LOGIN_PATH } from '../../constants';
 
 import { getUserSelector } from '../../store/user/selectors';
@@ -18,11 +19,10 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const userName = getUserNameFromLocalStorage();
-  const userRole = getUserRoleFromLocalStorage();
+//   const userRole = getUserRoleFromLocalStorage();
 
   const handleLogoutButtonClick = () => {
     dispatch(logoutUserThunk());
-
     removeUserFromLocalStorage();
     navigate(LOGIN_PATH);
   };
@@ -33,7 +33,7 @@ export const Header = () => {
       {(getUserRoleFromLocalStorage() !== null) &&
         <div className={styles.userContainer}>
           <div className={styles.userName}>
-            {("admin" === userRole) ? "Administrator" : userName}
+            {isAdministrator() ? "Administrator" : userName}
           </div>
           <Button
             buttonText='Logout'

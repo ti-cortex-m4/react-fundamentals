@@ -35,13 +35,7 @@ export const CourseCard = ({ course, authorIdsToNames }) => {
 
   const handleDeleteButtonClick = (courseId) => {
     dispatch(deleteCourseThunk(courseId));
-    navigate(COURSES_PATH); // TODO ?
-
-//     deleteCourse(
-//       courseId,
-//       (response, error) => { navigate(COURSES_PATH) },
-//       (response, error) => { }
-//     );
+    navigate(COURSES_PATH);
   };
 
   return (
