@@ -11,7 +11,6 @@ import { CourseForm } from './components/CourseForm/CourseForm';
 import AnonymousRoute from './components/AnonymousRoute/AnonymousRoute';
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { getAuthTokenFromLocalStorage } from './helpers/localStorage';
 import {
   REGISTER_PATH,
   LOGIN_PATH,
@@ -32,22 +31,13 @@ function App() {
     dispatch(getAllCoursesThunk());
   }, [dispatch]);
 
-//   const [isLogged, setIsLogged] = useState(false);
-
-//   useEffect(() => {
-//     const authToken = getAuthTokenFromLocalStorage();
-//     if (authToken) {
-//       setIsLogged(true);
-//     }
-//   }, []);
-
   return (
     <div className='app'>
-      <Header /*isLogged={isLogged} setIsLogged={setIsLogged}*/ />
+      <Header />
 
       <Routes>
         <Route path={LOGIN_PATH} element={<AnonymousRoute />} >
-          <Route path='' element={<Login /*isLogged={isLogged} setIsLogged={setIsLogged}*/ />} />
+          <Route path='' element={<Login />} />
         </Route>
         <Route path={REGISTER_PATH} element={<AnonymousRoute />} >
           <Route path='' element={<Registration />} />
