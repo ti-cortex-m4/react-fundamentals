@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { Button } from '../../common/Button/Button';
-import { CourseCard } from './components/CourseCard/CourseCard';
-import { Search } from './components/Search/Search';
+import CourseCard from './components/CourseCard/CourseCard';
+import Search from './components/Search/Search';
 import { CREATE_COURSE_PATH } from '../../constants';
 
 import { getAuthorsSelector } from '../../store/authors/selectors';

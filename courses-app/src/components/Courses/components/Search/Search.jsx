@@ -5,7 +5,7 @@ import { Input } from '../../../../common/Input/Input';
 
 import styles from './styles.module.css';
 
-export const Search = ({ handleSearchChange }) => {
+const Search = ({ handleSearchChange }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = event => {

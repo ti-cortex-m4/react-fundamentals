@@ -12,7 +12,7 @@ import { deleteCourseThunk } from '../../../../store/courses/thunk';
 
 import styles from './styles.module.css';
 
-export const CourseCard = ({ course, authorIdsToNames }) => {
+const CourseCard = ({ course, authorIdsToNames }) => {
   const {
     id,
     title,
