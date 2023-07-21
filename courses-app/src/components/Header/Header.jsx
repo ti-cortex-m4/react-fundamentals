@@ -17,17 +17,13 @@ export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const user = useSelector(getUserSelector);
-
   const userName = getUserNameFromLocalStorage();
   const userRole = getUserRoleFromLocalStorage();
 
-  const [logged, setLogged] = useState(userRole !== null);
-
   const handleLogoutButtonClick = () => {
-    setLogged(false);
     dispatch(logoutUserThunk());
     removeUserFromLocalStorage();
+
     navigate(LOGIN_PATH);
   };
 

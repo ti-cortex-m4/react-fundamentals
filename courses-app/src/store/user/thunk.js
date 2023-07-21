@@ -86,12 +86,12 @@ export const logoutUserThunk = () => {
   return async (dispatch) => {
     userService.logoutUser(
       (response,) => {
-        removeUserFromLocalStorage();
+        //removeUserFromLocalStorage();
 
         dispatch(logoutUserSuccessAction(true));
       },
       (response, error) => {
-        removeUserFromLocalStorage();
+        //removeUserFromLocalStorage();
 
         console.log('Logout user error: ' + JSON.stringify(error));
         dispatch(logoutUserErrorAction({
