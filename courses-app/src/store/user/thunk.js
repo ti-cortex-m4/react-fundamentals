@@ -26,8 +26,8 @@ export const registerUserThunk = (body) => {
       (response, error) => {
         console.log('Register user error: ' + JSON.stringify(error || response));
         dispatch(registerUserErrorAction({
-          actionResult: false,
-          actionError: (error || response.errors || response.result)
+          registerResult: false,
+          registerError: (error || response.errors || response.result)
         }));
       }
     );
@@ -46,8 +46,8 @@ export const getCurrentUserThunk = () => {
       (response, error) => {
         console.log('Get current user error: ' + JSON.stringify(error || response));
         dispatch(getCurrentUserErrorAction({
-          actionResult: false,
-          actionError: (error || response.errors || response.result)
+          loginResult: false,
+          loginError: (error || response.errors || response.result)
         }));
       }
     );
@@ -74,8 +74,8 @@ export const loginUserThunk = (body) => {
       (response, error) => {
         console.log('Login user error: ' + JSON.stringify(error || response));
         dispatch(loginUserErrorAction({
-          actionResult: false,
-          actionError: (error || response.errors || response.result)
+          loginResult: false,
+          loginError: (error || response.errors || response.result)
         }));
       }
     );

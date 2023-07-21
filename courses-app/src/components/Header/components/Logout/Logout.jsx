@@ -34,17 +34,17 @@ export const Logout = ({ setIsLogged }) => {
       navigate(LOGIN_PATH);
     }
 // //       setFormValid(false);
-//       alert('Logout error: ' + user.actionError);
+//       alert('Logout error: ' + user.loginError);
 //
 //       dispatch(logoutUserErrorAction({
-//         actionResult: null,
-//         actionError: null
+//         loginResult: null,
+//         loginError: null
 //       }));
 //     }
   },
     [
       user.logoutResult,
-//       user.actionError,
+//       user.loginError,
       navigate,
       dispatch
     ]);

@@ -21,28 +21,28 @@ export const Registration = () => {
   const user = useSelector(getUserSelector);
 
   useEffect(() => {
-    if (user.actionResult === true) {
+    if (user.registerResult === true) {
 //         setFormData(initialFormData);
 //         setFormValid(true);
 
         navigate(LOGIN_PATH);
 //       navigate('/login');
-//       dispatch(actionResultAction(null)); TODO
+//       dispatch(loginResultAction(null)); TODO
     }
 
-    if (user.actionResult === false) {
+    if (user.registerResult === false) {
       setFormValid(false);
-      alert('Register error: ' + user.actionError);
+      alert('Register error: ' + user.registerError);
 
       dispatch(registerUserErrorAction({
-        actionResult: null,
-        actionError: null
+        loginResult: null,
+        loginError: null
       }));
     }
   },
   [
-    user.actionResult,
-    user.actionError,
+    user.registerResult,
+    user.registerError,
     navigate,
     dispatch,
   ]);

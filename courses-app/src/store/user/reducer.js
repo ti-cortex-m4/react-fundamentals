@@ -15,8 +15,10 @@ export const initialUserState = {
   authToken: null,
   userName: null,
   userRole: null,
-  actionResult: null,
-  actionError: null,
+  registerResult: null,
+  registerError: null,
+  loginResult: null,
+  loginError: null,
   logoutResult: null,
   logoutError: null,
 };
@@ -35,8 +37,8 @@ const userReducer = (state = initialUserState, action) => {
     case LOGIN_USER_ERROR: {
       return {
         ...state,
-        actionResult: action.payload.actionResult,
-        actionError: action.payload.actionError,
+        loginResult: action.payload.loginResult,
+        loginError: action.payload.loginError,
       };
     }
 
@@ -46,31 +48,31 @@ const userReducer = (state = initialUserState, action) => {
         isAuthenticated: true,
         isAdministrator: 'admin' === action.payload.userRole,
         userRole: action.payload.userRole,
-        actionResult: true,
-        actionError: null,
+        loginResult: true,
+        loginError: null,
       };
     }
 
     case GET_USER_ERROR: {
       return {
         ...state,
-        actionResult: action.payload.actionResult,
-        actionError: action.payload.actionError,
+        loginResult: action.payload.loginResult,
+        loginError: action.payload.loginError,
       };
     }
 
     case REGISTER_USER_SUCCESS:
       return {
         ...state,
-        actionResult: action.payload,
-        actionError: null
+        registerResult: action.payload,
+        registerError: null
       };
 
     case REGISTER_USER_ERROR:
       return {
         ...state,
-        actionResult: action.payload.actionResult,
-        actionError: action.payload.actionError,
+        registerResult: action.payload.registerResult,
+        registerError: action.payload.registerError,
       };
 
     case LOGOUT_USER_SUCCESS:
