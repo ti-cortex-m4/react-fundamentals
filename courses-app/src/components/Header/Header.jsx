@@ -37,7 +37,7 @@ export const Header = () => {
       {(getUserRoleFromLocalStorage() !== null) &&
         <div className={styles.userContainer}>
           <div className={styles.userName}>
-            {userName}
+            {("admin" === userRole) ? "Administrator" : userName}
           </div>
           <Button
             buttonText='Logout'
